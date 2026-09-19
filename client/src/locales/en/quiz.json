@@ -3,14 +3,27 @@
     "title": "Quiz time",
     "subtitle": "Test what you've learned and earn XP.",
     "welcome": "New here? Start with a Quick Quiz. It only takes a minute.",
-    "quick": { "title": "Quick Quiz", "description": "Five mixed questions from every lesson.", "start": "Start quiz" },
-    "lessons": { "title": "Lesson Quizzes", "description": "Practice one topic at a time.", "best": "Best: {{percent}}%", "noBest": "Not played yet", "play": "Play {{lesson}} quiz" },
-    "battle": { "title": "Quiz Battle", "description": "Face a bot head to head.", "soon": "Coming soon" }
+    "quick": {
+      "title": "Quick Quiz",
+      "description": "Five mixed questions from every lesson.",
+      "start": "Start quiz"
+    },
+    "lessons": {
+      "title": "Lesson Quizzes",
+      "description": "Practice one topic at a time.",
+      "best": "Best: {{percent}}%",
+      "noBest": "Not played yet",
+      "play": "Play {{lesson}} quiz"
+    },
+    "battle": {
+      "title": "Quiz Battle",
+      "description": "Face a bot head to head.",
+      "soon": "Coming soon"
+    }
   },
   "play": {
     "counter": "{{current}} / {{total}}",
     "progressLabel": "Question {{current}} of {{total}}",
-    "group": "Answer choices",
     "option": "Option {{letter}}",
     "hint": "Show hint (−{{cost}} XP)",
     "hintLabel": "Hint",
@@ -56,5 +69,30 @@
     "back": "Back to results",
     "loadError": "We couldn't load your mistakes."
   },
-  "streak": { "label_one": "{{count}} day streak", "label_other": "{{count}} day streak" }
+  "streak": {
+    "label_one": "{{count}} day streak",
+    "label_other": "{{count}} day streak"
+  },
+  "battle": {
+    "title": "Quiz Battle",
+    "intro": "You and the bot answer the same questions. Whoever gets more right wins.",
+    "difficulty": "Bot difficulty",
+    "easy": "Easy",
+    "medium": "Medium",
+    "hard": "Hard",
+    "start": "Start battle",
+    "you": "You",
+    "bot": "Bot",
+    "vs": "VS",
+    "scoreLabel": "{{name}}: {{score}} of {{total}}",
+    "botCorrect": "Bot answered correctly: {{answer}}",
+    "botWrong": "Bot answered: {{answer}}",
+    "botThinking": "Bot is thinking…",
+    "win": "You beat the bot!",
+    "draw": "It's a draw!",
+    "loss": "The bot wins this time.",
+    "resultScore": "You {{score}} – {{botScore}} Bot",
+    "bonus": "Battle bonus: +{{xp}} XP",
+    "rematch": "Rematch"
+  }
 }

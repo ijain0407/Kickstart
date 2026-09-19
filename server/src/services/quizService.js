@@ -7,6 +7,7 @@ import { selectQuestions } from '../lib/selection.js';
 import { computeAttemptXp, levelIdForXp, levelInfo } from '../lib/xp.js';
 import { streakBonusXp, updateStreak } from '../lib/streak.js';
 import { awardBadges } from './progressService.js';
+import { createScriptedBot } from '../bots/scriptedBot.js';
 
 export function toPublicQuestion(q, locale) {
   return {
@@ -22,7 +23,7 @@ export function toPublicQuestion(q, locale) {
   };
 }
 
-export function createQuizService({ quizRepo, attemptRepo, progressRepo, now = () => new Date(), rng = Math.random }) {
+export function createQuizService({ quizRepo, attemptRepo, progressRepo, now = () => new Date(), rng = Math.random, botFactory = createScriptedBot }) {
   const ownedAttempt = (userId, attemptId) => {
     const attempt = attemptRepo.get(attemptId);
     if (!attempt || attempt.userId !== userId) throw notFound('Attempt not found', 'ATTEMPT_NOT_FOUND');
@@ -49,10 +50,11 @@ export function createQuizService({ quizRepo, attemptRepo, progressRepo, now = (
     answers: Object.fromEntries(
       Object.entries(attempt.answers).map(([qid, a]) => {
         const q = quizRepo.byId(qid);
-        return [qid, { optionId: a.optionId, correct: a.correct, correctOptionId: q.correctOptionId, explanation: loc(q.explanation, locale) }];
+        return [qid, { optionId: a.optionId, correct: a.correct, correctOptionId: q.correctOptionId, explanation: loc(q.explanation, locale), ...(attempt.bot ? { bot: attempt.bot.plan[qid] } : {}) }];
       }),
     ),
     hintsUsed: Object.keys(attempt.hints),
+    ...(attempt.bot ? { bot: { name: attempt.bot.name, difficulty: attempt.bot.difficulty } } : {}),
   });
 
   return {
@@ -61,7 +63,7 @@ export function createQuizService({ quizRepo, attemptRepo, progressRepo, now = (
       return { questions: select({ mode, lesson, count }).map((q) => toPublicQuestion(q, locale)) };
     },
 
-    start(userId, { mode, lesson, count, locale }) {
+    start(userId, { mode, lesson, count, locale, difficulty }) {
       const questions = select({ mode, lesson, count });
       if (!questions.length) throw badRequest('No questions available', 'NO_QUESTIONS');
       const attempt = {
@@ -76,6 +78,11 @@ export function createQuizService({ quizRepo, attemptRepo, progressRepo, now = (
         startedAt: now().toISOString(),
         result: null,
       };
+      if (mode === 'battle') {
+        // The bot's answers are planned now but only revealed per question once the user has answered it.
+        const bot = botFactory({ difficulty, rng });
+        attempt.bot = { name: bot.name, difficulty: bot.difficulty, plan: Object.fromEntries(questions.map((q) => [q.id, bot.plan(q)])) };
+      }
       attemptRepo.save(attempt);
       return attemptView(attempt, locale);
     },
@@ -101,6 +108,7 @@ export function createQuizService({ quizRepo, attemptRepo, progressRepo, now = (
         selectedOptionId: recorded.optionId,
         correctOptionId: q.correctOptionId,
         explanation: loc(q.explanation, locale),
+        ...(attempt.bot ? { bot: attempt.bot.plan[questionId] } : {}),
       };
     },
 
@@ -126,6 +134,13 @@ export function createQuizService({ quizRepo, attemptRepo, progressRepo, now = (
       const total = questions.length;
       noteLocale(attempt, locale);
 
+      let battleResult;
+      let botScore;
+      if (attempt.bot) {
+        botScore = questions.filter((q) => attempt.bot.plan[q.id].correct).length;
+        battleResult = score > botScore ? 'win' : score === botScore ? 'draw' : 'loss';
+      }
+
       const progress = progressRepo.get(userId);
       const levelBefore = levelIdForXp(progress.xp);
       const { streak, firstActivityToday } = updateStreak(progress.streak, clientDate);
@@ -135,6 +150,7 @@ export function createQuizService({ quizRepo, attemptRepo, progressRepo, now = (
         total,
         hintsUsed: Object.keys(attempt.hints).length,
         streakBonus,
+        battleResult,
       });
 
       progress.xp += xpEarned;
@@ -180,6 +196,7 @@ export function createQuizService({ quizRepo, attemptRepo, progressRepo, now = (
         newBadges,
         streak: progress.streak,
         missedCount: missedQuestionIds.length,
+        ...(attempt.bot ? { battleResult, botScore, botDifficulty: attempt.bot.difficulty } : {}),
       };
       attemptRepo.save(attempt);
       return attempt.result;

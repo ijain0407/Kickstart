@@ -3,14 +3,27 @@
     "title": "Hora del quiz",
     "subtitle": "Pon a prueba lo que aprendiste y gana XP.",
     "welcome": "¿Eres nuevo? Empieza con un Quiz rápido. Solo toma un minuto.",
-    "quick": { "title": "Quiz rápido", "description": "Cinco preguntas variadas de todas las lecciones.", "start": "Empezar quiz" },
-    "lessons": { "title": "Quizzes por lección", "description": "Practica un tema a la vez.", "best": "Mejor: {{percent}}%", "noBest": "Aún sin jugar", "play": "Jugar quiz de {{lesson}}" },
-    "battle": { "title": "Batalla de quiz", "description": "Enfréntate a un bot cara a cara.", "soon": "Próximamente" }
+    "quick": {
+      "title": "Quiz rápido",
+      "description": "Cinco preguntas variadas de todas las lecciones.",
+      "start": "Empezar quiz"
+    },
+    "lessons": {
+      "title": "Quizzes por lección",
+      "description": "Practica un tema a la vez.",
+      "best": "Mejor: {{percent}}%",
+      "noBest": "Aún sin jugar",
+      "play": "Jugar quiz de {{lesson}}"
+    },
+    "battle": {
+      "title": "Batalla de quiz",
+      "description": "Enfréntate a un bot cara a cara.",
+      "soon": "Próximamente"
+    }
   },
   "play": {
     "counter": "{{current}} / {{total}}",
     "progressLabel": "Pregunta {{current}} de {{total}}",
-    "group": "Opciones de respuesta",
     "option": "Opción {{letter}}",
     "hint": "Ver pista (−{{cost}} XP)",
     "hintLabel": "Pista",
@@ -56,5 +69,30 @@
     "back": "Volver a los resultados",
     "loadError": "No pudimos cargar tus errores."
   },
-  "streak": { "label_one": "Racha de {{count}} día", "label_other": "Racha de {{count}} días" }
+  "streak": {
+    "label_one": "Racha de {{count}} día",
+    "label_other": "Racha de {{count}} días"
+  },
+  "battle": {
+    "title": "Batalla de quiz",
+    "intro": "Tú y el bot responden las mismas preguntas. Gana quien acierte más.",
+    "difficulty": "Dificultad del bot",
+    "easy": "Fácil",
+    "medium": "Media",
+    "hard": "Difícil",
+    "start": "Empezar batalla",
+    "you": "Tú",
+    "bot": "Bot",
+    "vs": "VS",
+    "scoreLabel": "{{name}}: {{score}} de {{total}}",
+    "botCorrect": "El bot acertó: {{answer}}",
+    "botWrong": "El bot respondió: {{answer}}",
+    "botThinking": "El bot está pensando…",
+    "win": "¡Le ganaste al bot!",
+    "draw": "¡Empate!",
+    "loss": "Esta vez gana el bot.",
+    "resultScore": "Tú {{score}} – {{botScore}} Bot",
+    "bonus": "Bono de batalla: +{{xp}} XP",
+    "rematch": "Revancha"
+  }
 }

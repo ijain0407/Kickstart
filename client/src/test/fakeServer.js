@@ -16,11 +16,14 @@ const BANK = [
 ];
 
 /** In-memory stand-in for the quiz API. Correct answers stay server-side, like the real thing. */
-export function installFakeServer({ result } = {}) {
+const BOT = { q1: { optionId: 'b', correct: false, delayMs: 1500 }, q2: { optionId: 'b', correct: true, delayMs: 2000 } };
+
+export function installFakeServer({ result, battle = false } = {}) {
   const state = { answers: {}, calls: [] };
   const view = (locale) => ({
     attemptId: 'att-1',
-    mode: 'quick',
+    mode: battle ? 'battle' : 'quick',
+    ...(battle ? { bot: { name: 'bot', difficulty: 'medium' } } : {}),
     lessonId: null,
     completed: false,
     hintsUsed: [],
@@ -31,7 +34,7 @@ export function installFakeServer({ result } = {}) {
     answers: Object.fromEntries(
       Object.entries(state.answers).map(([qid, optionId]) => {
         const q = BANK.find((x) => x.id === qid);
-        return [qid, { optionId, correct: optionId === q.correct, correctOptionId: q.correct, explanation: q.explanation[locale] }];
+        return [qid, { optionId, correct: optionId === q.correct, correctOptionId: q.correct, explanation: q.explanation[locale], ...(battle ? { bot: BOT[qid] } : {}) }];
       }),
     ),
   });
@@ -47,7 +50,7 @@ export function installFakeServer({ result } = {}) {
       const { questionId, optionId } = JSON.parse(init.body);
       state.answers[questionId] ??= optionId;
       const q = BANK.find((x) => x.id === questionId);
-      return reply({ correct: state.answers[questionId] === q.correct, selectedOptionId: state.answers[questionId], correctOptionId: q.correct, explanation: q.explanation[locale] });
+      return reply({ correct: state.answers[questionId] === q.correct, selectedOptionId: state.answers[questionId], correctOptionId: q.correct, explanation: q.explanation[locale], ...(battle ? { bot: BOT[questionId] } : {}) });
     }
     if (method === 'POST' && url === '/api/quiz/hint') return reply({ hint: locale === 'es' ? 'Pista de prueba' : 'Test hint', xpCost: 5 });
     if (method === 'POST' && url === '/api/quiz/attempts/att-1/complete') return reply(result);

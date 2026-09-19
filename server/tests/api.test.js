@@ -244,3 +244,66 @@ describe('badge catalog and streaks', () => {
     expect(res).toMatchObject({ xp: 0, level: 'fan' });
   });
 });
+
+describe('battle mode (bot)', () => {
+  // rng()=0 makes a 90%/75%/60% bot always right; rng()=0.99 makes it always wrong.
+  const battleApp = (rngValue) => {
+    app = createApp({ now: () => new Date('2026-03-01T12:00:00Z'), rng: () => rngValue });
+  };
+  const startBattle = async (body = {}) => (await api('post', '/api/quiz/attempts', { mode: 'battle', ...body })).body;
+
+  it('starts with bot config and never leaks the bot plan up front', async () => {
+    battleApp(0);
+    const attempt = await startBattle({ difficulty: 'hard' });
+    expect(attempt.bot).toEqual({ name: 'bot', difficulty: 'hard' });
+    expect(JSON.stringify(attempt)).not.toMatch(/delayMs|plan|correctOptionId/);
+    expect(attempt.answers).toEqual({});
+  });
+
+  it('reveals the bot answer only after the user answers that question', async () => {
+    battleApp(0);
+    const attempt = await startBattle();
+    const q = attempt.questions[0];
+    const res = (await api('post', '/api/quiz/answer', { questionId: q.id, optionId: truth(q.id), attemptId: attempt.attemptId })).body;
+    expect(res.bot).toMatchObject({ correct: true, optionId: truth(q.id), delayMs: 1500 });
+    const view = (await api('get', `/api/quiz/attempts/${attempt.attemptId}`)).body;
+    expect(Object.keys(view.answers)).toHaveLength(1);
+    expect(view.answers[q.id].bot.correct).toBe(true);
+  });
+
+  it('draws against a perfect bot and awards draw XP', async () => {
+    battleApp(0);
+    const attempt = await startBattle();
+    await answerAll(attempt);
+    const r = (await api('post', `/api/quiz/attempts/${attempt.attemptId}/complete`)).body;
+    expect(r).toMatchObject({ battleResult: 'draw', botScore: 5, score: 5 });
+    expect(r.xpBreakdown.battleBonus).toBe(10);
+  });
+
+  it('wins against a bot that always misses and awards win XP once', async () => {
+    battleApp(0.99);
+    const attempt = await startBattle();
+    await answerAll(attempt);
+    const r = (await api('post', `/api/quiz/attempts/${attempt.attemptId}/complete`)).body;
+    expect(r).toMatchObject({ battleResult: 'win', botScore: 0 });
+    expect(r.xpBreakdown.battleBonus).toBe(30);
+    await api('post', `/api/quiz/attempts/${attempt.attemptId}/complete`);
+    expect((await api('get', '/api/progress')).body.xp).toBe(r.xpEarned);
+  });
+
+  it('loses when the user misses everything and records the battle in history', async () => {
+    battleApp(0);
+    const attempt = await startBattle();
+    await answerAll(attempt, false);
+    const r = (await api('post', `/api/quiz/attempts/${attempt.attemptId}/complete`)).body;
+    expect(r).toMatchObject({ battleResult: 'loss', score: 0 });
+    expect(r.xpBreakdown.battleBonus).toBe(0);
+    expect((await api('get', '/api/progress')).body.history[0]).toMatchObject({ mode: 'battle' });
+  });
+
+  it('rejects an unknown bot difficulty', async () => {
+    battleApp(0);
+    const res = await api('post', '/api/quiz/attempts', { mode: 'battle', difficulty: 'impossible' });
+    expect(res.status).toBe(400);
+  });
+});

@@ -4,6 +4,7 @@ import { beforeEach, describe, expect, it } from 'vitest';
 import i18n from '../i18n.js';
 import { installFakeServer } from './fakeServer.js';
 import { renderApp } from './render.jsx';
+import { quizConfig } from '../features/quiz/config.js';
 
 const result = (over = {}) => ({
   attemptId: 'att-1', mode: 'quick', lessonId: null, score: 4, total: 5, perfect: false, xpEarned: 60,
@@ -11,6 +12,7 @@ const result = (over = {}) => ({
 });
 
 beforeEach(async () => {
+  quizConfig.botDelayScale = 0;
   await i18n.changeLanguage('en');
 });
 
@@ -130,5 +132,41 @@ describe('Results screen', () => {
     renderApp('/quiz/results/att-1');
     expect(await screen.findByText('¡Acertaste 4 de 5!')).toBeInTheDocument();
     expect(screen.getByText('Racha de 2 días')).toBeInTheDocument();
+  });
+});
+
+describe('Quiz Battle', () => {
+  const battleResult = (over = {}) => result({ mode: 'battle', score: 1, total: 2, botScore: 1, battleResult: 'draw', xpBreakdown: { battleBonus: 10 }, missedCount: 1, ...over });
+
+  it('shows the split header and reveals the bot answer before allowing Next', async () => {
+    installFakeServer({ result: battleResult(), battle: true });
+    const user = userEvent.setup();
+    renderApp('/quiz/play?mode=battle&difficulty=medium');
+
+    const header = await screen.findByRole('region', { name: 'Quiz Battle' });
+    expect(within(header).getByText('You')).toBeInTheDocument();
+    expect(within(header).getByText('Bot')).toBeInTheDocument();
+    expect(within(header).getByText('VS')).toBeInTheDocument();
+
+    await user.click(screen.getByRole('button', { name: /The goalkeeper/ }));
+    expect(await screen.findByText('Correct!')).toBeInTheDocument();
+    // Bot answered wrong on q1 (option b = "The striker"); its answer appears after its delay.
+    expect(await screen.findByText('Bot answered: The striker')).toBeInTheDocument();
+    expect(await screen.findByRole('button', { name: /Next question/ })).toBeInTheDocument();
+    expect(within(header).getByRole('progressbar', { name: 'You: 1 of 2' })).toBeInTheDocument();
+    expect(within(header).getByRole('progressbar', { name: 'Bot: 0 of 2' })).toBeInTheDocument();
+  });
+
+  it('renders the battle outcome on the results screen in both languages', async () => {
+    installFakeServer({ result: battleResult({ battleResult: 'win', score: 2, botScore: 1, xpBreakdown: { battleBonus: 30 } }), battle: true });
+    renderApp('/quiz/results/att-1');
+    expect(await screen.findByText('You beat the bot!')).toBeInTheDocument();
+    expect(screen.getByText('You 2 – 1 Bot')).toBeInTheDocument();
+    expect(screen.getByText('Battle bonus: +30 XP')).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'Rematch' })).toHaveAttribute('href', '/quiz/battle');
+    await act(async () => {
+      await i18n.changeLanguage('es');
+    });
+    expect(await screen.findByText('¡Le ganaste al bot!')).toBeInTheDocument();
   });
 });

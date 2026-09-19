@@ -1,11 +1,12 @@
 import { Router } from 'express';
 import { z } from 'zod';
+import { botDifficulties } from '../bots/scriptedBot.js';
 
-const modeSchema = z.enum(['quick', 'lesson']);
+const modeSchema = z.enum(['quick', 'lesson', 'battle']);
 const count = z.coerce.number().int().min(1).max(20).optional();
 
 const questionsQuery = z.object({ mode: modeSchema.default('quick'), lesson: z.string().optional(), count });
-const startBody = z.object({ mode: modeSchema, lesson: z.string().optional(), count: z.number().int().min(1).max(20).optional() });
+const startBody = z.object({ mode: modeSchema, lesson: z.string().optional(), count: z.number().int().min(1).max(20).optional(), difficulty: z.enum(botDifficulties).default('medium') });
 const answerBody = z.object({ questionId: z.string().min(1), optionId: z.string().min(1), attemptId: z.string().min(1) });
 const hintBody = z.object({ questionId: z.string().min(1), attemptId: z.string().min(1) });
 const reviewQuery = z.object({ attemptId: z.string().min(1) });

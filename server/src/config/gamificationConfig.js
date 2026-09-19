@@ -23,5 +23,9 @@ export const gamificationConfig = {
     difficultyMix: { 1: 0.4, 2: 0.4, 3: 0.2 },
     hintsEnabled: true,
   },
+  battle: {
+    accuracy: { easy: 0.6, medium: 0.75, hard: 0.9 },
+    delayMs: [1500, 5000],
+  },
   historyLimit: 50,
 };

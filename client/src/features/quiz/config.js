@@ -4,7 +4,8 @@ export const quizConfig = {
   lives: 3,
   hintsEnabled: true,
   hintCost: 5, // keep in sync with server gamificationConfig.xp.hintCost
-  battleEnabled: false, // Tier 3 entry point stays hidden until built
+  battleEnabled: true,
+  botDelayScale: 1, // multiplies the server-planned bot delay (tests set 0)
 };
 
 export const LESSON_IDS = ['rules-basics', 'positions', 'formations', 'terms-slang', 'how-to-watch'];

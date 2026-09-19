@@ -39,7 +39,8 @@ export default function QuizResults() {
   if (!result) return <LoadingBlock />;
 
   const leveledUp = result.levelAfter !== result.levelBefore;
-  const replayHref = result.mode === 'lesson' ? `/quiz/play?mode=lesson&lesson=${result.lessonId}` : '/quiz/play?mode=quick';
+  const isBattle = result.mode === 'battle';
+  const replayHref = isBattle ? '/quiz/battle' : result.mode === 'lesson' ? `/quiz/play?mode=lesson&lesson=${result.lessonId}` : '/quiz/play?mode=quick';
 
   return (
     <div className="space-y-6 text-center">
@@ -52,6 +53,13 @@ export default function QuizResults() {
           {result.score}<span className="text-4xl text-subtle">/{result.total}</span>
         </p>
         <p className="text-xl font-semibold">{t('results.score', { score: result.score, total: result.total })}</p>
+        {isBattle && (
+          <div className="space-y-1 py-2">
+            <p className="text-2xl font-display font-bold">{t(`battle.${result.battleResult}`)}</p>
+            <p className="score-num text-3xl">{t('battle.resultScore', { score: result.score, botScore: result.botScore })}</p>
+            {result.xpBreakdown.battleBonus > 0 && <p className="text-subtle">{t('battle.bonus', { xp: result.xpBreakdown.battleBonus })}</p>}
+          </div>
+        )}
         {result.perfect && <p className="chip"><Icon name="star" className="h-4 w-4" />{t('results.perfect')}</p>}
         <p className="pt-2">
           <span className="sr-only">{t('results.xpLabel')}: </span>
@@ -79,7 +87,7 @@ export default function QuizResults() {
       )}
 
       <div className="flex flex-col gap-3 sm:flex-row sm:justify-center">
-        <Link to={replayHref} className="btn-primary" onClick={clearActiveAttempt}>{t('results.playAgain')}</Link>
+        <Link to={replayHref} className="btn-primary" onClick={clearActiveAttempt}>{isBattle ? t('battle.rematch') : t('results.playAgain')}</Link>
         {result.missedCount > 0 && <Link to={`/quiz/review/${attemptId}`} className="btn-secondary">{t('results.review')}</Link>}
         {/* TODO(A): point at the Learn Hub route once it exists. */}
         <Link to="/learn" className="btn-secondary">{t('results.backToLearn')}</Link>

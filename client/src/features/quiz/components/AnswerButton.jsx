@@ -7,7 +7,7 @@ const STYLES = {
   selected: 'border-sky bg-sky-50 dark:bg-slate-700',
   correct: 'border-green-700 bg-green-50 text-green-950 dark:bg-green-950 dark:text-green-50',
   incorrect: 'border-red-700 bg-red-50 text-red-950 motion-safe:animate-shake dark:bg-red-950 dark:text-red-50',
-  dim: 'border-gray-200 bg-white opacity-70 dark:border-slate-700 dark:bg-slate-800',
+  dim: 'border-gray-200 bg-gray-50 text-gray-700 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300',
 };
 
 /** state: idle | selected | correct | incorrect | dim. Correct/incorrect always carry an icon plus text, never colour alone. */

@@ -6,6 +6,7 @@ import { api, ApiError } from '../../../lib/api.js';
 import Icon from '../../../components/Icon.jsx';
 import { ErrorState, LoadingBlock } from '../../../components/StateViews.jsx';
 import AnswerButton from '../components/AnswerButton.jsx';
+import BattleHeader from '../components/BattleHeader.jsx';
 import QuestionCard from '../components/QuestionCard.jsx';
 import { clearActiveAttempt, loadActiveAttempt, saveActiveAttempt } from '../attemptSession.js';
 import { quizConfig } from '../config.js';
@@ -14,7 +15,9 @@ const LETTERS = ['A', 'B', 'C', 'D'];
 
 export default function QuizPlay() {
   const [params] = useSearchParams();
-  const mode = params.get('mode') === 'lesson' ? 'lesson' : 'quick';
+  const modeParam = params.get('mode');
+  const mode = modeParam === 'lesson' || modeParam === 'battle' ? modeParam : 'quick';
+  const difficulty = ['easy', 'medium', 'hard'].includes(params.get('difficulty')) ? params.get('difficulty') : 'medium';
   const lesson = mode === 'lesson' ? params.get('lesson') : null;
   const { t, i18n } = useTranslation('quiz');
   const lang = i18n.resolvedLanguage;
@@ -28,11 +31,13 @@ export default function QuizPlay() {
   const [pendingOption, setPendingOption] = useState(null);
   const startedRef = useRef(Boolean(attemptId));
   const nextRef = useRef(null);
+  const [revealed, setRevealed] = useState(() => new Set()); // battle: questions whose bot answer is on screen
+  const shownAt = useRef(Date.now());
 
   const start = useCallback(async () => {
     setStartError(null);
     try {
-      const attempt = await api('/quiz/attempts', { method: 'POST', body: { mode, ...(lesson ? { lesson } : {}) } });
+      const attempt = await api('/quiz/attempts', { method: 'POST', body: { mode, ...(lesson ? { lesson } : {}), ...(mode === 'battle' ? { difficulty } : {}) } });
       client.setQueryData(['attempt', attempt.attemptId, lang], attempt);
       saveActiveAttempt({ attemptId: attempt.attemptId, mode, lesson });
       setAttemptId(attempt.attemptId);
@@ -41,7 +46,7 @@ export default function QuizPlay() {
       setStartError(e);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [mode, lesson, client]);
+  }, [mode, lesson, difficulty, client]);
 
   useEffect(() => {
     if (startedRef.current) return;
@@ -82,11 +87,17 @@ export default function QuizPlay() {
   const firstUnanswered = questions.findIndex((q) => !answers[q.id]);
   // Fix the position once, on first load or resume, so answering doesn't move us to the next question.
   useEffect(() => {
-    if (idx === null && total > 0) setIdx(firstUnanswered === -1 ? total - 1 : firstUnanswered);
+    if (idx === null && total > 0) {
+      setIdx(firstUnanswered === -1 ? total - 1 : firstUnanswered);
+      setRevealed(new Set(Object.keys(answers))); // already-answered questions (resume) show their bot answer at once
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [idx, total, firstUnanswered]);
   const current = idx ?? 0;
   const question = idx === null ? undefined : questions[current];
   const answered = question ? answers[question.id] : undefined;
+  const isBattle = data?.mode === 'battle';
+  const botRevealed = !isBattle || Boolean(question && revealed.has(question.id));
   const answeredCount = Object.keys(answers).length;
   const wrongCount = Object.values(answers).filter((a) => !a.correct).length;
   const livesLeft = quizConfig.livesEnabled ? Math.max(0, quizConfig.lives - wrongCount) : null;
@@ -99,7 +110,7 @@ export default function QuizPlay() {
         ...old,
         answers: {
           ...old.answers,
-          [questionId]: { optionId: res.selectedOptionId, correct: res.correct, correctOptionId: res.correctOptionId, explanation: res.explanation },
+          [questionId]: { optionId: res.selectedOptionId, correct: res.correct, correctOptionId: res.correctOptionId, explanation: res.explanation, bot: res.bot },
         },
       }));
     },
@@ -134,8 +145,21 @@ export default function QuizPlay() {
 
   // Move focus to Next once feedback appears so keyboard users can continue immediately.
   useEffect(() => {
-    if (answered) nextRef.current?.focus();
-  }, [answered]);
+    if (answered && botRevealed) nextRef.current?.focus();
+  }, [answered, botRevealed]);
+
+  // Battle: the bot 'answers' after its planned delay, counted from when the question appeared.
+  const questionId = question?.id;
+  useEffect(() => {
+    shownAt.current = Date.now();
+  }, [questionId]);
+  const botDelay = answered?.bot?.delayMs;
+  useEffect(() => {
+    if (!isBattle || !questionId || botDelay === undefined || revealed.has(questionId)) return undefined;
+    const wait = Math.max(0, botDelay * quizConfig.botDelayScale - (Date.now() - shownAt.current));
+    const id = setTimeout(() => setRevealed((prev) => new Set(prev).add(questionId)), wait);
+    return () => clearTimeout(id);
+  }, [isBattle, questionId, botDelay, revealed]);
 
   const finish = () => {
     clearActiveAttempt();
@@ -154,6 +178,9 @@ export default function QuizPlay() {
     if (answered) return o.id === answered.correctOptionId ? 'correct' : o.id === answered.optionId ? 'incorrect' : 'dim';
     return pendingOption === o.id ? 'selected' : 'idle';
   };
+  const userScore = Object.values(answers).filter((a) => a.correct).length;
+  const botScore = Object.entries(answers).filter(([qid, a]) => revealed.has(qid) && a.bot?.correct).length;
+  const botText = answered?.bot ? question.options.find((o) => o.id === answered.bot.optionId)?.text : '';
   const correctText = answered ? question.options.find((o) => o.id === answered.correctOptionId)?.text : '';
 
   return (
@@ -170,6 +197,8 @@ export default function QuizPlay() {
         <Link to="/quiz" className="btn text-sm text-subtle underline">{t('play.exit')}</Link>
       </div>
 
+      {isBattle && <BattleHeader userScore={userScore} botScore={botScore} total={total} difficulty={data.bot?.difficulty} />}
+
       <div
         role="progressbar"
         aria-label={t('play.progressLabel', { current: current + 1, total })}
@@ -182,7 +211,7 @@ export default function QuizPlay() {
       </div>
 
       <QuestionCard question={question} headingId="question-heading">
-        <div role="group" aria-labelledby="question-heading" aria-label={t('play.group')} className="mt-4 grid gap-3">
+        <div role="group" aria-labelledby="question-heading" className="mt-4 grid gap-3">
           {question.options.map((o, i) => (
             <AnswerButton
               key={o.id}
@@ -231,9 +260,21 @@ export default function QuizPlay() {
             <p className="mt-2">{answered.explanation}</p>
           </div>
         )}
+        {answered && isBattle && (
+          <div className="card mt-3 flex items-center gap-2">
+            {botRevealed ? (
+              <>
+                <Icon name={answered.bot.correct ? 'check' : 'x'} className="h-5 w-5 shrink-0" />
+                <span>{t(answered.bot.correct ? 'battle.botCorrect' : 'battle.botWrong', { answer: botText })}</span>
+              </>
+            ) : (
+              <span className="text-subtle">{t('battle.botThinking')}</span>
+            )}
+          </div>
+        )}
       </div>
 
-      {answered && (
+      {answered && botRevealed && (
         <button ref={nextRef} type="button" className="btn-primary w-full sm:w-auto" onClick={next}>
           {isLast ? t('play.finish') : t('play.next')}
           <Icon name="arrowRight" />

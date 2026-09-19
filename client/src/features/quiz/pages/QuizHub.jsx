@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import Icon from '../../../components/Icon.jsx';
 import { ErrorState, LoadingBlock } from '../../../components/StateViews.jsx';
 import { clearActiveAttempt } from '../attemptSession.js';
-import { LESSON_IDS } from '../config.js';
+import { LESSON_IDS, quizConfig } from '../config.js';
 import { useProgress } from '../hooks/useProgress.js';
 import LevelBadge from '../components/LevelBadge.jsx';
 import StreakCounter from '../components/StreakCounter.jsx';
@@ -73,17 +73,26 @@ export default function QuizHub() {
         </ul>
       </section>
 
-      {/* Tier 3: stays disabled until Quiz Battle ships. */}
-      <section className="card flex items-center justify-between gap-3 opacity-80" aria-disabled="true">
-        <div className="flex items-center gap-3">
-          <Icon name="swords" className="h-6 w-6" />
+      {quizConfig.battleEnabled ? (
+        <Link to="/quiz/battle" className="card flex items-center justify-between gap-3 hover:ring-2 hover:ring-primary">
+          <span className="flex items-center gap-3">
+            <Icon name="swords" className="h-6 w-6" />
+            <span>
+              <span className="block font-display text-xl font-bold">{t('hub.battle.title')}</span>
+              <span className="text-subtle">{t('hub.battle.description')}</span>
+            </span>
+          </span>
+          <Icon name="arrowRight" className="h-5 w-5 shrink-0 text-primary-dark dark:text-green-300" />
+        </Link>
+      ) : (
+        <section className="card flex items-center justify-between gap-3 opacity-80" aria-disabled="true">
           <div>
             <h2 className="text-xl">{t('hub.battle.title')}</h2>
             <p className="text-subtle">{t('hub.battle.description')}</p>
           </div>
-        </div>
-        <span className="chip">{t('hub.battle.soon')}</span>
-      </section>
+          <span className="chip">{t('hub.battle.soon')}</span>
+        </section>
+      )}
     </div>
   );
 }

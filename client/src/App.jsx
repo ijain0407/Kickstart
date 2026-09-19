@@ -1,6 +1,7 @@
 import { NavLink, Navigate, Route, Routes } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import QuizHub from './features/quiz/pages/QuizHub.jsx';
+import BattleSetup from './features/quiz/pages/BattleSetup.jsx';
 import QuizPlay from './features/quiz/pages/QuizPlay.jsx';
 import QuizResults from './features/quiz/pages/QuizResults.jsx';
 import QuizReview from './features/quiz/pages/QuizReview.jsx';
@@ -33,6 +34,7 @@ export default function App() {
       <main id="main" className="mx-auto max-w-3xl px-4 py-6">
         <Routes>
           <Route path="/quiz" element={<QuizHub />} />
+          <Route path="/quiz/battle" element={<BattleSetup />} />
           <Route path="/quiz/play" element={<QuizPlay />} />
           <Route path="/quiz/results/:attemptId" element={<QuizResults />} />
           <Route path="/quiz/review/:attemptId" element={<QuizReview />} />
