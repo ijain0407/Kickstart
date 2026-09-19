@@ -1,0 +1,70 @@
+[
+  {
+    "id": "lesson-rules-basics",
+    "category": "rules",
+    "order": 1,
+    "title": { "en": "The Basic Rules", "es": "Las Reglas Básicas" },
+    "summary": {
+      "en": "How a match works, what counts as a goal, and the fouls you'll see most often.",
+      "es": "Cómo funciona un partido, qué cuenta como gol y las faltas que verás más seguido."
+    },
+    "body": {
+      "en": "## The Object of the Game\nTwo teams of 11 players try to get the ball into the opponent's goal more times than the opponent scores in your goal. Only the goalkeeper may use their hands, and only inside their own penalty area.\n\n## Match Length\nA match is 90 minutes, split into two 45-minute halves, plus stoppage time added by the referee for delays (injuries, substitutions, etc.).\n\n## Starting and Restarting Play\n- **Kickoff** starts each half and restarts play after a goal.\n- **Throw-in** restarts play when the ball crosses the sideline.\n- **Goal kick** restarts play when the attacking team last touched the ball before it crossed the opponent's goal line.\n- **Corner kick** restarts play when the defending team last touched the ball before it crossed their own goal line.\n\n## Common Fouls and Cards\nReferees can award a **yellow card** (caution) or **red card** (ejection) for fouls or unsporting conduct — see the glossary for details. A foul inside the penalty area gives the attacking team a **penalty kick**.\n\n## Offside\nThe rule beginners find trickiest: an attacker can't be closer to the goal than the ball and the second-last defender when a teammate passes to them. It exists so attackers can't just camp next to the goalkeeper.",
+      "es": "## El Objetivo del Juego\nDos equipos de 11 jugadores intentan meter el balón en la portería rival más veces de las que el rival anota en la propia. Solo el portero puede usar las manos, y únicamente dentro de su propia área penal.\n\n## Duración del Partido\nUn partido dura 90 minutos, dividido en dos tiempos de 45 minutos, más el tiempo añadido por el árbitro debido a retrasos (lesiones, sustituciones, etc.).\n\n## Inicio y Reinicio del Juego\n- El **saque de centro** inicia cada tiempo y reinicia el juego tras un gol.\n- El **saque de banda** reinicia el juego cuando el balón cruza la línea lateral.\n- El **saque de meta** reinicia el juego cuando el equipo atacante tocó el balón por última vez antes de que cruzara la línea de meta rival.\n- El **tiro de esquina** reinicia el juego cuando el equipo defensor tocó el balón por última vez antes de que cruzara su propia línea de meta.\n\n## Faltas Comunes y Tarjetas\nLos árbitros pueden mostrar una **tarjeta amarilla** (amonestación) o **tarjeta roja** (expulsión) por faltas o conducta antideportiva — consulta el glosario para más detalles. Una falta dentro del área penal le da al equipo atacante un **tiro penal**.\n\n## Fuera de Juego\nLa regla que más confunde a los principiantes: un atacante no puede estar más cerca de la portería que el balón y el penúltimo defensor cuando un compañero le pasa el balón. Existe para que los atacantes no se queden esperando junto al portero rival."
+    },
+    "relatedFormationIds": [],
+    "relatedGlossaryIds": ["term-offside", "term-corner-kick", "term-penalty-kick", "term-yellow-card", "term-red-card", "term-free-kick"],
+    "updatedAt": "2026-09-19T20:00:00.000Z"
+  },
+  {
+    "id": "lesson-positions-overview",
+    "category": "positions",
+    "order": 1,
+    "title": { "en": "Player Positions", "es": "Posiciones de los Jugadores" },
+    "summary": {
+      "en": "Who plays where on the field, and what their job is.",
+      "es": "Quién juega dónde en la cancha y cuál es su función."
+    },
+    "body": {
+      "en": "## Goalkeeper (GK)\nThe only player allowed to use their hands, and only inside the penalty area. Their job is to stop the ball from crossing the goal line.\n\n## Defenders\n- **Center Backs (CB)**: mark opposing attackers and win the ball in the air and on the ground, closest to their own goal.\n- **Full Backs (LB/RB)**: defend the wide areas and often join the attack down the flanks.\n\n## Midfielders\n- **Defensive Midfielder (DM)**: sits in front of the defense, breaks up opposition attacks.\n- **Center Midfielder (CM)**: links defense and attack, controls tempo and passing.\n- **Wide Midfielders (LM/RM)**: cover the flanks in midfield, support both attack and defense.\n\n## Attackers\n- **Wingers (LW/RW)**: play wide and attack down the flanks, known for pace and dribbling.\n- **Striker (ST)**: the furthest-forward player, primarily responsible for scoring goals.\n\nSee the **Formations** lesson to see how these positions are arranged together on the field.",
+      "es": "## Portero (GK)\nEl único jugador que puede usar las manos, y solo dentro del área penal. Su función es evitar que el balón cruce la línea de meta.\n\n## Defensas\n- **Defensas Centrales (CB)**: marcan a los atacantes rivales y ganan el balón aéreo y terrestre, son los más cercanos a su propia portería.\n- **Laterales (LB/RB)**: defienden las bandas y a menudo se suman al ataque por los costados.\n\n## Mediocampistas\n- **Volante de Contención (DM)**: se ubica delante de la defensa y corta los ataques rivales.\n- **Volante Central (CM)**: conecta defensa y ataque, controla el ritmo y los pases.\n- **Volantes por Banda (LM/RM)**: cubren las bandas en el mediocampo, apoyan tanto en ataque como en defensa.\n\n## Delanteros\n- **Extremos (LW/RW)**: juegan por las bandas y atacan por los costados, destacan por velocidad y regate.\n- **Delantero (ST)**: el jugador más adelantado, principal responsable de anotar goles.\n\nMira la lección de **Formaciones** para ver cómo se organizan estas posiciones en la cancha."
+    },
+    "relatedFormationIds": ["formation-4-4-2", "formation-4-3-3", "formation-3-5-2"],
+    "relatedGlossaryIds": [],
+    "updatedAt": "2026-09-19T20:00:00.000Z"
+  },
+  {
+    "id": "lesson-formations-overview",
+    "category": "formations",
+    "order": 1,
+    "title": { "en": "Formations", "es": "Formaciones" },
+    "summary": {
+      "en": "How teams line up their 10 outfield players, and why the numbers matter.",
+      "es": "Cómo alinean los equipos a sus 10 jugadores de campo, y por qué importan los números."
+    },
+    "body": {
+      "en": "A **formation** describes how a team arranges its players outside the goalkeeper, written as defenders-midfielders-attackers.\n\n## 4-4-2\nTwo flat lines of four in defense and midfield, two strikers up front. Balanced and simple — a great formation to learn tactics with.\n\n## 4-3-3\nFour defenders, a midfield triangle, and three attackers spread across the width of the pitch. Favors possession and width in attack.\n\n## 3-5-2\nThree center backs, five across midfield including attacking wing-backs, and two strikers. Prioritizes control of the midfield.\n\nTap each formation on the field diagram to see exactly where every position lines up.",
+      "es": "Una **formación** describe cómo un equipo organiza a sus jugadores fuera del portero, expresada como defensas-mediocampistas-delanteros.\n\n## 4-4-2\nDos líneas planas de cuatro en defensa y mediocampo, dos delanteros arriba. Equilibrada y sencilla — una gran formación para aprender táctica.\n\n## 4-3-3\nCuatro defensas, un triángulo en el mediocampo y tres atacantes repartidos por todo el ancho de la cancha. Favorece la posesión y la amplitud en ataque.\n\n## 3-5-2\nTres defensas centrales, cinco en el mediocampo incluyendo carrileros ofensivos, y dos delanteros. Prioriza el control del mediocampo.\n\nToca cada formación en el diagrama de la cancha para ver exactamente dónde se ubica cada posición."
+    },
+    "relatedFormationIds": ["formation-4-4-2", "formation-4-3-3", "formation-3-5-2"],
+    "relatedGlossaryIds": ["term-formation"],
+    "updatedAt": "2026-09-19T20:00:00.000Z"
+  },
+  {
+    "id": "lesson-how-to-watch",
+    "category": "how-to-watch",
+    "order": 1,
+    "title": { "en": "How to Watch a Match", "es": "Cómo Ver un Partido" },
+    "summary": {
+      "en": "What to pay attention to so a match makes sense from kickoff to final whistle.",
+      "es": "En qué fijarte para que un partido tenga sentido desde el saque inicial hasta el pitido final."
+    },
+    "body": {
+      "en": "## Before Kickoff\nCheck the **lineups** and formation — it tells you each team's game plan before a ball is even kicked.\n\n## Watch the Space, Not Just the Ball\nBeginners tend to only watch whoever has the ball. Try watching a fullback or midfielder without the ball for a minute — you'll start to see the off-the-ball movement that creates chances.\n\n## Key Moments to Notice\n- **Set pieces** (corners, free kicks) are high-value scoring chances — watch how teams organize for them.\n- **Substitutions**, usually after 60 minutes, show how a coach is trying to change the game.\n- A **clean sheet** for the goalkeeper's team is often as important as who scores.\n\n## Following the Flow\nPossession changes hands constantly — don't worry about tracking every pass. Instead, watch for shifts in territory: is one team pinning the other back near their own goal? That's usually who's controlling the match.",
+      "es": "## Antes del Saque Inicial\nRevisa las **alineaciones** y la formación — te dice el plan de juego de cada equipo antes de que ruede el balón.\n\n## Mira el Espacio, No Solo el Balón\nLos principiantes tienden a mirar solo a quien tiene el balón. Intenta observar a un lateral o mediocampista sin el balón durante un minuto — empezarás a ver los movimientos sin balón que generan las jugadas.\n\n## Momentos Clave para Notar\n- Los **balones parados** (córners, tiros libres) son oportunidades de gol de alto valor — observa cómo se organizan los equipos para ellos.\n- Las **sustituciones**, normalmente después del minuto 60, muestran cómo el entrenador intenta cambiar el partido.\n- Una **portería en cero** para el equipo del portero suele ser tan importante como quién anota.\n\n## Siguiendo el Ritmo\nLa posesión cambia constantemente — no te preocupes por seguir cada pase. En cambio, fíjate en los cambios de territorio: ¿un equipo está encerrando al otro cerca de su propia portería? Ese suele ser el equipo que controla el partido."
+    },
+    "relatedFormationIds": [],
+    "relatedGlossaryIds": ["term-clean-sheet", "term-nutmeg"],
+    "updatedAt": "2026-09-19T20:00:00.000Z"
+  }
+]

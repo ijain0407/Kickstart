@@ -1,0 +1,23 @@
+{
+  "name": "soccer-learn-api",
+  "version": "0.1.0",
+  "description": "Core & Lessons API for the bilingual soccer-learning platform (lessons, formations, glossary).",
+  "type": "module",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js",
+    "lint": "eslint ."
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.9.0",
+    "eslint": "^9.9.0"
+  }
+}
