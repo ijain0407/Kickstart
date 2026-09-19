@@ -3,6 +3,8 @@ import { initReactI18next } from 'react-i18next';
 import enCommon from './locales/en/common.json';
 import enQuiz from './locales/en/quiz.json';
 import enProgress from './locales/en/progress.json';
+import enExplain from './locales/en/explain.json';
+import esExplain from './locales/es/explain.json';
 import esCommon from './locales/es/common.json';
 import esQuiz from './locales/es/quiz.json';
 import esProgress from './locales/es/progress.json';
@@ -24,12 +26,12 @@ function initialLanguage() {
 
 i18n.use(initReactI18next).init({
   resources: {
-    en: { common: enCommon, quiz: enQuiz, progress: enProgress },
-    es: { common: esCommon, quiz: esQuiz, progress: esProgress },
+    en: { common: enCommon, quiz: enQuiz, progress: enProgress, explain: enExplain },
+    es: { common: esCommon, quiz: esQuiz, progress: esProgress, explain: esExplain },
   },
   lng: initialLanguage(),
   fallbackLng: 'en',
-  ns: ['common', 'quiz', 'progress'],
+  ns: ['common', 'quiz', 'progress', 'explain'],
   defaultNS: 'common',
   interpolation: { escapeValue: false },
 });

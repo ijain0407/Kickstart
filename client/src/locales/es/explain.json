@@ -1,0 +1,27 @@
+{
+  "title": "Explica esta jugada",
+  "demoBadge": "Análisis de demostración",
+  "disclaimer": "Esto es una demostración. No analiza tu video. Relaciona el nombre del archivo o el enlace con un ejemplo ya escrito (fuera de juego, tiro de esquina o penal) y muestra consejos para todo lo demás.",
+  "drop": {
+    "label": "Elige un clip o suéltalo aquí",
+    "hint": "MP4, WebM o GIF, hasta 25 MB",
+    "dragging": "Suelta para analizar"
+  },
+  "url": { "label": "O pega el enlace de un clip", "placeholder": "https://ejemplo.com/fuera-de-juego.mp4", "submit": "Analizar enlace" },
+  "samples": { "title": "¿No tienes un clip? Prueba un ejemplo", "play": "Ejemplo: {{title}}" },
+  "errors": {
+    "type": "Ese tipo de archivo no es compatible. Usa MP4, WebM o GIF.",
+    "size": "Ese clip pesa más de 25 MB.",
+    "url": "Eso no parece un enlace web válido.",
+    "generic": "No pudimos analizar ese clip."
+  },
+  "loading": "Analizando la jugada…",
+  "preview": { "video": "Vista previa de tu clip", "gif": "Vista previa de tu GIF", "link": "Enlace: {{label}}" },
+  "results": {
+    "title": "Línea de tiempo: {{title}}",
+    "unmatched": "No pudimos relacionar este clip con un ejemplo conocido, así que aquí tienes consejos generales para ver cualquier jugada.",
+    "matched": "Relacionado con un ejemplo de muestra.",
+    "jump": "Ir a {{time}}",
+    "openLesson": "Aprende más: {{lesson}}"
+  }
+}

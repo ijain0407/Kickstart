@@ -1,6 +1,6 @@
 {
   "appName": "Kickstart",
-  "nav": { "quiz": "Quiz", "progress": "Progress", "main": "Main navigation", "skip": "Skip to content" },
+  "nav": { "quiz": "Quiz", "explain": "Explain a play", "progress": "Progress", "main": "Main navigation", "skip": "Skip to content" },
   "language": { "label": "Language", "en": "English", "es": "Español" },
   "level": { "fan": "Fan", "enthusiast": "Enthusiast", "tactics_nerd": "Tactics Nerd" },
   "lesson": {

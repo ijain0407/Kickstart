@@ -1,0 +1,138 @@
+[
+  {
+    "id": "offside",
+    "keywords": ["offside", "off-side", "fuera-de-juego", "fuera_de_juego", "fueradejuego"],
+    "title": { "en": "Offside call", "es": "Fuera de juego" },
+    "annotations": [
+      {
+        "timestamp": 2,
+        "lessonId": "rules-basics",
+        "title": { "en": "The pass is played", "es": "Se juega el pase" },
+        "explanation": {
+          "en": "Offside is judged at the exact moment a teammate plays the ball. Where the attacker runs afterwards does not change the decision.",
+          "es": "El fuera de juego se juzga en el instante exacto en que un compañero toca el balón. Lo que haga el atacante después no cambia la decisión."
+        }
+      },
+      {
+        "timestamp": 3,
+        "lessonId": "rules-basics",
+        "title": { "en": "Attacker vs. second-to-last defender", "es": "Atacante frente al penúltimo defensor" },
+        "explanation": {
+          "en": "The attacker is closer to the goal line than both the ball and the second-to-last defender. The goalkeeper usually counts as the last defender.",
+          "es": "El atacante está más cerca de la línea de meta que el balón y que el penúltimo defensor. El portero suele contar como el último defensor."
+        }
+      },
+      {
+        "timestamp": 5,
+        "lessonId": "rules-basics",
+        "title": { "en": "The flag goes up", "es": "Se levanta la bandera" },
+        "explanation": {
+          "en": "Being in an offside position is only punished when that player becomes involved in play, for example by receiving the pass. The assistant referee signals it with the flag.",
+          "es": "Estar en posición de fuera de juego solo se sanciona si ese jugador participa en la jugada, por ejemplo al recibir el pase. El juez de línea lo señala con la bandera."
+        }
+      },
+      {
+        "timestamp": 7,
+        "lessonId": "rules-basics",
+        "title": { "en": "Indirect free kick", "es": "Tiro libre indirecto" },
+        "explanation": {
+          "en": "Play restarts with an indirect free kick for the defending team, taken from where the offside player was.",
+          "es": "El juego se reanuda con un tiro libre indirecto para el equipo defensor, desde donde estaba el jugador en fuera de juego."
+        }
+      }
+    ]
+  },
+  {
+    "id": "corner-kick",
+    "keywords": ["corner", "corner-kick", "cornerkick", "esquina", "tiro-de-esquina"],
+    "title": { "en": "Corner kick", "es": "Tiro de esquina" },
+    "annotations": [
+      {
+        "timestamp": 1,
+        "lessonId": "rules-basics",
+        "title": { "en": "Ball crosses the goal line", "es": "El balón cruza la línea de meta" },
+        "explanation": {
+          "en": "A defender touched the ball last before it went over their own goal line (without being a goal), so the attacking team earns a corner kick.",
+          "es": "Un defensor tocó el balón por última vez antes de que cruzara su propia línea de meta (sin ser gol), así que el equipo atacante cobra un tiro de esquina."
+        }
+      },
+      {
+        "timestamp": 3,
+        "lessonId": "rules-basics",
+        "title": { "en": "The kick is taken", "es": "Se cobra el tiro" },
+        "explanation": {
+          "en": "The ball is placed inside the corner arc. The kicker cannot touch it again until another player has. There is no offside directly from a corner kick.",
+          "es": "El balón se coloca dentro del arco de esquina. El ejecutor no puede tocarlo de nuevo hasta que lo haga otro jugador. No hay fuera de juego directamente de un tiro de esquina."
+        }
+      },
+      {
+        "timestamp": 5,
+        "lessonId": "terms-slang",
+        "title": { "en": "A set piece in action", "es": "Una jugada a balón parado" },
+        "explanation": {
+          "en": "Corners are set pieces. Teams rehearse runs and blocks in the box, while defenders mark either players or zones.",
+          "es": "Los tiros de esquina son jugadas a balón parado. Los equipos ensayan movimientos y bloqueos en el área, mientras los defensores marcan a jugadores o zonas."
+        }
+      }
+    ]
+  },
+  {
+    "id": "penalty",
+    "keywords": ["penalty", "penalti", "penal", "spot-kick", "spotkick"],
+    "title": { "en": "Penalty kick", "es": "Tiro penal" },
+    "annotations": [
+      {
+        "timestamp": 1,
+        "lessonId": "rules-basics",
+        "title": { "en": "Foul inside the box", "es": "Falta dentro del área" },
+        "explanation": {
+          "en": "A defender commits a direct free kick foul, such as tripping, inside their own penalty area. That is punished with a penalty kick.",
+          "es": "Un defensor comete dentro de su propia área una falta que sería de tiro libre directo, como una zancadilla. Se sanciona con un tiro penal."
+        }
+      },
+      {
+        "timestamp": 3,
+        "lessonId": "rules-basics",
+        "title": { "en": "One on one from the spot", "es": "Uno contra uno desde el punto" },
+        "explanation": {
+          "en": "The ball is placed on the penalty spot, 12 yards (11 meters) from goal. Only the kicker and the goalkeeper stay in the area until the ball is kicked.",
+          "es": "El balón se coloca en el punto penal, a 11 metros (12 yardas) de la portería. Solo el ejecutor y el portero permanecen en el área hasta que se patea el balón."
+        }
+      },
+      {
+        "timestamp": 5,
+        "lessonId": "how-to-watch",
+        "title": { "en": "A possible VAR check", "es": "Posible revisión del VAR" },
+        "explanation": {
+          "en": "Penalty decisions are one of the situations the VAR can review, so you may see the referee check the replay before deciding.",
+          "es": "Las decisiones de penal son una de las situaciones que el VAR puede revisar, así que quizá veas al árbitro consultar la repetición antes de decidir."
+        }
+      }
+    ]
+  },
+  {
+    "id": "generic",
+    "keywords": [],
+    "title": { "en": "General viewing tips", "es": "Consejos generales para ver el juego" },
+    "annotations": [
+      {
+        "timestamp": 0,
+        "lessonId": "how-to-watch",
+        "title": { "en": "Start with the ball", "es": "Empieza por el balón" },
+        "explanation": {
+          "en": "Ask three questions: which team has the ball, where is it on the pitch, and who is closest to the goal?",
+          "es": "Hazte tres preguntas: qué equipo tiene el balón, en qué parte del campo está y quién está más cerca de la portería."
+        }
+      },
+      {
+        "timestamp": 2,
+        "lessonId": "how-to-watch",
+        "title": { "en": "Then watch off the ball", "es": "Luego mira lejos del balón" },
+        "explanation": {
+          "en": "Look at how teammates move into space and how defenders line up. The plan behind a play is often away from the ball.",
+          "es": "Observa cómo se mueven los compañeros hacia los espacios y cómo se alinean los defensas. El plan de una jugada suele estar lejos del balón."
+        }
+      }
+    ]
+  }
+]

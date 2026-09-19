@@ -5,6 +5,7 @@ import BattleSetup from './features/quiz/pages/BattleSetup.jsx';
 import QuizPlay from './features/quiz/pages/QuizPlay.jsx';
 import QuizResults from './features/quiz/pages/QuizResults.jsx';
 import QuizReview from './features/quiz/pages/QuizReview.jsx';
+import ExplainPlay from './features/explain/pages/ExplainPlay.jsx';
 import ProgressPage from './features/progress/pages/ProgressPage.jsx';
 import LanguageToggle from './components/LanguageToggle.jsx';
 import { useTheme } from './lib/hooks.js';
@@ -26,6 +27,7 @@ export default function App() {
           <span className="font-display text-lg font-bold text-primary-dark dark:text-green-200">{t('appName')}</span>
           <nav aria-label={t('nav.main')} className="flex gap-1">
             <NavLink to="/quiz" className={navClass}>{t('nav.quiz')}</NavLink>
+            <NavLink to="/explain-play" className={navClass}>{t('nav.explain')}</NavLink>
             <NavLink to="/progress" className={navClass}>{t('nav.progress')}</NavLink>
           </nav>
           <LanguageToggle />
@@ -38,6 +40,7 @@ export default function App() {
           <Route path="/quiz/play" element={<QuizPlay />} />
           <Route path="/quiz/results/:attemptId" element={<QuizResults />} />
           <Route path="/quiz/review/:attemptId" element={<QuizReview />} />
+          <Route path="/explain-play" element={<ExplainPlay />} />
           <Route path="/progress" element={<ProgressPage />} />
           <Route path="*" element={<Navigate to="/quiz" replace />} />
         </Routes>

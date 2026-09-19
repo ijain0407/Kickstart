@@ -33,6 +33,8 @@ Never contains `correctOptionId`, `explanation` or hint text.
 Body `{ "mode": "quick" | "lesson", "lesson"?: "positions", "count"?: 5 }` → `201`
 Returns `{ attemptId, mode, lessonId, completed, questions[], answers{}, hintsUsed[] }`.
 
+**Battle mode:** `{ "mode": "battle", "difficulty": "easy" | "medium" | "hard", "count"?: 5 }` (default `medium`). The response adds `bot: { name, difficulty }`. The bot answers each question with 60% / 75% / 90% accuracy and a random 1.5-5 s delay, planned server-side (`server/src/bots/scriptedBot.js`, behind a `plan(question)` interface so real-time PvP could replace it). The bot's answer for a question is only revealed in the `POST /quiz/answer` response (`bot: { optionId, correct, delayMs }`) and in `answers[qid].bot` after the user has answered it. Completing adds `battleResult` (`win`/`draw`/`loss`), `botScore` and `botDifficulty`; XP: win +30, draw +10.
+
 ### `GET /quiz/attempts/:id`
 Same shape, localized to the current locale. Used to resume after a reload and to re-render in another language **without resetting the attempt**. `answers` only contains already-answered questions (with their correct option and explanation).
 
@@ -77,6 +79,23 @@ Missed questions of a **completed** attempt (`409` otherwise): each has the publ
 
 ### `POST /progress/reset`
 Wipes the current user's progress; returns the fresh progress view.
+
+## Explain This Play (rules-based demo)
+
+**Not real video analysis.** The clip is never uploaded, stored or inspected. The endpoint only receives a file's name/type/size (or a link) and picks a pre-written scenario from `server/data/scenarios.json` by keyword (`offside`, `corner`/`esquina`, `penalty`/`penal`, accent-insensitive), falling back to generic viewing tips. Responses carry `demo: true` and the UI labels everything "Demo analysis".
+
+### `GET /explain/scenarios`
+`{ "scenarios": [ { "id": "offside", "title": "Offside call" }, … ] }` (localized). Used for the "try a sample" buttons.
+
+### `POST /explain/analyze`
+```json
+{ "source": "file", "filename": "offside-goal.mp4", "mimeType": "video/mp4", "size": 1048576 }
+{ "source": "url", "url": "https://example.com/clips/penalty.gif" }
+{ "source": "scenario", "scenarioId": "offside" }
+```
+→ `{ demo: true, matched, source, sourceLabel, scenarioId, title, annotations: [ { timestamp, title, explanation, lessonId } ] }`
+
+Limits: `video/mp4`, `video/webm`, `image/gif` only (`415 UNSUPPORTED_TYPE`), max 25 MB (`413 FILE_TOO_LARGE`), links must be plain `http(s)` without credentials and ≤2048 chars (`400 INVALID_URL`; the server never fetches them). File names are reduced to a clean base name (control characters and paths stripped, ≤120 chars). Unknown `scenarioId` → `400 UNKNOWN_SCENARIO`.
 
 ## Integration hooks for other teams
 

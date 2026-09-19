@@ -23,6 +23,8 @@ npm run dev:client   # http://localhost:5173 (proxies /api to :4000)
 | `npm run validate:questions` | checks the bilingual question bank |
 | `npm run smoke:quiz` | plays a full quiz against an in-memory API and asserts progress updated |
 
+Routes: `/quiz`, `/quiz/battle`, `/quiz/play`, `/quiz/results/:id`, `/quiz/review/:id`, `/progress`, `/explain-play`.
+
 ## Stand-ins for other people's work
 
 - **Lesson ids**: placeholders in `server/src/config/lessonIds.js` and `client/src/features/quiz/config.js`.

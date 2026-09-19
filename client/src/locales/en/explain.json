@@ -1,0 +1,27 @@
+{
+  "title": "Explain This Play",
+  "demoBadge": "Demo analysis",
+  "disclaimer": "This is a demo. It doesn't watch your video. It matches the file name or link to a pre-written example (offside, corner kick or penalty) and shows tips for anything else.",
+  "drop": {
+    "label": "Choose a clip or drop it here",
+    "hint": "MP4, WebM or GIF, up to 25 MB",
+    "dragging": "Drop to analyze"
+  },
+  "url": { "label": "Or paste a link to a clip", "placeholder": "https://example.com/offside-goal.mp4", "submit": "Analyze link" },
+  "samples": { "title": "No clip handy? Try a sample", "play": "Sample: {{title}}" },
+  "errors": {
+    "type": "That file type isn't supported. Please use MP4, WebM or GIF.",
+    "size": "That clip is larger than 25 MB.",
+    "url": "That doesn't look like a valid web link.",
+    "generic": "We couldn't analyze that clip."
+  },
+  "loading": "Analyzing the play…",
+  "preview": { "video": "Preview of your clip", "gif": "Preview of your GIF", "link": "Link: {{label}}" },
+  "results": {
+    "title": "Timeline: {{title}}",
+    "unmatched": "We couldn't match this clip to a known example, so here are general tips for watching any play.",
+    "matched": "Matched to a sample example.",
+    "jump": "Jump to {{time}}",
+    "openLesson": "Learn more: {{lesson}}"
+  }
+}

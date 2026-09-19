@@ -14,7 +14,7 @@ export default [
         sessionStorage: 'readonly', localStorage: 'readonly', Intl: 'readonly', requestAnimationFrame: 'readonly',
         cancelAnimationFrame: 'readonly', setTimeout: 'readonly', clearTimeout: 'readonly', crypto: 'readonly',
         URLSearchParams: 'readonly', process: 'readonly', describe: 'readonly', it: 'readonly', expect: 'readonly',
-        vi: 'readonly', performance: 'readonly', __dirname: 'readonly', beforeEach: 'readonly', afterEach: 'readonly', Headers: 'readonly', Response: 'readonly',
+        vi: 'readonly', URL: 'readonly', File: 'readonly', performance: 'readonly', __dirname: 'readonly', beforeEach: 'readonly', afterEach: 'readonly', Headers: 'readonly', Response: 'readonly',
       },
     },
     rules: { ...reactHooks.configs.recommended.rules, 'no-undef': 'error' },

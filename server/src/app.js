@@ -10,6 +10,8 @@ import { createProgressRepo } from './repos/progressRepo.js';
 import { createQuizRepo } from './repos/quizRepo.js';
 import { createProgressService } from './services/progressService.js';
 import { createQuizService } from './services/quizService.js';
+import { createExplainService } from './services/explainService.js';
+import { explainRoutes } from './routes/explain.js';
 import { quizRoutes } from './routes/quiz.js';
 import { progressRoutes } from './routes/progress.js';
 
@@ -37,6 +39,7 @@ export function createApp({ dataDir = null, quizFile, now, rng } = {}) {
   const services = {
     quiz: createQuizService({ quizRepo, attemptRepo, progressRepo, now, rng }),
     progress: createProgressService({ progressRepo, now }),
+    explain: createExplainService(),
   };
 
   const app = express();
@@ -46,6 +49,7 @@ export function createApp({ dataDir = null, quizFile, now, rng } = {}) {
   app.use('/api', context);
   app.use('/api/quiz', quizRoutes(services));
   app.use('/api/progress', progressRoutes(services));
+  app.use('/api/explain', explainRoutes(services));
 
   app.use('/api', (req, res, next) => next(new AppError(404, 'NOT_FOUND', 'Route not found')));
   // eslint-disable-next-line no-unused-vars
