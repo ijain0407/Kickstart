@@ -1,5 +1,5 @@
 node_modules
 dist
-server/data/progress.json
+quiz_feature/server/data/progress.json
 .env
-server/data/attempts.json
+quiz_feature/server/data/attempts.json

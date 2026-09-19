@@ -3,14 +3,18 @@
 Localized soccer-teaching platform. This branch (`feature/quiz-progress`) holds **Person D's workstream**: quiz engine, XP / levels / badges / streaks, the progress API, and the quiz + progress UI.
 
 ```
-server/   Express API (quiz, progress) + JSON-file storage + question bank
-client/   React + Tailwind + i18next (quiz hub, play, results, review, progress)
-docs/api-quiz-progress.md   endpoint reference, hook contracts, gamification config
+quiz_feature/
+  server/   Express API (quiz, progress) + JSON-file storage + question bank
+  client/   React + Tailwind + i18next (quiz hub, play, results, review, progress)
+  docs/api-quiz-progress.md   endpoint reference, hook contracts, gamification config
 ```
 
 ## Run it
 
+All commands run from `quiz_feature/`.
+
 ```bash
+cd quiz_feature
 npm install
 npm run dev:server   # http://localhost:4000
 npm run dev:client   # http://localhost:5173 (proxies /api to :4000)
