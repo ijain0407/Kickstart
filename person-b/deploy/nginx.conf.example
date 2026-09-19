@@ -1,0 +1,23 @@
+# Nginx reverse proxy for the Soccer Learn API.
+# 1. Replace api.yourdomain.com with your real (sub)domain.
+# 2. Copy this file to /etc/nginx/sites-available/soccer-learn-api
+# 3. Symlink it:  sudo ln -s /etc/nginx/sites-available/soccer-learn-api /etc/nginx/sites-enabled/
+# 4. Test + reload: sudo nginx -t && sudo systemctl reload nginx
+# 5. Add HTTPS with:  sudo certbot --nginx -d api.yourdomain.com
+#    (HTTPS matters here: phones on the judges' own networks/browsers may block
+#    or warn on plain http, and if the frontend is served over https, a plain-http
+#    API call will be blocked as mixed content.)
+
+server {
+    listen 80;
+    server_name api.yourdomain.com;
+
+    location / {
+        proxy_pass http://localhost:4010;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}

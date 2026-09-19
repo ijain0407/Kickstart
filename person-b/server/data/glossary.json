@@ -1,0 +1,83 @@
+[
+  {
+    "id": "term-offside",
+    "term": { "en": "Offside", "es": "Fuera de Juego" },
+    "definition": {
+      "en": "An attacking player is offside if they're nearer the opponent's goal line than both the ball and the second-last defender when the ball is played to them.",
+      "es": "Un jugador atacante está en fuera de juego si está más cerca de la línea de meta rival que el balón y el penúltimo defensor en el momento en que se le pasa el balón."
+    },
+    "relatedLessonIds": ["lesson-rules-basics"]
+  },
+  {
+    "id": "term-corner-kick",
+    "term": { "en": "Corner Kick", "es": "Tiro de Esquina" },
+    "definition": {
+      "en": "Awarded to the attacking team when the ball goes out over the goal line after last touching a defender. Taken from the corner arc nearest to where it went out.",
+      "es": "Se otorga al equipo atacante cuando el balón sale por la línea de meta tras tocar por última vez a un defensor. Se ejecuta desde el arco de la esquina más cercana."
+    },
+    "relatedLessonIds": ["lesson-rules-basics"]
+  },
+  {
+    "id": "term-penalty-kick",
+    "term": { "en": "Penalty Kick", "es": "Tiro Penal" },
+    "definition": {
+      "en": "A free shot on goal from the penalty spot, awarded when a defending player commits a foul inside their own penalty area.",
+      "es": "Un disparo libre a portería desde el punto de penal, otorgado cuando un jugador defensor comete una falta dentro de su propia área."
+    },
+    "relatedLessonIds": ["lesson-rules-basics"]
+  },
+  {
+    "id": "term-yellow-card",
+    "term": { "en": "Yellow Card", "es": "Tarjeta Amarilla" },
+    "definition": {
+      "en": "A caution shown by the referee for reckless fouls or unsporting behavior. Two yellow cards in one match result in an automatic red card.",
+      "es": "Una amonestación mostrada por el árbitro por faltas imprudentes o conducta antideportiva. Dos tarjetas amarillas en un mismo partido resultan en expulsión automática."
+    },
+    "relatedLessonIds": ["lesson-rules-basics"]
+  },
+  {
+    "id": "term-red-card",
+    "term": { "en": "Red Card", "es": "Tarjeta Roja" },
+    "definition": {
+      "en": "Shown for serious fouls or violent conduct. The player is sent off immediately and their team plays the rest of the match with one fewer player.",
+      "es": "Se muestra por faltas graves o conducta violenta. El jugador es expulsado de inmediato y su equipo juega el resto del partido con un jugador menos."
+    },
+    "relatedLessonIds": ["lesson-rules-basics"]
+  },
+  {
+    "id": "term-free-kick",
+    "term": { "en": "Free Kick", "es": "Tiro Libre" },
+    "definition": {
+      "en": "Awarded after a foul outside the penalty area. Can be 'direct' (shot straight at goal) or 'indirect' (must touch another player before entering the goal).",
+      "es": "Se otorga tras una falta fuera del área penal. Puede ser 'directo' (disparo directo a portería) o 'indirecto' (debe tocar a otro jugador antes de entrar en la portería)."
+    },
+    "relatedLessonIds": ["lesson-rules-basics"]
+  },
+  {
+    "id": "term-clean-sheet",
+    "term": { "en": "Clean Sheet", "es": "Portería en Cero" },
+    "definition": {
+      "en": "When a goalkeeper and their team finish a match without conceding a single goal.",
+      "es": "Cuando un portero y su equipo terminan un partido sin recibir ningún gol."
+    },
+    "relatedLessonIds": ["lesson-how-to-watch"]
+  },
+  {
+    "id": "term-nutmeg",
+    "term": { "en": "Nutmeg", "es": "Caño" },
+    "definition": {
+      "en": "A move where a player kicks or dribbles the ball through an opponent's open legs, often considered a small humiliation.",
+      "es": "Una jugada donde un jugador pasa el balón entre las piernas abiertas de un rival, considerada una pequeña humillación."
+    },
+    "relatedLessonIds": ["lesson-how-to-watch"]
+  },
+  {
+    "id": "term-formation",
+    "term": { "en": "Formation", "es": "Formación" },
+    "definition": {
+      "en": "The tactical arrangement of a team's players on the field, usually described by the number of defenders, midfielders, and forwards (e.g. 4-4-2).",
+      "es": "La disposición táctica de los jugadores de un equipo en el campo, generalmente descrita por el número de defensas, mediocampistas y delanteros (por ejemplo, 4-4-2)."
+    },
+    "relatedLessonIds": ["lesson-formations-overview"]
+  }
+]
