@@ -1,0 +1,57 @@
+{
+  "title": "Tu progreso",
+  "avatar": "Tu avatar",
+  "level": "Nivel: {{level}}",
+  "xpToNext": "{{xp}} XP para {{level}}",
+  "maxLevel": "¡Llegaste al nivel máximo!",
+  "xpBar": "{{into}} de {{total}} XP hacia el siguiente nivel",
+  "totalXp": "{{xp}} XP en total",
+  "stats": {
+    "lessons": "Lecciones completadas",
+    "accuracy": "Precisión en quizzes",
+    "streak": "Racha de días",
+    "chants": "Cánticos aprendidos"
+  },
+  "badges": {
+    "title": "Insignias",
+    "earned": "Obtenida",
+    "locked": "Bloqueada",
+    "earnedOn": "Obtenida el {{date}}",
+    "close": "Cerrar",
+    "progress": "{{current}} de {{target}}"
+  },
+  "badge": {
+    "first_whistle": { "name": "Primer silbato", "description": "Completa tu primer quiz." },
+    "perfect_score": { "name": "Puntaje perfecto", "description": "Obtén 100% en un quiz de 5 o más preguntas." },
+    "offside_expert": { "name": "Experto en fuera de juego", "description": "Responde bien 5 preguntas de fuera de juego." },
+    "formation_guru": { "name": "Gurú de formaciones", "description": "Responde bien 5 preguntas de formaciones." },
+    "chant_collector": { "name": "Coleccionista de cánticos", "description": "Mira 5 cánticos distintos." },
+    "hat_trick": { "name": "Triplete", "description": "Alcanza una racha de 3 días." },
+    "week_warrior": { "name": "Guerrero semanal", "description": "Alcanza una racha de 7 días." },
+    "tactics_nerd": { "name": "Genio táctico", "description": "Llega al nivel Genio Táctico." },
+    "polyglot": { "name": "Políglota", "description": "Termina un quiz después de cambiar de idioma." }
+  },
+  "history": {
+    "title": "Actividad reciente",
+    "empty": "Aún no hay nada. ¡Juega un quiz para empezar!",
+    "quiz": "Quiz {{mode}}: {{score}}/{{total}}",
+    "lesson": "Completaste {{lesson}}",
+    "mode": { "quick": "rápido", "lesson": "de lección", "battle": "de batalla" },
+    "xp": "+{{xp}} XP"
+  },
+  "best": { "title": "Mejores puntajes", "quick": "Quiz rápido", "none": "—", "percent": "{{percent}}%" },
+  "settings": {
+    "title": "Ajustes",
+    "language": "Idioma",
+    "darkMode": "Modo oscuro",
+    "on": "Activado",
+    "off": "Desactivado",
+    "reset": "Reiniciar progreso",
+    "resetTitle": "¿Reiniciar todo el progreso?",
+    "resetBody": "Esto borra tu XP, nivel, racha e insignias. No se puede deshacer.",
+    "resetConfirm": "Sí, reiniciar",
+    "cancel": "Cancelar"
+  },
+  "loadError": "No pudimos cargar tu progreso.",
+  "toast": { "reset": "Progreso reiniciado." }
+}

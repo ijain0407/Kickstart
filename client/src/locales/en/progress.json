@@ -1,0 +1,57 @@
+{
+  "title": "Your progress",
+  "avatar": "Your avatar",
+  "level": "Level: {{level}}",
+  "xpToNext": "{{xp}} XP to {{level}}",
+  "maxLevel": "Top level reached!",
+  "xpBar": "{{into}} of {{total}} XP toward the next level",
+  "totalXp": "{{xp}} XP total",
+  "stats": {
+    "lessons": "Lessons completed",
+    "accuracy": "Quiz accuracy",
+    "streak": "Day streak",
+    "chants": "Chants learned"
+  },
+  "badges": {
+    "title": "Badges",
+    "earned": "Earned",
+    "locked": "Locked",
+    "earnedOn": "Earned on {{date}}",
+    "close": "Close",
+    "progress": "{{current}} of {{target}}"
+  },
+  "badge": {
+    "first_whistle": { "name": "First Whistle", "description": "Complete your first quiz." },
+    "perfect_score": { "name": "Perfect Score", "description": "Get 100% on a quiz of 5 or more questions." },
+    "offside_expert": { "name": "Offside Expert", "description": "Answer 5 offside questions correctly." },
+    "formation_guru": { "name": "Formation Guru", "description": "Answer 5 formation questions correctly." },
+    "chant_collector": { "name": "Chant Collector", "description": "View 5 different chants." },
+    "hat_trick": { "name": "Hat Trick", "description": "Reach a 3-day streak." },
+    "week_warrior": { "name": "Week Warrior", "description": "Reach a 7-day streak." },
+    "tactics_nerd": { "name": "Tactics Nerd", "description": "Reach the Tactics Nerd level." },
+    "polyglot": { "name": "Polyglot", "description": "Finish a quiz after switching languages." }
+  },
+  "history": {
+    "title": "Recent activity",
+    "empty": "Nothing yet. Play a quiz to get started!",
+    "quiz": "{{mode}} quiz: {{score}}/{{total}}",
+    "lesson": "Completed {{lesson}}",
+    "mode": { "quick": "Quick", "lesson": "Lesson", "battle": "Battle" },
+    "xp": "+{{xp}} XP"
+  },
+  "best": { "title": "Best scores", "quick": "Quick Quiz", "none": "—", "percent": "{{percent}}%" },
+  "settings": {
+    "title": "Settings",
+    "language": "Language",
+    "darkMode": "Dark mode",
+    "on": "On",
+    "off": "Off",
+    "reset": "Reset progress",
+    "resetTitle": "Reset all progress?",
+    "resetBody": "This erases your XP, level, streak and badges. It can't be undone.",
+    "resetConfirm": "Yes, reset",
+    "cancel": "Cancel"
+  },
+  "loadError": "We couldn't load your progress.",
+  "toast": { "reset": "Progress reset." }
+}

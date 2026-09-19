@@ -1,0 +1,60 @@
+{
+  "hub": {
+    "title": "Hora del quiz",
+    "subtitle": "Pon a prueba lo que aprendiste y gana XP.",
+    "welcome": "¿Eres nuevo? Empieza con un Quiz rápido. Solo toma un minuto.",
+    "quick": { "title": "Quiz rápido", "description": "Cinco preguntas variadas de todas las lecciones.", "start": "Empezar quiz" },
+    "lessons": { "title": "Quizzes por lección", "description": "Practica un tema a la vez.", "best": "Mejor: {{percent}}%", "noBest": "Aún sin jugar", "play": "Jugar quiz de {{lesson}}" },
+    "battle": { "title": "Batalla de quiz", "description": "Enfréntate a un bot cara a cara.", "soon": "Próximamente" }
+  },
+  "play": {
+    "counter": "{{current}} / {{total}}",
+    "progressLabel": "Pregunta {{current}} de {{total}}",
+    "group": "Opciones de respuesta",
+    "option": "Opción {{letter}}",
+    "hint": "Ver pista (−{{cost}} XP)",
+    "hintLabel": "Pista",
+    "correct": "¡Correcto!",
+    "incorrect": "No exactamente",
+    "correctAnswerIs": "La respuesta correcta es: {{answer}}",
+    "yourAnswer": "Tu respuesta",
+    "next": "Siguiente pregunta",
+    "finish": "Ver resultados",
+    "lives_one": "Te queda {{count}} vida",
+    "lives_other": "Te quedan {{count}} vidas",
+    "loading": "Preparando tus preguntas…",
+    "submitError": "No pudimos guardar tu respuesta.",
+    "startError": "No pudimos iniciar el quiz.",
+    "diagramPlaceholder": "Diagrama de formación: {{ref}}",
+    "exit": "Salir del quiz"
+  },
+  "results": {
+    "title": "Quiz completado",
+    "score": "¡Acertaste {{score}} de {{total}}!",
+    "perfect": "¡Puntaje perfecto!",
+    "xp": "+{{xp}} XP",
+    "xpLabel": "XP ganada",
+    "streakDay_one": "Racha de {{count}} día",
+    "streakDay_other": "Racha de {{count}} días",
+    "streakNone": "Juega mañana para crear una racha.",
+    "newBadges": "Nuevas insignias",
+    "playAgain": "Jugar de nuevo",
+    "review": "Revisar errores",
+    "backToLearn": "Volver a Aprender",
+    "levelUp": "¡Subiste de nivel!",
+    "levelUpBody": "Ahora eres {{level}}.",
+    "continue": "Continuar",
+    "loadError": "No pudimos cargar tus resultados."
+  },
+  "review": {
+    "title": "Revisar errores",
+    "empty": "No hay errores que revisar. ¡Buen trabajo!",
+    "yourAnswer": "Tu respuesta: {{answer}}",
+    "noAnswer": "No respondiste esta pregunta.",
+    "correctAnswer": "Respuesta correcta: {{answer}}",
+    "openLesson": "Abrir lección: {{lesson}}",
+    "back": "Volver a los resultados",
+    "loadError": "No pudimos cargar tus errores."
+  },
+  "streak": { "label_one": "Racha de {{count}} día", "label_other": "Racha de {{count}} días" }
+}

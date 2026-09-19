@@ -1,0 +1,20 @@
+{
+  "appName": "Kickstart",
+  "nav": { "quiz": "Quiz", "progress": "Progress", "main": "Main navigation", "skip": "Skip to content" },
+  "language": { "label": "Language", "en": "English", "es": "Español" },
+  "level": { "fan": "Fan", "enthusiast": "Enthusiast", "tactics_nerd": "Tactics Nerd" },
+  "lesson": {
+    "rules-basics": "Rules Basics",
+    "positions": "Positions",
+    "formations": "Formations",
+    "terms-slang": "Terms & Slang",
+    "how-to-watch": "How to Watch",
+    "leagues-culture": "Leagues & Culture"
+  },
+  "loading": "Loading…",
+  "retry": "Try again",
+  "errors": {
+    "generic": "Something went wrong. Please try again.",
+    "network": "We couldn't reach the server. Check your connection and try again."
+  }
+}

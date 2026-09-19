@@ -1,0 +1,60 @@
+{
+  "hub": {
+    "title": "Quiz time",
+    "subtitle": "Test what you've learned and earn XP.",
+    "welcome": "New here? Start with a Quick Quiz. It only takes a minute.",
+    "quick": { "title": "Quick Quiz", "description": "Five mixed questions from every lesson.", "start": "Start quiz" },
+    "lessons": { "title": "Lesson Quizzes", "description": "Practice one topic at a time.", "best": "Best: {{percent}}%", "noBest": "Not played yet", "play": "Play {{lesson}} quiz" },
+    "battle": { "title": "Quiz Battle", "description": "Face a bot head to head.", "soon": "Coming soon" }
+  },
+  "play": {
+    "counter": "{{current}} / {{total}}",
+    "progressLabel": "Question {{current}} of {{total}}",
+    "group": "Answer choices",
+    "option": "Option {{letter}}",
+    "hint": "Show hint (−{{cost}} XP)",
+    "hintLabel": "Hint",
+    "correct": "Correct!",
+    "incorrect": "Not quite",
+    "correctAnswerIs": "The correct answer is: {{answer}}",
+    "yourAnswer": "Your answer",
+    "next": "Next question",
+    "finish": "See results",
+    "lives_one": "{{count}} life left",
+    "lives_other": "{{count}} lives left",
+    "loading": "Getting your questions ready…",
+    "submitError": "We couldn't save your answer.",
+    "startError": "We couldn't start the quiz.",
+    "diagramPlaceholder": "Formation diagram: {{ref}}",
+    "exit": "Leave quiz"
+  },
+  "results": {
+    "title": "Quiz complete",
+    "score": "You got {{score}} of {{total}}!",
+    "perfect": "Perfect score!",
+    "xp": "+{{xp}} XP",
+    "xpLabel": "XP earned",
+    "streakDay_one": "{{count}} day streak",
+    "streakDay_other": "{{count}} day streak",
+    "streakNone": "Play tomorrow to build a streak.",
+    "newBadges": "New badges",
+    "playAgain": "Play again",
+    "review": "Review mistakes",
+    "backToLearn": "Back to Learn",
+    "levelUp": "Level up!",
+    "levelUpBody": "You're now a {{level}}.",
+    "continue": "Continue",
+    "loadError": "We couldn't load your results."
+  },
+  "review": {
+    "title": "Review mistakes",
+    "empty": "No mistakes to review. Great job!",
+    "yourAnswer": "Your answer: {{answer}}",
+    "noAnswer": "You didn't answer this one.",
+    "correctAnswer": "Correct answer: {{answer}}",
+    "openLesson": "Open lesson: {{lesson}}",
+    "back": "Back to results",
+    "loadError": "We couldn't load your mistakes."
+  },
+  "streak": { "label_one": "{{count}} day streak", "label_other": "{{count}} day streak" }
+}

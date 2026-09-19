@@ -1,0 +1,20 @@
+{
+  "appName": "Kickstart",
+  "nav": { "quiz": "Quiz", "progress": "Progreso", "main": "Navegación principal", "skip": "Saltar al contenido" },
+  "language": { "label": "Idioma", "en": "English", "es": "Español" },
+  "level": { "fan": "Aficionado", "enthusiast": "Entusiasta", "tactics_nerd": "Genio Táctico" },
+  "lesson": {
+    "rules-basics": "Reglas básicas",
+    "positions": "Posiciones",
+    "formations": "Formaciones",
+    "terms-slang": "Términos y jerga",
+    "how-to-watch": "Cómo ver un partido",
+    "leagues-culture": "Ligas y cultura"
+  },
+  "loading": "Cargando…",
+  "retry": "Intentar de nuevo",
+  "errors": {
+    "generic": "Algo salió mal. Inténtalo de nuevo.",
+    "network": "No pudimos conectar con el servidor. Revisa tu conexión e inténtalo de nuevo."
+  }
+}
