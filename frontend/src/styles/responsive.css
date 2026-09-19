@@ -1,0 +1,361 @@
+/* ============================================================
+   RESPONSIVE
+   Mobile (<=480px) is the 1:1 match to the source screens.
+   Tablet (481-840px) opens to an 8-column grid with split views.
+   Desktop (841px+) adds a persistent sidebar and a progress rail.
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   SMALL PHONES — keep the app bar on one line
+   ------------------------------------------------------------ */
+
+@media (max-width: 420px) {
+  .appbar__inner { gap: 6px; padding: 8px 12px; }
+  .appbar__wordmark { font-size: 15px; }
+  .lang__seg { min-width: 32px; padding: 5px 8px; }
+  .appbar .avatar,
+  .appbar .avatar__img { width: 32px; height: 32px; }
+  .streak-pill { padding: 0 8px; }
+}
+
+/* The live-compatibility strip sits above the question on a phone,
+   where there is no second column to put it in. */
+@media (max-width: 480px) {
+  .split-quiz { display: flex; flex-direction: column; gap: 16px; }
+  .split-quiz__side { order: -1; }
+}
+
+/* ------------------------------------------------------------
+   TABLET — 481px to 840px
+   ------------------------------------------------------------ */
+
+@media (min-width: 481px) {
+  .page {
+    max-width: 720px;
+    padding: 24px;
+    gap: 20px;
+  }
+
+  .hero { padding: 28px; }
+
+  /* Field: pitch on the left, inspector on the right */
+  .split-field {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 20px;
+    align-items: start;
+  }
+
+  .split-field__pitch { position: sticky; top: calc(var(--appbar-h) + 16px); }
+
+  /* Quiz: question column beside the live-compatibility panel */
+  .split-quiz {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    gap: 20px;
+    align-items: start;
+  }
+
+  .split-quiz__side { position: sticky; top: calc(var(--appbar-h) + 16px); }
+
+  .stats-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+  /* Two-up module cards */
+  .modules-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .module { flex-direction: row; }
+
+  .hero__actions { flex-direction: row; }
+  .hero__actions > * { flex: 1 1 0; }
+
+  .quiz-actions {
+    margin: 0 -24px -24px;
+    padding: 16px 24px calc(16px + env(safe-area-inset-bottom, 0px));
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .quiz-actions .fp { width: auto; min-width: 280px; }
+}
+
+/* ------------------------------------------------------------
+   DESKTOP — 841px and up
+   ------------------------------------------------------------ */
+
+@media (min-width: 841px) {
+  /* The bottom tab bar becomes a left sidebar */
+  .tabbar { display: none; }
+
+  .app-main { padding-bottom: 48px; }
+
+  .app-body {
+    display: grid;
+    grid-template-columns: 244px minmax(0, 1fr);
+    gap: 32px;
+    max-width: var(--content-max);
+    margin: 0 auto;
+    padding: 24px;
+    align-items: start;
+  }
+
+  .sidebar {
+    display: block;
+    position: sticky;
+    top: calc(var(--appbar-h) + 24px);
+  }
+
+  .sidebar__nav { display: flex; flex-direction: column; gap: 4px; }
+
+  .sidebar__item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 48px;
+    padding: 12px 14px;
+    border-radius: var(--r-btn);
+    color: var(--text-secondary);
+    font-family: var(--font-head);
+    font-weight: 600;
+    font-size: 15px;
+    transition: background-color 160ms var(--ease-out), color 160ms var(--ease-out);
+  }
+
+  .sidebar__item .msym { font-size: 22px; }
+
+  .sidebar__item:hover { background: var(--surface-lavender-2); color: var(--text-primary); }
+
+  .sidebar__item.is-active {
+    background: var(--mint);
+    color: var(--stadium-green);
+  }
+
+  .sidebar__item.is-active .msym {
+    font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 0, 'opsz' 24;
+  }
+
+  /* ---- Progress flyout: tab handles on the right edge ---- */
+
+  .flyout { display: block; }
+
+  .flyout__tabs {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    z-index: 46;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transform: translateY(-50%);
+    transition: transform 320ms var(--ease-out);
+  }
+
+  /* When a panel is open the handles ride out on its edge. */
+  .flyout__tabs.is-shifted {
+    transform: translateY(-50%) translateX(calc(var(--flyout-w) * -1));
+  }
+
+  .flyout__tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: 46px;
+    padding: 16px 6px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-right: 0;
+    border-radius: 12px 0 0 12px;
+    box-shadow: var(--e-2);
+    color: var(--text-secondary);
+    transition: background-color 180ms var(--ease-out), color 180ms var(--ease-out),
+      border-color 180ms var(--ease-out);
+  }
+
+  .flyout__tab .msym { font-size: 22px; }
+
+  .flyout__tab-label {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 11px;
+    line-height: 14px;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+
+  .flyout__tab:hover {
+    background: var(--mint);
+    color: var(--stadium-green);
+  }
+
+  .flyout__tab.is-open {
+    background: var(--stadium-green);
+    border-color: var(--stadium-green);
+    color: #fff;
+  }
+
+  /* ---- The panel itself ---- */
+
+  .flyout__panel {
+    position: fixed;
+    top: var(--appbar-h);
+    right: 0;
+    bottom: 0;
+    z-index: 45;
+    width: var(--flyout-w);
+    padding: 20px;
+    background: var(--card);
+    border-left: 1px solid var(--border);
+    box-shadow: -12px 0 32px rgba(17, 24, 39, 0.1);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transform: translateX(100%);
+    visibility: hidden;
+    transition: transform 320ms var(--ease-out), visibility 320ms var(--ease-out);
+  }
+
+  .flyout__panel.is-open {
+    transform: translateX(0);
+    visibility: visible;
+  }
+
+  .flyout__head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* The panel is already a white surface, so cards inside it drop
+     their own chrome and sit directly on it. */
+  .flyout__panel .card {
+    border: 0;
+    box-shadow: none;
+    padding: 0;
+  }
+
+  .page {
+    max-width: none;
+    padding: 0;
+    gap: 24px;
+  }
+
+  /* Hero splits into copy + tactical preview side by side */
+  .hero__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 28px;
+    align-items: center;
+  }
+
+  .hero__copy { display: flex; flex-direction: column; gap: 16px; }
+
+  /* The copy column is narrow, so the CTAs stack again here. */
+  .hero__actions { flex-direction: column; }
+
+  .hero__pitch { aspect-ratio: 4 / 3; }
+
+  /* Core Training Modules go three-up */
+  .modules-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  /* Three-up cards are narrow, so the card stacks and the chevron
+     pins to the top-right instead of sitting in the text flow. */
+  .module {
+    position: relative;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .module__chev {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    margin: 0;
+  }
+
+  .module .tile { margin-right: 44px; }
+
+  .split-field {
+    grid-template-columns: minmax(0, 520px) minmax(0, 1fr);
+    gap: 32px;
+  }
+
+  .split-quiz {
+    grid-template-columns: minmax(0, 1fr) 320px;
+    gap: 32px;
+  }
+
+  /* The path gets more room to wind */
+  .path__link { height: 44px; }
+  .path__row[data-align='left'] { padding-left: 18%; }
+  .path__row[data-align='right'] { padding-right: 18%; }
+
+  .learn-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 24px;
+    align-items: start;
+  }
+
+  .quiz-actions {
+    position: sticky;
+    bottom: 0;
+    margin: 0;
+    border-radius: var(--r-card);
+    border: 1px solid var(--border);
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: var(--e-2);
+  }
+
+  .culture-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    gap: 24px;
+    align-items: start;
+  }
+}
+
+/* Very wide: keep the reading measure sane */
+@media (min-width: 1400px) {
+  .app-body { gap: 40px; }
+}
+
+/* ---- The match game gets a keyboard hint and a wider stage on desktop ---- */
+
+@media (min-width: 841px) {
+  .play-keys { display: block; text-align: center; }
+
+  .play-shell { height: calc(100dvh - var(--appbar-h) - 108px); }
+
+  /* The clock gets its own slot once there is room for it. */
+  .hud {
+    grid-template-columns: 1fr auto auto auto 1fr auto;
+    grid-template-areas: 'home score clock poss away btn';
+    column-gap: 16px;
+  }
+
+  .hud__clock { display: block; grid-area: clock; font-size: 18px; color: #bbf7d0; }
+  .hud__possess { grid-area: poss; width: 190px; }
+
+
+
+  .pad { padding: 14px 18px; }
+}
+
+/* A mouse-and-keyboard desktop does not need the thumb pad, and the
+   pitch is far better off with that space. Touch laptops keep it. */
+@media (min-width: 841px) and (pointer: fine) {
+  .pad { display: none; }
+}

@@ -1,0 +1,710 @@
+/* ============================================================
+   i18n DICTIONARY
+   Every word of UI chrome lives here in both languages.
+
+   Domain content that comes in long paired blocks (position
+   duties, chant layers, quiz options) lives beside its data in
+   src/data/*.js as { en, es } pairs, so the two languages stay
+   adjacent and reviewable. Use tr(pair, lang) to resolve those.
+   ============================================================ */
+
+export const dictionary = {
+  en: {
+    /* ---------- chrome ---------- */
+    brand: 'SoccerTeaching',
+    appbar: {
+      streakLabel: 'day streak',
+      avatarLabel: 'Your profile',
+      levelLabel: 'Level',
+    },
+    nav: {
+      learn: 'Learn',
+      field: 'Field',
+      leagues: 'Leagues',
+      culture: 'Culture',
+      quiz: 'Quiz',
+    },
+    lang: {
+      label: 'Language',
+      en: 'EN',
+      es: 'ES',
+      enLong: 'English',
+      esLong: 'Español',
+    },
+    common: {
+      back: 'Back',
+      close: 'Close',
+      next: 'Next',
+      locked: 'Locked',
+      completed: 'Completed',
+      xp: 'XP',
+      minutes: 'min',
+      listen: 'Listen',
+      of: 'of',
+    },
+
+    /* ---------- page 1: Learn / Home ---------- */
+    home: {
+      heroTag: 'FAST PITCH KICKOFF',
+      heroTitle: 'Learn soccer. Love the game.',
+      heroSub: 'Rules, tactics, and fan culture — in your language.',
+      startLearning: 'Start Learning',
+      findLeague: 'Find Your League',
+      passPreviewLabel: 'Tactical preview: a pass moving from the left back through midfield to the winger',
+
+      immersionTitle: 'Instant Dual Immersion',
+      immersionNote: 'Live translated to your language instantly. Try switching above!',
+
+      drillTag: "TODAY'S 3-MIN DRILL",
+      drillXp: '+50 XP',
+      drillTitle: 'What actually is Offside?',
+      drillCopy: 'Master the golden rule with top-down 3D animation.',
+      drillPlay: 'Play',
+
+      passTitle: 'Your Pitch Pass',
+      passSub: 'Roadmap to total football fluency',
+      passLevel: 'Level 1',
+      steps: {
+        newFan: 'New Fan',
+        rules: 'Rules',
+        pickLeague: 'Pick League',
+        clubLove: 'Club Love',
+      },
+
+      matchdayTeaser: 'Ninety seconds, four a side. Put the theory under pressure.',
+      modulesTitle: 'Core Training Modules',
+      modulesCount: '3 Interactive Tracks',
+      modules: {
+        tactics: {
+          cat: 'PLAYBOOK',
+          dur: '60s Drill',
+          title: 'Interactive Tactics',
+          desc: 'Drag players & master offside, pressing zones, and false 9 runs with zero jargon.',
+        },
+        league: {
+          cat: 'IDENTITY MATCH',
+          dur: 'Quiz',
+          title: 'Find Your League',
+          desc: 'Match your personality with the Premier League, La Liga, MLS, or Champions…',
+        },
+        culture: {
+          cat: 'STADIUM LORE',
+          dur: 'Audio Sync',
+          title: 'Culture & Chants',
+          desc: 'Unpack iconic matchday anthems with 3-layer phonetic translations and crowd…',
+        },
+      },
+    },
+
+    /* ---------- page 2: Learn hub / lesson path ---------- */
+    path: {
+      activeDivision: 'ACTIVE DIVISION',
+      levelName: 'Level 1: Matchday Fan',
+      streakPill: '4 DAYS',
+      streakUnit: 'DAYS',
+      xpToNext: '450 / 600 XP to Level 2: Enthusiast',
+      xpToNextSuffix: 'XP to Level 2: Enthusiast',
+      doneSuffix: 'Done',
+      bitesizeUnit: 'min bite-sized',
+      unitLabel: 'UNIT 1 • FUNDAMENTALS',
+      unitTitle: 'Tactical Foundations',
+      unitDone: '1 / 6 Done',
+      startDrill: 'START DRILL',
+      days: ['M', 'T', 'W', 'Th', 'F', 'Sa', 'Su'],
+
+      readyToPlay: 'READY TO PLAY',
+      bitesize: '6 min bite-sized',
+      bountyXp: '+50 XP Drill Bounty',
+      bountyUnlocks: "Unlocks 'Tactics Apprentice'",
+      startLesson: 'Start Lesson',
+      practice: 'Practice with Simulation',
+      footQuote: "Formations don't win games. Tactics executed by players do.",
+      lockedMsg: 'Finish the lesson before this one to unlock it.',
+    },
+
+    /* ---------- page 3: Field / Tactical Lab ---------- */
+    field: {
+      title: 'Tactical Lab',
+      pitchActive: 'PITCH ACTIVE',
+      names: 'Names',
+      zones: 'Zones',
+      offside: 'Offside',
+      on: 'ON',
+      off: 'OFF',
+      onside: 'ONSIDE (PLAY)',
+      tapHint: 'Tap any player to inspect',
+      keyDuties: 'KEY DUTIES',
+      famous: 'Famous Modern Examples:',
+      playOverlap: 'Play Overlap Animation',
+      trySwitch: 'Try 4-4-2 Switch',
+      speakLabel: 'Read this position aloud',
+      numberShort: 'No.',
+      formationLabel: 'Formation',
+      playMatch: 'Play a live match',
+    },
+
+    /* ---------- page 4: Culture ---------- */
+    culture: {
+      pageTitle: 'Culture & Chants',
+      allLeagues: 'All Leagues',
+      tier1: 'Tier 1 Club',
+      capacity: 'cap',
+      anthemsTitle: 'Signature Anthems & Chants',
+      mastered: '1 of 4 Mastered',
+      bookmark: 'Save this chant',
+      playChant: 'Play',
+      layer1: 'LAYER 1 · ORIGINAL STADIUM LYRICS',
+      layer2: 'LAYER 2 · TRADUCCIÓN LITERAL',
+      layer3: 'LAYER 3 · WHAT IT REALLY MEANS',
+      fanSoul: 'Fan Soul',
+      learnChorus: 'Learn the Chorus',
+      chorusXp: '+25 XP',
+      spotlightTitle: 'Stadium Tradition Spotlight',
+      lyricsPlaceholder:
+        'Placeholder text — the published lyric is under copyright. Drop your licensed line here.',
+    },
+
+    /* ---------- page 5: Quiz / Tactical Matcher ---------- */
+    quiz: {
+      title: 'TACTICAL MATCHER',
+      step: 'Step',
+      stepOf: 'of',
+      skipAll: 'Skip All',
+      exit: 'Exit the matcher',
+      completed: 'completed',
+      liveCompat: 'Live Compatibility',
+      topMatch: 'Top match',
+      nextUp: 'Next',
+      drillTag: 'PREFERENCE DRILL',
+      coachMode: 'Bilingual Coach Mode',
+      multiSelect: 'Select all football styles that excite your pulse (multi-select):',
+      singleSelect: 'Pick the one that fits you best:',
+      selectedCount: 'STYLES SELECTED',
+      nextQuestion: 'Next Question',
+      seeResults: 'See My League',
+      previous: 'Previous question',
+
+      resultsKicker: 'YOUR TACTICAL PROFILE',
+      resultsTitle: 'Your league is a match.',
+      resultsSub: 'Ranked by how closely each competition fits the football you just described.',
+      rewardXp: '+120 XP earned',
+      exploreCulture: 'Explore this league in Culture',
+      retake: 'Retake the matcher',
+      celebrateTitle: 'League matched!',
+      celebrateSub: 'You just unlocked the Culture track for your top competition.',
+      celebrateCta: 'Nice',
+    },
+
+
+
+    /* ---------- the match game ---------- */
+    play: {
+      kicker: 'JUMPERS FOR GOALPOSTS',
+      title: 'Play a match.',
+      blurb:
+        'Ninety seconds, four a side, one ball. Everything you have been reading about — pressing, overlaps, the offside line — but now it is moving and it will not wait for you.',
+      chooseLevel: 'Pick your level',
+      level: { casual: 'Sunday League', competitive: 'Cup Final' },
+      levelHint: {
+        casual: 'Opponents close you down slowly and give you time on the ball. Start here.',
+        competitive: 'They press harder, shoot from range and win more tackles. Good luck.',
+      },
+      howTo: 'How to play',
+      controls: {
+        move: { label: 'Move', desc: 'Drag the stick, or use the arrow keys / WASD.' },
+        pass: { label: 'Pass', desc: 'Finds your best-placed team-mate. Keyboard: J or Enter.' },
+        shoot: { label: 'Shoot', desc: 'Hold to build power, release to strike. Keyboard: hold Space.' },
+        switch: { label: 'Switch', desc: 'You automatically take over whoever is nearest the ball.' },
+      },
+      kickOff: 'Kick off',
+      studyFirst: 'Study the Tactical Lab first',
+
+      you: 'You',
+      rivals: 'Rivals',
+      pass: 'Pass',
+      shoot: 'Shoot',
+      canvasLabel: 'Live match pitch',
+      keyboardHint: 'Arrows or WASD to move · J to pass · hold Space to shoot',
+      fullscreen: 'Go fullscreen',
+      exitFullscreen: 'Leave fullscreen',
+      rotateHint: 'Turn your phone for a bigger pitch',
+      quit: 'Leave the match',
+
+      fullTime: 'FULL TIME',
+      win: 'You won it.',
+      draw: 'Honours even.',
+      loss: 'Beaten this time.',
+      again: 'Play again',
+      brushUp: 'Brush up on this',
+      coachSays: "Coach's verdict",
+      stats: {
+        possession: 'Possession',
+        shots: 'Shots',
+        passes: 'Passes completed',
+        accuracy: 'Pass accuracy',
+        tackles: 'Tackles won',
+      },
+      advice: {
+        passing:
+          'Too many passes went astray. Play the simple one to the nearest shirt before looking for the killer ball — that is what a midfield screen is for.',
+        shooting:
+          'You barely tested the keeper. Get into the box and strike early; a held shot from range is easier to save than a quick one from close in.',
+        possession:
+          'You spent the match chasing. Win the ball back within six seconds of losing it and the game comes to you instead.',
+        offside:
+          'Good match. Now watch your forward runs — start level with the last defender and the same pass is suddenly legal.',
+      },
+    },
+
+    /* ---------- live commentary ---------- */
+    coach: {
+      goalHome: 'Goal! Clinical.',
+      goalAway: 'Conceded — reset the line.',
+      pass: 'Ball moved.',
+      longPass: 'Switched the play!',
+      received: 'Passing triangle.',
+      tackleWon: 'Won it back — press worked.',
+      tackleLost: 'Dispossessed. Track back.',
+      shot: 'Shot away!',
+      wide: 'Wide. Angle was tight.',
+      clearance: 'Cleared the danger.',
+    },
+
+    /* ---------- lesson player ---------- */
+    lesson: {
+      module: 'MODULE',
+      checkTag: 'QUICK CHECK',
+      correct: 'That is it.',
+      notQuite: 'Not quite.',
+      finish: 'Finish lesson',
+    },
+
+    /* ---------- chant practice ---------- */
+    chant: {
+      kicker: 'CHANT PRACTICE',
+      layersTitle: 'Work through the layers',
+      revealNext: 'Reveal the next layer',
+      revealFirst: 'Open all three layers to finish the drill.',
+      repeatTitle: 'Sing it back',
+      repeatBody:
+        'Play the crowd, then say the line out loud with them. Hearing the meaning while you sing is what makes it stick.',
+      hearMeaning: 'Hear the meaning read aloud',
+      markMastered: 'Mark as mastered',
+      mastered: 'Chant mastered',
+    },
+
+    /* ---------- profile ---------- */
+    profile: {
+      name: 'Ishaan',
+      viewLeagues: 'View my league table',
+      achievements: 'Achievements',
+      settings: 'Settings',
+      resetLabel: 'Reset progress',
+      resetHint: 'Clears XP, streak, finished lessons and quiz answers on this device.',
+      reset: 'Reset progress',
+      resetConfirm: 'Yes, reset everything',
+      cancel: 'Cancel',
+      stats: {
+        xp: 'Total XP',
+        streak: 'Day streak',
+        lessons: 'Lessons',
+        chants: 'Chants',
+      },
+      badges: {
+        firstWhistle: { title: 'First Whistle', desc: 'Finish your first lesson.' },
+        tactics: { title: 'Tactics Apprentice', desc: 'Master the offside rule.' },
+        weekOne: { title: 'Seven Straight', desc: 'Train seven days in a row.' },
+        terrace: { title: 'Terrace Voice', desc: 'Master two stadium chants.' },
+        matched: { title: 'League Matched', desc: 'Complete the Tactical Matcher.' },
+        enthusiast: { title: 'Enthusiast', desc: 'Reach Level 2.' },
+      },
+    },
+
+    /* ---------- streak ---------- */
+    streak: {
+      title: 'Your Streak',
+      daysRunning: 'days running',
+      doneToday: "Today is banked. Come back tomorrow to keep it alive.",
+      notYetToday: 'You have not trained today yet.',
+      milestones: 'Milestones',
+      toGo: 'to go',
+      trainToday: 'Train today',
+      keepGoing: 'Keep going',
+      rules:
+        'One finished lesson keeps the streak alive for that day. Miss a day and it resets to zero — there is no partial credit, which is rather the point.',
+      rewards: {
+        d3: 'Unlocks the Tactics Apprentice badge track.',
+        d7: 'Doubles your XP bounty for one lesson.',
+        d14: 'Unlocks the Culture deep-dive modules.',
+        d30: 'Permanent Matchday Regular status on your profile.',
+      },
+    },
+
+    /* ---------- rail / leagues ---------- */
+    rail: {
+      progress: 'Your Progress',
+      thisWeek: 'This Week',
+      streak: 'Streak',
+      days: 'days',
+      tabProgress: 'Progress',
+      tabPass: 'Pitch Pass',
+      close: 'Close panel',
+    },
+    leagues: {
+      title: 'Your Leagues',
+      sub: 'Competitions ranked to your taste in football.',
+      empty: "You haven't taken the Tactical Matcher yet.",
+      emptySub: 'Answer five quick questions and we will rank every major league for you.',
+      takeQuiz: 'Take the Tactical Matcher',
+      retake: 'Retake',
+      viewCulture: 'View culture',
+      yourMatch: 'YOUR MATCH',
+    },
+  },
+
+  /* ==========================================================
+     ESPAÑOL
+     ========================================================== */
+  es: {
+    brand: 'SoccerTeaching',
+    appbar: {
+      streakLabel: 'días seguidos',
+      avatarLabel: 'Tu perfil',
+      levelLabel: 'Nivel',
+    },
+    nav: {
+      learn: 'Aprende',
+      field: 'Campo',
+      leagues: 'Ligas',
+      culture: 'Cultura',
+      quiz: 'Test',
+    },
+    lang: {
+      label: 'Idioma',
+      en: 'EN',
+      es: 'ES',
+      enLong: 'English',
+      esLong: 'Español',
+    },
+    common: {
+      back: 'Atrás',
+      close: 'Cerrar',
+      next: 'Siguiente',
+      locked: 'Bloqueado',
+      completed: 'Completado',
+      xp: 'XP',
+      minutes: 'min',
+      listen: 'Escuchar',
+      of: 'de',
+    },
+
+    home: {
+      heroTag: 'SAQUE INICIAL EXPRÉS',
+      heroTitle: 'Aprende fútbol. Ama el juego.',
+      heroSub: 'Reglas, táctica y cultura de hinchada — en tu idioma.',
+      startLearning: 'Empezar a aprender',
+      findLeague: 'Encuentra tu liga',
+      passPreviewLabel:
+        'Vista táctica: un pase que va del lateral izquierdo al extremo pasando por el mediocampo',
+
+      immersionTitle: 'Inmersión bilingüe instantánea',
+      immersionNote: 'Traducido a tu idioma al instante. ¡Prueba a cambiarlo arriba!',
+
+      drillTag: 'EJERCICIO DE HOY · 3 MIN',
+      drillXp: '+50 XP',
+      drillTitle: '¿Qué es realmente el fuera de juego?',
+      drillCopy: 'Domina la regla de oro con animación 3D desde arriba.',
+      drillPlay: 'Jugar',
+
+      passTitle: 'Tu Pase de Campo',
+      passSub: 'La hoja de ruta hacia la fluidez futbolística total',
+      passLevel: 'Nivel 1',
+      steps: {
+        newFan: 'Nuevo hincha',
+        rules: 'Reglas',
+        pickLeague: 'Elige liga',
+        clubLove: 'Amor de club',
+      },
+
+      matchdayTeaser: 'Noventa segundos, cuatro contra cuatro. Pon la teoría bajo presión.',
+      modulesTitle: 'Módulos de entrenamiento',
+      modulesCount: '3 rutas interactivas',
+      modules: {
+        tactics: {
+          cat: 'PIZARRA',
+          dur: 'Ejercicio de 60 s',
+          title: 'Táctica interactiva',
+          desc: 'Mueve jugadores y domina el fuera de juego, las zonas de presión y el falso 9 sin tecnicismos.',
+        },
+        league: {
+          cat: 'TEST DE IDENTIDAD',
+          dur: 'Test',
+          title: 'Encuentra tu liga',
+          desc: 'Empareja tu personalidad con la Premier League, LaLiga, la MLS o la Champions…',
+        },
+        culture: {
+          cat: 'LEYENDA DEL ESTADIO',
+          dur: 'Audio sincronizado',
+          title: 'Cultura y cánticos',
+          desc: 'Descubre los himnos míticos de la grada con traducción fonética en 3 capas y el rugido…',
+        },
+      },
+    },
+
+    path: {
+      activeDivision: 'DIVISIÓN ACTIVA',
+      levelName: 'Nivel 1: Hincha de jornada',
+      streakPill: '4 DÍAS',
+      streakUnit: 'DÍAS',
+      xpToNext: '450 / 600 XP para el Nivel 2: Entusiasta',
+      xpToNextSuffix: 'XP para el Nivel 2: Entusiasta',
+      doneSuffix: 'hechos',
+      bitesizeUnit: 'min en formato breve',
+      unitLabel: 'UNIDAD 1 • FUNDAMENTOS',
+      unitTitle: 'Cimientos tácticos',
+      unitDone: '1 / 6 hechos',
+      startDrill: 'EMPEZAR',
+      days: ['L', 'M', 'X', 'J', 'V', 'S', 'D'],
+
+      readyToPlay: 'LISTO PARA JUGAR',
+      bitesize: '6 min en formato breve',
+      bountyXp: '+50 XP de recompensa',
+      bountyUnlocks: "Desbloquea 'Aprendiz táctico'",
+      startLesson: 'Empezar lección',
+      practice: 'Practicar con simulación',
+      footQuote: 'Las formaciones no ganan partidos. La táctica ejecutada por los jugadores sí.',
+      lockedMsg: 'Termina la lección anterior para desbloquear esta.',
+    },
+
+    field: {
+      title: 'Laboratorio táctico',
+      pitchActive: 'CAMPO ACTIVO',
+      names: 'Nombres',
+      zones: 'Zonas',
+      offside: 'Fuera de juego',
+      on: 'SÍ',
+      off: 'NO',
+      onside: 'HABILITADO (SIGUE)',
+      tapHint: 'Toca a cualquier jugador para inspeccionarlo',
+      keyDuties: 'FUNCIONES CLAVE',
+      famous: 'Ejemplos modernos famosos:',
+      playOverlap: 'Ver animación de desdoble',
+      trySwitch: 'Probar cambio a 4-4-2',
+      speakLabel: 'Leer esta posición en voz alta',
+      numberShort: 'N.º',
+      formationLabel: 'Formación',
+      playMatch: 'Jugar un partido en vivo',
+    },
+
+    culture: {
+      pageTitle: 'Cultura y cánticos',
+      allLeagues: 'Todas las ligas',
+      tier1: 'Club de primer nivel',
+      capacity: 'aforo',
+      anthemsTitle: 'Himnos y cánticos emblemáticos',
+      mastered: '1 de 4 dominados',
+      bookmark: 'Guardar este cántico',
+      playChant: 'Reproducir',
+      layer1: 'CAPA 1 · LETRA ORIGINAL DEL ESTADIO',
+      layer2: 'CAPA 2 · TRADUCCIÓN LITERAL',
+      layer3: 'CAPA 3 · LO QUE SIGNIFICA DE VERDAD',
+      fanSoul: 'Alma de hincha',
+      learnChorus: 'Aprende el estribillo',
+      chorusXp: '+25 XP',
+      spotlightTitle: 'Tradición del estadio',
+      lyricsPlaceholder:
+        'Texto de muestra: la letra publicada tiene derechos de autor. Coloca aquí tu línea con licencia.',
+    },
+
+    quiz: {
+      title: 'EMPAREJADOR TÁCTICO',
+      step: 'Paso',
+      stepOf: 'de',
+      skipAll: 'Saltar todo',
+      exit: 'Salir del emparejador',
+      completed: 'completado',
+      liveCompat: 'Compatibilidad en vivo',
+      topMatch: 'Mejor coincidencia',
+      nextUp: 'Siguiente',
+      drillTag: 'EJERCICIO DE PREFERENCIAS',
+      coachMode: 'Modo entrenador bilingüe',
+      multiSelect: 'Elige todos los estilos de fútbol que te aceleran el pulso (varias opciones):',
+      singleSelect: 'Elige la que mejor te define:',
+      selectedCount: 'ESTILOS ELEGIDOS',
+      nextQuestion: 'Siguiente pregunta',
+      seeResults: 'Ver mi liga',
+      previous: 'Pregunta anterior',
+
+      resultsKicker: 'TU PERFIL TÁCTICO',
+      resultsTitle: 'Tu liga está encontrada.',
+      resultsSub: 'Ordenadas según lo cerca que está cada competición del fútbol que acabas de describir.',
+      rewardXp: '+120 XP ganados',
+      exploreCulture: 'Explora esta liga en Cultura',
+      retake: 'Repetir el emparejador',
+      celebrateTitle: '¡Liga encontrada!',
+      celebrateSub: 'Acabas de desbloquear la ruta de Cultura de tu competición favorita.',
+      celebrateCta: 'Genial',
+    },
+
+
+
+    play: {
+      kicker: 'FÚTBOL DE BARRIO',
+      title: 'Juega un partido.',
+      blurb:
+        'Noventa segundos, cuatro contra cuatro, un balón. Todo lo que has estado leyendo —la presión, los desdobles, la línea del fuera de juego— pero ahora se mueve y no te va a esperar.',
+      chooseLevel: 'Elige tu nivel',
+      level: { casual: 'Liga dominical', competitive: 'Final de copa' },
+      levelHint: {
+        casual: 'Los rivales te aprietan despacio y te dan tiempo con el balón. Empieza aquí.',
+        competitive: 'Presionan más fuerte, disparan de lejos y ganan más entradas. Suerte.',
+      },
+      howTo: 'Cómo se juega',
+      controls: {
+        move: { label: 'Moverse', desc: 'Arrastra el joystick o usa las flechas / WASD.' },
+        pass: { label: 'Pasar', desc: 'Busca al compañero mejor colocado. Teclado: J o Intro.' },
+        shoot: { label: 'Disparar', desc: 'Mantén para cargar potencia y suelta para chutar. Teclado: mantén Espacio.' },
+        switch: { label: 'Cambiar', desc: 'Controlas automáticamente al jugador más cercano al balón.' },
+      },
+      kickOff: 'Sacar de centro',
+      studyFirst: 'Estudiar antes en el Laboratorio Táctico',
+
+      you: 'Tú',
+      rivals: 'Rivales',
+      pass: 'Pase',
+      shoot: 'Tiro',
+      canvasLabel: 'Campo del partido en vivo',
+      keyboardHint: 'Flechas o WASD para moverte · J para pasar · mantén Espacio para disparar',
+      fullscreen: 'Pantalla completa',
+      exitFullscreen: 'Salir de pantalla completa',
+      rotateHint: 'Gira el móvil para ver el campo más grande',
+      quit: 'Salir del partido',
+
+      fullTime: 'FINAL DEL PARTIDO',
+      win: 'Lo has ganado.',
+      draw: 'Empate justo.',
+      loss: 'Derrota esta vez.',
+      again: 'Jugar otra vez',
+      brushUp: 'Repasar esto',
+      coachSays: 'Veredicto del entrenador',
+      stats: {
+        possession: 'Posesión',
+        shots: 'Tiros',
+        passes: 'Pases completados',
+        accuracy: 'Precisión de pase',
+        tackles: 'Entradas ganadas',
+      },
+      advice: {
+        passing:
+          'Se te fueron demasiados pases. Da el sencillo al compañero más cercano antes de buscar el pase decisivo: para eso está el mediocentro.',
+        shooting:
+          'Apenas probaste al portero. Métete en el área y remata pronto; un disparo cargado desde lejos se para más fácil que uno rápido desde cerca.',
+        possession:
+          'Te pasaste el partido persiguiendo. Recupera el balón en los seis segundos siguientes a perderlo y el juego viene a ti.',
+        offside:
+          'Buen partido. Ahora vigila tus desmarques: sal a la altura del último defensa y ese mismo pase pasa a ser legal.',
+      },
+    },
+
+    coach: {
+      goalHome: '¡Gol! Qué definición.',
+      goalAway: 'Gol en contra: recoloca la línea.',
+      pass: 'Balón movido.',
+      longPass: '¡Cambio de orientación!',
+      received: 'Triángulo de pase.',
+      tackleWon: 'Recuperada: la presión funcionó.',
+      tackleLost: 'Balón perdido. Repliega.',
+      shot: '¡Disparo!',
+      wide: 'Fuera. El ángulo era cerrado.',
+      clearance: 'Despejado el peligro.',
+    },
+
+    lesson: {
+      module: 'MÓDULO',
+      checkTag: 'COMPROBACIÓN RÁPIDA',
+      correct: 'Eso es.',
+      notQuite: 'No exactamente.',
+      finish: 'Terminar lección',
+    },
+
+    chant: {
+      kicker: 'PRÁCTICA DE CÁNTICO',
+      layersTitle: 'Recorre las capas',
+      revealNext: 'Mostrar la siguiente capa',
+      revealFirst: 'Abre las tres capas para terminar el ejercicio.',
+      repeatTitle: 'Cántalo tú',
+      repeatBody:
+        'Pon a la grada y luego di la frase en voz alta con ellos. Oír el significado mientras cantas es lo que hace que se te quede.',
+      hearMeaning: 'Escuchar el significado en voz alta',
+      markMastered: 'Marcar como dominado',
+      mastered: 'Cántico dominado',
+    },
+
+    profile: {
+      name: 'Ishaan',
+      viewLeagues: 'Ver mi tabla de ligas',
+      achievements: 'Logros',
+      settings: 'Ajustes',
+      resetLabel: 'Reiniciar progreso',
+      resetHint: 'Borra XP, racha, lecciones terminadas y respuestas del test en este dispositivo.',
+      reset: 'Reiniciar progreso',
+      resetConfirm: 'Sí, borrar todo',
+      cancel: 'Cancelar',
+      stats: {
+        xp: 'XP total',
+        streak: 'Días seguidos',
+        lessons: 'Lecciones',
+        chants: 'Cánticos',
+      },
+      badges: {
+        firstWhistle: { title: 'Primer pitido', desc: 'Termina tu primera lección.' },
+        tactics: { title: 'Aprendiz táctico', desc: 'Domina la regla del fuera de juego.' },
+        weekOne: { title: 'Siete seguidos', desc: 'Entrena siete días seguidos.' },
+        terrace: { title: 'Voz de la grada', desc: 'Domina dos cánticos de estadio.' },
+        matched: { title: 'Liga encontrada', desc: 'Completa el Emparejador Táctico.' },
+        enthusiast: { title: 'Entusiasta', desc: 'Llega al Nivel 2.' },
+      },
+    },
+
+    streak: {
+      title: 'Tu racha',
+      daysRunning: 'días seguidos',
+      doneToday: 'Hoy ya está hecho. Vuelve mañana para mantenerla viva.',
+      notYetToday: 'Todavía no has entrenado hoy.',
+      milestones: 'Hitos',
+      toGo: 'para el siguiente',
+      trainToday: 'Entrenar hoy',
+      keepGoing: 'Seguir adelante',
+      rules:
+        'Una lección terminada mantiene viva la racha ese día. Si fallas un día vuelve a cero: no hay créditos parciales, y esa es justamente la idea.',
+      rewards: {
+        d3: 'Desbloquea la ruta de insignias Aprendiz Táctico.',
+        d7: 'Duplica la recompensa de XP de una lección.',
+        d14: 'Desbloquea los módulos a fondo de Cultura.',
+        d30: 'Estatus permanente de Habitual de Jornada en tu perfil.',
+      },
+    },
+
+    rail: {
+      progress: 'Tu progreso',
+      thisWeek: 'Esta semana',
+      streak: 'Racha',
+      days: 'días',
+      tabProgress: 'Progreso',
+      tabPass: 'Pase de Campo',
+      close: 'Cerrar panel',
+    },
+    leagues: {
+      title: 'Tus ligas',
+      sub: 'Competiciones ordenadas según tu gusto futbolístico.',
+      empty: 'Todavía no has hecho el Emparejador Táctico.',
+      emptySub: 'Responde cinco preguntas rápidas y ordenaremos todas las grandes ligas para ti.',
+      takeQuiz: 'Hacer el Emparejador Táctico',
+      retake: 'Repetir',
+      viewCulture: 'Ver cultura',
+      yourMatch: 'TU COINCIDENCIA',
+    },
+  },
+};
+
+export const LANGS = ['en', 'es'];

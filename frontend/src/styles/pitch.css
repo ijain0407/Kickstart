@@ -1,0 +1,328 @@
+/* ============================================================
+   PITCH — turf texture, chalk markings, player tokens
+   The same board powers the Learn hero preview and the
+   full-size Tactical Lab, so everything is percentage-based.
+   ============================================================ */
+
+.pitch {
+  position: relative;
+  width: 100%;
+  border-radius: var(--r-card);
+  overflow: hidden;
+  background: var(--stadium-green);
+  isolation: isolate;
+}
+
+/* Mowing stripes: alternating bands of pitch green over the dark
+   stadium base. Horizontal bands = camera looking down the pitch. */
+.pitch__turf {
+  position: absolute;
+  inset: 0;
+  background-color: var(--stadium-green);
+  background-image: repeating-linear-gradient(
+    180deg,
+    rgba(22, 163, 74, 0.55) 0,
+    rgba(22, 163, 74, 0.55) var(--stripe, 7.6923%),
+    rgba(22, 101, 52, 0.38) var(--stripe, 7.6923%),
+    rgba(22, 101, 52, 0.38) calc(var(--stripe, 7.6923%) * 2)
+  );
+}
+
+/* A soft vignette keeps white tokens legible against bright turf. */
+.pitch__turf::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 50%, transparent 45%, rgba(5, 46, 22, 0.35) 100%);
+}
+
+.pitch__lines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* ---- Chalk markings ---- */
+
+.chalk {
+  position: absolute;
+  border: 2px solid var(--chalk);
+}
+
+.chalk--outer {
+  inset: 3%;
+  border-radius: 2px;
+}
+
+.chalk--halfway {
+  left: 3%;
+  right: 3%;
+  top: 50%;
+  border: 0;
+  border-top: 2px solid var(--chalk);
+}
+
+.chalk--circle {
+  left: 50%;
+  top: 50%;
+  width: 34%;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+}
+
+.chalk--spot {
+  left: 50%;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: var(--chalk);
+  border: 0;
+}
+
+/* Penalty + six-yard boxes, mirrored top and bottom */
+.chalk--pen-top    { left: 22%; right: 22%; top: 3%; height: 15%; border-top: 0; }
+.chalk--pen-bottom { left: 22%; right: 22%; bottom: 3%; height: 15%; border-bottom: 0; }
+.chalk--six-top    { left: 36%; right: 36%; top: 3%; height: 6.5%; border-top: 0; }
+.chalk--six-bottom { left: 36%; right: 36%; bottom: 3%; height: 6.5%; border-bottom: 0; }
+
+.chalk--arc-top {
+  left: 50%;
+  top: 18%;
+  width: 18%;
+  aspect-ratio: 2 / 1;
+  transform: translateX(-50%);
+  border-radius: 0 0 100% 100% / 0 0 100% 100%;
+  border-top: 0;
+}
+
+.chalk--arc-bottom {
+  left: 50%;
+  bottom: 18%;
+  width: 18%;
+  aspect-ratio: 2 / 1;
+  transform: translateX(-50%);
+  border-radius: 100% 100% 0 0 / 100% 100% 0 0;
+  border-bottom: 0;
+}
+
+/* ---- Zone overlay ---- */
+
+.pitch__zones {
+  position: absolute;
+  inset: 3%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 260ms var(--ease-out);
+}
+
+.pitch__zones.is-on { opacity: 1; }
+
+.pitch__zones > span {
+  border: 1px dashed rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.pitch__zones > span:nth-child(3n + 2) {
+  background: rgba(255, 255, 255, 0.09);
+}
+
+/* ---- Offside line ---- */
+
+.offside {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 0;
+  border-top: 2px dashed #f97316;
+  box-shadow: 0 0 12px rgba(249, 115, 22, 0.6);
+  transition: top 380ms var(--ease-out);
+  pointer-events: none;
+}
+
+.offside__flag {
+  position: absolute;
+  right: 8px;
+  top: -13px;
+  background: var(--pitch-green);
+  color: #fff;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 14px;
+  padding: 4px 8px;
+  border-radius: var(--r-pill);
+  white-space: nowrap;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+/* ---- Player tokens ---- */
+
+.ptoken {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  transition: top var(--dur-token) var(--ease-out), left var(--dur-token) var(--ease-out);
+  z-index: 3;
+}
+
+.ptoken__disc {
+  position: relative;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--stadium-green);
+  display: grid;
+  place-items: center;
+  font-family: var(--font-num);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  font-size: 17px;
+  line-height: 1;
+  /* 3D rim: a hairline highlight on top, a hard shadow beneath */
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 3px 0 rgba(0, 0, 0, 0.22),
+    0 4px 8px rgba(0, 0, 0, 0.25);
+  transition: background-color 220ms var(--ease-out), color 220ms var(--ease-out),
+    transform 220ms var(--ease-out);
+}
+
+.ptoken:hover .ptoken__disc { transform: translateY(-2px); }
+
+.ptoken__code {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 9px;
+  line-height: 12px;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.92);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  white-space: nowrap;
+}
+
+.ptoken__name {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 9px;
+  line-height: 12px;
+  color: rgba(255, 255, 255, 0.82);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.55);
+  white-space: nowrap;
+}
+
+/* Keeper reads gold-brown so the one non-outfield shirt is obvious */
+.ptoken--gk .ptoken__disc {
+  background: #fde68a;
+  color: #78350f;
+}
+
+/* Selected: gold face, star marker, heat blob underneath */
+.ptoken--selected { z-index: 6; }
+
+.ptoken--selected .ptoken__disc {
+  background: linear-gradient(180deg, #fbbf24, var(--gold));
+  color: #fff;
+  transform: scale(1.12);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 3px 0 var(--gold-rim),
+    0 0 0 4px rgba(245, 158, 11, 0.28), 0 6px 14px rgba(0, 0, 0, 0.3);
+}
+
+.ptoken__star {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--gold);
+  display: grid;
+  place-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+.ptoken__star .msym { font-size: 12px; font-variation-settings: 'FILL' 1; }
+
+.heatblob {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 116px;
+  height: 116px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.45) 0%, rgba(245, 158, 11, 0.16) 45%, transparent 70%);
+  pointer-events: none;
+  z-index: -1;
+  animation: heat-breathe 2.8s ease-in-out infinite;
+}
+
+@keyframes heat-breathe {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.9; }
+  50% { transform: translate(-50%, -50%) scale(1.12); opacity: 1; }
+}
+
+/* Highlighted token in the hero preview (the "8 Ball") */
+.ptoken--highlight .ptoken__disc {
+  background: #bbf7d0;
+  color: var(--moss);
+}
+
+.pitch__hint {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  z-index: 5;
+  background: rgba(17, 24, 39, 0.55);
+  color: #fff;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 14px;
+  padding: 5px 10px;
+  border-radius: var(--r-pill);
+  backdrop-filter: blur(4px);
+}
+
+/* ---- Hero mini-pitch pass animation ---- */
+
+.pass-path {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.pass-path path {
+  fill: none;
+  stroke: #4ade80;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-dasharray: 5 4;
+  animation: pass-march 1.4s linear infinite;
+  filter: drop-shadow(0 0 3px rgba(74, 222, 128, 0.6));
+}
+
+@keyframes pass-march {
+  to { stroke-dashoffset: -18; }
+}
+
+/* ---- Mini board (hero preview): smaller discs, no names ---- */
+
+.pitch--mini .ptoken__disc {
+  width: 26px;
+  height: 26px;
+  font-size: 14px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 2px 0 rgba(0, 0, 0, 0.22),
+    0 3px 6px rgba(0, 0, 0, 0.25);
+}
+
+.pitch--mini .ptoken__code { font-size: 8px; line-height: 11px; }
