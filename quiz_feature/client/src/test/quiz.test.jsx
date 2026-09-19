@@ -103,13 +103,17 @@ describe('Quiz screen', () => {
 
 describe('Results screen', () => {
   it('shows the score, XP and streak', async () => {
+    // Reduced motion skips the count-up animation, so the final XP shows at once and the test isn't timing-dependent.
+    const original = window.matchMedia;
+    window.matchMedia = (q) => ({ matches: q.includes('reduce'), media: q, addEventListener() {}, removeEventListener() {} });
     installFakeServer({ result: result() });
     renderApp('/quiz/results/att-1');
     expect(await screen.findByText('You got 4 of 5!')).toBeInTheDocument();
     expect(screen.getByText('2 day streak')).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'Review mistakes' })).toBeInTheDocument();
     // The XP number counts up, so wait for the final value.
-    await waitFor(() => expect(screen.getByText('+60 XP')).toBeInTheDocument(), { timeout: 3000 });
+    await waitFor(() => expect(screen.getByText('+60 XP')).toBeInTheDocument(), { timeout: 5000 });
+    window.matchMedia = original;
   });
 
   it('hides Review when nothing was missed and celebrates a level-up', async () => {
