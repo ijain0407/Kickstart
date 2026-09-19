@@ -1,0 +1,879 @@
+[
+  {
+    "id": "culture-liverpool",
+    "leagueId": "league-premier-league",
+    "order": 1,
+    "club": { "en": "Liverpool", "es": "Liverpool" },
+    "city": { "en": "Liverpool, England", "es": "Liverpool, Inglaterra" },
+    "founded": 1892,
+    "colors": { "en": "Red", "es": "Rojo" },
+    "nickname": {
+      "original": { "text": "The Reds", "lang": "en" },
+      "literal": { "en": "The Reds", "es": "Los Rojos" },
+      "meaning": {
+        "en": "Named for the all-red kit the club has worn since the 1960s. You'll also hear fans call the club simply 'LFC'.",
+        "es": "Por la equipación completamente roja que el club usa desde los años 60. También escucharás a los aficionados llamarlo simplemente 'LFC'."
+      }
+    },
+    "summary": {
+      "en": "A club whose identity is built on its supporters: the famous Kop stand, European nights at Anfield, and a single song that has become a worldwide football anthem.",
+      "es": "Un club cuya identidad se construye sobre su afición: la famosa grada del Kop, las noches europeas en Anfield y una canción que se ha convertido en himno futbolero mundial."
+    },
+    "stadium": {
+      "name": { "en": "Anfield", "es": "Anfield" },
+      "traditions": [
+        {
+          "en": "Players touch the 'This Is Anfield' sign in the tunnel on their way out to the pitch.",
+          "es": "Los jugadores tocan el cartel 'This Is Anfield' del túnel camino al campo."
+        },
+        {
+          "en": "The Kop — a single huge stand behind one goal — is named after a hill fought over in the Boer War, like many English terraces.",
+          "es": "El Kop, una enorme grada detrás de una portería, lleva el nombre de una colina disputada en la Guerra de los Bóeres, como muchas gradas inglesas."
+        },
+        {
+          "en": "The whole stadium sings the club anthem, scarves held up, just before kickoff.",
+          "es": "Todo el estadio canta el himno del club, con las bufandas en alto, justo antes del saque inicial."
+        }
+      ]
+    },
+    "rivalries": [
+      {
+        "name": { "en": "North West Derby", "es": "Derbi del Noroeste" },
+        "opponent": { "en": "Manchester United" },
+        "opponentCultureId": "culture-manchester-united",
+        "description": {
+          "en": "England's two most successful clubs, and two proud industrial cities 35 miles apart.",
+          "es": "Los dos clubes más exitosos de Inglaterra, y dos orgullosas ciudades industriales a 56 km de distancia."
+        }
+      },
+      {
+        "name": { "en": "Merseyside Derby", "es": "Derbi de Merseyside" },
+        "opponent": { "en": "Everton" },
+        "opponentCultureId": null,
+        "description": {
+          "en": "The city derby. Families are often split down the middle, with red and blue under the same roof.",
+          "es": "El derbi de la ciudad. Muchas familias están divididas, con rojo y azul bajo el mismo techo."
+        }
+      }
+    ],
+    "chants": [
+      {
+        "id": "ynwa",
+        "title": { "en": "You'll Never Walk Alone", "es": "You'll Never Walk Alone (Nunca caminarás solo)" },
+        "when": { "en": "Before kickoff, and at emotional moments", "es": "Antes del saque inicial y en momentos emotivos" },
+        "original": { "text": "You'll never walk alone", "lang": "en" },
+        "literal": { "en": "You'll never walk alone", "es": "Nunca caminarás solo" },
+        "meaning": {
+          "en": "A show tune from the 1945 musical 'Carousel', made a hit by a Liverpool band in 1963 and adopted by the Kop. It's a promise of solidarity: whatever happens, the club and its fans stand together. After the 1989 Hillsborough disaster, it also became a song of remembrance.",
+          "es": "Una canción del musical 'Carousel' (1945) que un grupo de Liverpool convirtió en éxito en 1963 y que el Kop adoptó. Es una promesa de solidaridad: pase lo que pase, el club y su afición están juntos. Tras la tragedia de Hillsborough en 1989, también se convirtió en una canción de memoria."
+        }
+      }
+    ],
+    "contentStatus": "draft"
+  },
+  {
+    "id": "culture-manchester-united",
+    "leagueId": "league-premier-league",
+    "order": 2,
+    "club": { "en": "Manchester United", "es": "Manchester United" },
+    "city": { "en": "Manchester, England", "es": "Mánchester, Inglaterra" },
+    "founded": 1878,
+    "colors": { "en": "Red, white and black", "es": "Rojo, blanco y negro" },
+    "nickname": {
+      "original": { "text": "The Red Devils", "lang": "en" },
+      "literal": { "en": "The Red Devils", "es": "Los Diablos Rojos" },
+      "meaning": {
+        "en": "Borrowed in the 1960s from a local rugby team nicknamed the 'Red Devils' — the manager thought it sounded more intimidating than the older nickname, 'the Busby Babes'.",
+        "es": "Tomado en los años 60 de un equipo local de rugby apodado los 'Diablos Rojos': el entrenador pensó que sonaba más intimidante que el apodo anterior, 'los Busby Babes'."
+      }
+    },
+    "summary": {
+      "en": "A club shaped by tragedy and rebirth — the 1958 Munich air disaster killed eight players, and the team rebuilt to become European champions ten years later.",
+      "es": "Un club marcado por la tragedia y el renacer: el accidente aéreo de Múnich en 1958 mató a ocho jugadores, y el equipo se reconstruyó hasta ser campeón de Europa diez años después."
+    },
+    "stadium": {
+      "name": { "en": "Old Trafford", "es": "Old Trafford" },
+      "traditions": [
+        {
+          "en": "Old Trafford is nicknamed 'the Theatre of Dreams'.",
+          "es": "A Old Trafford se le apoda 'el Teatro de los Sueños'."
+        },
+        {
+          "en": "A memorial clock outside the stadium is permanently stopped at the date and time of the Munich air disaster.",
+          "es": "Un reloj conmemorativo fuera del estadio está detenido para siempre en la fecha y hora del accidente de Múnich."
+        },
+        {
+          "en": "The Stretford End, behind one goal, is where the loudest home fans gather.",
+          "es": "El Stretford End, detrás de una portería, es donde se reúnen los aficionados locales más ruidosos."
+        }
+      ]
+    },
+    "rivalries": [
+      {
+        "name": { "en": "North West Derby", "es": "Derbi del Noroeste" },
+        "opponent": { "en": "Liverpool" },
+        "opponentCultureId": "culture-liverpool",
+        "description": {
+          "en": "The biggest rivalry in English football, between its two most decorated clubs.",
+          "es": "La mayor rivalidad del fútbol inglés, entre sus dos clubes más laureados."
+        }
+      },
+      {
+        "name": { "en": "Manchester Derby", "es": "Derbi de Mánchester" },
+        "opponent": { "en": "Manchester City" },
+        "opponentCultureId": null,
+        "description": {
+          "en": "The city derby, which has grown far more intense as City became a title-winning force.",
+          "es": "El derbi de la ciudad, que se ha vuelto mucho más intenso desde que el City se convirtió en campeón habitual."
+        }
+      }
+    ],
+    "chants": [
+      {
+        "id": "glory-glory",
+        "title": { "en": "Glory, Glory Man United", "es": "Glory, Glory Man United (Gloria, gloria, Man United)" },
+        "when": { "en": "After a win, and in big European nights", "es": "Tras una victoria y en las grandes noches europeas" },
+        "original": { "text": "Glory, glory, Man United", "lang": "en" },
+        "literal": { "en": "Glory, glory, Man United", "es": "Gloria, gloria, Man United" },
+        "meaning": {
+          "en": "Sung to the tune of an American Civil War hymn ('Glory, glory, hallelujah'). Many British clubs have their own 'Glory, Glory' version — it's the classic sound of a victory celebration.",
+          "es": "Se canta con la melodía de un himno de la Guerra Civil estadounidense ('Glory, glory, hallelujah'). Muchos clubes británicos tienen su propia versión de 'Glory, Glory': es el sonido clásico de una celebración de victoria."
+        }
+      }
+    ],
+    "contentStatus": "draft"
+  },
+  {
+    "id": "culture-arsenal",
+    "leagueId": "league-premier-league",
+    "order": 3,
+    "club": { "en": "Arsenal", "es": "Arsenal" },
+    "city": { "en": "London, England", "es": "Londres, Inglaterra" },
+    "founded": 1886,
+    "colors": { "en": "Red and white", "es": "Rojo y blanco" },
+    "nickname": {
+      "original": { "text": "The Gunners", "lang": "en" },
+      "literal": { "en": "The Gunners", "es": "Los Artilleros" },
+      "meaning": {
+        "en": "The club was founded by workers at the Royal Arsenal, a weapons factory in Woolwich, south-east London. The cannon has been part of the club's identity ever since.",
+        "es": "El club lo fundaron trabajadores del Royal Arsenal, una fábrica de armamento en Woolwich, al sureste de Londres. El cañón forma parte de la identidad del club desde entonces."
+      }
+    },
+    "summary": {
+      "en": "A North London club known for elegant passing football, and for the 2003–04 'Invincibles' — a team that went a whole league season unbeaten.",
+      "es": "Un club del norte de Londres conocido por su fútbol elegante de pases y por los 'Invencibles' de 2003-04, un equipo que completó una temporada de liga entera sin perder."
+    },
+    "stadium": {
+      "name": { "en": "Emirates Stadium", "es": "Emirates Stadium" },
+      "traditions": [
+        {
+          "en": "The club moved from its historic home, Highbury, in 2006 — some of Highbury's famous Art Deco style lives on in the new stadium.",
+          "es": "El club dejó su histórico estadio, Highbury, en 2006; parte de su famoso estilo art déco sigue viva en el nuevo estadio."
+        },
+        {
+          "en": "The North Bank, behind one goal, keeps the name of Highbury's most famous stand.",
+          "es": "El North Bank, detrás de una portería, conserva el nombre de la grada más famosa de Highbury."
+        }
+      ]
+    },
+    "rivalries": [
+      {
+        "name": { "en": "North London Derby", "es": "Derbi del Norte de Londres" },
+        "opponent": { "en": "Tottenham Hotspur" },
+        "opponentCultureId": null,
+        "description": {
+          "en": "It began when Arsenal moved north across London in 1913, just a few miles from Tottenham.",
+          "es": "Empezó cuando el Arsenal se mudó al norte de Londres en 1913, a pocos kilómetros del Tottenham."
+        }
+      }
+    ],
+    "chants": [
+      {
+        "id": "one-nil",
+        "title": { "en": "One-Nil to the Arsenal", "es": "One-Nil to the Arsenal (Uno a cero para el Arsenal)" },
+        "when": { "en": "When protecting a narrow lead", "es": "Al defender una ventaja mínima" },
+        "original": { "text": "One-nil to the Arsenal", "lang": "en" },
+        "literal": { "en": "One-nil to the Arsenal", "es": "Uno a cero para el Arsenal" },
+        "meaning": {
+          "en": "Born in the early 1990s, when Arsenal had a famously tight defence and won many games 1-0. Fans turned a 'boring' reputation into a badge of pride. Sung to the tune of a well-known pop song.",
+          "es": "Nació a principios de los 90, cuando el Arsenal tenía una defensa famosa por lo sólida y ganaba muchos partidos 1-0. La afición convirtió la fama de 'aburridos' en motivo de orgullo. Se canta con la melodía de una conocida canción pop."
+        }
+      }
+    ],
+    "contentStatus": "draft"
+  },
+  {
+    "id": "culture-real-madrid",
+    "leagueId": "league-la-liga",
+    "order": 1,
+    "club": { "en": "Real Madrid", "es": "Real Madrid" },
+    "city": { "en": "Madrid, Spain", "es": "Madrid, España" },
+    "founded": 1902,
+    "colors": { "en": "All white", "es": "Todo blanco" },
+    "nickname": {
+      "original": { "text": "Los Merengues", "lang": "es" },
+      "literal": { "en": "The Meringues", "es": "Los Merengues" },
+      "meaning": {
+        "en": "A playful nod to the club's all-white kit, the same colour as meringue. You'll also hear 'Los Blancos' — 'The Whites'.",
+        "es": "Un guiño a la equipación completamente blanca del club, del mismo color que el merengue. También se les llama 'Los Blancos'."
+      }
+    },
+    "summary": {
+      "en": "The most successful club in European Cup history. 'Real' means 'Royal' — King Alfonso XIII granted the title in 1920.",
+      "es": "El club más exitoso de la historia de la Copa de Europa. 'Real' viene del título que concedió el rey Alfonso XIII en 1920."
+    },
+    "stadium": {
+      "name": { "en": "Santiago Bernabéu", "es": "Santiago Bernabéu" },
+      "traditions": [
+        {
+          "en": "Players and fans celebrate major trophies at the Cibeles fountain in central Madrid.",
+          "es": "Jugadores y aficionados celebran los grandes títulos en la fuente de Cibeles, en el centro de Madrid."
+        },
+        {
+          "en": "Bernabéu crowds are known for being demanding: they whistle their own team when it plays badly and wave white handkerchiefs to show displeasure.",
+          "es": "La afición del Bernabéu es conocida por ser exigente: pita a su propio equipo cuando juega mal y saca pañuelos blancos para mostrar su descontento."
+        }
+      ]
+    },
+    "rivalries": [
+      {
+        "name": { "en": "El Clásico", "es": "El Clásico" },
+        "opponent": { "en": "FC Barcelona" },
+        "opponentCultureId": "culture-fc-barcelona",
+        "description": {
+          "en": "Spain's biggest match: sporting rivalry and a long-running clash between Madrid and Catalonia.",
+          "es": "El partido más grande de España: rivalidad deportiva y un largo choque entre Madrid y Cataluña."
+        }
+      },
+      {
+        "name": { "en": "Madrid Derby", "es": "Derbi Madrileño" },
+        "opponent": { "en": "Atlético Madrid", "es": "Atlético de Madrid" },
+        "opponentCultureId": "culture-atletico-madrid",
+        "description": {
+          "en": "A city split between the glamorous giant and its defiant neighbour.",
+          "es": "Una ciudad dividida entre el gigante glamuroso y su rebelde vecino."
+        }
+      }
+    ],
+    "chants": [
+      {
+        "id": "hala-madrid",
+        "title": { "en": "¡Hala Madrid!", "es": "¡Hala Madrid!" },
+        "when": { "en": "Throughout the match, and at the end of the club anthem", "es": "Durante todo el partido y al final del himno del club" },
+        "original": { "text": "¡Hala Madrid!", "lang": "es" },
+        "literal": { "en": "Go on, Madrid!", "es": "¡Hala Madrid!" },
+        "meaning": {
+          "en": "'Hala' is a Spanish interjection used to urge someone on — like 'come on!' or 'let's go!'. It's the club's signature cry and gives its name to the modern anthem, 'Hala Madrid y nada más' ('Hala Madrid and nothing else').",
+          "es": "'Hala' es una interjección para animar a alguien, como '¡vamos!'. Es el grito característico del club y da nombre a su himno moderno, 'Hala Madrid y nada más'."
+        }
+      }
+    ],
+    "contentStatus": "draft"
+  },
+  {
+    "id": "culture-fc-barcelona",
+    "leagueId": "league-la-liga",
+    "order": 2,
+    "club": { "en": "FC Barcelona", "es": "FC Barcelona" },
+    "city": { "en": "Barcelona, Spain", "es": "Barcelona, España" },
+    "founded": 1899,
+    "colors": { "en": "Blue and deep red (blaugrana)", "es": "Azul y grana (blaugrana)" },
+    "nickname": {
+      "original": { "text": "Culers", "lang": "ca" },
+      "literal": { "en": "Backsides", "es": "Culés (traseros)" },
+      "meaning": {
+        "en": "In the early 1900s, fans at the club's first ground sat on top of the wall to watch — so people passing in the street saw a row of backsides ('culs' in Catalan). The name stuck and is now worn with pride.",
+        "es": "A principios del siglo XX, los aficionados del primer campo del club se sentaban sobre el muro para ver los partidos, así que desde la calle se veía una fila de traseros ('culs' en catalán). El apodo se quedó y hoy se lleva con orgullo."
+      }
+    },
+    "summary": {
+      "en": "Famous for its motto 'Més que un club' ('More than a club'): for many fans, Barça is a symbol of Catalan identity, and it's known worldwide for a youth academy that shaped a passing style copied everywhere.",
+      "es": "Famoso por su lema 'Més que un club' ('Más que un club'): para muchos aficionados, el Barça es un símbolo de la identidad catalana, y es conocido en todo el mundo por una cantera que moldeó un estilo de pase imitado en todas partes."
+    },
+    "stadium": {
+      "name": { "en": "Camp Nou", "es": "Camp Nou" },
+      "traditions": [
+        {
+          "en": "Camp Nou ('new ground' in Catalan) is one of the largest stadiums in Europe.",
+          "es": "El Camp Nou ('campo nuevo' en catalán) es uno de los estadios más grandes de Europa."
+        },
+        {
+          "en": "The club is owned by its members (socis), who elect the club president.",
+          "es": "El club pertenece a sus socios, que eligen al presidente del club."
+        },
+        {
+          "en": "The club anthem, 'Cant del Barça', is sung in Catalan before matches.",
+          "es": "El himno del club, 'Cant del Barça', se canta en catalán antes de los partidos."
+        }
+      ]
+    },
+    "rivalries": [
+      {
+        "name": { "en": "El Clásico", "es": "El Clásico" },
+        "opponent": { "en": "Real Madrid" },
+        "opponentCultureId": "culture-real-madrid",
+        "description": {
+          "en": "The rivalry that defines Spanish football, charged with regional and political history.",
+          "es": "La rivalidad que define el fútbol español, cargada de historia regional y política."
+        }
+      },
+      {
+        "name": { "en": "Barcelona Derby", "es": "Derbi Barcelonés" },
+        "opponent": { "en": "Espanyol" },
+        "opponentCultureId": null,
+        "description": {
+          "en": "The city derby against Barcelona's other top-flight club.",
+          "es": "El derbi de la ciudad contra el otro club de primera división de Barcelona."
+        }
+      }
+    ],
+    "chants": [
+      {
+        "id": "tot-el-camp",
+        "title": { "en": "Cant del Barça (club anthem)", "es": "Cant del Barça (himno del club)" },
+        "when": { "en": "Before kickoff and after goals", "es": "Antes del saque inicial y tras los goles" },
+        "original": { "text": "Tot el camp és un clam", "lang": "ca" },
+        "literal": { "en": "The whole ground is one roar", "es": "Todo el campo es un clamor" },
+        "meaning": {
+          "en": "The opening line of the club anthem. Singing it in Catalan — a language that was suppressed in public life under Franco's dictatorship — is part of what makes Barça 'more than a club' to its fans.",
+          "es": "El primer verso del himno del club. Cantarlo en catalán, una lengua reprimida en la vida pública durante la dictadura franquista, es parte de lo que hace del Barça 'más que un club' para su afición."
+        }
+      },
+      {
+        "id": "visca-barca",
+        "title": { "en": "Visca el Barça!", "es": "¡Visca el Barça!" },
+        "when": { "en": "Any time — it's the all-purpose cheer", "es": "En cualquier momento: es el grito de ánimo para todo" },
+        "original": { "text": "Visca el Barça!", "lang": "ca" },
+        "literal": { "en": "Long live Barça!", "es": "¡Viva el Barça!" },
+        "meaning": {
+          "en": "'Visca' is Catalan for 'long live'. Using Catalan rather than Spanish ('Viva') is a small, deliberate signal of local identity.",
+          "es": "'Visca' significa 'viva' en catalán. Usar el catalán en vez del castellano es una pequeña señal deliberada de identidad local."
+        }
+      }
+    ],
+    "contentStatus": "draft"
+  },
+  {
+    "id": "culture-atletico-madrid",
+    "leagueId": "league-la-liga",
+    "order": 3,
+    "club": { "en": "Atlético Madrid", "es": "Atlético de Madrid" },
+    "city": { "en": "Madrid, Spain", "es": "Madrid, España" },
+    "founded": 1903,
+    "colors": { "en": "Red and white stripes", "es": "Rayas rojas y blancas" },
+    "nickname": {
+      "original": { "text": "Los Colchoneros", "lang": "es" },
+      "literal": { "en": "The Mattress-Makers", "es": "Los Colchoneros" },
+      "meaning": {
+        "en": "The red-and-white striped shirts looked just like the fabric used on cheap mattresses in early 20th-century Spain. What started as a joke became a proud, working-class nickname.",
+        "es": "Las camisetas a rayas rojas y blancas se parecían mucho a la tela de los colchones baratos de la España de principios del siglo XX. Lo que empezó como broma se convirtió en un apodo obrero y orgulloso."
+      }
+    },
+    "summary": {
+      "en": "Madrid's 'other' club, proud of an identity built on suffering, grit, and loyalty — fans say supporting Atlético teaches you how to lose and keep believing.",
+      "es": "El 'otro' club de Madrid, orgulloso de una identidad basada en el sufrimiento, el coraje y la lealtad: sus aficionados dicen que ser del Atleti te enseña a perder y a seguir creyendo."
+    },
+    "stadium": {
+      "name": { "en": "Metropolitano", "es": "Metropolitano" },
+      "traditions": [
+        {
+          "en": "The club slogan 'Coraje y Corazón' ('Courage and Heart') sums up the team's fighting style.",
+          "es": "El lema del club, 'Coraje y Corazón', resume el estilo luchador del equipo."
+        },
+        {
+          "en": "Atlético was founded by Basque students as a branch of Athletic Club of Bilbao, which is why the two clubs share similar colours.",
+          "es": "El Atlético lo fundaron estudiantes vascos como filial del Athletic Club de Bilbao, por eso ambos clubes tienen colores similares."
+        }
+      ]
+    },
+    "rivalries": [
+      {
+        "name": { "en": "Madrid Derby", "es": "Derbi Madrileño" },
+        "opponent": { "en": "Real Madrid" },
+        "opponentCultureId": "culture-real-madrid",
+        "description": {
+          "en": "The underdog neighbour against the establishment giant — Atlético fans relish every win in this one.",
+          "es": "El vecino modesto contra el gigante del poder: la afición del Atleti saborea cada victoria en este partido."
+        }
+      }
+    ],
+    "chants": [
+      {
+        "id": "aupa-atleti",
+        "title": { "en": "¡Aúpa Atleti!", "es": "¡Aúpa Atleti!" },
+        "when": { "en": "Throughout the match", "es": "Durante todo el partido" },
+        "original": { "text": "¡Aúpa Atleti!", "lang": "es" },
+        "literal": { "en": "Up, Atleti!", "es": "¡Arriba, Atleti!" },
+        "meaning": {
+          "en": "'Aúpa' is an encouraging cry meaning 'up!' or 'come on!', associated with the Basque Country — a nod to the club's Basque founders.",
+          "es": "'Aúpa' es un grito de ánimo que significa '¡arriba!' o '¡vamos!', asociado al País Vasco: un guiño a los fundadores vascos del club."
+        }
+      }
+    ],
+    "contentStatus": "draft"
+  },
+  {
+    "id": "culture-bayern-munich",
+    "leagueId": "league-bundesliga",
+    "order": 1,
+    "club": { "en": "Bayern Munich", "es": "Bayern de Múnich" },
+    "city": { "en": "Munich, Germany", "es": "Múnich, Alemania" },
+    "founded": 1900,
+    "colors": { "en": "Red and white", "es": "Rojo y blanco" },
+    "nickname": {
+      "original": { "text": "Die Roten", "lang": "de" },
+      "literal": { "en": "The Reds", "es": "Los Rojos" },
+      "meaning": {
+        "en": "A simple nod to the red shirts. In the chaotic 1990s, the German press also nicknamed the club 'FC Hollywood' for its off-pitch drama.",
+        "es": "Un simple guiño a las camisetas rojas. En los caóticos años 90, la prensa alemana también apodó al club 'FC Hollywood' por sus dramas fuera del campo."
+      }
+    },
+    "summary": {
+      "en": "Germany's dominant club and a symbol of Bavarian pride, blending huge success with deep local tradition.",
+      "es": "El club dominante de Alemania y un símbolo del orgullo bávaro, que combina un enorme éxito con una profunda tradición local."
+    },
+    "stadium": {
+      "name": { "en": "Allianz Arena", "es": "Allianz Arena" },
+      "traditions": [
+        {
+          "en": "The stadium's outer shell lights up in red for home games.",
+          "es": "La fachada exterior del estadio se ilumina de rojo en los partidos en casa."
+        },
+        {
+          "en": "Every autumn, the squad poses in traditional Bavarian dress (lederhosen) at Oktoberfest.",
+          "es": "Cada otoño, la plantilla posa con el traje tradicional bávaro (lederhosen) en el Oktoberfest."
+        },
+        {
+          "en": "The Südkurve (south curve) is home to the most vocal fans.",
+          "es": "La Südkurve (curva sur) es el hogar de los aficionados más ruidosos."
+        }
+      ]
+    },
+    "rivalries": [
+      {
+        "name": { "en": "Der Klassiker", "es": "Der Klassiker" },
+        "opponent": { "en": "Borussia Dortmund" },
+        "opponentCultureId": "culture-borussia-dortmund",
+        "description": {
+          "en": "The modern headline fixture of German football.",
+          "es": "El gran partido moderno del fútbol alemán."
+        }
+      },
+      {
+        "name": { "en": "Munich Derby", "es": "Derbi de Múnich" },
+        "opponent": { "en": "TSV 1860 Munich", "es": "TSV 1860 Múnich" },
+        "opponentCultureId": null,
+        "description": {
+          "en": "The historic city rivalry, now rare because 1860 play in the lower divisions.",
+          "es": "La histórica rivalidad de la ciudad, hoy poco frecuente porque el 1860 juega en categorías inferiores."
+        }
+      }
+    ],
+    "chants": [
+      {
+        "id": "mia-san-mia",
+        "title": { "en": "Mia san mia", "es": "Mia san mia" },
+        "when": { "en": "The club's motto — on banners, shirts, and in songs", "es": "El lema del club: en pancartas, camisetas y canciones" },
+        "original": { "text": "Mia san mia", "lang": "bar" },
+        "literal": { "en": "We are we", "es": "Nosotros somos nosotros" },
+        "meaning": {
+          "en": "Bavarian dialect for 'we are who we are'. It expresses self-confidence and a refusal to apologise for success — and a proud Bavarian identity distinct from the rest of Germany.",
+          "es": "Dialecto bávaro para 'somos quienes somos'. Expresa seguridad en sí mismos, el rechazo a pedir perdón por el éxito y una orgullosa identidad bávara distinta del resto de Alemania."
+        }
+      },
+      {
+        "id": "stern-des-suedens",
+        "title": { "en": "Stern des Südens (club song)", "es": "Stern des Südens (canción del club)" },
+        "when": { "en": "Played at the stadium before and after matches", "es": "Suena en el estadio antes y después de los partidos" },
+        "original": { "text": "Stern des Südens", "lang": "de" },
+        "literal": { "en": "Star of the South", "es": "Estrella del Sur" },
+        "meaning": {
+          "en": "Bayern sees itself as the shining star of southern Germany. The song celebrates the club's rise to the top of European football.",
+          "es": "El Bayern se ve a sí mismo como la estrella brillante del sur de Alemania. La canción celebra el ascenso del club a la cima del fútbol europeo."
+        }
+      }
+    ],
+    "contentStatus": "draft"
+  },
+  {
+    "id": "culture-borussia-dortmund",
+    "leagueId": "league-bundesliga",
+    "order": 2,
+    "club": { "en": "Borussia Dortmund", "es": "Borussia Dortmund" },
+    "city": { "en": "Dortmund, Germany", "es": "Dortmund, Alemania" },
+    "founded": 1909,
+    "colors": { "en": "Black and yellow", "es": "Negro y amarillo" },
+    "nickname": {
+      "original": { "text": "Die Schwarzgelben", "lang": "de" },
+      "literal": { "en": "The Black-Yellows", "es": "Los Negriamarillos" },
+      "meaning": {
+        "en": "Named for the club's black-and-yellow colours. 'Borussia' is the Latin name for Prussia, borrowed from a local brewery.",
+        "es": "Por los colores negro y amarillo del club. 'Borussia' es el nombre latino de Prusia, tomado de una cervecería local."
+      }
+    },
+    "summary": {
+      "en": "A club from the industrial Ruhr valley, famous for having the most passionate crowd in Germany and for its slogan 'Echte Liebe' — 'True Love'.",
+      "es": "Un club del industrial valle del Ruhr, famoso por tener la afición más apasionada de Alemania y por su lema 'Echte Liebe': 'Amor Verdadero'."
+    },
+    "stadium": {
+      "name": { "en": "Westfalenstadion", "es": "Westfalenstadion" },
+      "traditions": [
+        {
+          "en": "The Südtribüne, known as 'the Yellow Wall', is the largest standing terrace in European football — around 25,000 fans on one stand.",
+          "es": "La Südtribüne, conocida como 'el Muro Amarillo', es la mayor grada de pie del fútbol europeo: unos 25.000 aficionados en una sola tribuna."
+        },
+        {
+          "en": "The club has the highest average attendance in world football.",
+          "es": "El club tiene la mayor asistencia media del fútbol mundial."
+        },
+        {
+          "en": "Fans sing 'You'll Never Walk Alone' before matches, shared with Liverpool as a sign of friendship.",
+          "es": "Los aficionados cantan 'You'll Never Walk Alone' antes de los partidos, compartida con el Liverpool como señal de amistad."
+        }
+      ]
+    },
+    "rivalries": [
+      {
+        "name": { "en": "Revierderby", "es": "Revierderby" },
+        "opponent": { "en": "Schalke 04" },
+        "opponentCultureId": null,
+        "description": {
+          "en": "The 'derby of the mining district' — two working-class clubs from neighbouring cities in the Ruhr.",
+          "es": "El 'derbi de la cuenca minera': dos clubes obreros de ciudades vecinas del Ruhr."
+        }
+      },
+      {
+        "name": { "en": "Der Klassiker", "es": "Der Klassiker" },
+        "opponent": { "en": "Bayern Munich", "es": "Bayern de Múnich" },
+        "opponentCultureId": "culture-bayern-munich",
+        "description": {
+          "en": "Dortmund's chance to challenge Germany's giant.",
+          "es": "La oportunidad del Dortmund de desafiar al gigante de Alemania."
+        }
+      }
+    ],
+    "chants": [
+      {
+        "id": "heja-bvb",
+        "title": { "en": "Heja BVB!", "es": "¡Heja BVB!" },
+        "when": { "en": "Throughout the match, led by the Yellow Wall", "es": "Durante todo el partido, liderado por el Muro Amarillo" },
+        "original": { "text": "Heja BVB!", "lang": "de" },
+        "literal": { "en": "Go BVB!", "es": "¡Vamos BVB!" },
+        "meaning": {
+          "en": "'Heja' is a simple cheer of encouragement. 'BVB' stands for Ballspielverein Borussia — the club's full name, 'Ball Game Club Borussia'.",
+          "es": "'Heja' es un simple grito de ánimo. 'BVB' son las siglas de Ballspielverein Borussia, el nombre completo del club: 'Club de Juego de Pelota Borussia'."
+        }
+      }
+    ],
+    "contentStatus": "draft"
+  },
+  {
+    "id": "culture-juventus",
+    "leagueId": "league-serie-a",
+    "order": 1,
+    "club": { "en": "Juventus", "es": "Juventus" },
+    "city": { "en": "Turin, Italy", "es": "Turín, Italia" },
+    "founded": 1897,
+    "colors": { "en": "Black and white stripes", "es": "Rayas blancas y negras" },
+    "nickname": {
+      "original": { "text": "La Vecchia Signora", "lang": "it" },
+      "literal": { "en": "The Old Lady", "es": "La Vieja Señora" },
+      "meaning": {
+        "en": "An ironic twist: 'Juventus' is Latin for 'youth', and the club was founded by teenagers. As it became one of Italy's oldest and most established clubs, fans started calling it the 'Old Lady' with affection.",
+        "es": "Un giro irónico: 'Juventus' significa 'juventud' en latín, y el club lo fundaron adolescentes. Al convertirse en uno de los clubes más antiguos y establecidos de Italia, la afición empezó a llamarla 'Vieja Señora' con cariño."
+      }
+    },
+    "summary": {
+      "en": "Italy's most successful club, with fans spread across the whole country rather than just its home city of Turin.",
+      "es": "El club más exitoso de Italia, con aficionados repartidos por todo el país y no solo en su ciudad, Turín."
+    },
+    "stadium": {
+      "name": { "en": "Allianz Stadium", "es": "Allianz Stadium" },
+      "traditions": [
+        {
+          "en": "One of the few Italian stadiums owned by the club itself rather than the city, opened in 2011.",
+          "es": "Uno de los pocos estadios italianos que pertenece al propio club y no al ayuntamiento, inaugurado en 2011."
+        },
+        {
+          "en": "The black-and-white stripes were copied from English club Notts County in 1903, after the club's original pink shirts faded in the wash.",
+          "es": "Las rayas blancas y negras se copiaron del club inglés Notts County en 1903, después de que las camisetas rosas originales se destiñeran al lavarlas."
+        }
+      ]
+    },
+    "rivalries": [
+      {
+        "name": { "en": "Derby d'Italia", "es": "Derbi de Italia" },
+        "opponent": { "en": "Inter Milan", "es": "Inter de Milán" },
+        "opponentCultureId": "culture-inter-milan",
+        "description": {
+          "en": "A national rivalry between two of Italy's most successful clubs.",
+          "es": "Una rivalidad nacional entre dos de los clubes más exitosos de Italia."
+        }
+      },
+      {
+        "name": { "en": "Derby della Mole", "es": "Derbi de la Mole" },
+        "opponent": { "en": "Torino", "es": "Torino" },
+        "opponentCultureId": null,
+        "description": {
+          "en": "Turin's city derby, named after the Mole Antonelliana, the city's landmark tower.",
+          "es": "El derbi de Turín, que debe su nombre a la Mole Antonelliana, la torre emblemática de la ciudad."
+        }
+      }
+    ],
+    "chants": [
+      {
+        "id": "fino-alla-fine",
+        "title": { "en": "Fino alla fine", "es": "Fino alla fine" },
+        "when": { "en": "Late in tight matches — and as the club's motto", "es": "Al final de los partidos ajustados, y como lema del club" },
+        "original": { "text": "Fino alla fine, forza Juventus!", "lang": "it" },
+        "literal": { "en": "Until the end, strength Juventus!", "es": "¡Hasta el final, fuerza Juventus!" },
+        "meaning": {
+          "en": "'Forza' literally means 'strength', but in Italian football it works like 'come on!'. The chant says Juve never give up until the final whistle.",
+          "es": "'Forza' significa literalmente 'fuerza', pero en el fútbol italiano funciona como '¡vamos!'. El cántico dice que la Juve nunca se rinde hasta el pitido final."
+        }
+      }
+    ],
+    "contentStatus": "draft"
+  },
+  {
+    "id": "culture-inter-milan",
+    "leagueId": "league-serie-a",
+    "order": 2,
+    "club": { "en": "Inter Milan", "es": "Inter de Milán" },
+    "city": { "en": "Milan, Italy", "es": "Milán, Italia" },
+    "founded": 1908,
+    "colors": { "en": "Black and blue stripes", "es": "Rayas negras y azules" },
+    "nickname": {
+      "original": { "text": "I Nerazzurri", "lang": "it" },
+      "literal": { "en": "The Black-and-Blues", "es": "Los Negriazules" },
+      "meaning": {
+        "en": "From the Italian 'nero' (black) and 'azzurro' (blue), the club's colours since its founding.",
+        "es": "Del italiano 'nero' (negro) y 'azzurro' (azul), los colores del club desde su fundación."
+      }
+    },
+    "summary": {
+      "en": "Founded by members who broke away from AC Milan because they wanted to sign foreign players — hence the name 'Internazionale'.",
+      "es": "Fundado por socios que se separaron del AC Milan porque querían fichar jugadores extranjeros; de ahí el nombre 'Internazionale'."
+    },
+    "stadium": {
+      "name": { "en": "San Siro", "es": "San Siro" },
+      "traditions": [
+        {
+          "en": "Inter share San Siro (officially Stadio Giuseppe Meazza) with their fiercest rivals, AC Milan.",
+          "es": "El Inter comparte San Siro (oficialmente Stadio Giuseppe Meazza) con su máximo rival, el AC Milan."
+        },
+        {
+          "en": "The Curva Nord (north curve) is home to Inter's ultras and their giant choreographies.",
+          "es": "La Curva Nord (curva norte) es el hogar de los ultras del Inter y sus enormes coreografías."
+        }
+      ]
+    },
+    "rivalries": [
+      {
+        "name": { "en": "Derby della Madonnina", "es": "Derbi de la Madonnina" },
+        "opponent": { "en": "AC Milan" },
+        "opponentCultureId": "culture-ac-milan",
+        "description": {
+          "en": "Same city, same stadium, opposite curves.",
+          "es": "Misma ciudad, mismo estadio, curvas opuestas."
+        }
+      },
+      {
+        "name": { "en": "Derby d'Italia", "es": "Derbi de Italia" },
+        "opponent": { "en": "Juventus" },
+        "opponentCultureId": "culture-juventus",
+        "description": {
+          "en": "Italy's biggest national rivalry.",
+          "es": "La mayor rivalidad nacional de Italia."
+        }
+      }
+    ],
+    "chants": [
+      {
+        "id": "pazza-inter",
+        "title": { "en": "Pazza Inter", "es": "Pazza Inter" },
+        "when": { "en": "Especially after dramatic comebacks", "es": "Sobre todo tras remontadas dramáticas" },
+        "original": { "text": "Pazza Inter amala", "lang": "it" },
+        "literal": { "en": "Crazy Inter, love her", "es": "Loca Inter, ámala" },
+        "meaning": {
+          "en": "Inter have a reputation for being gloriously unpredictable — brilliant one week, chaotic the next. Instead of complaining, fans embraced it: love the club, craziness and all.",
+          "es": "El Inter tiene fama de ser gloriosamente impredecible: brillante una semana, caótico la siguiente. En lugar de quejarse, la afición lo abrazó: ama al club, con su locura incluida."
+        }
+      }
+    ],
+    "contentStatus": "draft"
+  },
+  {
+    "id": "culture-ac-milan",
+    "leagueId": "league-serie-a",
+    "order": 3,
+    "club": { "en": "AC Milan", "es": "AC Milan" },
+    "city": { "en": "Milan, Italy", "es": "Milán, Italia" },
+    "founded": 1899,
+    "colors": { "en": "Red and black stripes", "es": "Rayas rojas y negras" },
+    "nickname": {
+      "original": { "text": "I Rossoneri", "lang": "it" },
+      "literal": { "en": "The Red-and-Blacks", "es": "Los Rojinegros" },
+      "meaning": {
+        "en": "From 'rosso' (red) and 'nero' (black). The club's founder chose red for the devil's fire and black for the fear the team would strike into opponents — which is why the club is also called 'Il Diavolo' (The Devil).",
+        "es": "De 'rosso' (rojo) y 'nero' (negro). El fundador eligió el rojo por el fuego del diablo y el negro por el miedo que el equipo infundiría a sus rivales; por eso al club también se le llama 'Il Diavolo' (El Diablo)."
+      }
+    },
+    "summary": {
+      "en": "One of Europe's most decorated clubs, founded by English expatriates — which is why it uses the English spelling 'Milan' instead of the Italian 'Milano'.",
+      "es": "Uno de los clubes más laureados de Europa, fundado por expatriados ingleses; por eso usa la grafía inglesa 'Milan' en lugar de la italiana 'Milano'."
+    },
+    "stadium": {
+      "name": { "en": "San Siro", "es": "San Siro" },
+      "traditions": [
+        {
+          "en": "The Curva Sud (south curve) is home to Milan's ultras, famous for huge flag displays in the derby.",
+          "es": "La Curva Sud (curva sur) es el hogar de los ultras del Milan, famosos por sus enormes despliegues de banderas en el derbi."
+        }
+      ]
+    },
+    "rivalries": [
+      {
+        "name": { "en": "Derby della Madonnina", "es": "Derbi de la Madonnina" },
+        "opponent": { "en": "Inter Milan", "es": "Inter de Milán" },
+        "opponentCultureId": "culture-inter-milan",
+        "description": {
+          "en": "The derby named after the golden Madonna on top of Milan Cathedral, watching over both sets of fans.",
+          "es": "El derbi que lleva el nombre de la Virgen dorada que corona la catedral de Milán y vigila a ambas aficiones."
+        }
+      }
+    ],
+    "chants": [
+      {
+        "id": "forza-milan",
+        "title": { "en": "Forza Milan!", "es": "¡Forza Milan!" },
+        "when": { "en": "Throughout the match", "es": "Durante todo el partido" },
+        "original": { "text": "Forza Milan!", "lang": "it" },
+        "literal": { "en": "Strength, Milan!", "es": "¡Fuerza, Milan!" },
+        "meaning": {
+          "en": "The standard Italian football cheer. 'Forza' means 'strength' or 'force', but it's used exactly like 'Come on!' — you'll hear 'Forza' followed by nearly every Italian club's name.",
+          "es": "El grito de ánimo estándar del fútbol italiano. 'Forza' significa 'fuerza', pero se usa exactamente como '¡Vamos!': oirás 'Forza' seguido del nombre de casi cualquier club italiano."
+        }
+      }
+    ],
+    "contentStatus": "draft"
+  },
+  {
+    "id": "culture-seattle-sounders",
+    "leagueId": "league-mls",
+    "order": 1,
+    "club": { "en": "Seattle Sounders", "es": "Seattle Sounders" },
+    "city": { "en": "Seattle, USA", "es": "Seattle, EE. UU." },
+    "founded": 2007,
+    "colors": { "en": "Rave green and blue", "es": "Verde 'rave' y azul" },
+    "nickname": {
+      "original": { "text": "Sounders", "lang": "en" },
+      "literal": { "en": "Sounders", "es": "Sounders" },
+      "meaning": {
+        "en": "Named after Puget Sound, the waterway Seattle sits on. The name dates back to an earlier Seattle club from the 1970s, and today's team kept it to honour that history.",
+        "es": "Por el estrecho de Puget, la bahía donde se encuentra Seattle. El nombre viene de un club anterior de Seattle de los años 70, y el equipo actual lo conservó para honrar esa historia."
+      }
+    },
+    "summary": {
+      "en": "Proof that soccer culture can grow fast in the US — Seattle regularly draws some of the biggest crowds in MLS.",
+      "es": "La prueba de que la cultura futbolera puede crecer rápido en EE. UU.: Seattle atrae habitualmente a algunas de las mayores multitudes de la MLS."
+    },
+    "stadium": {
+      "name": { "en": "Lumen Field", "es": "Lumen Field" },
+      "traditions": [
+        {
+          "en": "Before home games, fans walk together in the 'March to the Match' through the city streets to the stadium, led by a band.",
+          "es": "Antes de los partidos en casa, los aficionados caminan juntos en la 'Marcha al Partido' por las calles de la ciudad hasta el estadio, encabezados por una banda."
+        },
+        {
+          "en": "Fans hold their scarves above their heads during the pre-match anthem ('Scarves Up').",
+          "es": "Los aficionados levantan sus bufandas sobre la cabeza durante el himno previo al partido ('Scarves Up')."
+        }
+      ]
+    },
+    "rivalries": [
+      {
+        "name": { "en": "Cascadia Cup", "es": "Copa Cascadia" },
+        "opponent": { "en": "Portland Timbers" },
+        "opponentCultureId": "culture-portland-timbers",
+        "description": {
+          "en": "The Pacific Northwest's fiercest rivalry, contested for a fan-made trophy.",
+          "es": "La rivalidad más feroz del noroeste del Pacífico, disputada por un trofeo creado por los aficionados."
+        }
+      }
+    ],
+    "chants": [
+      {
+        "id": "placeholder-seattle",
+        "title": { "en": "Supporters' chant (to be researched)", "es": "Cántico de la afición (por investigar)" },
+        "when": { "en": "TBD", "es": "Por definir" },
+        "original": { "text": "Sounders 'til I die", "lang": "en" },
+        "literal": { "en": "Sounders until I die", "es": "Sounders hasta la muerte" },
+        "meaning": {
+          "en": "PLACEHOLDER — replace with a verified chant from Seattle's supporters' groups. The structure (original / literal / meaning) is final; the text is not.",
+          "es": "MARCADOR DE POSICIÓN: sustituir por un cántico verificado de los grupos de aficionados de Seattle. La estructura (original / literal / significado) es definitiva; el texto no."
+        }
+      }
+    ],
+    "contentStatus": "placeholder"
+  },
+  {
+    "id": "culture-portland-timbers",
+    "leagueId": "league-mls",
+    "order": 2,
+    "club": { "en": "Portland Timbers", "es": "Portland Timbers" },
+    "city": { "en": "Portland, USA", "es": "Portland, EE. UU." },
+    "founded": 2009,
+    "colors": { "en": "Green and gold", "es": "Verde y dorado" },
+    "nickname": {
+      "original": { "text": "The Timbers", "lang": "en" },
+      "literal": { "en": "The Timbers", "es": "Los Maderos" },
+      "meaning": {
+        "en": "A tribute to Oregon's logging history. The lumber industry shaped the region, and the club leans into that identity everywhere — from its mascot to its goal celebrations.",
+        "es": "Un homenaje a la historia maderera de Oregón. La industria forestal moldeó la región, y el club abraza esa identidad en todo: desde su mascota hasta sus celebraciones de gol."
+      }
+    },
+    "summary": {
+      "en": "Home of the Timbers Army, one of the most famous supporters' groups in North America.",
+      "es": "Hogar del Timbers Army, uno de los grupos de aficionados más famosos de Norteamérica."
+    },
+    "stadium": {
+      "name": { "en": "Providence Park", "es": "Providence Park" },
+      "traditions": [
+        {
+          "en": "After every Timbers goal, the club's lumberjack mascot, Timber Joey, saws a slice off a log with a chainsaw.",
+          "es": "Tras cada gol de los Timbers, la mascota leñadora del club, Timber Joey, corta una rodaja de un tronco con una motosierra."
+        },
+        {
+          "en": "The goalkeeper receives a slice of the log after keeping a clean sheet.",
+          "es": "El portero recibe una rodaja del tronco cuando deja la portería a cero."
+        }
+      ]
+    },
+    "rivalries": [
+      {
+        "name": { "en": "Cascadia Cup", "es": "Copa Cascadia" },
+        "opponent": { "en": "Seattle Sounders" },
+        "opponentCultureId": "culture-seattle-sounders",
+        "description": {
+          "en": "Portland vs. Seattle is the headline of the three-way Cascadia rivalry.",
+          "es": "Portland contra Seattle es el plato fuerte de la rivalidad a tres bandas de Cascadia."
+        }
+      }
+    ],
+    "chants": [
+      {
+        "id": "no-pity",
+        "title": { "en": "No Pity in the Rose City", "es": "No Pity in the Rose City (Sin piedad en la Ciudad de las Rosas)" },
+        "when": { "en": "When visiting teams come to Portland", "es": "Cuando los equipos visitantes llegan a Portland" },
+        "original": { "text": "No pity in the Rose City", "lang": "en" },
+        "literal": { "en": "No pity in the Rose City", "es": "Sin piedad en la Ciudad de las Rosas" },
+        "meaning": {
+          "en": "Portland's nickname is 'the City of Roses'. The chant warns visitors that the city's gentle image won't mean a gentle welcome in the stadium.",
+          "es": "El apodo de Portland es 'la Ciudad de las Rosas'. El cántico advierte a los visitantes que la imagen amable de la ciudad no significa un recibimiento amable en el estadio."
+        }
+      }
+    ],
+    "contentStatus": "draft"
+  }
+]

@@ -1,0 +1,12 @@
+{
+  "appName": "Kickstart",
+  "nav": { "leagues": "Ligas", "quiz": "Encuentra tu liga", "main": "Navegación principal", "skip": "Saltar al contenido" },
+  "language": { "label": "Idioma", "en": "English", "es": "Español" },
+  "loading": "Cargando…",
+  "retry": "Reintentar",
+  "back": "Volver",
+  "errors": {
+    "generic": "Algo salió mal. Inténtalo de nuevo.",
+    "network": "No pudimos conectar con el servidor. Revisa tu conexión e inténtalo de nuevo."
+  }
+}

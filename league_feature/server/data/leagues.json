@@ -1,0 +1,272 @@
+[
+  {
+    "id": "league-premier-league",
+    "order": 1,
+    "name": { "en": "Premier League", "es": "Premier League" },
+    "country": { "en": "England", "es": "Inglaterra" },
+    "founded": 1992,
+    "tagline": {
+      "en": "Relentless pace, physical battles, and no easy weekends.",
+      "es": "Ritmo implacable, duelos físicos y ningún fin de semana fácil."
+    },
+    "style": {
+      "en": "The Premier League is known for its speed and intensity. Matches swing end to end, teams press high, and physical duels are part of the show. Money is spread widely enough that a mid-table side can beat a title contender on any given weekend, which makes it the most-watched league in the world.",
+      "es": "La Premier League es conocida por su velocidad e intensidad. Los partidos van de área a área, los equipos presionan arriba y los duelos físicos son parte del espectáculo. El dinero está lo bastante repartido como para que un equipo de media tabla le gane a un aspirante al título cualquier fin de semana, lo que la convierte en la liga más vista del mundo."
+    },
+    "traits": { "pace": 5, "physicality": 5, "tactics": 3, "technique": 4, "atmosphere": 4, "underdogs": 3, "rivalries": 4 },
+    "topClubs": [
+      { "name": { "en": "Manchester City", "es": "Manchester City" }, "cultureId": null },
+      { "name": { "en": "Liverpool", "es": "Liverpool" }, "cultureId": "culture-liverpool" },
+      { "name": { "en": "Arsenal", "es": "Arsenal" }, "cultureId": "culture-arsenal" },
+      { "name": { "en": "Manchester United", "es": "Manchester United" }, "cultureId": "culture-manchester-united" },
+      { "name": { "en": "Chelsea", "es": "Chelsea" }, "cultureId": null },
+      { "name": { "en": "Tottenham Hotspur", "es": "Tottenham Hotspur" }, "cultureId": null }
+    ],
+    "rivalries": [
+      {
+        "name": { "en": "North West Derby", "es": "Derbi del Noroeste" },
+        "clubs": [{ "en": "Liverpool" }, { "en": "Manchester United" }],
+        "description": {
+          "en": "The two most successful clubs in English history, from two cities 35 miles apart with a long industrial rivalry of their own.",
+          "es": "Los dos clubes más exitosos de la historia inglesa, de dos ciudades separadas por 56 km y con una larga rivalidad industrial propia."
+        }
+      },
+      {
+        "name": { "en": "North London Derby", "es": "Derbi del Norte de Londres" },
+        "clubs": [{ "en": "Arsenal" }, { "en": "Tottenham Hotspur" }],
+        "description": {
+          "en": "Neighbours in North London since Arsenal moved across the city in 1913 — a move Tottenham fans have never quite forgiven.",
+          "es": "Vecinos en el norte de Londres desde que el Arsenal se mudó al otro lado de la ciudad en 1913, algo que los aficionados del Tottenham nunca han perdonado del todo."
+        }
+      },
+      {
+        "name": { "en": "Manchester Derby", "es": "Derbi de Mánchester" },
+        "clubs": [{ "en": "Manchester City" }, { "en": "Manchester United" }],
+        "description": {
+          "en": "One city, two clubs, and bragging rights that decide the mood of every office and pub in Manchester on Monday morning.",
+          "es": "Una ciudad, dos clubes, y un orgullo en juego que decide el ánimo de cada oficina y bar de Mánchester el lunes por la mañana."
+        }
+      },
+      {
+        "name": { "en": "Merseyside Derby", "es": "Derbi de Merseyside" },
+        "clubs": [{ "en": "Liverpool" }, { "en": "Everton" }],
+        "description": {
+          "en": "Known as the 'friendly derby' because families are often split between the two clubs — though it has produced more red cards than any other Premier League fixture.",
+          "es": "Conocido como el 'derbi amistoso' porque muchas familias están divididas entre ambos clubes, aunque es el partido de la Premier League con más tarjetas rojas."
+        }
+      }
+    ],
+    "contentStatus": "draft"
+  },
+  {
+    "id": "league-la-liga",
+    "order": 2,
+    "name": { "en": "La Liga", "es": "LaLiga" },
+    "country": { "en": "Spain", "es": "España" },
+    "founded": 1929,
+    "tagline": {
+      "en": "Technical brilliance, patient possession, and the biggest rivalry on earth.",
+      "es": "Brillantez técnica, posesión paciente y la mayor rivalidad del planeta."
+    },
+    "style": {
+      "en": "La Liga prizes the ball. Teams build patiently from the back, midfielders are expected to be comfortable under pressure, and individual skill is celebrated. The league has produced many of the world's most technical players, and its biggest matches are about control as much as speed.",
+      "es": "LaLiga valora el balón por encima de todo. Los equipos construyen con paciencia desde atrás, se espera que los mediocampistas estén cómodos bajo presión y la habilidad individual se celebra. La liga ha producido a muchos de los jugadores más técnicos del mundo, y sus grandes partidos tratan tanto del control como de la velocidad."
+    },
+    "traits": { "pace": 3, "physicality": 2, "tactics": 4, "technique": 5, "atmosphere": 4, "underdogs": 2, "rivalries": 5 },
+    "topClubs": [
+      { "name": { "en": "Real Madrid", "es": "Real Madrid" }, "cultureId": "culture-real-madrid" },
+      { "name": { "en": "FC Barcelona", "es": "FC Barcelona" }, "cultureId": "culture-fc-barcelona" },
+      { "name": { "en": "Atlético Madrid", "es": "Atlético de Madrid" }, "cultureId": "culture-atletico-madrid" },
+      { "name": { "en": "Athletic Club", "es": "Athletic Club" }, "cultureId": null },
+      { "name": { "en": "Real Sociedad", "es": "Real Sociedad" }, "cultureId": null },
+      { "name": { "en": "Sevilla", "es": "Sevilla" }, "cultureId": null }
+    ],
+    "rivalries": [
+      {
+        "name": { "en": "El Clásico", "es": "El Clásico" },
+        "clubs": [{ "en": "Real Madrid" }, { "en": "FC Barcelona" }],
+        "description": {
+          "en": "The capital against Catalonia. Beyond football, it has long been read as a clash of regional identity, and it is one of the most-watched club matches in the world.",
+          "es": "La capital contra Cataluña. Más allá del fútbol, se ha leído durante mucho tiempo como un choque de identidades regionales, y es uno de los partidos de clubes más vistos del mundo."
+        }
+      },
+      {
+        "name": { "en": "Madrid Derby", "es": "Derbi Madrileño" },
+        "clubs": [{ "en": "Real Madrid" }, { "en": "Atlético Madrid", "es": "Atlético de Madrid" }],
+        "description": {
+          "en": "The establishment giant against the neighbour that built its identity on suffering, grit, and defiance.",
+          "es": "El gigante del poder contra el vecino que construyó su identidad sobre el sufrimiento, el coraje y la rebeldía."
+        }
+      },
+      {
+        "name": { "en": "Basque Derby", "es": "Derbi Vasco" },
+        "clubs": [{ "en": "Athletic Club" }, { "en": "Real Sociedad" }],
+        "description": {
+          "en": "Famous for mutual respect — rival fans often travel and sit together. Athletic Club only fields players with Basque roots, a policy unique in top-flight football.",
+          "es": "Famoso por el respeto mutuo: las aficiones rivales suelen viajar y sentarse juntas. El Athletic Club solo alinea jugadores con raíces vascas, una política única en el fútbol de élite."
+        }
+      },
+      {
+        "name": { "en": "Seville Derby", "es": "Derbi Sevillano" },
+        "clubs": [{ "en": "Sevilla" }, { "en": "Real Betis" }],
+        "description": {
+          "en": "Often called the most passionate derby in Spain — the whole city takes sides.",
+          "es": "A menudo llamado el derbi más apasionado de España: toda la ciudad toma partido."
+        }
+      }
+    ],
+    "contentStatus": "draft"
+  },
+  {
+    "id": "league-bundesliga",
+    "order": 3,
+    "name": { "en": "Bundesliga", "es": "Bundesliga" },
+    "country": { "en": "Germany", "es": "Alemania" },
+    "founded": 1963,
+    "tagline": {
+      "en": "Full stadiums, standing terraces, and football played at full speed.",
+      "es": "Estadios llenos, gradas de pie y fútbol a toda velocidad."
+    },
+    "style": {
+      "en": "The Bundesliga is fast and attacking, with lots of goals per game. German coaches popularised 'gegenpressing' — winning the ball back immediately after losing it. Off the pitch, the '50+1' rule keeps most clubs majority-owned by their members, tickets stay affordable, and standing terraces create some of the loudest crowds in Europe.",
+      "es": "La Bundesliga es rápida y ofensiva, con muchos goles por partido. Los entrenadores alemanes popularizaron el 'gegenpressing': recuperar el balón inmediatamente después de perderlo. Fuera del campo, la regla del '50+1' mantiene a la mayoría de los clubes en manos de sus socios, las entradas siguen siendo asequibles y las gradas de pie crean algunos de los ambientes más ruidosos de Europa."
+    },
+    "traits": { "pace": 5, "physicality": 3, "tactics": 4, "technique": 3, "atmosphere": 5, "underdogs": 3, "rivalries": 3 },
+    "topClubs": [
+      { "name": { "en": "Bayern Munich", "es": "Bayern de Múnich" }, "cultureId": "culture-bayern-munich" },
+      { "name": { "en": "Borussia Dortmund", "es": "Borussia Dortmund" }, "cultureId": "culture-borussia-dortmund" },
+      { "name": { "en": "Bayer Leverkusen", "es": "Bayer Leverkusen" }, "cultureId": null },
+      { "name": { "en": "RB Leipzig", "es": "RB Leipzig" }, "cultureId": null },
+      { "name": { "en": "Eintracht Frankfurt", "es": "Eintracht Fráncfort" }, "cultureId": null }
+    ],
+    "rivalries": [
+      {
+        "name": { "en": "Der Klassiker", "es": "Der Klassiker" },
+        "clubs": [{ "en": "Bayern Munich", "es": "Bayern de Múnich" }, { "en": "Borussia Dortmund" }],
+        "description": {
+          "en": "Germany's modern heavyweight clash: Bavaria's dominant powerhouse against the Ruhr's yellow-and-black challenger.",
+          "es": "El gran choque moderno de Alemania: la potencia dominante de Baviera contra el aspirante amarillo y negro de la cuenca del Ruhr."
+        }
+      },
+      {
+        "name": { "en": "Revierderby", "es": "Revierderby" },
+        "clubs": [{ "en": "Borussia Dortmund" }, { "en": "Schalke 04" }],
+        "description": {
+          "en": "A working-class rivalry between two coal-mining towns in the Ruhr valley. Historic and bitter, it's played whenever both clubs share a division.",
+          "es": "Una rivalidad obrera entre dos ciudades mineras del valle del Ruhr. Histórica y feroz, se juega siempre que ambos clubes coinciden en la misma división."
+        }
+      },
+      {
+        "name": { "en": "Nordderby", "es": "Nordderby" },
+        "clubs": [{ "en": "Hamburger SV", "es": "Hamburgo" }, { "en": "Werder Bremen" }],
+        "description": {
+          "en": "The derby of Germany's north, between the two big port cities of Hamburg and Bremen.",
+          "es": "El derbi del norte de Alemania, entre las dos grandes ciudades portuarias de Hamburgo y Bremen."
+        }
+      }
+    ],
+    "contentStatus": "draft"
+  },
+  {
+    "id": "league-serie-a",
+    "order": 4,
+    "name": { "en": "Serie A", "es": "Serie A" },
+    "country": { "en": "Italy", "es": "Italia" },
+    "founded": 1929,
+    "tagline": {
+      "en": "Football as chess: tactics, patience, and city-splitting derbies.",
+      "es": "El fútbol como ajedrez: táctica, paciencia y derbis que dividen ciudades."
+    },
+    "style": {
+      "en": "Serie A is the league of tactics. Italy gave the world 'catenaccio', a famously disciplined defensive system, and coaches here still obsess over shape, positioning, and game management. Matches can be slower and more deliberate, but every move has a purpose — and the derbies are some of the most intense in the world.",
+      "es": "La Serie A es la liga de la táctica. Italia le dio al mundo el 'catenaccio', un sistema defensivo famoso por su disciplina, y los entrenadores aquí siguen obsesionados con el orden, el posicionamiento y la gestión del partido. Los partidos pueden ser más lentos y pausados, pero cada movimiento tiene un propósito, y sus derbis están entre los más intensos del mundo."
+    },
+    "traits": { "pace": 2, "physicality": 3, "tactics": 5, "technique": 4, "atmosphere": 4, "underdogs": 3, "rivalries": 5 },
+    "topClubs": [
+      { "name": { "en": "Inter Milan", "es": "Inter de Milán" }, "cultureId": "culture-inter-milan" },
+      { "name": { "en": "AC Milan", "es": "AC Milan" }, "cultureId": "culture-ac-milan" },
+      { "name": { "en": "Juventus", "es": "Juventus" }, "cultureId": "culture-juventus" },
+      { "name": { "en": "Napoli", "es": "Nápoles" }, "cultureId": null },
+      { "name": { "en": "Roma", "es": "Roma" }, "cultureId": null },
+      { "name": { "en": "Atalanta", "es": "Atalanta" }, "cultureId": null }
+    ],
+    "rivalries": [
+      {
+        "name": { "en": "Derby della Madonnina", "es": "Derbi de la Madonnina" },
+        "clubs": [{ "en": "Inter Milan", "es": "Inter de Milán" }, { "en": "AC Milan" }],
+        "description": {
+          "en": "Named after the golden statue of the Virgin Mary on top of Milan Cathedral. The two clubs even share a stadium, San Siro.",
+          "es": "Lleva el nombre de la estatua dorada de la Virgen que corona la catedral de Milán. Los dos clubes incluso comparten estadio, San Siro."
+        }
+      },
+      {
+        "name": { "en": "Derby d'Italia", "es": "Derbi de Italia" },
+        "clubs": [{ "en": "Inter Milan", "es": "Inter de Milán" }, { "en": "Juventus" }],
+        "description": {
+          "en": "'The Derby of Italy' — not a local derby, but a clash between two of the country's most decorated and most disliked-by-each-other clubs.",
+          "es": "'El Derbi de Italia': no es un derbi local, sino el choque entre dos de los clubes más laureados del país, que además no se soportan."
+        }
+      },
+      {
+        "name": { "en": "Derby della Capitale", "es": "Derbi de la Capital" },
+        "clubs": [{ "en": "Roma" }, { "en": "Lazio" }],
+        "description": {
+          "en": "Rome's derby, famous for spectacular fan choreographies (tifo) that cover entire stands.",
+          "es": "El derbi de Roma, famoso por sus espectaculares coreografías (tifo) que cubren gradas enteras."
+        }
+      }
+    ],
+    "contentStatus": "draft"
+  },
+  {
+    "id": "league-mls",
+    "order": 5,
+    "name": { "en": "Major League Soccer", "es": "Major League Soccer" },
+    "country": { "en": "United States & Canada", "es": "Estados Unidos y Canadá" },
+    "founded": 1996,
+    "tagline": {
+      "en": "A young league where anyone can win and traditions are still being written.",
+      "es": "Una liga joven donde cualquiera puede ganar y las tradiciones aún se están escribiendo."
+    },
+    "style": {
+      "en": "MLS is built for parity: a salary cap, a player draft, and end-of-season playoffs mean the champion is hard to predict. There's no promotion or relegation. Games are athletic and open, teams travel huge distances across different climates, and supporters' groups are creating new traditions every season.",
+      "es": "La MLS está diseñada para la paridad: un tope salarial, un draft de jugadores y los playoffs de final de temporada hacen que el campeón sea difícil de predecir. No hay ascensos ni descensos. Los partidos son atléticos y abiertos, los equipos recorren enormes distancias entre climas distintos, y los grupos de aficionados crean nuevas tradiciones cada temporada."
+    },
+    "traits": { "pace": 4, "physicality": 4, "tactics": 2, "technique": 2, "atmosphere": 3, "underdogs": 5, "rivalries": 3 },
+    "topClubs": [
+      { "name": { "en": "Seattle Sounders", "es": "Seattle Sounders" }, "cultureId": "culture-seattle-sounders" },
+      { "name": { "en": "Portland Timbers", "es": "Portland Timbers" }, "cultureId": "culture-portland-timbers" },
+      { "name": { "en": "LA Galaxy", "es": "LA Galaxy" }, "cultureId": null },
+      { "name": { "en": "LAFC", "es": "LAFC" }, "cultureId": null },
+      { "name": { "en": "Inter Miami", "es": "Inter Miami" }, "cultureId": null },
+      { "name": { "en": "Columbus Crew", "es": "Columbus Crew" }, "cultureId": null }
+    ],
+    "rivalries": [
+      {
+        "name": { "en": "Cascadia Cup", "es": "Copa Cascadia" },
+        "clubs": [{ "en": "Seattle Sounders" }, { "en": "Portland Timbers" }, { "en": "Vancouver Whitecaps" }],
+        "description": {
+          "en": "A three-way rivalry in the Pacific Northwest, with a trophy created by the fans themselves rather than the league.",
+          "es": "Una rivalidad a tres bandas en el noroeste del Pacífico, con un trofeo creado por los propios aficionados y no por la liga."
+        }
+      },
+      {
+        "name": { "en": "El Tráfico", "es": "El Tráfico" },
+        "clubs": [{ "en": "LA Galaxy" }, { "en": "LAFC" }],
+        "description": {
+          "en": "Los Angeles' derby, named after the city's infamous traffic — a nod to LA's huge Spanish-speaking fan base.",
+          "es": "El derbi de Los Ángeles, que debe su nombre al famoso tráfico de la ciudad, un guiño a la enorme afición hispanohablante de LA."
+        }
+      },
+      {
+        "name": { "en": "Hudson River Derby", "es": "Derbi del Río Hudson" },
+        "clubs": [{ "en": "New York Red Bulls" }, { "en": "New York City FC" }],
+        "description": {
+          "en": "New Jersey against New York City, across the river that separates them.",
+          "es": "Nueva Jersey contra la ciudad de Nueva York, a ambos lados del río que las separa."
+        }
+      }
+    ],
+    "contentStatus": "draft"
+  }
+]

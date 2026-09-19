@@ -1,0 +1,13 @@
+{
+  "name": "league-server",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch src/index.js",
+    "start": "node src/index.js",
+    "test": "vitest run",
+    "lint": "eslint ."
+  },
+  "dependencies": { "cors": "^2.8.5", "express": "^4.21.0", "zod": "^3.23.8" },
+  "devDependencies": { "eslint": "^9.0.0", "supertest": "^7.0.0", "vitest": "^2.1.0" }
+}
