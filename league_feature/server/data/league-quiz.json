@@ -1,0 +1,223 @@
+{
+  "id": "league-quiz",
+  "title": { "en": "Find Your League", "es": "Encuentra Tu Liga" },
+  "intro": {
+    "en": "Five questions about what you enjoy watching. We'll match you to the league that fits.",
+    "es": "Cinco preguntas sobre lo que te gusta ver. Te emparejaremos con la liga que mejor encaje."
+  },
+  "traits": [
+    {
+      "id": "pace",
+      "label": { "en": "Pace", "es": "Ritmo" },
+      "description": {
+        "en": "End-to-end speed and fast transitions.",
+        "es": "Velocidad de área a área y transiciones rápidas."
+      }
+    },
+    {
+      "id": "physicality",
+      "label": { "en": "Physicality", "es": "Físico" },
+      "description": {
+        "en": "Hard tackles, aerial duels, and contact.",
+        "es": "Entradas duras, duelos aéreos y contacto."
+      }
+    },
+    {
+      "id": "tactics",
+      "label": { "en": "Tactics", "es": "Táctica" },
+      "description": {
+        "en": "Shape, game plans, and coaching chess matches.",
+        "es": "Orden, planes de partido y ajedrez entre entrenadores."
+      }
+    },
+    {
+      "id": "technique",
+      "label": { "en": "Technique", "es": "Técnica" },
+      "description": {
+        "en": "Close control, passing, and individual skill.",
+        "es": "Control, pase y habilidad individual."
+      }
+    },
+    {
+      "id": "atmosphere",
+      "label": { "en": "Atmosphere", "es": "Ambiente" },
+      "description": {
+        "en": "Singing crowds, terraces, and matchday ritual.",
+        "es": "Aficiones que cantan, gradas y el ritual del día de partido."
+      }
+    },
+    {
+      "id": "underdogs",
+      "label": { "en": "Underdog stories", "es": "Historias de los humildes" },
+      "description": {
+        "en": "Unpredictable tables where smaller clubs can win.",
+        "es": "Tablas impredecibles donde los clubes pequeños pueden ganar."
+      }
+    },
+    {
+      "id": "rivalries",
+      "label": { "en": "Rivalries", "es": "Rivalidades" },
+      "description": {
+        "en": "Derbies with history, and cities that split in two.",
+        "es": "Derbis con historia y ciudades que se parten en dos."
+      }
+    }
+  ],
+  "questions": [
+    {
+      "id": "league-quiz-q1-draw",
+      "order": 1,
+      "prompt": {
+        "en": "What draws you in most?",
+        "es": "¿Qué es lo que más te atrae?"
+      },
+      "options": [
+        {
+          "id": "speed",
+          "text": { "en": "Speed — I want the ball racing from one end to the other", "es": "Velocidad: quiero el balón yendo de un área a la otra" },
+          "weights": { "pace": 3 }
+        },
+        {
+          "id": "battles",
+          "text": { "en": "Battles — hard tackles and players who refuse to back down", "es": "Duelos: entradas fuertes y jugadores que no se achican" },
+          "weights": { "physicality": 3 }
+        },
+        {
+          "id": "underdogs",
+          "text": { "en": "Underdog stories — I want to believe anyone can win", "es": "Historias de los humildes: quiero creer que cualquiera puede ganar" },
+          "weights": { "underdogs": 3 }
+        },
+        {
+          "id": "rivalries",
+          "text": { "en": "Rivalries — matches that mean everything to a city", "es": "Rivalidades: partidos que lo significan todo para una ciudad" },
+          "weights": { "rivalries": 3 }
+        },
+        {
+          "id": "tactics",
+          "text": { "en": "Tactics — the chess match between two coaches", "es": "Táctica: la partida de ajedrez entre dos entrenadores" },
+          "weights": { "tactics": 3 }
+        }
+      ]
+    },
+    {
+      "id": "league-quiz-q2-goal",
+      "order": 2,
+      "prompt": {
+        "en": "Your perfect goal looks like…",
+        "es": "Tu gol perfecto es…"
+      },
+      "options": [
+        {
+          "id": "counter",
+          "text": { "en": "A counter-attack finished in six seconds", "es": "Un contraataque resuelto en seis segundos" },
+          "weights": { "pace": 3 }
+        },
+        {
+          "id": "passing-move",
+          "text": { "en": "A 25-pass move that walks the ball into the net", "es": "Una jugada de 25 pases que mete el balón caminando" },
+          "weights": { "technique": 3, "tactics": 1 }
+        },
+        {
+          "id": "header",
+          "text": { "en": "A towering header from a corner", "es": "Un cabezazo imponente tras un córner" },
+          "weights": { "physicality": 3 }
+        },
+        {
+          "id": "last-minute",
+          "text": { "en": "A last-minute winner for the smaller team", "es": "Un gol en el último minuto del equipo pequeño" },
+          "weights": { "underdogs": 3, "atmosphere": 1 }
+        }
+      ]
+    },
+    {
+      "id": "league-quiz-q3-matchday",
+      "order": 3,
+      "prompt": {
+        "en": "Pick your ideal matchday.",
+        "es": "Elige tu día de partido ideal."
+      },
+      "options": [
+        {
+          "id": "terrace",
+          "text": { "en": "Standing on a packed terrace, singing for 90 minutes", "es": "De pie en una grada abarrotada, cantando durante 90 minutos" },
+          "weights": { "atmosphere": 3 }
+        },
+        {
+          "id": "derby",
+          "text": { "en": "A derby so big the whole city stops for it", "es": "Un derbi tan grande que toda la ciudad se detiene" },
+          "weights": { "rivalries": 3, "atmosphere": 1 }
+        },
+        {
+          "id": "analysis",
+          "text": { "en": "A good seat and a clear view of both teams' shapes", "es": "Un buen asiento y una vista clara del orden de ambos equipos" },
+          "weights": { "tactics": 3, "technique": 1 }
+        },
+        {
+          "id": "new-club",
+          "text": { "en": "A young club inventing its traditions right now", "es": "Un club joven inventando sus tradiciones ahora mismo" },
+          "weights": { "underdogs": 2, "atmosphere": 1 }
+        }
+      ]
+    },
+    {
+      "id": "league-quiz-q4-player",
+      "order": 4,
+      "prompt": {
+        "en": "Which player would you buy a shirt for?",
+        "es": "¿De qué jugador te comprarías la camiseta?"
+      },
+      "options": [
+        {
+          "id": "winger",
+          "text": { "en": "The winger who runs past defenders like they're standing still", "es": "El extremo que deja atrás a los defensas como si estuvieran parados" },
+          "weights": { "pace": 3 }
+        },
+        {
+          "id": "playmaker",
+          "text": { "en": "The playmaker who sees a pass nobody else does", "es": "El creador que ve un pase que nadie más ve" },
+          "weights": { "technique": 3 }
+        },
+        {
+          "id": "defender",
+          "text": { "en": "The defender who organises everyone and wins every header", "es": "El defensa que organiza a todos y gana todos los balones aéreos" },
+          "weights": { "physicality": 2, "tactics": 2 }
+        },
+        {
+          "id": "local",
+          "text": { "en": "The local player who'd never sign for the rivals", "es": "El jugador de la casa que jamás ficharía por el rival" },
+          "weights": { "rivalries": 2, "atmosphere": 2 }
+        }
+      ]
+    },
+    {
+      "id": "league-quiz-q5-scoreline",
+      "order": 5,
+      "prompt": {
+        "en": "Best final score?",
+        "es": "¿Mejor resultado final?"
+      },
+      "options": [
+        {
+          "id": "thriller",
+          "text": { "en": "4-3, chaos from the first whistle", "es": "4-3, caos desde el primer pitido" },
+          "weights": { "pace": 2, "atmosphere": 1 }
+        },
+        {
+          "id": "masterclass",
+          "text": { "en": "1-0, a defensive masterclass", "es": "1-0, una obra maestra defensiva" },
+          "weights": { "tactics": 3 }
+        },
+        {
+          "id": "upset",
+          "text": { "en": "2-1 to the team nobody expected", "es": "2-1 para el equipo que nadie esperaba" },
+          "weights": { "underdogs": 3 }
+        },
+        {
+          "id": "derby-win",
+          "text": { "en": "Any score, as long as we beat them", "es": "Cualquier marcador, mientras les ganemos a ellos" },
+          "weights": { "rivalries": 3 }
+        }
+      ]
+    }
+  ]
+}

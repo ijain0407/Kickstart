@@ -1,0 +1,12 @@
+{
+  "appName": "Kickstart",
+  "nav": { "leagues": "Leagues", "quiz": "Find your league", "main": "Main navigation", "skip": "Skip to content" },
+  "language": { "label": "Language", "en": "English", "es": "Español" },
+  "loading": "Loading…",
+  "retry": "Try again",
+  "back": "Back",
+  "errors": {
+    "generic": "Something went wrong. Please try again.",
+    "network": "We couldn't reach the server. Check your connection and try again."
+  }
+}

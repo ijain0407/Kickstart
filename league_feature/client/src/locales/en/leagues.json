@@ -1,0 +1,53 @@
+{
+  "hub": {
+    "title": "Leagues & Culture",
+    "intro": "Five leagues, and what it feels like to follow each one.",
+    "quizCta": "Not sure where to start? Find your league",
+    "loadError": "We couldn't load the leagues."
+  },
+  "league": {
+    "founded": "Founded {{year}}",
+    "style": "How they play",
+    "traits": "At a glance",
+    "topClubs": "Clubs to know",
+    "rivalries": "Historic rivalries",
+    "cultureCards": "Club culture",
+    "cardCta": "Explore {{club}}",
+    "loadError": "We couldn't load this league.",
+    "backToLeagues": "All leagues"
+  },
+  "culture": {
+    "nickname": "Nickname",
+    "stadium": "Stadium & traditions",
+    "rivalries": "Rivalries",
+    "chants": "Chants",
+    "chantCount_one": "{{count}} chant",
+    "chantCount_other": "{{count}} chants",
+    "sungWhen": "Sung: {{when}}",
+    "moreFrom": "More from {{league}}",
+    "loadError": "We couldn't load this culture card.",
+    "placeholder": "Placeholder content — still being researched."
+  },
+  "layers": {
+    "original": "Original",
+    "literal": "Literal translation",
+    "meaning": "What it really means",
+    "inLanguage": "in {{language}}"
+  },
+  "quiz": {
+    "start": "Start the quiz",
+    "progress": "Question {{current}} of {{total}}",
+    "previous": "Previous",
+    "result": {
+      "title": "Your league is…",
+      "match": "{{percent}}% match",
+      "because": "Because you picked",
+      "profile": "What you told us you like",
+      "ranking": "How the rest scored",
+      "explore": "Explore {{league}}",
+      "restart": "Take it again"
+    },
+    "loadError": "We couldn't load the quiz.",
+    "submitError": "We couldn't work out your league."
+  }
+}

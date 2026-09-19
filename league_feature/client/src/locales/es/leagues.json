@@ -1,0 +1,53 @@
+{
+  "hub": {
+    "title": "Ligas y Cultura",
+    "intro": "Cinco ligas, y cómo se siente seguir a cada una.",
+    "quizCta": "¿No sabes por dónde empezar? Encuentra tu liga",
+    "loadError": "No pudimos cargar las ligas."
+  },
+  "league": {
+    "founded": "Fundada en {{year}}",
+    "style": "Cómo juegan",
+    "traits": "De un vistazo",
+    "topClubs": "Clubes que debes conocer",
+    "rivalries": "Rivalidades históricas",
+    "cultureCards": "Cultura de club",
+    "cardCta": "Explorar {{club}}",
+    "loadError": "No pudimos cargar esta liga.",
+    "backToLeagues": "Todas las ligas"
+  },
+  "culture": {
+    "nickname": "Apodo",
+    "stadium": "Estadio y tradiciones",
+    "rivalries": "Rivalidades",
+    "chants": "Cánticos",
+    "chantCount_one": "{{count}} cántico",
+    "chantCount_other": "{{count}} cánticos",
+    "sungWhen": "Se canta: {{when}}",
+    "moreFrom": "Más de {{league}}",
+    "loadError": "No pudimos cargar esta ficha cultural.",
+    "placeholder": "Contenido provisional: aún en investigación."
+  },
+  "layers": {
+    "original": "Original",
+    "literal": "Traducción literal",
+    "meaning": "Lo que realmente significa",
+    "inLanguage": "en {{language}}"
+  },
+  "quiz": {
+    "start": "Empezar el test",
+    "progress": "Pregunta {{current}} de {{total}}",
+    "previous": "Anterior",
+    "result": {
+      "title": "Tu liga es…",
+      "match": "{{percent}}% de coincidencia",
+      "because": "Porque elegiste",
+      "profile": "Lo que nos dijiste que te gusta",
+      "ranking": "Cómo quedaron las demás",
+      "explore": "Explorar {{league}}",
+      "restart": "Hacerlo otra vez"
+    },
+    "loadError": "No pudimos cargar el test.",
+    "submitError": "No pudimos calcular tu liga."
+  }
+}
