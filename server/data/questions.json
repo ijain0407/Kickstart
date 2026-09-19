@@ -1,0 +1,2670 @@
+[
+  {
+    "id": "q_offside_001",
+    "lessonId": "rules-basics",
+    "topic": "offside",
+    "difficulty": 1,
+    "type": "multiple_choice",
+    "prompt": {
+      "en": "When is an attacker in an offside position?",
+      "es": "¿Cuándo está un atacante en posición de fuera de juego?"
+    },
+    "options": [
+      {
+        "id": "a",
+        "text": {
+          "en": "Whenever they are in the opponent's half",
+          "es": "Siempre que está en el campo rival"
+        }
+      },
+      {
+        "id": "b",
+        "text": {
+          "en": "When they are closer to the opponent's goal line than both the ball and the second-to-last defender",
+          "es": "Cuando está más cerca de la línea de meta rival que el balón y que el penúltimo defensor"
+        }
+      },
+      {
+        "id": "c",
+        "text": {
+          "en": "Whenever they are ahead of the goalkeeper",
+          "es": "Siempre que está por delante del portero"
+        }
+      },
+      {
+        "id": "d",
+        "text": {
+          "en": "Whenever they run faster than the defenders",
+          "es": "Siempre que corre más rápido que los defensas"
+        }
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": {
+      "en": "Offside position compares you with the ball and the second-to-last defender (the goalkeeper usually counts as one).",
+      "es": "La posición de fuera de juego se mide con el balón y el penúltimo defensor (el portero suele contar como uno)."
+    },
+    "hint": {
+      "en": "Think about the last two defenders.",
+      "es": "Piensa en los dos últimos defensas."
+    },
+    "media": {
+      "type": "none",
+      "ref": null
+    },
+    "tags": [
+      "rules",
+      "beginner"
+    ]
+  },
+  {
+    "id": "q_offside_002",
+    "lessonId": "rules-basics",
+    "topic": "offside",
+    "difficulty": 1,
+    "type": "multiple_choice",
+    "prompt": {
+      "en": "Can a player be offside when they receive the ball directly from a throw-in?",
+      "es": "¿Puede un jugador estar en fuera de juego al recibir el balón directamente de un saque de banda?"
+    },
+    "options": [
+      {
+        "id": "a",
+        "text": {
+          "en": "No, there is no offside from a throw-in",
+          "es": "No, no hay fuera de juego en un saque de banda"
+        }
+      },
+      {
+        "id": "b",
+        "text": {
+          "en": "Yes, always",
+          "es": "Sí, siempre"
+        }
+      },
+      {
+        "id": "c",
+        "text": {
+          "en": "Yes, but only inside the penalty area",
+          "es": "Sí, pero solo dentro del área"
+        }
+      },
+      {
+        "id": "d",
+        "text": {
+          "en": "Yes, if a defender touched it last",
+          "es": "Sí, si un defensa lo tocó al final"
+        }
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": {
+      "en": "Offside does not apply directly from a throw-in, goal kick or corner kick.",
+      "es": "No hay fuera de juego directamente de un saque de banda, saque de meta o tiro de esquina."
+    },
+    "hint": {
+      "en": "Some restarts are exempt from the offside rule.",
+      "es": "Algunos saques están exentos de la regla del fuera de juego."
+    },
+    "media": {
+      "type": "none",
+      "ref": null
+    },
+    "tags": [
+      "rules",
+      "beginner"
+    ]
+  },
+  {
+    "id": "q_offside_003",
+    "lessonId": "rules-basics",
+    "topic": "offside",
+    "difficulty": 2,
+    "type": "multiple_choice",
+    "prompt": {
+      "en": "An attacker is exactly level with the second-to-last defender when a teammate passes. What is the call?",
+      "es": "Un atacante está justo a la altura del penúltimo defensor cuando un compañero pasa. ¿Cuál es la decisión?"
+    },
+    "options": [
+      {
+        "id": "a",
+        "text": {
+          "en": "Offside",
+          "es": "Fuera de juego"
+        }
+      },
+      {
+        "id": "b",
+        "text": {
+          "en": "A yellow card for the attacker",
+          "es": "Tarjeta amarilla para el atacante"
+        }
+      },
+      {
+        "id": "c",
+        "text": {
+          "en": "The pass is replayed",
+          "es": "Se repite el pase"
+        }
+      },
+      {
+        "id": "d",
+        "text": {
+          "en": "Onside, being level is allowed",
+          "es": "Habilitado, estar a la par está permitido"
+        }
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": {
+      "en": "Being level with the second-to-last defender is not offside; you must be ahead of them.",
+      "es": "Estar a la par del penúltimo defensor no es fuera de juego; hay que estar por delante."
+    },
+    "hint": {
+      "en": "\"Level\" is not \"ahead\".",
+      "es": "\"A la par\" no es \"por delante\"."
+    },
+    "media": {
+      "type": "none",
+      "ref": null
+    },
+    "tags": [
+      "rules",
+      "intermediate"
+    ]
+  },
+  {
+    "id": "q_offside_004",
+    "lessonId": "rules-basics",
+    "topic": "offside",
+    "difficulty": 2,
+    "type": "multiple_choice",
+    "prompt": {
+      "en": "What does the referee award when a player is called offside?",
+      "es": "¿Qué concede el árbitro cuando se sanciona un fuera de juego?"
+    },
+    "options": [
+      {
+        "id": "a",
+        "text": {
+          "en": "A penalty kick",
+          "es": "Un tiro penal"
+        }
+      },
+      {
+        "id": "b",
+        "text": {
+          "en": "A drop ball",
+          "es": "Un balón a tierra"
+        }
+      },
+      {
+        "id": "c",
+        "text": {
+          "en": "An indirect free kick to the other team",
+          "es": "Un tiro libre indirecto para el otro equipo"
+        }
+      },
+      {
+        "id": "d",
+        "text": {
+          "en": "A corner kick",
+          "es": "Un tiro de esquina"
+        }
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": {
+      "en": "The other team gets an indirect free kick from where the offside player was.",
+      "es": "El otro equipo recibe un tiro libre indirecto desde donde estaba el jugador en fuera de juego."
+    },
+    "hint": {
+      "en": "A goal cannot be scored directly from this kick.",
+      "es": "No se puede marcar gol directamente con este tiro."
+    },
+    "media": {
+      "type": "none",
+      "ref": null
+    },
+    "tags": [
+      "rules",
+      "intermediate"
+    ]
+  },
+  {
+    "id": "q_cards_001",
+    "lessonId": "rules-basics",
+    "topic": "cards",
+    "difficulty": 1,
+    "type": "multiple_choice",
+    "prompt": {
+      "en": "What happens to a player who is shown a red card?",
+      "es": "¿Qué le pasa a un jugador al que le muestran tarjeta roja?"
+    },
+    "options": [
+      {
+        "id": "a",
+        "text": {
+          "en": "They must sit out for ten minutes",
+          "es": "Debe salir diez minutos"
+        }
+      },
+      {
+        "id": "b",
+        "text": {
+          "en": "They are sent off and cannot be replaced",
+          "es": "Es expulsado y no puede ser reemplazado"
+        }
+      },
+      {
+        "id": "c",
+        "text": {
+          "en": "They receive a warning only",
+          "es": "Solo recibe una advertencia"
+        }
+      },
+      {
+        "id": "d",
+        "text": {
+          "en": "They swap places with a substitute",
+          "es": "Cambia de lugar con un suplente"
+        }
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": {
+      "en": "A red card means expulsion, and the team plays the rest of the match with one player fewer.",
+      "es": "La roja significa expulsión y el equipo juega el resto del partido con un jugador menos."
+    },
+    "hint": {
+      "en": "The team ends up short-handed.",
+      "es": "El equipo se queda con menos jugadores."
+    },
+    "media": {
+      "type": "none",
+      "ref": null
+    },
+    "tags": [
+      "rules",
+      "beginner"
+    ]
+  },
+  {
+    "id": "q_cards_002",
+    "lessonId": "rules-basics",
+    "topic": "cards",
+    "difficulty": 1,
+    "type": "multiple_choice",
+    "prompt": {
+      "en": "How many yellow cards in one match lead to a player being sent off?",
+      "es": "¿Cuántas tarjetas amarillas en un partido llevan a la expulsión de un jugador?"
+    },
+    "options": [
+      {
+        "id": "a",
+        "text": {
+          "en": "Two",
+          "es": "Dos"
+        }
+      },
+      {
+        "id": "b",
+        "text": {
+          "en": "One",
+          "es": "Una"
+        }
+      },
+      {
+        "id": "c",
+        "text": {
+          "en": "Three",
+          "es": "Tres"
+        }
+      },
+      {
+        "id": "d",
+        "text": {
+          "en": "Four",
+          "es": "Cuatro"
+        }
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": {
+      "en": "A second yellow card in the same match becomes a red card.",
+      "es": "Una segunda amarilla en el mismo partido se convierte en roja."
+    },
+    "hint": {
+      "en": "It is a small number.",
+      "es": "Es un número pequeño."
+    },
+    "media": {
+      "type": "none",
+      "ref": null
+    },
+    "tags": [
+      "rules",
+      "beginner"
+    ]
+  },
+  {
+    "id": "q_restarts_001",
+    "lessonId": "rules-basics",
+    "topic": "restarts",
+    "difficulty": 2,
+    "type": "multiple_choice",
+    "prompt": {
+      "en": "A defender last touches the ball and it crosses their own goal line (not in the goal). What restarts play?",
+      "es": "Un defensor toca el balón por última vez y este cruza su propia línea de meta (sin entrar). ¿Cómo se reanuda el juego?"
+    },
+    "options": [
+      {
+        "id": "a",
+        "text": {
+          "en": "A goal kick for the defending team",
+          "es": "Un saque de meta para el equipo defensor"
+        }
+      },
+      {
+        "id": "b",
+        "text": {
+          "en": "A throw-in for the attacking team",
+          "es": "Un saque de banda para el equipo atacante"
+        }
+      },
+      {
+        "id": "c",
+        "text": {
+          "en": "A penalty kick",
+          "es": "Un tiro penal"
+        }
+      },
+      {
+        "id": "d",
+        "text": {
+          "en": "A corner kick for the attacking team",
+          "es": "Un tiro de esquina para el equipo atacante"
+        }
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": {
+      "en": "If the defending team last touched it over their own goal line, the attackers get a corner.",
+      "es": "Si el equipo defensor lo toca al final sobre su línea de meta, los atacantes cobran un tiro de esquina."
+    },
+    "hint": {
+      "en": "The attackers benefit.",
+      "es": "Los atacantes salen beneficiados."
+    },
+    "media": {
+      "type": "none",
+      "ref": null
+    },
+    "tags": [
+      "rules",
+      "intermediate"
+    ]
+  },
+  {
+    "id": "q_duration_001",
+    "lessonId": "rules-basics",
+    "topic": "duration",
+    "difficulty": 1,
+    "type": "multiple_choice",
+    "prompt": {
+      "en": "How long is a standard professional match?",
+      "es": "¿Cuánto dura un partido profesional estándar?"
+    },
+    "options": [
+      {
+        "id": "a",
+        "text": {
+          "en": "60 minutes in four quarters",
+          "es": "60 minutos en cuatro cuartos"
+        }
+      },
+      {
+        "id": "b",
+        "text": {
+          "en": "120 minutes in two halves",
+          "es": "120 minutos en dos tiempos"
+        }
+      },
+      {
+        "id": "c",
+        "text": {
+          "en": "90 minutes: two halves of 45, plus stoppage time",
+          "es": "90 minutos: dos tiempos de 45, más tiempo añadido"
+        }
+      },
+      {
+        "id": "d",
+        "text": {
+          "en": "80 minutes in two halves",
+          "es": "80 minutos en dos tiempos"
+        }
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": {
+      "en": "Matches last 90 minutes plus time added by the referee for stoppages.",
+      "es": "Los partidos duran 90 minutos más el tiempo que añade el árbitro por interrupciones."
+    },
+    "hint": {
+      "en": "Two equal halves.",
+      "es": "Dos tiempos iguales."
+    },
+    "media": {
+      "type": "none",
+      "ref": null
+    },
+    "tags": [
+      "rules",
+      "beginner"
+    ]
+  },
+  {
+    "id": "q_goalkeeper_001",
+    "lessonId": "positions",
+    "topic": "goalkeeper",
+    "difficulty": 1,
+    "type": "multiple_choice",
+    "prompt": {
+      "en": "Which player may use their hands inside their own penalty area?",
+      "es": "¿Qué jugador puede usar las manos dentro de su propia área?"
+    },
+    "options": [
+      {
+        "id": "a",
+        "text": {
+          "en": "The captain",
+          "es": "El capitán"
+        }
+      },
+      {
+        "id": "b",
+        "text": {
+          "en": "The goalkeeper",
+          "es": "El portero"
+        }
+      },
+      {
+        "id": "c",
+        "text": {
+          "en": "The striker",
+          "es": "El delantero"
+        }
+      },
+      {
+        "id": "d",
+        "text": {
+          "en": "The defender",
+          "es": "El defensa"
+        }
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": {
+      "en": "Only the goalkeeper may handle the ball in open play, and only inside their own penalty area.",
+      "es": "Solo el portero puede tomar el balón con las manos en juego, y solo dentro de su área."
+    },
+    "hint": {
+      "en": "Wears a different colored shirt.",
+      "es": "Viste una camiseta de otro color."
+    },
+    "media": {
+      "type": "none",
+      "ref": null
+    },
+    "tags": [
+      "rules",
+      "beginner"
+    ]
+  },
+  {
+    "id": "q_players_001",
+    "lessonId": "positions",
+    "topic": "players",
+    "difficulty": 1,
+    "type": "multiple_choice",
+    "prompt": {
+      "en": "How many players does each team have on the field, including the goalkeeper?",
+      "es": "¿Cuántos jugadores tiene cada equipo en el campo, incluido el portero?"
+    },
+    "options": [
+      {
+        "id": "a",
+        "text": {
+          "en": "11",
+          "es": "11"
+        }
+      },
+      {
+        "id": "b",
+        "text": {
+          "en": "10",
+          "es": "10"
+        }
+      },
+      {
+        "id": "c",
+        "text": {
+          "en": "9",
+          "es": "9"
+        }
+      },
+      {
+        "id": "d",
+        "text": {
+          "en": "12",
+          "es": "12"
+        }
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": {
+      "en": "Each team starts with 11 players: one goalkeeper and ten outfield players.",
+      "es": "Cada equipo comienza con 11 jugadores: un portero y diez de campo."
+    },
+    "hint": {
+      "en": "Ten outfield players plus one.",
+      "es": "Diez de campo más uno."
+    },
+    "media": {
+      "type": "none",
+      "ref": null
+    },
+    "tags": [
+      "rules",
+      "beginner"
+    ]
+  },
+  {
+    "id": "q_striker_001",
+    "lessonId": "positions",
+    "topic": "striker",
+    "difficulty": 1,
+    "type": "multiple_choice",
+    "prompt": {
+      "en": "What is the main job of a striker?",
+      "es": "¿Cuál es la función principal de un delantero centro?"
+    },
+    "options": [
+      {
+        "id": "a",
+        "text": {
+          "en": "Stop shots",
+          "es": "Detener tiros"
+        }
+      },
+      {
+        "id": "b",
+        "text": {
+          "en": "Take all the throw-ins",
+          "es": "Sacar todos los saques de banda"
+        }
+      },
+      {
+        "id": "c",
+        "text": {
+          "en": "Mark the opposing goalkeeper",
+          "es": "Marcar al portero rival"
+        }
+      },
+      {
+        "id": "d",
+        "text": {
+          "en": "Score goals",
+          "es": "Marcar goles"
+        }
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": {
+      "en": "Strikers play closest to the opponent's goal and are expected to finish chances.",
+      "es": "Los delanteros juegan más cerca de la portería rival y se espera que definan las jugadas."
+    },
+    "hint": {
+      "en": "They play the furthest up the pitch.",
+      "es": "Juegan lo más adelantado del campo."
+    },
+    "media": {
+      "type": "none",
+      "ref": null
+    },
+    "tags": [
+      "rules",
+      "beginner"
+    ]
+  },
+  {
+    "id": "q_defenders_001",
+    "lessonId": "positions",
+    "topic": "defenders",
+    "difficulty": 1,
+    "type": "multiple_choice",
+    "prompt": {
+      "en": "Which of these is a defensive position?",
+      "es": "¿Cuál de estas es una posición defensiva?"
+    },
+    "options": [
+      {
+        "id": "a",
+        "text": {
+          "en": "Winger",
+          "es": "Extremo"
+        }
+      },
+      {
+        "id": "b",
+        "text": {
+          "en": "Striker",
+          "es": "Delantero"
+        }
+      },
+      {
+        "id": "c",
+        "text": {
+          "en": "Center-back",
+          "es": "Defensa central"
+        }
+      },
+      {
+        "id": "d",
+        "text": {
+          "en": "Attacking midfielder",
+          "es": "Mediocampista ofensivo"
+        }
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": {
+      "en": "Center-backs defend the middle of the pitch, right in front of the goal.",
+      "es": "Los defensas centrales protegen el centro del campo, justo delante de la portería."
+    },
+    "hint": {
+      "en": "The name says it.",
+      "es": "El nombre lo dice."
+    },
+    "media": {
+      "type": "none",
+      "ref": null
+    },
+    "tags": [
+      "rules",
+      "beginner"
+    ]
+  },
+  {
+    "id": "q_fullback_001",
+    "lessonId": "positions",
+    "topic": "fullback",
+    "difficulty": 2,
+    "type": "multiple_choice",
+    "prompt": {
+      "en": "What does a full-back (left-back or right-back) typically do?",
+      "es": "¿Qué hace normalmente un lateral (izquierdo o derecho)?"
+    },
+    "options": [
+      {
+        "id": "a",
+        "text": {
+          "en": "Stays in the center circle",
+          "es": "Se queda en el círculo central"
+        }
+      },
+      {
+        "id": "b",
+        "text": {
+          "en": "Defends the sides and often runs forward to support attacks",
+          "es": "Defiende las bandas y suele proyectarse al ataque"
+        }
+      },
+      {
+        "id": "c",
+        "text": {
+          "en": "Only takes penalties",
+          "es": "Solo cobra penales"
+        }
+      },
+      {
+        "id": "d",
+        "text": {
+          "en": "Guards the opposing striker at all times",
+          "es": "Marca al delantero rival todo el tiempo"
+        }
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": {
+      "en": "Full-backs protect the flanks and overlap to add width in attack.",
+      "es": "Los laterales protegen las bandas y se proyectan para dar amplitud en ataque."
+    },
+    "hint": {
+      "en": "They play along the touchlines.",
+      "es": "Juegan por las bandas."
+    },
+    "media": {
+      "type": "none",
+      "ref": null
+    },
+    "tags": [
+      "rules",
+      "intermediate"
+    ]
+  },
+  {
+    "id": "q_midfield_001",
+    "lessonId": "positions",
+    "topic": "midfield",
+    "difficulty": 2,
+    "type": "multiple_choice",
+    "prompt": {
+      "en": "What is the job of a defensive midfielder?",
+      "es": "¿Cuál es la función de un mediocentro defensivo?"
+    },
+    "options": [
+      {
+        "id": "a",
+        "text": {
+          "en": "Shield the defense and break up opposing attacks",
+          "es": "Proteger a la defensa y cortar los ataques rivales"
+        }
+      },
+      {
+        "id": "b",
+        "text": {
+          "en": "Stay near the opponent's goal waiting for passes",
+          "es": "Quedarse cerca del arco rival esperando pases"
+        }
+      },
+      {
+        "id": "c",
+        "text": {
+          "en": "Take every corner kick",
+          "es": "Cobrar todos los tiros de esquina"
+        }
+      },
+      {
+        "id": "d",
+        "text": {
+          "en": "Replace the goalkeeper",
+          "es": "Reemplazar al portero"
+        }
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": {
+      "en": "The defensive midfielder sits in front of the back line to win the ball and start play.",
+      "es": "El mediocentro defensivo se sitúa delante de la línea defensiva para recuperar el balón e iniciar el juego."
+    },
+    "hint": {
+      "en": "It is a midfielder who thinks defense first.",
+      "es": "Es un mediocampista que piensa primero en defender."
+    },
+    "media": {
+      "type": "none",
+      "ref": null
+    },
+    "tags": [
+      "rules",
+      "intermediate"
+    ]
+  },
+  {
+    "id": "q_winger_001",
+    "lessonId": "positions",
+    "topic": "winger",
+    "difficulty": 2,
+    "type": "multiple_choice",
+    "prompt": {
+      "en": "What does a winger usually do?",
+      "es": "¿Qué hace normalmente un extremo?"
+    },
+    "options": [
+      {
+        "id": "a",
+        "text": {
+          "en": "Stays in goal",
+          "es": "Se queda en la portería"
+        }
+      },
+      {
+        "id": "b",
+        "text": {
+          "en": "Marks the striker",
+          "es": "Marca al delantero"
+        }
+      },
+      {
+        "id": "c",
+        "text": {
+          "en": "Controls the referee's timing",
+          "es": "Controla el tiempo del árbitro"
+        }
+      },
+      {
+        "id": "d",
+        "text": {
+          "en": "Plays wide, dribbles and crosses the ball into the box",
+          "es": "Juega por la banda, regatea y centra el balón al área"
+        }
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": {
+      "en": "Wingers attack down the sides, beating defenders and delivering crosses.",
+      "es": "Los extremos atacan por las bandas, superando defensas y enviando centros."
+    },
+    "hint": {
+      "en": "Named after the \"wings\" of the pitch.",
+      "es": "Su nombre viene de las \"alas\" del campo."
+    },
+    "media": {
+      "type": "none",
+      "ref": null
+    },
+    "tags": [
+      "rules",
+      "intermediate"
+    ]
+  },
+  {
+    "id": "q_false_nine_001",
+    "lessonId": "positions",
+    "topic": "false-nine",
+    "difficulty": 3,
+    "type": "multiple_choice",
+    "prompt": {
+      "en": "What is a \"false nine\"?",
+      "es": "¿Qué es un \"falso nueve\"?"
+    },
+    "options": [
+      {
+        "id": "a",
+        "text": {
+          "en": "A striker who always wears number nine",
+          "es": "Un delantero que siempre lleva el número nueve"
+        }
+      },
+      {
+        "id": "b",
+        "text": {
+          "en": "A substitute goalkeeper",
+          "es": "Un portero suplente"
+        }
+      },
+      {
+        "id": "c",
+        "text": {
+          "en": "A striker who drops deep into midfield to create space and link play",
+          "es": "Un delantero que retrocede al mediocampo para crear espacios y conectar el juego"
+        }
+      },
+      {
+        "id": "d",
+        "text": {
+          "en": "A defender who scores own goals",
+          "es": "Un defensa que hace autogoles"
+        }
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": {
+      "en": "A false nine drops deep, pulling defenders out of position and leaving space behind them.",
+      "es": "Un falso nueve retrocede y arrastra a los defensas fuera de posición, dejando espacio a su espalda."
+    },
+    "hint": {
+      "en": "Looks like a striker but does not stay up front.",
+      "es": "Parece delantero, pero no se queda arriba."
+    },
+    "media": {
+      "type": "none",
+      "ref": null
+    },
+    "tags": [
+      "rules",
+      "advanced"
+    ]
+  },
+  {
+    "id": "q_formations_001",
+    "lessonId": "formations",
+    "topic": "formations",
+    "difficulty": 1,
+    "type": "multiple_choice",
+    "prompt": {
+      "en": "In a 4-4-2 formation, what do the numbers describe?",
+      "es": "En una formación 4-4-2, ¿qué describen los números?"
+    },
+    "options": [
+      {
+        "id": "a",
+        "text": {
+          "en": "Players on each half of the pitch",
+          "es": "Jugadores en cada mitad del campo"
+        }
+      },
+      {
+        "id": "b",
+        "text": {
+          "en": "Defenders, midfielders and forwards (not counting the goalkeeper)",
+          "es": "Defensas, mediocampistas y delanteros (sin contar al portero)"
+        }
+      },
+      {
+        "id": "c",
+        "text": {
+          "en": "Minutes in each half",
+          "es": "Minutos de cada tiempo"
+        }
+      },
+      {
+        "id": "d",
+        "text": {
+          "en": "Goals scored in the last games",
+          "es": "Goles en los últimos partidos"
+        }
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": {
+      "en": "4-4-2 means four defenders, four midfielders and two forwards, plus the goalkeeper.",
+      "es": "4-4-2 significa cuatro defensas, cuatro mediocampistas y dos delanteros, más el portero."
+    },
+    "hint": {
+      "en": "Add them up: ten outfield players.",
+      "es": "Súmalos: diez jugadores de campo."
+    },
+    "media": {
+      "type": "diagram",
+      "ref": "4-4-2"
+    },
+    "tags": [
+      "rules",
+      "beginner"
+    ]
+  },
+  {
+    "id": "q_formations_002",
+    "lessonId": "formations",
+    "topic": "formations",
+    "difficulty": 1,
+    "type": "multiple_choice",
+    "prompt": {
+      "en": "How many forwards play in the front line of a 4-3-3?",
+      "es": "¿Cuántos delanteros juegan en la línea de ataque de un 4-3-3?"
+    },
+    "options": [
+      {
+        "id": "a",
+        "text": {
+          "en": "Three",
+          "es": "Tres"
+        }
+      },
+      {
+        "id": "b",
+        "text": {
+          "en": "Four",
+          "es": "Cuatro"
+        }
+      },
+      {
+        "id": "c",
+        "text": {
+          "en": "One",
+          "es": "Uno"
+        }
+      },
+      {
+        "id": "d",
+        "text": {
+          "en": "Two",
+          "es": "Dos"
+        }
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": {
+      "en": "The last number is the attackers: a 4-3-3 has a front three.",
+      "es": "El último número son los atacantes: un 4-3-3 tiene un tridente ofensivo."
+    },
+    "hint": {
+      "en": "Look at the last number.",
+      "es": "Mira el último número."
+    },
+    "media": {
+      "type": "diagram",
+      "ref": "4-3-3"
+    },
+    "tags": [
+      "rules",
+      "beginner"
+    ]
+  },
+  {
+    "id": "q_formations_003",
+    "lessonId": "formations",
+    "topic": "formations",
+    "difficulty": 2,
+    "type": "multiple_choice",
+    "prompt": {
+      "en": "Which formation uses three center-backs and wing-backs?",
+      "es": "¿Qué formación usa tres defensas centrales y carrileros?"
+    },
+    "options": [
+      {
+        "id": "a",
+        "text": {
+          "en": "4-4-2",
+          "es": "4-4-2"
+        }
+      },
+      {
+        "id": "b",
+        "text": {
+          "en": "4-3-3",
+          "es": "4-3-3"
+        }
+      },
+      {
+        "id": "c",
+        "text": {
+          "en": "4-2-3-1",
+          "es": "4-2-3-1"
+        }
+      },
+      {
+        "id": "d",
+        "text": {
+          "en": "3-5-2",
+          "es": "3-5-2"
+        }
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": {
+      "en": "In a 3-5-2 the wing-backs run the full flank, joining the midfield or the back line.",
+      "es": "En un 3-5-2 los carrileros recorren toda la banda, uniéndose al mediocampo o a la línea defensiva."
+    },
+    "hint": {
+      "en": "Only three at the back.",
+      "es": "Solo tres atrás."
+    },
+    "media": {
+      "type": "diagram",
+      "ref": "3-5-2"
+    },
+    "tags": [
+      "rules",
+      "intermediate"
+    ]
+  },
+  {
+    "id": "q_formations_004",
+    "lessonId": "formations",
+    "topic": "formations",
+    "difficulty": 2,
+    "type": "multiple_choice",
+    "prompt": {
+      "en": "Which formation uses a lone striker supported by three attacking midfielders?",
+      "es": "¿Qué formación usa un solo delantero apoyado por tres mediapuntas?"
+    },
+    "options": [
+      {
+        "id": "a",
+        "text": {
+          "en": "4-4-2",
+          "es": "4-4-2"
+        }
+      },
+      {
+        "id": "b",
+        "text": {
+          "en": "3-5-2",
+          "es": "3-5-2"
+        }
+      },
+      {
+        "id": "c",
+        "text": {
+          "en": "4-2-3-1",
+          "es": "4-2-3-1"
+        }
+      },
+      {
+        "id": "d",
+        "text": {
+          "en": "5-3-2",
+          "es": "5-3-2"
+        }
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": {
+      "en": "4-2-3-1 has two holding midfielders and a line of three behind a single striker.",
+      "es": "El 4-2-3-1 tiene dos pivotes y una línea de tres detrás de un único delantero."
+    },
+    "hint": {
+      "en": "The final \"1\" is the striker.",
+      "es": "El \"1\" final es el delantero."
+    },
+    "media": {
+      "type": "diagram",
+      "ref": "4-2-3-1"
+    },
+    "tags": [
+      "rules",
+      "intermediate"
+    ]
+  },
+  {
+    "id": "q_formations_005",
+    "lessonId": "formations",
+    "topic": "formations",
+    "difficulty": 1,
+    "type": "multiple_choice",
+    "prompt": {
+      "en": "Why do teams choose different formations?",
+      "es": "¿Por qué los equipos eligen formaciones diferentes?"
+    },
+    "options": [
+      {
+        "id": "a",
+        "text": {
+          "en": "Because the rules require a different one each match",
+          "es": "Porque las reglas exigen una distinta cada partido"
+        }
+      },
+      {
+        "id": "b",
+        "text": {
+          "en": "To fit their players' strengths and their plan for the match",
+          "es": "Para aprovechar las fortalezas de sus jugadores y su plan de juego"
+        }
+      },
+      {
+        "id": "c",
+        "text": {
+          "en": "To confuse the referee",
+          "es": "Para confundir al árbitro"
+        }
+      },
+      {
+        "id": "d",
+        "text": {
+          "en": "Because the league picks it for them",
+          "es": "Porque la liga la elige por ellos"
+        }
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": {
+      "en": "Coaches pick a shape that suits their squad and the opponent.",
+      "es": "Los entrenadores eligen un esquema que se ajuste a su plantel y al rival."
+    },
+    "hint": {
+      "en": "It is a coaching decision.",
+      "es": "Es una decisión del entrenador."
+    },
+    "media": {
+      "type": "none",
+      "ref": null
+    },
+    "tags": [
+      "rules",
+      "beginner"
+    ]
+  },
+  {
+    "id": "q_formations_006",
+    "lessonId": "formations",
+    "topic": "formations",
+    "difficulty": 2,
+    "type": "multiple_choice",
+    "prompt": {
+      "en": "Which of these is NOT a valid formation for 11 players including a goalkeeper?",
+      "es": "¿Cuál de estas NO es una formación válida para 11 jugadores con portero?"
+    },
+    "options": [
+      {
+        "id": "a",
+        "text": {
+          "en": "4-4-3",
+          "es": "4-4-3"
+        }
+      },
+      {
+        "id": "b",
+        "text": {
+          "en": "4-4-2",
+          "es": "4-4-2"
+        }
+      },
+      {
+        "id": "c",
+        "text": {
+          "en": "4-3-3",
+          "es": "4-3-3"
+        }
+      },
+      {
+        "id": "d",
+        "text": {
+          "en": "3-5-2",
+          "es": "3-5-2"
+        }
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": {
+      "en": "4+4+3 is 11 outfield players; with the goalkeeper that would be 12.",
+      "es": "4+4+3 son 11 jugadores de campo; con el portero serían 12."
+    },
+    "hint": {
+      "en": "The three numbers must add up to 10.",
+      "es": "Los tres números deben sumar 10."
+    },
+    "media": {
+      "type": "none",
+      "ref": null
+    },
+    "tags": [
+      "rules",
+      "intermediate"
+    ]
+  },
+  {
+    "id": "q_formations_007",
+    "lessonId": "formations",
+    "topic": "formations",
+    "difficulty": 2,
+    "type": "multiple_choice",
+    "prompt": {
+      "en": "What is a \"back three\"?",
+      "es": "¿Qué es una \"línea de tres\" en defensa?"
+    },
+    "options": [
+      {
+        "id": "a",
+        "text": {
+          "en": "Three goalkeepers on the bench",
+          "es": "Tres porteros en el banco"
+        }
+      },
+      {
+        "id": "b",
+        "text": {
+          "en": "Three substitutes",
+          "es": "Tres cambios"
+        }
+      },
+      {
+        "id": "c",
+        "text": {
+          "en": "A penalty taken from three steps",
+          "es": "Un penal cobrado desde tres pasos"
+        }
+      },
+      {
+        "id": "d",
+        "text": {
+          "en": "A defense with three center-backs",
+          "es": "Una defensa con tres defensas centrales"
+        }
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": {
+      "en": "A back three uses three center-backs, often with wing-backs on either side.",
+      "es": "Una línea de tres usa tres defensas centrales, a menudo con carrileros a los lados."
+    },
+    "hint": {
+      "en": "Think of the last line of defense.",
+      "es": "Piensa en la última línea defensiva."
+    },
+    "media": {
+      "type": "none",
+      "ref": null
+    },
+    "tags": [
+      "rules",
+      "intermediate"
+    ]
+  },
+  {
+    "id": "q_formations_008",
+    "lessonId": "formations",
+    "topic": "formations",
+    "difficulty": 3,
+    "type": "multiple_choice",
+    "prompt": {
+      "en": "Why is the wing-back role in a 3-5-2 so demanding?",
+      "es": "¿Por qué es tan exigente el rol de carrilero en un 3-5-2?"
+    },
+    "options": [
+      {
+        "id": "a",
+        "text": {
+          "en": "They never leave their own half",
+          "es": "Nunca salen de su propio campo"
+        }
+      },
+      {
+        "id": "b",
+        "text": {
+          "en": "They only play in the penalty area",
+          "es": "Solo juegan dentro del área"
+        }
+      },
+      {
+        "id": "c",
+        "text": {
+          "en": "They must cover the whole flank, defending and attacking",
+          "es": "Deben cubrir toda la banda, defendiendo y atacando"
+        }
+      },
+      {
+        "id": "d",
+        "text": {
+          "en": "They take every free kick",
+          "es": "Cobran todos los tiros libres"
+        }
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": {
+      "en": "With no full-backs, wing-backs provide all the width both ways.",
+      "es": "Sin laterales, los carrileros aportan toda la amplitud en defensa y ataque."
+    },
+    "hint": {
+      "en": "Lots of running up and down the side.",
+      "es": "Mucho correr de arriba abajo por la banda."
+    },
+    "media": {
+      "type": "diagram",
+      "ref": "3-5-2"
+    },
+    "tags": [
+      "rules",
+      "advanced"
+    ]
+  },
+  {
+    "id": "q_clean_sheet_001",
+    "lessonId": "terms-slang",
+    "topic": "clean-sheet",
+    "difficulty": 1,
+    "type": "multiple_choice",
+    "prompt": {
+      "en": "What is a \"clean sheet\"?",
+      "es": "¿Qué es una \"portería a cero\"?"
+    },
+    "options": [
+      {
+        "id": "a",
+        "text": {
+          "en": "A perfect pass",
+          "es": "Un pase perfecto"
+        }
+      },
+      {
+        "id": "b",
+        "text": {
+          "en": "A match in which a team does not concede a goal",
+          "es": "Un partido en el que un equipo no recibe goles"
+        }
+      },
+      {
+        "id": "c",
+        "text": {
+          "en": "A new jersey",
+          "es": "Una camiseta nueva"
+        }
+      },
+      {
+        "id": "d",
+        "text": {
+          "en": "A match with no fouls",
+          "es": "Un partido sin faltas"
+        }
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": {
+      "en": "Keeping a clean sheet means the opponent did not score.",
+      "es": "Mantener la portería a cero significa que el rival no anotó."
+    },
+    "hint": {
+      "en": "It is about goals against.",
+      "es": "Tiene que ver con los goles en contra."
+    },
+    "media": {
+      "type": "none",
+      "ref": null
+    },
+    "tags": [
+      "rules",
+      "beginner"
+    ]
+  },
+  {
+    "id": "q_hat_trick_001",
+    "lessonId": "terms-slang",
+    "topic": "hat-trick",
+    "difficulty": 1,
+    "type": "multiple_choice",
+    "prompt": {
+      "en": "What is a \"hat trick\"?",
+      "es": "¿Qué es un \"hat trick\" o triplete?"
+    },
+    "options": [
+      {
+        "id": "a",
+        "text": {
+          "en": "Three goals by one player in a match",
+          "es": "Tres goles de un jugador en un partido"
+        }
+      },
+      {
+        "id": "b",
+        "text": {
+          "en": "Scoring with your head",
+          "es": "Marcar de cabeza"
+        }
+      },
+      {
+        "id": "c",
+        "text": {
+          "en": "Three wins in a row",
+          "es": "Tres victorias seguidas"
+        }
+      },
+      {
+        "id": "d",
+        "text": {
+          "en": "Three yellow cards",
+          "es": "Tres tarjetas amarillas"
+        }
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": {
+      "en": "A hat trick is three goals scored by the same player in one game.",
+      "es": "Un triplete son tres goles del mismo jugador en un partido."
+    },
+    "hint": {
+      "en": "One player, one match.",
+      "es": "Un jugador, un partido."
+    },
+    "media": {
+      "type": "none",
+      "ref": null
+    },
+    "tags": [
+      "rules",
+      "beginner"
+    ]
+  },
+  {
+    "id": "q_nutmeg_001",
+    "lessonId": "terms-slang",
+    "topic": "nutmeg",
+    "difficulty": 1,
+    "type": "multiple_choice",
+    "prompt": {
+      "en": "What is a \"nutmeg\"?",
+      "es": "¿Qué es un \"túnel\" (nutmeg)?"
+    },
+    "options": [
+      {
+        "id": "a",
+        "text": {
+          "en": "A weak shot",
+          "es": "Un tiro débil"
+        }
+      },
+      {
+        "id": "b",
+        "text": {
+          "en": "A goalkeeper save",
+          "es": "Una atajada del portero"
+        }
+      },
+      {
+        "id": "c",
+        "text": {
+          "en": "A tackle from behind",
+          "es": "Una entrada por detrás"
+        }
+      },
+      {
+        "id": "d",
+        "text": {
+          "en": "Passing the ball through an opponent's legs",
+          "es": "Pasar el balón por entre las piernas de un rival"
+        }
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": {
+      "en": "A nutmeg is a skill move where the ball goes between an opponent's legs.",
+      "es": "Un túnel es un regate en el que el balón pasa entre las piernas del rival."
+    },
+    "hint": {
+      "en": "A humbling dribble.",
+      "es": "Un regate humillante."
+    },
+    "media": {
+      "type": "none",
+      "ref": null
+    },
+    "tags": [
+      "rules",
+      "beginner"
+    ]
+  },
+  {
+    "id": "q_derby_001",
+    "lessonId": "terms-slang",
+    "topic": "derby",
+    "difficulty": 1,
+    "type": "multiple_choice",
+    "prompt": {
+      "en": "What is a \"derby\"?",
+      "es": "¿Qué es un \"derbi\"?"
+    },
+    "options": [
+      {
+        "id": "a",
+        "text": {
+          "en": "A match for the league title",
+          "es": "Un partido por el título de liga"
+        }
+      },
+      {
+        "id": "b",
+        "text": {
+          "en": "A match played in the rain",
+          "es": "Un partido jugado bajo la lluvia"
+        }
+      },
+      {
+        "id": "c",
+        "text": {
+          "en": "A match between local rivals",
+          "es": "Un partido entre rivales locales"
+        }
+      },
+      {
+        "id": "d",
+        "text": {
+          "en": "A friendly match",
+          "es": "Un partido amistoso"
+        }
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": {
+      "en": "Derbies are emotional matches between teams from the same city or region.",
+      "es": "Los derbis son partidos cargados de emoción entre equipos de la misma ciudad o región."
+    },
+    "hint": {
+      "en": "It is about location and rivalry.",
+      "es": "Se trata de cercanía y rivalidad."
+    },
+    "media": {
+      "type": "none",
+      "ref": null
+    },
+    "tags": [
+      "rules",
+      "beginner"
+    ]
+  },
+  {
+    "id": "q_relegation_001",
+    "lessonId": "terms-slang",
+    "topic": "relegation",
+    "difficulty": 2,
+    "type": "multiple_choice",
+    "prompt": {
+      "en": "What is \"relegation\"?",
+      "es": "¿Qué es el \"descenso\"?"
+    },
+    "options": [
+      {
+        "id": "a",
+        "text": {
+          "en": "Being moved to the bench",
+          "es": "Ser enviado al banco"
+        }
+      },
+      {
+        "id": "b",
+        "text": {
+          "en": "Dropping to a lower division after finishing near the bottom",
+          "es": "Bajar a una división inferior tras terminar entre los últimos"
+        }
+      },
+      {
+        "id": "c",
+        "text": {
+          "en": "Losing a cup final",
+          "es": "Perder una final de copa"
+        }
+      },
+      {
+        "id": "d",
+        "text": {
+          "en": "A transfer to another club",
+          "es": "Un traspaso a otro club"
+        }
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": {
+      "en": "Teams at the bottom of the table are relegated and replaced by teams promoted from below.",
+      "es": "Los equipos del fondo de la tabla descienden y los reemplazan equipos que ascienden."
+    },
+    "hint": {
+      "en": "The opposite of promotion.",
+      "es": "Lo contrario del ascenso."
+    },
+    "media": {
+      "type": "none",
+      "ref": null
+    },
+    "tags": [
+      "rules",
+      "intermediate"
+    ]
+  },
+  {
+    "id": "q_set_piece_001",
+    "lessonId": "terms-slang",
+    "topic": "set-piece",
+    "difficulty": 2,
+    "type": "multiple_choice",
+    "prompt": {
+      "en": "What is a \"set piece\"?",
+      "es": "¿Qué es una \"jugada a balón parado\"?"
+    },
+    "options": [
+      {
+        "id": "a",
+        "text": {
+          "en": "A planned restart such as a corner or free kick",
+          "es": "Un saque planeado, como un tiro de esquina o un tiro libre"
+        }
+      },
+      {
+        "id": "b",
+        "text": {
+          "en": "A fast counterattack",
+          "es": "Un contraataque rápido"
+        }
+      },
+      {
+        "id": "c",
+        "text": {
+          "en": "A player's fixed position",
+          "es": "La posición fija de un jugador"
+        }
+      },
+      {
+        "id": "d",
+        "text": {
+          "en": "A goalkeeper drill",
+          "es": "Un ejercicio de porteros"
+        }
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": {
+      "en": "Set pieces restart play with the ball still, giving teams a chance to use rehearsed routines.",
+      "es": "Las jugadas a balón parado reanudan el juego con el balón detenido y permiten usar jugadas ensayadas."
+    },
+    "hint": {
+      "en": "The ball is stationary.",
+      "es": "El balón está detenido."
+    },
+    "media": {
+      "type": "none",
+      "ref": null
+    },
+    "tags": [
+      "rules",
+      "intermediate"
+    ]
+  },
+  {
+    "id": "q_own_goal_001",
+    "lessonId": "terms-slang",
+    "topic": "own-goal",
+    "difficulty": 1,
+    "type": "multiple_choice",
+    "prompt": {
+      "en": "What is an \"own goal\"?",
+      "es": "¿Qué es un \"autogol\"?"
+    },
+    "options": [
+      {
+        "id": "a",
+        "text": {
+          "en": "A goal scored from the halfway line",
+          "es": "Un gol desde la línea media"
+        }
+      },
+      {
+        "id": "b",
+        "text": {
+          "en": "A goal scored by a goalkeeper",
+          "es": "Un gol marcado por un portero"
+        }
+      },
+      {
+        "id": "c",
+        "text": {
+          "en": "A goal that is disallowed",
+          "es": "Un gol anulado"
+        }
+      },
+      {
+        "id": "d",
+        "text": {
+          "en": "A player accidentally putting the ball into their own net",
+          "es": "Un jugador que mete el balón en su propia portería sin querer"
+        }
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": {
+      "en": "An own goal counts for the opposing team.",
+      "es": "Un autogol cuenta a favor del equipo rival."
+    },
+    "hint": {
+      "en": "The wrong net.",
+      "es": "La portería equivocada."
+    },
+    "media": {
+      "type": "none",
+      "ref": null
+    },
+    "tags": [
+      "rules",
+      "beginner"
+    ]
+  },
+  {
+    "id": "q_stoppage_time_001",
+    "lessonId": "terms-slang",
+    "topic": "stoppage-time",
+    "difficulty": 2,
+    "type": "multiple_choice",
+    "prompt": {
+      "en": "What is \"stoppage time\" (added time)?",
+      "es": "¿Qué es el \"tiempo añadido\" (descuento)?"
+    },
+    "options": [
+      {
+        "id": "a",
+        "text": {
+          "en": "A break for a drink",
+          "es": "Una pausa para tomar agua"
+        }
+      },
+      {
+        "id": "b",
+        "text": {
+          "en": "The time before kickoff",
+          "es": "El tiempo antes del inicio"
+        }
+      },
+      {
+        "id": "c",
+        "text": {
+          "en": "Extra minutes the referee adds at the end of each half",
+          "es": "Minutos extra que el árbitro añade al final de cada tiempo"
+        }
+      },
+      {
+        "id": "d",
+        "text": {
+          "en": "A penalty shootout",
+          "es": "Una tanda de penales"
+        }
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": {
+      "en": "The referee adds time to make up for delays like injuries and substitutions.",
+      "es": "El árbitro añade tiempo para compensar demoras como lesiones y cambios."
+    },
+    "hint": {
+      "en": "The fourth official shows the number.",
+      "es": "El cuarto árbitro muestra el número."
+    },
+    "media": {
+      "type": "none",
+      "ref": null
+    },
+    "tags": [
+      "rules",
+      "intermediate"
+    ]
+  },
+  {
+    "id": "q_watching_001",
+    "lessonId": "how-to-watch",
+    "topic": "watching",
+    "difficulty": 1,
+    "type": "multiple_choice",
+    "prompt": {
+      "en": "What is a good thing to watch besides the ball?",
+      "es": "¿Qué conviene observar además del balón?"
+    },
+    "options": [
+      {
+        "id": "a",
+        "text": {
+          "en": "Only the referee",
+          "es": "Solo al árbitro"
+        }
+      },
+      {
+        "id": "b",
+        "text": {
+          "en": "How players without the ball move into space",
+          "es": "Cómo se mueven los jugadores sin balón para ocupar espacios"
+        }
+      },
+      {
+        "id": "c",
+        "text": {
+          "en": "The corner flags",
+          "es": "Las banderas de córner"
+        }
+      },
+      {
+        "id": "d",
+        "text": {
+          "en": "The scoreboard only",
+          "es": "Solo el marcador"
+        }
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": {
+      "en": "Movement without the ball shows the plan behind a team's attacks.",
+      "es": "El movimiento sin balón muestra el plan detrás de los ataques."
+    },
+    "hint": {
+      "en": "Most of the game happens away from the ball.",
+      "es": "La mayor parte del juego ocurre lejos del balón."
+    },
+    "media": {
+      "type": "none",
+      "ref": null
+    },
+    "tags": [
+      "rules",
+      "beginner"
+    ]
+  },
+  {
+    "id": "q_var_001",
+    "lessonId": "how-to-watch",
+    "topic": "var",
+    "difficulty": 1,
+    "type": "multiple_choice",
+    "prompt": {
+      "en": "What does VAR stand for?",
+      "es": "¿Qué significan las siglas VAR?"
+    },
+    "options": [
+      {
+        "id": "a",
+        "text": {
+          "en": "Video Assistant Referee",
+          "es": "Árbitro Asistente de Video"
+        }
+      },
+      {
+        "id": "b",
+        "text": {
+          "en": "Very Advanced Rules",
+          "es": "Reglas Muy Avanzadas"
+        }
+      },
+      {
+        "id": "c",
+        "text": {
+          "en": "Verified Attack Review",
+          "es": "Revisión de Ataque Verificada"
+        }
+      },
+      {
+        "id": "d",
+        "text": {
+          "en": "Video Attack Replay",
+          "es": "Repetición de Ataque en Video"
+        }
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": {
+      "en": "VAR is a team of officials who review video to help the referee on key decisions.",
+      "es": "El VAR es un equipo de oficiales que revisa video para ayudar al árbitro en decisiones clave."
+    },
+    "hint": {
+      "en": "It uses video.",
+      "es": "Usa video."
+    },
+    "media": {
+      "type": "none",
+      "ref": null
+    },
+    "tags": [
+      "rules",
+      "beginner"
+    ]
+  },
+  {
+    "id": "q_var_002",
+    "lessonId": "how-to-watch",
+    "topic": "var",
+    "difficulty": 2,
+    "type": "multiple_choice",
+    "prompt": {
+      "en": "Which decisions can VAR review?",
+      "es": "¿Qué decisiones puede revisar el VAR?"
+    },
+    "options": [
+      {
+        "id": "a",
+        "text": {
+          "en": "Throw-ins and goal kicks",
+          "es": "Saques de banda y saques de meta"
+        }
+      },
+      {
+        "id": "b",
+        "text": {
+          "en": "Every foul in the match",
+          "es": "Todas las faltas del partido"
+        }
+      },
+      {
+        "id": "c",
+        "text": {
+          "en": "Substitutions",
+          "es": "Los cambios"
+        }
+      },
+      {
+        "id": "d",
+        "text": {
+          "en": "Goals, penalties, direct red cards and mistaken identity",
+          "es": "Goles, penales, tarjetas rojas directas y confusión de identidad"
+        }
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": {
+      "en": "VAR only steps in for major, clear errors in those four situations.",
+      "es": "El VAR solo interviene ante errores claros en esas cuatro situaciones."
+    },
+    "hint": {
+      "en": "Only the biggest moments.",
+      "es": "Solo los momentos más importantes."
+    },
+    "media": {
+      "type": "none",
+      "ref": null
+    },
+    "tags": [
+      "rules",
+      "intermediate"
+    ]
+  },
+  {
+    "id": "q_advantage_001",
+    "lessonId": "how-to-watch",
+    "topic": "advantage",
+    "difficulty": 2,
+    "type": "multiple_choice",
+    "prompt": {
+      "en": "What is the \"advantage\" rule?",
+      "es": "¿Qué es la \"ley de la ventaja\"?"
+    },
+    "options": [
+      {
+        "id": "a",
+        "text": {
+          "en": "The home team always wins ties",
+          "es": "El equipo local siempre gana los empates"
+        }
+      },
+      {
+        "id": "b",
+        "text": {
+          "en": "A team is given extra time",
+          "es": "Se da tiempo extra a un equipo"
+        }
+      },
+      {
+        "id": "c",
+        "text": {
+          "en": "The referee lets play continue if the fouled team benefits",
+          "es": "El árbitro deja seguir el juego si el equipo que recibió la falta se beneficia"
+        }
+      },
+      {
+        "id": "d",
+        "text": {
+          "en": "A player may use hands",
+          "es": "Un jugador puede usar las manos"
+        }
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": {
+      "en": "If stopping play would hurt the fouled team, the referee waves \"play on\".",
+      "es": "Si detener el juego perjudica al equipo que recibió la falta, el árbitro indica \"siga\"."
+    },
+    "hint": {
+      "en": "The referee does not whistle right away.",
+      "es": "El árbitro no pita de inmediato."
+    },
+    "media": {
+      "type": "none",
+      "ref": null
+    },
+    "tags": [
+      "rules",
+      "intermediate"
+    ]
+  },
+  {
+    "id": "q_points_001",
+    "lessonId": "how-to-watch",
+    "topic": "points",
+    "difficulty": 1,
+    "type": "multiple_choice",
+    "prompt": {
+      "en": "In most leagues, how many points does a win earn?",
+      "es": "En la mayoría de las ligas, ¿cuántos puntos da una victoria?"
+    },
+    "options": [
+      {
+        "id": "a",
+        "text": {
+          "en": "One",
+          "es": "Uno"
+        }
+      },
+      {
+        "id": "b",
+        "text": {
+          "en": "Three",
+          "es": "Tres"
+        }
+      },
+      {
+        "id": "c",
+        "text": {
+          "en": "Two",
+          "es": "Dos"
+        }
+      },
+      {
+        "id": "d",
+        "text": {
+          "en": "Five",
+          "es": "Cinco"
+        }
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": {
+      "en": "A win is worth 3 points, a draw 1 and a loss 0.",
+      "es": "Una victoria vale 3 puntos, un empate 1 y una derrota 0."
+    },
+    "hint": {
+      "en": "A draw is worth one.",
+      "es": "Un empate vale uno."
+    },
+    "media": {
+      "type": "none",
+      "ref": null
+    },
+    "tags": [
+      "rules",
+      "beginner"
+    ]
+  },
+  {
+    "id": "q_shootout_001",
+    "lessonId": "how-to-watch",
+    "topic": "shootout",
+    "difficulty": 2,
+    "type": "multiple_choice",
+    "prompt": {
+      "en": "When is a penalty shootout used?",
+      "es": "¿Cuándo se usa una tanda de penales?"
+    },
+    "options": [
+      {
+        "id": "a",
+        "text": {
+          "en": "To decide a knockout match still tied after extra time",
+          "es": "Para decidir un partido de eliminación empatado tras la prórroga"
+        }
+      },
+      {
+        "id": "b",
+        "text": {
+          "en": "Every time a match ends 0-0",
+          "es": "Cada vez que un partido termina 0-0"
+        }
+      },
+      {
+        "id": "c",
+        "text": {
+          "en": "Before the match starts",
+          "es": "Antes de que empiece el partido"
+        }
+      },
+      {
+        "id": "d",
+        "text": {
+          "en": "At halftime",
+          "es": "En el descanso"
+        }
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": {
+      "en": "Knockout games need a winner, so ties go to extra time and then penalties.",
+      "es": "Los partidos de eliminación necesitan ganador: tras el empate hay prórroga y luego penales."
+    },
+    "hint": {
+      "en": "It only applies when someone must advance.",
+      "es": "Solo se usa cuando alguien debe avanzar."
+    },
+    "media": {
+      "type": "none",
+      "ref": null
+    },
+    "tags": [
+      "rules",
+      "intermediate"
+    ]
+  },
+  {
+    "id": "q_possession_001",
+    "lessonId": "how-to-watch",
+    "topic": "possession",
+    "difficulty": 2,
+    "type": "multiple_choice",
+    "prompt": {
+      "en": "What does \"possession percentage\" tell you?",
+      "es": "¿Qué indica el \"porcentaje de posesión\"?"
+    },
+    "options": [
+      {
+        "id": "a",
+        "text": {
+          "en": "How many goals each team will score",
+          "es": "Cuántos goles hará cada equipo"
+        }
+      },
+      {
+        "id": "b",
+        "text": {
+          "en": "How many fouls were committed",
+          "es": "Cuántas faltas se cometieron"
+        }
+      },
+      {
+        "id": "c",
+        "text": {
+          "en": "Which team has better fans",
+          "es": "Qué equipo tiene mejores aficionados"
+        }
+      },
+      {
+        "id": "d",
+        "text": {
+          "en": "How much of the time each team has the ball",
+          "es": "Cuánto tiempo tiene el balón cada equipo"
+        }
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": {
+      "en": "More possession does not guarantee a win, but it shows who controls the ball.",
+      "es": "Tener más posesión no garantiza ganar, pero muestra quién controla el balón."
+    },
+    "hint": {
+      "en": "It is about time on the ball.",
+      "es": "Se trata del tiempo con el balón."
+    },
+    "media": {
+      "type": "none",
+      "ref": null
+    },
+    "tags": [
+      "rules",
+      "intermediate"
+    ]
+  },
+  {
+    "id": "q_pressing_001",
+    "lessonId": "how-to-watch",
+    "topic": "pressing",
+    "difficulty": 2,
+    "type": "multiple_choice",
+    "prompt": {
+      "en": "What is \"pressing\"?",
+      "es": "¿Qué es la \"presión\" (pressing)?"
+    },
+    "options": [
+      {
+        "id": "a",
+        "text": {
+          "en": "Waiting in your own half",
+          "es": "Esperar en tu propio campo"
+        }
+      },
+      {
+        "id": "b",
+        "text": {
+          "en": "Kicking the ball out of play",
+          "es": "Sacar el balón fuera de la cancha"
+        }
+      },
+      {
+        "id": "c",
+        "text": {
+          "en": "Chasing the opponent to win the ball back quickly",
+          "es": "Perseguir al rival para recuperar el balón rápido"
+        }
+      },
+      {
+        "id": "d",
+        "text": {
+          "en": "Substituting a player",
+          "es": "Hacer un cambio"
+        }
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": {
+      "en": "Pressing means squeezing the opponent high up the pitch to force mistakes.",
+      "es": "La presión consiste en asfixiar al rival en campo contrario para forzar errores."
+    },
+    "hint": {
+      "en": "The opposite of sitting back.",
+      "es": "Lo contrario de esperar atrás."
+    },
+    "media": {
+      "type": "none",
+      "ref": null
+    },
+    "tags": [
+      "rules",
+      "intermediate"
+    ]
+  },
+  {
+    "id": "q_leagues_001",
+    "lessonId": "leagues-culture",
+    "topic": "leagues",
+    "difficulty": 2,
+    "type": "multiple_choice",
+    "prompt": {
+      "en": "Which league is famous for big standing terraces and its \"50+1\" fan-ownership rule?",
+      "es": "¿Qué liga es famosa por sus grandes tribunas de pie y su regla de propiedad de aficionados \"50+1\"?"
+    },
+    "options": [
+      {
+        "id": "a",
+        "text": {
+          "en": "Premier League",
+          "es": "Premier League"
+        }
+      },
+      {
+        "id": "b",
+        "text": {
+          "en": "Bundesliga",
+          "es": "Bundesliga"
+        }
+      },
+      {
+        "id": "c",
+        "text": {
+          "en": "La Liga",
+          "es": "La Liga"
+        }
+      },
+      {
+        "id": "d",
+        "text": {
+          "en": "MLS",
+          "es": "MLS"
+        }
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": {
+      "en": "German clubs keep fans as majority voters, and their terraces are known for atmosphere.",
+      "es": "Los clubes alemanes mantienen a los aficionados como mayoría de votos y sus tribunas son famosas por el ambiente."
+    },
+    "hint": {
+      "en": "Think Germany.",
+      "es": "Piensa en Alemania."
+    },
+    "media": {
+      "type": "none",
+      "ref": null
+    },
+    "tags": [
+      "culture",
+      "intermediate"
+    ]
+  },
+  {
+    "id": "q_leagues_002",
+    "lessonId": "leagues-culture",
+    "topic": "leagues",
+    "difficulty": 1,
+    "type": "multiple_choice",
+    "prompt": {
+      "en": "Which country's top league is called \"La Liga\"?",
+      "es": "¿De qué país es la liga de primera división llamada \"La Liga\"?"
+    },
+    "options": [
+      {
+        "id": "a",
+        "text": {
+          "en": "Spain",
+          "es": "España"
+        }
+      },
+      {
+        "id": "b",
+        "text": {
+          "en": "Italy",
+          "es": "Italia"
+        }
+      },
+      {
+        "id": "c",
+        "text": {
+          "en": "England",
+          "es": "Inglaterra"
+        }
+      },
+      {
+        "id": "d",
+        "text": {
+          "en": "Germany",
+          "es": "Alemania"
+        }
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": {
+      "en": "La Liga is Spain's top division, known for technical, possession-based play.",
+      "es": "La Liga es la primera división de España, conocida por su juego técnico y de posesión."
+    },
+    "hint": {
+      "en": "The name is Spanish.",
+      "es": "El nombre es en español."
+    },
+    "media": {
+      "type": "none",
+      "ref": null
+    },
+    "tags": [
+      "culture",
+      "beginner"
+    ]
+  },
+  {
+    "id": "q_traditions_001",
+    "lessonId": "leagues-culture",
+    "topic": "traditions",
+    "difficulty": 2,
+    "type": "multiple_choice",
+    "prompt": {
+      "en": "Which song do fans sing before kickoff at Anfield, Liverpool?",
+      "es": "¿Qué canción cantan los aficionados antes del inicio en Anfield, Liverpool?"
+    },
+    "options": [
+      {
+        "id": "a",
+        "text": {
+          "en": "Sweet Caroline",
+          "es": "Sweet Caroline"
+        }
+      },
+      {
+        "id": "b",
+        "text": {
+          "en": "We Are the Champions",
+          "es": "We Are the Champions"
+        }
+      },
+      {
+        "id": "c",
+        "text": {
+          "en": "Yesterday",
+          "es": "Yesterday"
+        }
+      },
+      {
+        "id": "d",
+        "text": {
+          "en": "You'll Never Walk Alone",
+          "es": "You'll Never Walk Alone"
+        }
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": {
+      "en": "The whole stadium sings it together, a signature tradition of Liverpool.",
+      "es": "Todo el estadio la canta a coro, una tradición emblemática del Liverpool."
+    },
+    "hint": {
+      "en": "It is about never being alone.",
+      "es": "Habla de no estar nunca solo."
+    },
+    "media": {
+      "type": "none",
+      "ref": null
+    },
+    "tags": [
+      "culture",
+      "intermediate"
+    ]
+  },
+  {
+    "id": "q_leagues_003",
+    "lessonId": "leagues-culture",
+    "topic": "leagues",
+    "difficulty": 1,
+    "type": "multiple_choice",
+    "prompt": {
+      "en": "Which league is the top division in the United States and Canada?",
+      "es": "¿Qué liga es la primera división de Estados Unidos y Canadá?"
+    },
+    "options": [
+      {
+        "id": "a",
+        "text": {
+          "en": "Serie A",
+          "es": "Serie A"
+        }
+      },
+      {
+        "id": "b",
+        "text": {
+          "en": "Bundesliga",
+          "es": "Bundesliga"
+        }
+      },
+      {
+        "id": "c",
+        "text": {
+          "en": "MLS",
+          "es": "MLS"
+        }
+      },
+      {
+        "id": "d",
+        "text": {
+          "en": "Ligue 1",
+          "es": "Ligue 1"
+        }
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": {
+      "en": "MLS stands for Major League Soccer.",
+      "es": "MLS significa Major League Soccer."
+    },
+    "hint": {
+      "en": "The name says \"Major League\".",
+      "es": "El nombre dice \"Major League\"."
+    },
+    "media": {
+      "type": "none",
+      "ref": null
+    },
+    "tags": [
+      "culture",
+      "beginner"
+    ]
+  },
+  {
+    "id": "q_leagues_004",
+    "lessonId": "leagues-culture",
+    "topic": "leagues",
+    "difficulty": 1,
+    "type": "multiple_choice",
+    "prompt": {
+      "en": "Serie A, known for tactical, defensive discipline, is the top league of which country?",
+      "es": "La Serie A, conocida por su disciplina táctica y defensiva, es la primera división de ¿qué país?"
+    },
+    "options": [
+      {
+        "id": "a",
+        "text": {
+          "en": "Spain",
+          "es": "España"
+        }
+      },
+      {
+        "id": "b",
+        "text": {
+          "en": "Italy",
+          "es": "Italia"
+        }
+      },
+      {
+        "id": "c",
+        "text": {
+          "en": "France",
+          "es": "Francia"
+        }
+      },
+      {
+        "id": "d",
+        "text": {
+          "en": "Portugal",
+          "es": "Portugal"
+        }
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": {
+      "en": "Serie A is Italy's top league, long famous for tight defending.",
+      "es": "La Serie A es la máxima liga de Italia, famosa desde hace tiempo por su defensa sólida."
+    },
+    "hint": {
+      "en": "The name is Italian.",
+      "es": "El nombre es italiano."
+    },
+    "media": {
+      "type": "none",
+      "ref": null
+    },
+    "tags": [
+      "culture",
+      "beginner"
+    ]
+  },
+  {
+    "id": "q_chants_001",
+    "lessonId": "leagues-culture",
+    "topic": "chants",
+    "difficulty": 2,
+    "type": "multiple_choice",
+    "prompt": {
+      "en": "Why do fan chants often not translate word-for-word?",
+      "es": "¿Por qué los cánticos de los aficionados a menudo no se traducen palabra por palabra?"
+    },
+    "options": [
+      {
+        "id": "a",
+        "text": {
+          "en": "They rely on local slang, history and in-jokes",
+          "es": "Dependen de jerga local, historia y bromas internas"
+        }
+      },
+      {
+        "id": "b",
+        "text": {
+          "en": "They are always in a secret code",
+          "es": "Siempre están en un código secreto"
+        }
+      },
+      {
+        "id": "c",
+        "text": {
+          "en": "They are banned by the league",
+          "es": "La liga los prohíbe"
+        }
+      },
+      {
+        "id": "d",
+        "text": {
+          "en": "They have no words",
+          "es": "No tienen letra"
+        }
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": {
+      "en": "Meaning lives in local context, so a literal translation misses what fans feel.",
+      "es": "El significado está en el contexto local, así que una traducción literal pierde lo que sienten los aficionados."
+    },
+    "hint": {
+      "en": "Context matters more than vocabulary.",
+      "es": "El contexto importa más que el vocabulario."
+    },
+    "media": {
+      "type": "none",
+      "ref": null
+    },
+    "tags": [
+      "culture",
+      "intermediate"
+    ]
+  }
+]
