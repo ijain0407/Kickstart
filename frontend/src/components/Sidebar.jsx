@@ -2,10 +2,13 @@ import Icon from './Icon.jsx'
 import { NAV_ITEMS } from './navItems.js'
 import { useI18n } from '../i18n/I18nContext.jsx'
 import { Link, useRouter } from '../router.jsx'
+import { useChat } from '../chatbot/ChatContext.jsx'
+import { STRINGS } from '../chatbot/config.js'
 
-/** Desktop-only left rail carrying the same five destinations. */
+/** Desktop-only left rail: the five destinations, plus Leo the chat assistant. */
 export default function Sidebar() {
-  const { t } = useI18n()
+  const { t, tr } = useI18n()
+  const { open, setOpen } = useChat()
   const { path } = useRouter()
 
   return (
@@ -25,6 +28,15 @@ export default function Sidebar() {
             </Link>
           )
         })}
+        <button
+          type="button"
+          className={`sidebar__item sidebar__leo ${open ? 'is-active' : ''}`.trim()}
+          aria-pressed={open}
+          onClick={() => setOpen(!open)}
+        >
+          <Icon name="forum" fill={open} />
+          <span>{tr(STRINGS.name)}</span>
+        </button>
       </nav>
     </aside>
   )

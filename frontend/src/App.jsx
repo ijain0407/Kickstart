@@ -4,6 +4,7 @@ import Sidebar from './components/Sidebar.jsx'
 import ProgressRail from './components/ProgressRail.jsx'
 import CelebrationDrawer from './components/CelebrationDrawer.jsx'
 import ChatWidget from './chatbot/ChatWidget.jsx'
+import { ChatProvider } from './chatbot/ChatContext.jsx'
 
 import Learn from './pages/Learn.jsx'
 import LearnPath from './pages/LearnPath.jsx'
@@ -40,6 +41,7 @@ export default function App() {
   const Page = ROUTES[path] ?? Learn
 
   return (
+    <ChatProvider>
     <div className="app-shell">
       <AppBar />
 
@@ -56,5 +58,6 @@ export default function App() {
       <CelebrationDrawer />
       <ChatWidget />
     </div>
+    </ChatProvider>
   )
 }

@@ -77,7 +77,7 @@
   flex: 1;
 }
 
-.chatbot-panel__close {
+.chatbot-panel__action {
   background: none;
   border: none;
   color: #fff;
@@ -87,7 +87,8 @@
   border-radius: var(--r-btn);
 }
 
-.chatbot-panel__close:hover { background: rgba(255, 255, 255, 0.15); }
+.chatbot-panel__action:hover:not(:disabled) { background: rgba(255, 255, 255, 0.15); }
+.chatbot-panel__action:disabled { opacity: 0.4; cursor: default; }
 
 .chatbot-panel__body {
   flex: 1;
@@ -105,7 +106,56 @@
   font-size: 14px;
   line-height: 1.4;
   white-space: pre-wrap;
+  overflow-wrap: anywhere;
 }
+
+.chatbot-msg--bot { white-space: normal; }
+
+.chatbot-msg--error { border: 1px solid var(--border); }
+
+.chatbot-md > * { margin: 0; }
+.chatbot-md > * + * { margin-top: var(--s-2); }
+.chatbot-md ul,
+.chatbot-md ol { padding-left: 1.25em; }
+.chatbot-md li + li { margin-top: 2px; }
+
+.chatbot-link {
+  color: var(--pitch-green);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.chatbot-link--app {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 0 var(--s-2);
+  border-radius: var(--r-pill);
+  border: 1px solid var(--pitch-green);
+  text-decoration: none;
+  background: var(--card);
+}
+
+.chatbot-link--app:hover { background: var(--surface-lavender); }
+.chatbot-link--app .msym { font-size: 14px; }
+
+.chatbot-nav {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-1);
+  margin-top: var(--s-2);
+  padding: 2px var(--s-2);
+  border-radius: var(--r-pill);
+  border: 1px solid var(--pitch-green);
+  background: var(--card);
+  color: var(--pitch-green);
+  font-size: 12px;
+  font-weight: 600;
+  font-family: var(--font-body);
+  cursor: pointer;
+}
+
+.chatbot-nav .msym { font-size: 14px; }
 
 .chatbot-msg--bot {
   align-self: flex-start;
@@ -149,6 +199,7 @@
   flex-direction: column;
   gap: var(--s-2);
   padding: var(--s-2) 0;
+  align-items: flex-start;
 }
 
 .chatbot-suggestion {
@@ -170,6 +221,7 @@
   gap: var(--s-2);
   padding: var(--s-3);
   border-top: 1px solid var(--border);
+  align-items: flex-end;
 }
 
 .chatbot-panel__input {
@@ -180,7 +232,13 @@
   font-size: 14px;
   font-family: var(--font-body);
   min-width: 0;
+  resize: none;
+  line-height: 1.35;
+  background: var(--card);
+  color: var(--text-primary);
 }
+
+.chatbot-panel__input:disabled { opacity: 0.6; }
 
 .chatbot-panel__input:focus {
   outline: none;
@@ -207,9 +265,37 @@
   cursor: default;
 }
 
+/* Desktop: Leo lives in the sidebar, so the floating ball goes away. Phones have no sidebar and keep the ball. */
 @media (min-width: 841px) {
-  .chatbot-ball,
+  .chatbot-ball { display: none; }
+
+  /* A left drawer covering a quarter of the page, sliding in under the app bar. */
   .chatbot-panel {
-    bottom: var(--s-6);
+    right: auto;
+    left: 0;
+    top: var(--appbar-h);
+    bottom: 0;
+    width: max(25vw, 320px);
+    height: auto;
+    border-width: 0 1px 0 0;
+    border-radius: 0;
+    animation: chatbot-slide-in 260ms var(--ease-out);
+  }
+
+  @keyframes chatbot-slide-in {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .chatbot-panel { animation: none; }
+  }
+
+  .sidebar__leo {
+    width: 100%;
+    border: none;
+    background: none;
+    cursor: pointer;
+    text-align: left;
   }
 }

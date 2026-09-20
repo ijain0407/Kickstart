@@ -62,21 +62,22 @@ const ENTRIES = [
   },
   {
     keywords: ['hello', 'hi', 'hey', 'hola', 'buenas'],
-    en: 'Hey! Ask me anything quick about the rules or how Kickstart works.',
-    es: '¡Hola! Pregúntame lo que quieras sobre las reglas o cómo funciona Kickstart.',
+    en: 'Hey! Ask me about Kickstart or anything soccer — rules, tactics, clubs, players.',
+    es: '¡Hola! Pregúntame sobre Kickstart o cualquier tema de fútbol: reglas, tácticas, clubes, jugadores.',
   },
 ]
 
 const DEFAULT_REPLY = {
-  en: "I'm not sure about that one yet — try asking about XP, streaks, leagues, chants, offside, cards or formations.",
-  es: 'Todavía no tengo respuesta para eso. Prueba a preguntarme sobre XP, rachas, ligas, cánticos, fuera de juego, tarjetas o formaciones.',
+  en: "I can't look that up right now (live soccer answers are offline), but I can help with XP, streaks, leagues, chants, offside, cards or formations.",
+  es: 'Ahora mismo no puedo consultar eso (las respuestas de fútbol en vivo no están disponibles), pero puedo ayudarte con XP, rachas, ligas, cánticos, fuera de juego, tarjetas o formaciones.',
 }
 
 export const SUGGESTED_QUESTIONS = [
   { en: 'How do I earn XP?', es: '¿Cómo gano XP?' },
   { en: "What's the offside rule?", es: '¿Qué es el fuera de juego?' },
   { en: 'How does the league matcher work?', es: '¿Cómo funciona el buscador de ligas?' },
-  { en: 'What happens if I miss a streak day?', es: '¿Qué pasa si pierdo un día de racha?' },
+  { en: "What's the latest soccer news?", es: '¿Cuáles son las últimas noticias de fútbol?' },
+  { en: 'Explain a false 9', es: 'Explícame qué es un falso 9' },
 ]
 
 function normalize(text) {
@@ -89,11 +90,13 @@ function normalize(text) {
 export function answerFaq(message, locale = 'en') {
   const lang = locale === 'es' ? 'es' : 'en'
   const norm = normalize(message)
+  const padded = ` ${norm.replace(/[^a-z0-9-]+/g, ' ')} `
 
   let best = null
   let bestScore = 0
   for (const entry of ENTRIES) {
-    const score = entry.keywords.reduce((n, kw) => n + (norm.includes(normalize(kw)) ? 1 : 0), 0)
+    // Whole-word match: plain substring made "explain" hit the "xp" entry.
+    const score = entry.keywords.reduce((n, kw) => n + (padded.includes(` ${normalize(kw)} `) ? 1 : 0), 0)
     if (score > bestScore) {
       bestScore = score
       best = entry
