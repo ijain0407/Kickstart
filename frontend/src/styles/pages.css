@@ -1418,3 +1418,95 @@
 .chant__source:hover {
   opacity: 0.85;
 }
+
+/* Spotify's own player, loaded on demand. */
+.spotify-embed {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.spotify-embed iframe {
+  border: 0;
+  border-radius: 12px;
+  display: block;
+  width: 100%;
+}
+
+.spotify-cue {
+  align-self: flex-start;
+}
+
+/* ---- Club kit motif -----------------------------------------
+   Original artwork generated from each club's playing colours:
+   stripes, hoops or a centre band. Never a crest or a logo. */
+.club-crest {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--club-a);
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.55);
+  flex: none;
+}
+
+.club-crest__text {
+  position: relative;
+  font-weight: 800;
+  font-size: 15px;
+  letter-spacing: 0.02em;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.65);
+}
+
+.club-crest--stripes {
+  background: repeating-linear-gradient(
+    90deg,
+    var(--club-a) 0 8px,
+    var(--club-b) 8px 16px
+  );
+}
+
+.club-crest--hoops {
+  background: repeating-linear-gradient(
+    180deg,
+    var(--club-a) 0 10px,
+    var(--club-b) 10px 20px
+  );
+}
+
+.club-crest--band {
+  background: linear-gradient(
+    90deg,
+    var(--club-a) 0 38%,
+    var(--club-b) 38% 62%,
+    var(--club-a) 62% 100%
+  );
+}
+
+/* A licensed photo, when a club has one, sits under the existing scrim. */
+.club-hero--photo {
+  background-size: cover;
+  background-position: center;
+}
+
+/* A supplied crest image sits in the same badge box as the kit motif. */
+.club-crest--img {
+  display: block;
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  object-fit: contain;
+  background: rgba(255, 255, 255, 0.92);
+  padding: 4px;
+  box-shadow: none;
+  flex: none;
+}
+
+/* A file that failed to load leaves nothing behind. */
+.club-crest--img.is-broken {
+  display: none;
+}

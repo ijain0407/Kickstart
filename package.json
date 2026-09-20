@@ -10,7 +10,8 @@
     "start": "node server/index.js",
     "build": "npm run build --prefix frontend",
     "smoke": "node server/smoke.js",
-    "install:all": "npm install && npm install --prefix frontend && npm install --prefix league_feature && npm install --prefix quiz_feature && npm install --prefix person-b"
+    "install:all": "npm install && npm install --prefix frontend && npm install --prefix league_feature && npm install --prefix quiz_feature && npm install --prefix person-b",
+    "crests": "node league_feature/scripts/link-crests.mjs"
   },
   "dependencies": {
     "cors": "^2.8.5",

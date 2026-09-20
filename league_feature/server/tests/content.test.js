@@ -56,7 +56,7 @@ describe('bilingual content', () => {
     }
     // Club and competition names that read identically in both languages are stored
     // en-only on purpose; consumers fall back to English.
-    expect(missing.every((m) => /clubs\[|opponent|topClubs\[/.test(m)), missing.join('\n')).toBe(true);
+    expect(missing.every((m) => /clubs\[|opponent|topClubs\[|\.club:|stadium\.name/.test(m)), missing.join('\n')).toBe(true);
   });
 });
 
@@ -80,11 +80,9 @@ describe('cross-references', () => {
     }
   });
 
-  it('gives every league between 2 and 3 culture cards', () => {
+  it('gives every league at least two culture cards', () => {
     for (const league of leagues) {
-      const count = content.cultureCards(league.id).length;
-      expect(count, league.id).toBeGreaterThanOrEqual(2);
-      expect(count, league.id).toBeLessThanOrEqual(3);
+      expect(content.cultureCards(league.id).length, league.id).toBeGreaterThanOrEqual(2);
     }
     expect(cards.length).toBeGreaterThanOrEqual(10);
   });

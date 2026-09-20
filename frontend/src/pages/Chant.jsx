@@ -2,9 +2,8 @@ import { useEffect, useState } from 'react'
 import Icon from '../components/Icon.jsx'
 import FieldPressButton from '../components/FieldPressButton.jsx'
 import DataState from '../components/DataState.jsx'
+import SpotifyEmbed from '../components/SpotifyEmbed.jsx'
 import { api, useResource } from '../lib/api.js'
-import { canPlayChant, playChant, stopChant } from '../lib/chantAudio.js'
-import { speak, speechSupported } from '../lib/speech.js'
 import { useI18n } from '../i18n/I18nContext.jsx'
 import { useApp } from '../state/AppState.jsx'
 import { useRouter } from '../router.jsx'
@@ -28,32 +27,9 @@ export default function Chant() {
   const card = data?.card
   const chant = card?.chants.find((c) => c.id === query.id) ?? card?.chants[0] ?? null
 
-  const [playing, setPlaying] = useState(false)
   const [revealed, setRevealed] = useState(1)
 
-  useEffect(() => () => stopChant(), [])
-  useEffect(() => {
-    setRevealed(1)
-    stopChant()
-    setPlaying(false)
-  }, [chant?.id])
-
-  /** Play = read the original line aloud, in the language it's sung in. */
-  const togglePlay = () => {
-    if (playing) {
-      stopChant()
-      setPlaying(false)
-      return
-    }
-    setPlaying(true)
-    playChant(
-      { audioUrl: chant.audioUrl, text: chant.original.text, lang: chant.original.lang },
-      { onEnd: () => setPlaying(false) },
-    )
-  }
-
-  /** The translation, read in the language the learner is reading in. */
-  const speakMeaning = () => speak(chant.literal, lang)
+  useEffect(() => setRevealed(1), [chant?.id])
 
   const master = () => {
     // Chant ids are free-form on the progress API; scope it by club so two
@@ -67,8 +43,6 @@ export default function Chant() {
       next: `/culture?league=${card.leagueId}&club=${card.id}`,
     })
   }
-
-  const audioLabel = t('culture.audio')
 
   return (
     <div className="page">
@@ -97,27 +71,11 @@ export default function Chant() {
               <span className="pill pill--gold">{t('culture.chorusXp')}</span>
             </div>
 
-            {/* ---- Playback ---- */}
-            <div className="audio-bar">
-              <button
-                type="button"
-                className="audio-bar__play"
-                onClick={togglePlay}
-                aria-label={audioLabel}
-                aria-pressed={playing}
-                disabled={!canPlayChant(chant.audioUrl)}
-              >
-                <Icon name={playing ? 'pause' : 'play_arrow'} fill />
-              </button>
-              <span className="grow t-body-md text-secondary">{audioLabel}</span>
-              <span className={`eq ${playing ? 'is-playing' : ''}`.trim()} aria-hidden="true">
-                {Array.from({ length: 7 }, (_, i) => (
-                  <span key={i} />
-                ))}
-              </span>
-            </div>
 
-            {chant.sourceUrl ? (
+            {/* ---- The recording ---- */}
+            {chant.spotifyUrl ? <SpotifyEmbed url={chant.spotifyUrl} compact autoLoad /> : null}
+
+            {chant.sourceUrl && !chant.spotifyUrl ? (
               <a className="chant__source" href={chant.sourceUrl} target="_blank" rel="noopener noreferrer">
                 <Icon name="open_in_new" />
                 {t('culture.listenElsewhere')}
@@ -154,22 +112,6 @@ export default function Chant() {
               ) : null}
             </section>
 
-            {/* ---- Repeat drill ---- */}
-            <section className="card card--pad stack stack-3">
-              <div className="row row-3">
-                <span className="tile tile--greensolid tile--circle">
-                  <Icon name="mic" fill />
-                </span>
-                <div className="grow stack stack-1">
-                  <h2 className="t-headline-sm">{t('chant.repeatTitle')}</h2>
-                  <p className="t-body-md text-secondary">{t('chant.repeatBody')}</p>
-                </div>
-              </div>
-
-              <FieldPressButton variant="secondary" block icon="volume_up" onClick={speakMeaning} disabled={!speechSupported()}>
-                {t('chant.hearMeaning')}
-              </FieldPressButton>
-            </section>
 
             <FieldPressButton variant="primary" block icon="check" onClick={master} disabled={revealed < 3}>
               {t('chant.markMastered')}

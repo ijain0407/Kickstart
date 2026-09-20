@@ -2,6 +2,8 @@ import { useCallback, useEffect, useState } from 'react'
 import Icon from '../components/Icon.jsx'
 import ChantCard from '../components/ChantCard.jsx'
 import DataState from '../components/DataState.jsx'
+import SpotifyEmbed from '../components/SpotifyEmbed.jsx'
+import { CULTURE_PLAYLIST_URL } from '../config/spotify.js'
 import { api, useResource } from '../lib/api.js'
 import { toChantCard, toClubHero, toSpotlight } from '../lib/adapters.js'
 import { useI18n } from '../i18n/I18nContext.jsx'
@@ -11,7 +13,14 @@ import { useRouter } from '../router.jsx'
 /** Club identity card — also the picker tile when several clubs are listed. */
 function ClubHero({ club, leagueName, onClick }) {
   const { t, tr } = useI18n()
-  const style = { '--club-a': club.colors.a, '--club-b': club.colors.b }
+  const style = {
+    '--club-a': club.colors.a,
+    '--club-b': club.colors.b,
+    ...(club.imageUrl ? { backgroundImage: `url(${club.imageUrl})` } : null),
+  }
+  // The motif is drawn from the club's colours — stripes, hoops or a centre
+  // band. No crests or logos: those are trademarks, and this is our own artwork.
+  const kitClass = `club-crest club-crest--${club.kit?.pattern ?? 'solid'}`
 
   const inner = (
     <div className="club-hero__inner">
@@ -34,7 +43,21 @@ function ClubHero({ club, leagueName, onClick }) {
       </div>
 
       <div className="row row-3">
-        <span className="club-crest">{club.crest}</span>
+        {club.crestUrl ? (
+          <img
+            className="club-crest club-crest--img"
+            src={club.crestUrl}
+            alt=""
+            loading="lazy"
+            /* If the file is missing or won't decode, drop back to the motif
+               rather than leaving a broken image in the header. */
+            onError={(e) => e.currentTarget.classList.add('is-broken')}
+          />
+        ) : (
+          <span className={kitClass} aria-hidden="true">
+            <span className="club-crest__text">{club.crest}</span>
+          </span>
+        )}
         <h2 className="t-headline-lg grow" style={{ color: '#fff' }}>
           {club.name}
         </h2>
@@ -52,13 +75,13 @@ function ClubHero({ club, leagueName, onClick }) {
 
   if (onClick) {
     return (
-      <button type="button" className="club-hero" style={style} onClick={onClick}>
+      <button type="button" className={`club-hero ${club.imageUrl ? 'club-hero--photo' : ''}`.trim()} style={style} onClick={onClick}>
         {inner}
       </button>
     )
   }
   return (
-    <section className="club-hero" style={style}>
+    <section className={`club-hero ${club.imageUrl ? 'club-hero--photo' : ''}`.trim()} style={style}>
       {inner}
     </section>
   )
@@ -91,7 +114,6 @@ export default function Culture() {
 
   const labels = {
     draft: t('culture.draftNote'),
-    audio: t('culture.audio'),
     chant: t('culture.chantKicker'),
     kicker: t('culture.spotlightKicker'),
     miniTitle: t('culture.miniTitle'),
@@ -146,6 +168,13 @@ export default function Culture() {
       {!cultureId ? (
         <DataState loading={cardsReq.loading || leaguesReq.loading} error={cardsReq.error ?? leaguesReq.error} onRetry={cardsReq.reload}>
           <div className="stack stack-4">
+            {CULTURE_PLAYLIST_URL ? (
+              <section className="card stack stack-2">
+                <h2 className="t-headline-sm">{t('culture.playlistTitle')}</h2>
+                <SpotifyEmbed url={CULTURE_PLAYLIST_URL} />
+              </section>
+            ) : null}
+
             <h2 className="t-headline-md">{leagueId === 'all' ? t('culture.allLeagues') : t('culture.clubsIn')}</h2>
             {cards.map((card) => (
               <ClubHero

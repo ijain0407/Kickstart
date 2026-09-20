@@ -36,13 +36,19 @@ export function initialsFor(clubName = '') {
  * `labels` carries the few chrome strings the page translates itself.
  */
 export function toClubHero(card, { leagueId, labels }) {
+  const kit = card.kit ?? null
   return {
     name: card.club,
     region: card.city.toUpperCase(),
     stadium: card.stadium?.name ?? '',
     founded: card.founded,
     crest: initialsFor(card.club),
-    colors: paletteFor(leagueId),
+    // The club's playing colours drive the card; the league palette is the
+    // fallback for a card that hasn't been given a kit yet.
+    colors: kit ? { a: kit.primary, b: kit.secondary } : paletteFor(leagueId),
+    kit,
+    crestUrl: card.crestUrl ?? null,
+    imageUrl: card.imageUrl ?? null,
     tags: [
       { label: card.nickname.original.text, tone: 'white' },
       { label: card.nickname.literal, tone: 'gold' },
@@ -60,11 +66,10 @@ export function toChantCard(chant, { labels }) {
     id: chant.id,
     kicker: chant.when ?? labels.chant,
     title: chant.title,
-    audioLabel: labels.audio,
     layer1: chant.original.text,
     layer1Lang: chant.original.lang,
-    audioUrl: chant.audioUrl ?? null,
     sourceUrl: chant.sourceUrl ?? null,
+    spotifyUrl: chant.spotifyUrl ?? null,
     layer2: chant.literal,
     layer3: chant.meaning,
     footnote: chant.when ?? '',

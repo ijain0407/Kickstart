@@ -10,7 +10,7 @@ beforeEach(() => {
 const get = (url, headers = {}) => request(app).get(url).set(headers);
 
 describe('GET /api/leagues', () => {
-  it('returns the five leagues in display order, localized to English by default', async () => {
+  it('returns the six leagues in display order, localized to English by default', async () => {
     const res = await get('/api/leagues');
     expect(res.status).toBe(200);
     expect(res.body.leagues.map((l) => l.id)).toEqual([
@@ -18,6 +18,7 @@ describe('GET /api/leagues', () => {
       'league-la-liga',
       'league-bundesliga',
       'league-serie-a',
+      'league-ligue-1',
       'league-mls',
     ]);
     expect(res.body.leagues[0].name).toBe('Premier League');
@@ -141,7 +142,7 @@ describe('POST /api/league-quiz/recommend', () => {
     expect(res.body.recommendation.league.id).toBe('league-serie-a');
     expect(res.body.recommendation.matchPercent).toBeGreaterThan(50);
     expect(res.body.recommendation.reasons[0]).toMatchObject({ id: 'tactics', label: 'Tactics' });
-    expect(res.body.ranking).toHaveLength(5);
+    expect(res.body.ranking).toHaveLength(6);
     expect(res.body.ranking[0].leagueId).toBe('league-serie-a');
     expect(res.body.profile.find((p) => p.id === 'tactics').percent).toBe(100);
   });

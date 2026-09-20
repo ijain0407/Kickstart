@@ -13,7 +13,7 @@ const CHECKS = [
   { name: 'B · lessons', path: '/api/lessons?locale=es', check: (b) => Array.isArray(b.data) && b.data.length > 0 },
   { name: 'B · formations', path: '/api/formations', check: (b) => b.data.some((f) => f.positions?.length === 11) },
   { name: 'B · glossary', path: '/api/glossary', check: (b) => b.data.length > 0 },
-  { name: 'C · leagues', path: '/api/leagues?locale=es', check: (b) => b.leagues.length === 5 && b.leagues[0].country === 'Inglaterra' },
+  { name: 'C · leagues', path: '/api/leagues?locale=es', check: (b) => b.leagues.length === 6 && b.leagues[0].country === 'Inglaterra' },
   { name: 'C · culture', path: '/api/culture/culture-bayern-munich', check: (b) => b.card.chants[0].original.text === 'Mia san mia' },
   { name: 'C · quiz', path: '/api/league-quiz', check: (b) => b.quiz.questions.length === 5 },
   {

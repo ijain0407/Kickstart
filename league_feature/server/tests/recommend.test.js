@@ -65,12 +65,15 @@ describe('recommendLeagues', () => {
   it('matches each trait to the league that leads in it', () => {
     // Every league has to be reachable, or parts of the quiz are dead ends.
     const expected = {
+      pace: 'league-ligue-1',
       physicality: 'league-premier-league',
       technique: 'league-la-liga',
       atmosphere: 'league-bundesliga',
       tactics: 'league-serie-a',
       underdogs: 'league-mls',
     };
+    // Six leagues, six different winners: no league is unreachable.
+    expect(new Set(Object.values(expected)).size).toBe(leagues.length);
     for (const [trait, leagueId] of Object.entries(expected)) {
       expect(recommend(answersFavouring(trait)).best.leagueId, trait).toBe(leagueId);
     }

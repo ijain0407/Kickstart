@@ -175,24 +175,69 @@ describe('Knowledge drills (Person D engine)', () => {
 })
 
 describe('Chant audio', () => {
-  it('links out to a crowd recording only when the chant has one', async () => {
+  it('leads the chant card with the Spotify player', async () => {
     const user = userEvent.setup()
-    renderApp('/culture')
+    const { container } = renderApp('/culture')
 
     await user.click(await screen.findByRole('button', { name: 'Bundesliga' }))
     await user.click(await screen.findByRole('button', { name: /Bayern Munich/ }))
 
-    // Bayern's chant carries a sourceUrl; the link opens it safely in a new tab.
-    const link = await screen.findByRole('link', { name: /Listen to the real crowd/ })
-    expect(link).toHaveAttribute('href', expect.stringContaining('http'))
-    expect(link).toHaveAttribute('target', '_blank')
-    expect(link).toHaveAttribute('rel', expect.stringContaining('noopener'))
-
-    // Dortmund's has no link yet, so no dead button is shown. It's reachable
-    // both as a rivalry and in the related-clubs row; either gets us there.
-    await user.click(screen.getAllByRole('button', { name: /Borussia Dortmund/ })[0])
-    // Title and original line both read "Heja BVB!" — either means we arrived.
-    expect((await screen.findAllByText('Heja BVB!')).length).toBeGreaterThan(0)
+    // The player is the card's first element — no click needed, no stand-in
+    // playback, and the plain link-out stays suppressed when a track exists.
+    // Title and original line both read "Mia san mia".
+    expect((await screen.findAllByText('Mia san mia')).length).toBeGreaterThan(0)
+    const frame = container.querySelector('.chant iframe')
+    expect(frame).toHaveAttribute('src', 'https://open.spotify.com/embed/track/5VHZPknPqlaGMi4bbFpdiJ')
+    expect(container.querySelector('.chant__body').firstChild).toContainElement(frame)
     expect(screen.queryByRole('link', { name: /Listen to the real crowd/ })).not.toBeInTheDocument()
+  })
+
+  it('shows the three layers alone when a chant has no track', async () => {
+    const user = userEvent.setup()
+    const { container } = renderApp('/culture')
+
+    // Exact name: the club tiles also mention the league, so a regex matches
+    // several buttons. "La Liga" in English, "LaLiga" in Spanish.
+    await user.click(await screen.findByRole('button', { name: 'La Liga' }))
+    await user.click(await screen.findByRole('button', { name: /Atlético Madrid/ }))
+
+    // No track for this one yet: no player and no dead link — the card is just
+    // the chant and its three layers.
+    expect((await screen.findAllByText('¡Aúpa Atleti!')).length).toBeGreaterThan(0)
+    expect(container.querySelector('.chant iframe')).toBeNull()
+    expect(screen.queryByRole('link', { name: /Listen to the real crowd/ })).not.toBeInTheDocument()
+    expect(screen.getByText('Up, Atleti!')).toBeInTheDocument()
+  })
+})
+
+describe('Spotify player', () => {
+  it('loads the playlist player on demand rather than on page load', async () => {
+    const user = userEvent.setup()
+    const { container } = renderApp('/culture')
+
+    // Nothing third-party is fetched until the learner asks for it.
+    expect(container.querySelector('iframe')).toBeNull()
+
+    await user.click(await screen.findByRole('button', { name: /Play the real chant/ }))
+
+    const frame = container.querySelector('iframe')
+    expect(frame).toHaveAttribute('src', 'https://open.spotify.com/embed/playlist/2AOAB7OttD3SpnQtDFj9LY')
+    expect(frame).toHaveAttribute('loading', 'lazy')
+  })
+})
+
+describe('Club visuals', () => {
+  it("draws each club's kit from its own colours", async () => {
+    const user = userEvent.setup()
+    const { container } = renderApp('/culture')
+
+    await user.click(await screen.findByRole('button', { name: 'Serie A' }))
+    const juve = await screen.findByRole('button', { name: /Juventus/ })
+
+    // Black-and-white stripes, drawn in CSS from the kit data — not an image,
+    // and not a crest.
+    expect(juve.querySelector('.club-crest--stripes')).toBeInTheDocument()
+    expect(juve).toHaveStyle({ '--club-a': '#000000', '--club-b': '#ffffff' })
+    expect(container.querySelector('.club-hero img')).toBeNull()
   })
 })
