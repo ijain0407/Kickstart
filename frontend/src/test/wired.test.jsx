@@ -342,4 +342,32 @@ describe('Find Your Club', () => {
     )
     expect(screen.getByRole('button', { name: /Explore their culture/ })).toBeInTheDocument()
   })
+
+  it('remembers the club instead of asking again on the next visit', async () => {
+    const user = userEvent.setup()
+    const { unmount } = renderApp('/club-quiz?league=league-serie-a')
+
+    await user.click(await screen.findByRole('checkbox', { name: /Winning things, soon/ }))
+    await user.click(screen.getByRole('button', { name: /Next Question/ }))
+
+    for (const answer of [/A trophy on the balcony/, /biggest stage/, /sign someone in January/, /I want to win/]) {
+      await user.click(await screen.findByRole('radio', { name: answer }))
+      await user.click(screen.getByRole('button', { name: /Next Question|See My League/ }))
+    }
+
+    expect(await screen.findByRole('heading', { name: 'This one is yours.' })).toBeInTheDocument()
+    const picked = (await screen.findByRole('heading', { level: 2 })).textContent
+
+    // Leave the page and come back: the result is still there, not question one.
+    unmount()
+    renderApp('/club-quiz?league=league-serie-a')
+
+    expect(await screen.findByRole('heading', { name: 'This one is yours.' })).toBeInTheDocument()
+    expect((await screen.findByRole('heading', { level: 2 })).textContent).toBe(picked)
+    expect(screen.queryByRole('heading', { name: /What would make you pick a club/ })).not.toBeInTheDocument()
+
+    // And it can be redone deliberately.
+    await user.click(screen.getByRole('button', { name: /Answer again/ }))
+    expect(await screen.findByRole('heading', { name: 'What would make you pick a club?' })).toBeInTheDocument()
+  })
 })

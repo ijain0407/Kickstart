@@ -26,6 +26,9 @@ const INITIAL = {
   quizAnswers: {},
   quizDone: false,
   leagueResult: null,
+  // The club matcher's outcome, kept so the result survives a reload and the
+  // quiz doesn't start over every visit.
+  clubResult: null,
   gameXp: 0,
 }
 
@@ -164,6 +167,8 @@ export function AppProvider({ children }) {
 
   const setLeagueResult = useCallback((leagueResult) => setState((s) => ({ ...s, leagueResult })), [])
 
+  const setClubResult = useCallback((clubResult) => setState((s) => ({ ...s, clubResult })), [])
+
   const celebrate = useCallback((payload) => setCelebration(payload), [])
   const dismissCelebration = useCallback(() => setCelebration(null), [])
 
@@ -194,6 +199,7 @@ export function AppProvider({ children }) {
       finishQuiz,
       resetQuiz,
       setLeagueResult,
+      setClubResult,
       masterChant,
       celebration,
       celebrate,
@@ -214,6 +220,7 @@ export function AppProvider({ children }) {
       finishQuiz,
       resetQuiz,
       setLeagueResult,
+      setClubResult,
       masterChant,
       celebration,
       celebrate,

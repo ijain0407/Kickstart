@@ -5,6 +5,8 @@ import DataState from '../components/DataState.jsx'
 import QuizStepper from '../components/QuizStepper.jsx'
 import { api, useResource } from '../lib/api.js'
 import { useI18n } from '../i18n/I18nContext.jsx'
+import { useApp } from '../state/AppState.jsx'
+import { useAuth } from '../state/AuthState.jsx'
 import { useRouter } from '../router.jsx'
 
 /**
@@ -46,7 +48,7 @@ function LiveStrip({ ranking }) {
   )
 }
 
-function Result({ result, leagueName, onRetake }) {
+function Result({ result, leagueName, onRetake, savedTo }) {
   const { t } = useI18n()
   const { navigate } = useRouter()
   const { recommendation, ranking } = result
@@ -74,6 +76,11 @@ function Result({ result, leagueName, onRetake }) {
         </p>
 
         <p className="t-body-md text-pretty">{club.summary}</p>
+
+        <p className="t-body-sm text-secondary">
+          <Icon name="check_circle" fill style={{ fontSize: 16, verticalAlign: '-3px' }} />{' '}
+          {savedTo === 'account' ? t('clubQuiz.savedAccount') : t('clubQuiz.savedLocal')}
+        </p>
 
         {recommendation.reasons.length > 0 ? (
           <>
@@ -126,6 +133,8 @@ function Result({ result, leagueName, onRetake }) {
 export default function ClubQuiz() {
   const { t, lang } = useI18n()
   const { query, navigate } = useRouter()
+  const { clubResult, setClubResult } = useApp()
+  const { user, updateProfile } = useAuth()
   const leagueId = query.league ?? null
 
   const [answers, setAnswers] = useState({})
@@ -153,7 +162,19 @@ export default function ClubQuiz() {
       if (ticket !== scoring.current) return
       setSubmitError(null)
       setLive(scored)
-      if (final) setResult(scored)
+
+      if (final) {
+        setResult(scored)
+        // Keep the pick: on this device always, and on the account when there
+        // is one, so it follows the person rather than the browser.
+        setClubResult(scored)
+        if (user) {
+          const club = scored.recommendation.club
+          updateProfile({ favouriteClubId: club.id, favouriteLeagueId: club.leagueId }).catch(() => {
+            /* the local copy still holds it; the profile page can retry */
+          })
+        }
+      }
     } catch (err) {
       if (ticket === scoring.current) setSubmitError(err)
     }
@@ -161,15 +182,22 @@ export default function ClubQuiz() {
 
   const leagueName = data?.league?.name ?? null
 
-  if (result) {
+  // A pick made earlier counts, as long as it belongs to the league being asked
+  // about — otherwise the quiz would restart on every visit.
+  const remembered = clubResult && (!leagueId || clubResult.recommendation?.club?.leagueId === leagueId) ? clubResult : null
+  const shown = result ?? remembered
+
+  if (shown) {
     return (
       <Result
-        result={result}
+        result={shown}
         leagueName={leagueName}
+        savedTo={user ? 'account' : 'device'}
         onRetake={() => {
           setAnswers({})
           setLive(null)
           setResult(null)
+          setClubResult(null)
         }}
       />
     )

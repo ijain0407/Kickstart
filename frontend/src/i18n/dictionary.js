@@ -492,6 +492,8 @@ export const dictionary = {
       because: 'BECAUSE YOU WANTED',
       explore: 'Explore their culture',
       retake: 'Answer again',
+      savedAccount: 'Saved to your account.',
+      savedLocal: 'Saved on this device. Sign in to keep it anywhere.',
     },
     leagues: {
       title: 'Find Your League',
@@ -979,6 +981,8 @@ export const dictionary = {
       because: 'PORQUE QUERÍAS',
       explore: 'Explora su cultura',
       retake: 'Responder otra vez',
+      savedAccount: 'Guardado en tu cuenta.',
+      savedLocal: 'Guardado en este dispositivo. Inicia sesión para conservarlo en cualquier sitio.',
     },
     leagues: {
       title: 'Encuentra tu liga',
