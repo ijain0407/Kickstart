@@ -31,7 +31,7 @@ const password = z.string().min(MIN_PASSWORD_LENGTH, `Password must be at least 
 const registerBody = z.object({
   email,
   password,
-  displayName: z.string().trim().min(1).max(60).optional(),
+  displayName: z.string().trim().min(1, 'Name is required').max(60),
   anonymousId: z.string().trim().max(64).optional(),
 });
 
@@ -63,9 +63,7 @@ export function authRoutes() {
     if (!isDbConfigured()) return unavailable(res);
     try {
       const body = registerBody.parse(req.body);
-      const displayName = body.displayName ?? body.email.split('@')[0];
-
-      const { user, error } = await createUser({ ...body, displayName });
+      const { user, error } = await createUser(body);
       if (error === 'EMAIL_TAKEN') {
         return res.status(409).json({ error: { code: 'EMAIL_TAKEN', message: 'That email already has an account' } });
       }

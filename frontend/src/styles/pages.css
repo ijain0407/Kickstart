@@ -1397,7 +1397,8 @@
 
 /* Spotlight without a photo: the gradient carries the panel on its own. */
 .spotlight--flat {
-  background: linear-gradient(145deg, var(--ink-900, #0f172a), var(--ink-700, #1e293b));
+  /* Always dark: the panel carries white text over it in both themes. */
+  background: linear-gradient(145deg, #0f172a, #1e293b);
   min-height: 0;
 }
 
@@ -1413,7 +1414,7 @@
   min-height: 44px;
   font-weight: 600;
   font-size: 14px;
-  color: var(--pitch-green, #15803d);
+  color: var(--green-ink);
   text-decoration: underline;
 }
 
@@ -1430,7 +1431,7 @@
 
 .spotify-embed iframe {
   border: 0;
-  border-radius: 12px;
+  border-radius: var(--r-btn);
   display: block;
   width: 100%;
 }
@@ -1448,7 +1449,7 @@
   place-items: center;
   width: 56px;
   height: 56px;
-  border-radius: 12px;
+  border-radius: var(--r-btn);
   overflow: hidden;
   background: var(--club-a);
   box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.55);
@@ -1500,7 +1501,7 @@
   display: block;
   width: 56px;
   height: 56px;
-  border-radius: 12px;
+  border-radius: var(--r-btn);
   object-fit: contain;
   background: rgba(255, 255, 255, 0.92);
   padding: 4px;
@@ -1785,16 +1786,20 @@
   width: 100%;
   min-height: 48px;
   padding: 10px 12px;
-  border: 2px solid var(--line, #d8dee9);
-  border-radius: var(--radius-btn, 12px);
-  background: var(--surface, #fff);
-  color: inherit;
+  border: 2px solid var(--border);
+  border-radius: var(--r-btn);
+  background: var(--card);
+  color: var(--text-primary);
   font: inherit;
+}
+
+.field::placeholder {
+  color: var(--text-secondary);
 }
 
 .field:focus-visible {
   outline: none;
-  border-color: var(--pitch-green, #15803d);
+  border-color: var(--pitch-green);
 }
 
 select.field {
@@ -1814,9 +1819,9 @@ select.field {
   gap: 6px;
   min-height: 40px;
   padding: 0 12px;
-  border-radius: 999px;
-  border: 2px solid var(--pitch-green, #15803d);
-  color: var(--pitch-green, #15803d);
+  border-radius: var(--r-pill);
+  border: 2px solid var(--green-ink);
+  color: var(--green-ink);
   font-weight: 700;
   font-size: 14px;
   text-decoration: none;
@@ -1824,7 +1829,7 @@ select.field {
 }
 
 .signin-pill:hover {
-  background: color-mix(in srgb, var(--pitch-green, #15803d) 10%, transparent);
+  background: color-mix(in srgb, var(--green-ink) 12%, transparent);
 }
 
 /* On a phone the label would crowd the bar; the icon carries it. */

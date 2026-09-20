@@ -59,7 +59,15 @@ function SignInForm() {
       {creating ? (
         <label className="stack stack-1">
           <span className="t-label-meta text-secondary">{t('account.displayName')}</span>
-          <input className="field" type="text" autoComplete="nickname" value={form.displayName} onChange={set('displayName')} />
+          <input
+            className="field"
+            type="text"
+            required
+            maxLength={60}
+            autoComplete="nickname"
+            value={form.displayName}
+            onChange={set('displayName')}
+          />
         </label>
       ) : null}
 
