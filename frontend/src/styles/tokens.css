@@ -39,6 +39,24 @@
   --text-secondary: #6b7280;
   --chalk: rgba(255, 255, 255, 0.85);
 
+  /* ---- Colour: tints (status pills, tiles, explanations) ---- */
+  --green-ink: #14532d;          /* green text on a light surface */
+  --green-border: #bbf7d0;
+  --tint-blue-bg: #e0f2fe;
+  --tint-blue-fg: #0369a1;
+  --tint-orange-bg: #ffedd5;
+  --tint-orange-fg: #ea580c;
+  --tint-red-bg: #fee2e2;
+  --tint-red-fg: #b91c1c;
+  --tint-amber-bg: #fef3c7;
+  --tint-amber-border: #fde68a;
+  --warm-a: #fff3e0;             /* warm gradient panels */
+  --warm-b: #ffe0b2;
+  --warm-border: #fed7aa;
+  --error-bg: #fef2f2;
+  --warn-bg: #fff7ed;
+  --card-glass: rgba(255, 255, 255, 0.92);
+
   /* ---- Radii ---- */
   --r-card: 16px;
   --r-btn: 12px;
@@ -78,6 +96,55 @@
   /* ---- Motion ---- */
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --dur-token: 360ms;
+}
+
+/* ============================================================
+   Dark theme — set on <html data-theme="dark"> by useTheme().
+   Only colour tokens change; the pitch itself stays green.
+   ============================================================ */
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --moss: #86efac;
+  --mint: #12301f;
+  --green-ink: #86efac;
+  --green-border: #1f5a37;
+
+  --gold-badge-bg: #3a2a08;
+  --gold-badge-text: #fcd34d;
+  --peach: #3a2a12;
+
+  --canvas: #0e1411;
+  --surface-lavender: #171f1b;
+  --surface-lavender-2: #1c2622;
+  --surface-lavender-3: #222e28;
+  --card: #18211c;
+  --border: #2b3830;
+  --track: #212c26;
+
+  --text-primary: #f3f4f6;
+  --text-secondary: #9ca3af;
+
+  --tint-blue-bg: #0c2a3d;
+  --tint-blue-fg: #7dd3fc;
+  --tint-orange-bg: #3a1f0d;
+  --tint-orange-fg: #fdba74;
+  --tint-red-bg: #3b1414;
+  --tint-red-fg: #fca5a5;
+  --tint-amber-bg: #3a2a08;
+  --tint-amber-border: #5c4310;
+  --warm-a: #2e2210;
+  --warm-b: #3a2a12;
+  --warm-border: #5c4310;
+  --error-bg: #2f1517;
+  --warn-bg: #2f2010;
+  --card-glass: rgba(24, 33, 28, 0.92);
+
+  --e-1: 0 2px 4px rgba(0, 0, 0, 0.3), 0 8px 16px rgba(0, 0, 0, 0.25);
+  --e-2: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 12px 24px -4px rgba(0, 0, 0, 0.35);
+  --e-modal-backdrop: rgba(0, 0, 0, 0.65);
+  --focus-ring: 0 0 0 3px rgba(74, 222, 128, 0.25);
 }
 
 /* ============================================================

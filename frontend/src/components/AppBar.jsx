@@ -1,6 +1,7 @@
 import Logo from './Logo.jsx'
 import Icon from './Icon.jsx'
 import LangSwitch from './LangSwitch.jsx'
+import ThemeToggle from './ThemeToggle.jsx'
 import { useI18n } from '../i18n/I18nContext.jsx'
 import { useApp } from '../state/AppState.jsx'
 import { Link } from '../router.jsx'
@@ -19,6 +20,8 @@ export default function AppBar() {
         </Link>
 
         <LangSwitch />
+
+        <ThemeToggle />
 
         <Link
           to="/streak"

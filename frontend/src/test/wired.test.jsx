@@ -4,6 +4,7 @@ import userEvent from '@testing-library/user-event'
 import App from '../App.jsx'
 import { RouterProvider } from '../router.jsx'
 import { I18nProvider } from '../i18n/I18nContext.jsx'
+import { ThemeProvider } from '../state/ThemeContext.jsx'
 import { AppProvider } from '../state/AppState.jsx'
 
 /**
@@ -14,13 +15,15 @@ import { AppProvider } from '../state/AppState.jsx'
 function renderApp(route = '/') {
   window.location.hash = `#${route}`
   return render(
-    <I18nProvider>
-      <AppProvider>
-        <RouterProvider>
-          <App />
-        </RouterProvider>
-      </AppProvider>
-    </I18nProvider>,
+    <ThemeProvider>
+      <I18nProvider>
+        <AppProvider>
+          <RouterProvider>
+            <App />
+          </RouterProvider>
+        </AppProvider>
+      </I18nProvider>
+    </ThemeProvider>,
   )
 }
 
@@ -234,10 +237,8 @@ describe('Club visuals', () => {
     await user.click(await screen.findByRole('button', { name: 'Serie A' }))
     const juve = await screen.findByRole('button', { name: /Juventus/ })
 
-    // Black-and-white stripes, drawn in CSS from the kit data — not an image,
-    // and not a crest.
-    expect(juve.querySelector('.club-crest--stripes')).toBeInTheDocument()
+    // Card colours come from the kit data, and the club logo sits beside the name.
     expect(juve).toHaveStyle({ '--club-a': '#000000', '--club-b': '#ffffff' })
-    expect(container.querySelector('.club-hero img')).toBeNull()
+    expect(juve.querySelector('img.club-crest--img')).toHaveAttribute('src', '/crests/culture-juventus.png')
   })
 })

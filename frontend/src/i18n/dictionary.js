@@ -24,6 +24,7 @@ export const dictionary = {
       culture: 'Culture',
       quiz: 'Quiz',
     },
+    theme: { label: 'Dark mode', dark: 'Switch to dark mode', light: 'Switch to light mode' },
     lang: {
       label: 'Language',
       en: 'EN',
@@ -418,6 +419,7 @@ export const dictionary = {
       culture: 'Cultura',
       quiz: 'Test',
     },
+    theme: { label: 'Modo oscuro', dark: 'Cambiar a modo oscuro', light: 'Cambiar a modo claro' },
     lang: {
       label: 'Idioma',
       en: 'EN',

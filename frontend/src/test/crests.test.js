@@ -21,7 +21,7 @@ describe('club visuals', () => {
   })
 
   it('falls back to the kit motif when no crest file is linked', () => {
-    const hero = toClubHero(base, { leagueId: base.leagueId, labels })
+    const hero = toClubHero({ ...base, id: 'culture-none' }, { leagueId: base.leagueId, labels })
     expect(hero.crestUrl).toBeNull()
     expect(hero.kit.pattern).toBe('stripes')
     // The club's own colours drive the card, not the league palette.

@@ -131,7 +131,7 @@
 
   .sidebar__item.is-active {
     background: var(--mint);
-    color: var(--stadium-green);
+    color: var(--green-ink);
   }
 
   .sidebar__item.is-active .msym {
@@ -191,12 +191,12 @@
 
   .flyout__tab:hover {
     background: var(--mint);
-    color: var(--stadium-green);
+    color: var(--green-ink);
   }
 
   .flyout__tab.is-open {
     background: var(--stadium-green);
-    border-color: var(--stadium-green);
+    border-color: var(--green-ink);
     color: #fff;
   }
 
@@ -315,7 +315,7 @@
     border-radius: var(--r-card);
     border: 1px solid var(--border);
     padding: 16px;
-    background: rgba(255, 255, 255, 0.92);
+    background: var(--card-glass);
     box-shadow: var(--e-2);
   }
 

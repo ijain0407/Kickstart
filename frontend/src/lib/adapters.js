@@ -31,6 +31,35 @@ export function initialsFor(clubName = '') {
   return letters.slice(0, 3).toUpperCase()
 }
 
+/** Culture cards that have a logo file in public/crests (culture-<id>.png). */
+const LOGOS = new Set([
+  'culture-liverpool',
+  'culture-manchester-united',
+  'culture-arsenal',
+  'culture-real-madrid',
+  'culture-fc-barcelona',
+  'culture-atletico-madrid',
+  'culture-bayern-munich',
+  'culture-borussia-dortmund',
+  'culture-juventus',
+  'culture-inter-milan',
+  'culture-ac-milan',
+  'culture-seattle-sounders',
+  'culture-portland-timbers',
+  'culture-manchester-city',
+  'culture-chelsea',
+  'culture-tottenham',
+  'culture-west-ham',
+  'culture-newcastle',
+  'culture-sunderland',
+  'culture-brighton',
+  'culture-nottingham-forest',
+  'culture-crystal-palace',
+  'culture-leeds',
+  'culture-marseille',
+  'culture-psg',
+])
+
 /**
  * A culture card -> the ClubHero shape.
  * `labels` carries the few chrome strings the page translates itself.
@@ -47,7 +76,7 @@ export function toClubHero(card, { leagueId, labels }) {
     // fallback for a card that hasn't been given a kit yet.
     colors: kit ? { a: kit.primary, b: kit.secondary } : paletteFor(leagueId),
     kit,
-    crestUrl: card.crestUrl ?? null,
+    crestUrl: card.crestUrl ?? (card.id && LOGOS.has(card.id) ? `/crests/${card.id}.png` : null),
     imageUrl: card.imageUrl ?? null,
     tags: [
       { label: card.nickname.original.text, tone: 'white' },

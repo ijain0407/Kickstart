@@ -73,7 +73,7 @@
 }
 
 .immersion__note {
-  background: #fff;
+  background: var(--card);
   border-radius: 12px;
   padding: 12px;
   display: flex;
@@ -87,8 +87,8 @@
 /* ---- Today's drill ---- */
 
 .drill {
-  background: linear-gradient(135deg, #fff3e0, #ffe0b2);
-  border: 1px solid #fed7aa;
+  background: linear-gradient(135deg, var(--warm-a), var(--warm-b));
+  border: 1px solid var(--warm-border);
   border-radius: var(--r-card);
   padding: 16px;
   display: flex;
@@ -382,7 +382,7 @@
 }
 
 .node--unlocked .node__disc {
-  background: #fff;
+  background: var(--card);
   color: var(--pitch-green);
   box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.9), 0 5px 0 var(--border),
     0 8px 14px rgba(17, 24, 39, 0.08);
@@ -427,7 +427,7 @@
   line-height: 14px;
   text-align: center;
   color: var(--text-primary);
-  background: #fff;
+  background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--r-pill);
   padding: 4px 10px;
@@ -466,8 +466,8 @@
 }
 
 .bounty {
-  background: linear-gradient(135deg, #fff3e0, #ffe0b2);
-  border: 1px solid #fed7aa;
+  background: linear-gradient(135deg, var(--warm-a), var(--warm-b));
+  border: 1px solid var(--warm-border);
   border-radius: 12px;
   padding: 12px 14px;
   display: flex;
@@ -590,7 +590,7 @@
 .chant__body { padding: 16px; display: flex; flex-direction: column; gap: 14px; }
 
 .audio-bar {
-  background: #fff;
+  background: var(--card);
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 10px 12px;
@@ -643,8 +643,8 @@
 /* The three translation layers */
 .layer { border-radius: 12px; padding: 14px; display: flex; flex-direction: column; gap: 8px; }
 .layer--1 { background: var(--canvas); border: 1px solid var(--border); }
-.layer--2 { background: #e0f2fe; }
-.layer--3 { background: linear-gradient(135deg, #fff3e0, #ffe0b2); }
+.layer--2 { background: var(--tint-blue-bg); }
+.layer--3 { background: linear-gradient(135deg, var(--warm-a), var(--warm-b)); }
 
 .layer__quote {
   font-style: italic;
@@ -891,7 +891,7 @@
 }
 
 .lesson-opt.is-wrong {
-  background: #fef2f2;
+  background: var(--error-bg);
   border: 2px solid var(--coral);
   padding: 13px;
   box-shadow: inset 4px 0 0 var(--coral), var(--e-1);
@@ -915,7 +915,7 @@
 
 .explain--good { background: var(--mint); color: var(--moss); }
 .explain--good .msym { color: var(--pitch-green); }
-.explain--bad { background: #fff7ed; color: var(--gold-badge-text); }
+.explain--bad { background: var(--warn-bg); color: var(--gold-badge-text); }
 .explain--bad .msym { color: var(--gold-rim); }
 
 /* ============================================================
@@ -972,8 +972,8 @@
   gap: 4px;
   padding: 28px 20px;
   border-radius: var(--r-card);
-  background: linear-gradient(160deg, #fff3e0, #ffe0b2);
-  border: 1px solid #fed7aa;
+  background: linear-gradient(160deg, var(--warm-a), var(--warm-b));
+  border: 1px solid var(--warm-border);
   text-align: center;
 }
 
