@@ -6,6 +6,7 @@ import LessonNode from '../components/LessonNode.jsx'
 import FieldPressButton from '../components/FieldPressButton.jsx'
 import { Loading } from '../components/DataState.jsx'
 import { LESSONS as LOCAL_LESSONS, lessonState } from '../data/lessons.js'
+import { UNITS, unitOf } from '../data/units.js'
 import { toPathNode } from '../lib/adapters.js'
 import { api, useResource } from '../lib/api.js'
 import { useI18n } from '../i18n/I18nContext.jsx'
@@ -52,36 +53,50 @@ export default function LearnPath() {
     (signal) => api('/path-lessons', { lang, signal }),
     [lang],
   )
-  const lessons = error || !data?.data?.length ? LOCAL_LESSONS : data.data.map(toPathNode)
+  const allLessons = error || !data?.data?.length ? LOCAL_LESSONS : data.data.map(toPathNode)
+
+  // Units, in order. A unit opens once every lesson in the one before is done.
+  const unitIds = [...new Set(allLessons.map((l) => unitOf(l.id)))].sort((a, b) => a - b)
+  const unitDone = (u) =>
+    allLessons.filter((l) => unitOf(l.id) === u).every((l) => completedLessons.includes(l.id))
+  const unitOpen = (u) => unitIds.indexOf(u) <= 0 || unitDone(unitIds[unitIds.indexOf(u) - 1])
+  const frontier = allLessons.find((l) => !completedLessons.includes(l.id))
+  const currentUnit = frontier ? unitOf(frontier.id) : unitIds[unitIds.length - 1]
+
+  const [pickedUnit, setPickedUnit] = useState(null)
+  // A picked unit that has since re-locked (e.g. progress reset) falls back.
+  const shownUnit = pickedUnit !== null && unitOpen(pickedUnit) ? pickedUnit : currentUnit
+  const nextUnit = unitIds[unitIds.indexOf(shownUnit) + 1]
+  const lessons = allLessons.filter((l) => unitOf(l.id) === shownUnit)
+  const unitTitle = UNITS.find((u) => u.id === shownUnit)?.title
 
   const [selectedId, setSelectedId] = useState(activeLesson)
   const [lockedNotice, setLockedNotice] = useState(false)
 
   const selected = lessons.find((l) => l.id === selectedId) ?? lessons[0]
-  const selectedState = lessonState(selected, completedLessons, activeLesson, lessons)
+  const selectedState = lessonState(selected, completedLessons, activeLesson, allLessons)
 
   const doneCount = completedLessons.filter((id) =>
     lessons.some((l) => l.id === id),
   ).length
 
+  const goToUnit = (u) => {
+    setPickedUnit(u)
+    setLockedNotice(false)
+    setSelectedId(null)
+  }
+
   const startLesson = (id = selected.id) => navigate(`/lesson?id=${id}`)
 
-  /**
-   * Tapping a node previews it in the detail card; tapping the node already
-   * being previewed opens it. Two taps rather than one so the bounty and the
-   * step count still get a chance to be read.
-   */
+  /** Tapping an open node starts it straight away; locked ones show a notice. */
   const handleSelect = (lesson, state) => {
     if (state === 'locked') {
       setLockedNotice(true)
       return
     }
     setLockedNotice(false)
-    if (lesson.id === selectedId) {
-      startLesson(lesson.id)
-      return
-    }
     setSelectedId(lesson.id)
+    startLesson(lesson.id)
   }
 
   return (
@@ -112,14 +127,35 @@ export default function LearnPath() {
           <XPBar value={xp} max={xpPerLevel} />
         </div>
 
+        {unitIds.length > 1 ? (
+          <div className="chip-row" role="group" aria-label={t('path.unitsNav')}>
+            {unitIds.map((u) => {
+              const open = unitOpen(u)
+              return (
+                <button
+                  key={u}
+                  type="button"
+                  className={`chip ${u === shownUnit ? 'is-active' : ''}`.trim()}
+                  aria-pressed={u === shownUnit}
+                  disabled={!open}
+                  onClick={() => goToUnit(u)}
+                >
+                  <Icon name={!open ? 'lock' : unitDone(u) ? 'check_circle' : 'flag'} />
+                  {`${t('path.unitTab')} ${u}`}
+                </button>
+              )
+            })}
+          </div>
+        ) : null}
+
         <WeekStrip />
       </section>
 
       {/* ---- Unit header ---- */}
       <div className="section-head">
         <div className="stack stack-1">
-          <span className="t-label-meta text-secondary">{t('path.unitLabel')}</span>
-          <h2 className="t-headline-lg">{t('path.unitTitle')}</h2>
+          <span className="t-label-meta text-secondary">{`${t('path.unitLabel')} ${shownUnit}`}</span>
+          <h2 className="t-headline-lg">{unitTitle ? tr(unitTitle) : t('path.unitTitle')}</h2>
         </div>
         <span className="pill pill--green">
           {`${doneCount} / ${lessons.length} ${t('path.doneSuffix')}`}
@@ -133,7 +169,7 @@ export default function LearnPath() {
           {/* ---- The winding path ---- */}
           <section className="path">
             {lessons.map((lesson, i) => {
-              const state = lessonState(lesson, completedLessons, activeLesson, lessons)
+              const state = lessonState(lesson, completedLessons, activeLesson, allLessons)
               const prev = lessons[i - 1]
               return (
                 <div key={lesson.id}>
@@ -158,6 +194,17 @@ export default function LearnPath() {
               )
             })}
           </section>
+
+          {nextUnit && doneCount === lessons.length ? (
+            <FieldPressButton
+              variant="primary"
+              block
+              iconAfter="arrow_forward"
+              onClick={() => goToUnit(nextUnit)}
+            >
+              {`${t('path.unitTab')} ${nextUnit}: ${tr(UNITS.find((u) => u.id === nextUnit)?.title ?? '')}`}
+            </FieldPressButton>
+          ) : null}
 
           {lockedNotice ? (
             <p className="t-body-md text-secondary" role="status" style={{ textAlign: 'center' }}>

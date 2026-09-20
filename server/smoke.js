@@ -14,7 +14,7 @@ const CHECKS = [
   {
     name: 'B · path lessons',
     path: '/api/path-lessons',
-    check: (b) => b.data.length === 6 && b.data.every((l) => l.stepCount === 3 && l.align && l.icon),
+    check: (b) => b.data.length === 14 && b.data.every((l) => l.stepCount === 3 && l.align && l.icon),
   },
   {
     // The player is only useful if every node really carries its teaching body,
@@ -23,7 +23,8 @@ const CHECKS = [
     path: '/api/path-lessons?full=1&locale=es',
     check: (b) => {
       const kinds = new Set(['states', 'hotspots', 'squad', 'layers']);
-      const steps = b.data.flatMap((l) => l.steps);
+      // Unit 1 carries interactive scenes; units 2 and 3 are text steps.
+      const steps = b.data.filter((l) => l.id.startsWith('1.')).flatMap((l) => l.steps);
       return (
         steps.length === 18 &&
         steps.every((s) => kinds.has(s.scene?.kind)) &&

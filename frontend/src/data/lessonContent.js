@@ -8,6 +8,8 @@
    Visuals: 'basics' | 'offside' | 'block' | 'formation' | 'var'
    ============================================================ */
 
+import { UNIT_LESSONS } from './units.js'
+
 export const LESSON_CONTENT = {
   '1.1': {
     steps: [
@@ -321,5 +323,7 @@ export const LESSON_CONTENT = {
 }
 
 export function getLessonContent(id) {
+  const unitLesson = UNIT_LESSONS.find((l) => l.id === id)
+  if (unitLesson) return { steps: unitLesson.steps, check: unitLesson.check }
   return LESSON_CONTENT[id] ?? LESSON_CONTENT['1.1']
 }

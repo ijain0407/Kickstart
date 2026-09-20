@@ -112,7 +112,7 @@ export default function Lesson() {
   const steps = remote?.steps ?? fallback.steps
   const check = remote?.check ?? fallback.check
   const xp = remote?.xp ?? lesson.xp
-  const glossaryIds = remote?.glossaryIds ?? LESSON_TERMS[lesson.id] ?? []
+  const glossaryIds = remote?.glossaryIds ?? LESSON_TERMS[lesson.id] ?? lesson.glossaryIds ?? []
 
   // Key terms come from Person B's glossary API — bilingual definitions the
   // lesson copy doesn't repeat.
@@ -138,6 +138,8 @@ export default function Lesson() {
   const alreadyDone = state === 'completed'
   const chosen = picked ? check.options.find((o) => o.id === picked) : null
 
+  const upcoming = LESSONS[LESSONS.findIndex((l) => l.id === lesson.id) + 1]
+
   const finish = () => {
     if (!alreadyDone) {
       completeLesson(lesson.id, xp)
@@ -149,6 +151,10 @@ export default function Lesson() {
       xp: alreadyDone ? 0 : xp,
       icon: 'military_tech',
       next: '/path',
+      cta: upcoming ? t('lesson.backToPath') : undefined,
+      secondary: upcoming
+        ? { label: t('lesson.nextModule'), to: `/lesson?id=${upcoming.id}` }
+        : undefined,
     })
   }
 

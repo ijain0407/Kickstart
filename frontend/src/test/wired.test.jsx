@@ -197,6 +197,20 @@ describe('The learning path (Person B path-lessons API)', () => {
   })
 })
 
+describe('Units', () => {
+  it('toggles between units, keeping the later ones locked until the earlier is done', async () => {
+    const user = userEvent.setup()
+    renderApp('/path')
+
+    expect(await screen.findByRole('button', { name: '1.2 The Offside Rule' })).toBeInTheDocument()
+
+    // Unit 2 is closed while unit 1 is unfinished.
+    const unit2 = screen.getByRole('button', { name: 'Unit 2' })
+    expect(unit2).toBeDisabled()
+    expect(screen.getByRole('button', { name: 'Unit 1' })).toHaveAttribute('aria-pressed', 'true')
+  })
+})
+
 describe('Lesson scenes (Person B path-lessons API)', () => {
   it('plays the offside scene and flips the verdict', async () => {
     const user = userEvent.setup()
@@ -268,25 +282,13 @@ describe('Lesson scenes (Person B path-lessons API)', () => {
 })
 
 describe('Opening a lesson from the path', () => {
-  it('previews a node on the first tap and opens it on the second', async () => {
+  it('opens a node on a single tap', async () => {
     const user = userEvent.setup()
     renderApp('/path')
 
     const node = await screen.findByRole('button', { name: '1.2 The Offside Rule' })
 
-    // First tap only fills the detail card below the path.
     await user.click(node)
-    expect(
-      await screen.findByRole('heading', { name: 'Module 1.2: The Offside Rule Demystified' }),
-    ).toBeInTheDocument()
-    expect(screen.getByText('6 min bite-sized')).toBeInTheDocument()
-    expect(screen.getByRole('button', { name: /Start Lesson/ })).toBeInTheDocument()
-
-    // The START DRILL tag moves to the previewed node, marking what a second tap opens.
-    expect(screen.getAllByText('START DRILL')).toHaveLength(1)
-
-    // Second tap on the same node opens the lesson itself.
-    await user.click(screen.getByRole('button', { name: '1.2 The Offside Rule' }))
     expect(
       await screen.findByRole('heading', { name: 'The second-to-last defender' }),
     ).toBeInTheDocument()

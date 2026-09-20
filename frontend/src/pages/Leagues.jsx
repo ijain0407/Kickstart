@@ -1,6 +1,7 @@
 import Icon from '../components/Icon.jsx'
 import FieldPressButton from '../components/FieldPressButton.jsx'
 import DataState from '../components/DataState.jsx'
+import LeagueLogo from '../components/LeagueLogo.jsx'
 import { api, useResource } from '../lib/api.js'
 import { useI18n } from '../i18n/I18nContext.jsx'
 import { useApp } from '../state/AppState.jsx'
@@ -34,6 +35,8 @@ export default function Leagues() {
               {ranking.map((row, i) => (
                 <div className={`result-row ${i === 0 ? 'is-top' : ''}`.trim()} key={row.leagueId}>
                   <span className="result-row__rank t-num">{i + 1}</span>
+
+                  <LeagueLogo leagueId={row.leagueId} />
 
                   <span className="grow stack stack-2">
                     <span className="row row-2 wrap">
@@ -94,9 +97,7 @@ export default function Leagues() {
                   className="card chant-row"
                   onClick={() => navigate(`/culture?league=${league.id}`)}
                 >
-                  <span className="tile tile--lavender tile--circle">
-                    <Icon name="emoji_events" fill />
-                  </span>
+                  <LeagueLogo leagueId={league.id} />
                   <span className="grow stack stack-1">
                     <span className="t-headline-sm">{tr(league.name)}</span>
                     <span className="t-body-sm text-secondary">{tr(league.tagline)}</span>
