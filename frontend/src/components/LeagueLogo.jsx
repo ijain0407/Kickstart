@@ -19,6 +19,7 @@ export default function LeagueLogo({ leagueId, size = 44 }) {
       alt=""
       width={size}
       height={size}
+      style={{ objectFit: 'contain' }}
       loading="lazy"
       onError={() => setBroken(true)}
     />
