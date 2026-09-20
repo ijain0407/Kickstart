@@ -4,7 +4,9 @@
    left / centre / right stagger of each row.
    ============================================================ */
 
-export const LESSONS = [
+import { UNIT_LESSONS } from './units.js'
+
+const UNIT_ONE = [
   {
     id: '1.1',
     align: 'center',
@@ -104,6 +106,12 @@ export const LESSONS = [
   },
 ]
 
+/** Every node on the path, in order: unit 1 above, then units 2 and 3. */
+export const LESSONS = [
+  ...UNIT_ONE,
+  ...UNIT_LESSONS.map((l) => ({ ...l, stars: 0, stepCount: l.steps.length })),
+]
+
 /**
  * Node state for the path: everything before the active lesson is
  * done, the active one is highlighted, the very next one is open,
@@ -115,8 +123,12 @@ export const LESSONS = [
  */
 export function lessonState(lesson, completedIds, activeId, list = LESSONS) {
   if (completedIds.includes(lesson.id)) return 'completed'
-  if (lesson.id === activeId) return 'active'
-  const activeIdx = list.findIndex((l) => l.id === activeId)
+  // The stored `activeId` never advances, so the frontier is the first lesson
+  // not yet completed; `activeId` only applies if it is still ahead of that.
+  const firstOpen = list.findIndex((l) => !completedIds.includes(l.id))
+  const storedIdx = list.findIndex((l) => l.id === activeId)
+  const activeIdx = Math.max(firstOpen, storedIdx)
   const idx = list.findIndex((l) => l.id === lesson.id)
+  if (idx === activeIdx) return 'active'
   return idx === activeIdx + 1 ? 'unlocked' : 'locked'
 }

@@ -69,11 +69,25 @@ export default function CelebrationDrawer() {
               </span>
             </div>
           ) : null}
-          <div style={{ marginTop: 20 }}>
+          <div className="stack stack-3" style={{ marginTop: 20 }}>
+            {celebration.secondary ? (
+              <FieldPressButton
+                variant="primary"
+                block
+                autoFocus
+                iconAfter="arrow_forward"
+                onClick={() => {
+                  dismissCelebration()
+                  navigate(celebration.secondary.to)
+                }}
+              >
+                {celebration.secondary.label}
+              </FieldPressButton>
+            ) : null}
             <FieldPressButton
-              variant="primary"
+              variant={celebration.secondary ? 'soft' : 'primary'}
               block
-              autoFocus
+              autoFocus={!celebration.secondary}
               onClick={close}
             >
               {celebration.cta ?? t('quiz.celebrateCta')}
