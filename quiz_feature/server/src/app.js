@@ -31,10 +31,12 @@ function context(req, res, next) {
   next();
 }
 
-export function createApp({ dataDir = null, quizFile, now, rng } = {}) {
+export function createApp({ dataDir = null, quizFile, now, rng, stores } = {}) {
   const file = (name) => (dataDir ? `${dataDir}/${name}` : null);
-  const progressRepo = createProgressRepo(createJsonStore(file('progress.json')));
-  const attemptRepo = createAttemptRepo(createJsonStore(file('attempts.json')));
+  // `stores` lets the gateway hand in Postgres-backed stores with the same
+  // synchronous interface; without them this is the original JSON behaviour.
+  const progressRepo = createProgressRepo(stores?.progress ?? createJsonStore(file('progress.json')));
+  const attemptRepo = createAttemptRepo(stores?.attempts ?? createJsonStore(file('attempts.json')));
   const quizRepo = createQuizRepo(quizFile);
   const services = {
     quiz: createQuizService({ quizRepo, attemptRepo, progressRepo, now, rng }),

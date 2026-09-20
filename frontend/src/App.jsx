@@ -18,6 +18,7 @@ import Profile from './pages/Profile.jsx'
 import Streak from './pages/Streak.jsx'
 import Play from './pages/Play.jsx'
 import Drills from './pages/Drills.jsx'
+import Account from './pages/Account.jsx'
 
 import { useRouter } from './router.jsx'
 
@@ -34,6 +35,7 @@ const ROUTES = {
   '/streak': Streak,
   '/play': Play,
   '/drills': Drills,
+  '/account': Account,
 }
 
 export default function App() {
