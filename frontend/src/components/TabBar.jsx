@@ -1,5 +1,5 @@
 import Icon from './Icon.jsx'
-import { NAV_ITEMS } from './navItems.js'
+import { NAV_ITEMS, isActive } from './navItems.js'
 import { useI18n } from '../i18n/I18nContext.jsx'
 import { Link, useRouter } from '../router.jsx'
 
@@ -12,7 +12,7 @@ export default function TabBar() {
     <nav className="tabbar" aria-label={t('nav.learn')}>
       <div className="tabbar__inner">
         {NAV_ITEMS.map((item) => {
-          const active = item.match.includes(path)
+          const active = isActive(item, path)
           return (
             <Link
               key={item.id}
