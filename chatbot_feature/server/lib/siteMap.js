@@ -9,6 +9,7 @@ export const SECTIONS = {
   field: { path: '/field', label: { en: 'Field', es: 'Campo' } },
   leagues: { path: '/leagues', label: { en: 'Leagues', es: 'Ligas' } },
   culture: { path: '/culture', label: { en: 'Culture', es: 'Cultura' } },
+  fifa: { path: '/fifa', label: { en: 'FIFA Culture', es: 'Cultura FIFA' } },
   quiz: { path: '/quiz', label: { en: 'Quiz (Tactical Matcher)', es: 'Test (Emparejador Táctico)' } },
   drills: { path: '/drills', label: { en: 'Knowledge Drills', es: 'Ejercicios rápidos' } },
   streak: { path: '/streak', label: { en: 'Streak', es: 'Racha' } },
@@ -63,6 +64,7 @@ const SITE_GUIDE = `Kickstart is a bilingual (English/Spanish) soccer-learning w
 - Learn (#/): the home hub with a lesson path, daily progress, and entry points to the other features. Lessons teach rules, positions and formations. Sub-pages: Knowledge Drills (#/drills: 5-question quick drills on rules, positions and formations, or drill one topic), Streak (#/streak: your consecutive-day streak and milestones) and Profile (#/profile: level, XP and badges).
 - Field (#/field): the "Tactical Lab", an interactive pitch/tactics board where you drag players, view formations, and toggle names, zones and offside overlays.
 - Leagues (#/leagues): your ranked leagues. It shows results from the Quiz; if the user hasn't taken it yet, it invites them to.
+- FIFA Culture (#/fifa): what FIFA is, the six confederations, and a page for each of the 48 countries at the 2026 World Cup with a short history, FIFA men's and women's rankings, World Cup titles and a famous player. Country pages are #/fifa/<confederation>/<code>.
 - Culture (#/culture): club culture cards (e.g. Liverpool, Real Madrid, Bayern Munich) with league filter chips (Premier League, La Liga, Bundesliga, Serie A, MLS). Each club has its nickname story and stadium chants, and there is a chants playlist. Chants are explained in three layers: what the stands sing, the literal translation, and what it really means.
 - Quiz (#/quiz): the "Tactical Matcher", five quick questions that rank the major leagues to the user's taste, then send them to Leagues.
 Other features: users earn XP for lessons, drills and chants, keep a daily streak, level up, and unlock badges (e.g. First Whistle, Tactics Apprentice, Seven Straight, Terrace Voice, League Matched). The top bar has an EN/ES language switch and a dark-mode toggle. Leo (you) is the "Leo" entry at the bottom of the sidebar on desktop, and a floating ball on phones.`
@@ -74,7 +76,7 @@ export function buildSystemPrompt(locale = 'en') {
 SITE GUIDE (the only facts you may state about the website; never invent pages, features or settings):
 ${SITE_GUIDE}
 
-NAVIGATION: When the user asks to go somewhere ("take me to the quiz", "show me Premier League clubs"), call the navigate_to tool and then confirm in ONE short sentence. When you describe a section or suggest one, add an in-app link in markdown using its hash path, like [Culture](#/culture) or [Premier League clubs](#/culture?league=league-premier-league). Only use these paths: #/ #/field #/leagues #/culture #/quiz #/drills #/streak #/profile.
+NAVIGATION: When the user asks to go somewhere ("take me to the quiz", "show me Premier League clubs"), call the navigate_to tool and then confirm in ONE short sentence. When you describe a section or suggest one, add an in-app link in markdown using its hash path, like [Culture](#/culture) or [Premier League clubs](#/culture?league=league-premier-league). Only use these paths: #/ #/field #/leagues #/culture #/fifa #/quiz #/drills #/streak #/profile.
 
 SOCCER Q&A: Cover rules, tactics, positions, history, players, clubs, competitions, terminology and fan culture. For questions about recent events (news, scores, fixtures, standings, transfers) rely on the search results provided, say how recent the information is, and never invent scores, stats or quotes; if you can't verify something, say so. When relevant, offer a link to the matching section of the site (e.g. offside or formations -> Field).
 

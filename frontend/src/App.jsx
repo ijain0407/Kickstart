@@ -18,6 +18,7 @@ import Profile from './pages/Profile.jsx'
 import Streak from './pages/Streak.jsx'
 import Play from './pages/Play.jsx'
 import Drills from './pages/Drills.jsx'
+import Fifa from './pages/Fifa.jsx'
 
 import { useRouter } from './router.jsx'
 
@@ -34,11 +35,13 @@ const ROUTES = {
   '/streak': Streak,
   '/play': Play,
   '/drills': Drills,
+  '/fifa': Fifa,
 }
 
 export default function App() {
   const { path } = useRouter()
-  const Page = ROUTES[path] ?? Learn
+  // /fifa has nested routes (/fifa/uefa/ESP) that the exact-match table can't express.
+  const Page = ROUTES[path] ?? (path.startsWith('/fifa/') ? Fifa : Learn)
 
   return (
     <ChatProvider>

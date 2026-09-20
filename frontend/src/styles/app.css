@@ -154,7 +154,7 @@
 
 .tabbar__inner {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   max-width: 520px;
   margin: 0 auto;
 }

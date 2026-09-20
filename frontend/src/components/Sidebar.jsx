@@ -1,5 +1,5 @@
 import Icon from './Icon.jsx'
-import { NAV_ITEMS } from './navItems.js'
+import { NAV_ITEMS, isActive } from './navItems.js'
 import { useI18n } from '../i18n/I18nContext.jsx'
 import { Link, useRouter } from '../router.jsx'
 import { useChat } from '../chatbot/ChatContext.jsx'
@@ -15,7 +15,7 @@ export default function Sidebar() {
     <aside className="sidebar">
       <nav className="sidebar__nav" aria-label={t('brand')}>
         {NAV_ITEMS.map((item) => {
-          const active = item.match.includes(path)
+          const active = isActive(item, path)
           return (
             <Link
               key={item.id}
