@@ -18,6 +18,9 @@ import { AppError } from '../league_feature/server/src/lib/errors.js';
 // Person D — quiz engine, XP, progress, explain-a-play.
 import { createApp as createQuizApp } from '../quiz_feature/server/src/app.js';
 
+// Chatbot — quick-question chat ball, Gemini-backed with a built-in FAQ fallback.
+import { chatbotRoutes } from '../chatbot_feature/server/routes/chatbot.js';
+
 /**
  * One API for the whole app, so the demo is a single backend process.
  *
@@ -27,6 +30,7 @@ import { createApp as createQuizApp } from '../quiz_feature/server/src/app.js';
  *   /api/lessons, /api/formations, /api/glossary   Person B
  *   /api/leagues, /api/culture, /api/league-quiz   Person C
  *   /api/quiz, /api/progress, /api/explain         Person D
+ *   /api/chatbot                                   Chatbot (chat ball widget)
  *
  * Person B's routes were written without the /api prefix and read `?lang=`;
  * mounting them under /api gives the frontend one base path, and the
@@ -39,7 +43,7 @@ export function createGateway({ quizDataDir } = {}) {
   app.use(cors());
   app.use(express.json({ limit: '100kb' }));
 
-  app.get('/api/health', (req, res) => res.json({ ok: true, services: ['lessons', 'leagues', 'quiz'] }));
+  app.get('/api/health', (req, res) => res.json({ ok: true, services: ['lessons', 'leagues', 'quiz', 'chatbot'] }));
 
   // One locale convention across all three APIs: ?locale= wins, then X-Locale,
   // then Accept-Language, falling back to English.
@@ -61,6 +65,8 @@ export function createGateway({ quizDataDir } = {}) {
   app.use('/api/leagues', leagueRoutes({ content }));
   app.use('/api/culture', cultureRoutes({ content }));
   app.use('/api/league-quiz', leagueQuizRoutes({ content }));
+
+  app.use('/api/chatbot', chatbotRoutes());
 
   // Person D's app mounts its own /api/quiz, /api/progress and /api/explain,
   // plus its own validation and error handling. It goes last because it ends

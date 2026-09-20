@@ -3,6 +3,7 @@ import TabBar from './components/TabBar.jsx'
 import Sidebar from './components/Sidebar.jsx'
 import ProgressRail from './components/ProgressRail.jsx'
 import CelebrationDrawer from './components/CelebrationDrawer.jsx'
+import ChatWidget from './chatbot/ChatWidget.jsx'
 
 import Learn from './pages/Learn.jsx'
 import LearnPath from './pages/LearnPath.jsx'
@@ -53,6 +54,7 @@ export default function App() {
 
       <TabBar />
       <CelebrationDrawer />
+      <ChatWidget />
     </div>
   )
 }
