@@ -31,12 +31,13 @@ function jsonFile(name) {
  *
  * Tests pass their own data in, which skips the filesystem entirely.
  */
-export function createContentRepo({ leagues, culture, quiz } = {}) {
+export function createContentRepo({ leagues, culture, quiz, clubQuiz } = {}) {
   const byOrder = (a, b) => a.order - b.order;
 
   const loadLeagues = leagues ? () => leagues : jsonFile('leagues.json');
   const loadCulture = culture ? () => culture : jsonFile('culture.json');
   const loadQuiz = quiz ? () => quiz : jsonFile('league-quiz.json');
+  const loadClubQuiz = clubQuiz ? () => clubQuiz : jsonFile('club-quiz.json');
 
   const sortedLeagues = () => [...loadLeagues()].sort(byOrder);
   const sortedCulture = () => [...loadCulture()].sort(byOrder);
@@ -48,5 +49,7 @@ export function createContentRepo({ leagues, culture, quiz } = {}) {
     cultureCard: (id) => sortedCulture().find((c) => c.id === id) ?? null,
     quiz: () => loadQuiz(),
     traits: () => loadQuiz().traits,
+    clubQuiz: () => loadClubQuiz(),
+    clubTraits: () => loadClubQuiz().traits,
   };
 }

@@ -80,23 +80,44 @@ function reasonsFor(profile, league, traitIds) {
  * Ranks every league against the answers. `leagues` is expected in display order,
  * which is also the tie-break — equal scores stay in a stable, predictable order.
  */
-export function recommendLeagues({ quiz, leagues, answers }) {
+/**
+ * The shared core: score anything that carries a 1-5 `traits` object against
+ * the answers. Leagues and clubs use the same maths and the same quiz shape —
+ * only the trait vocabulary and the candidates differ.
+ *
+ * `entities` is expected in display order, which is also the tie-break.
+ */
+export function recommendFromTraits({ quiz, entities, answers }) {
   const profile = buildProfile(quiz, answers);
   const traitIds = quiz.traits.map((t) => t.id);
 
-  const ranking = leagues
-    .map((league, index) => ({
-      league,
+  const ranking = entities
+    .map((entity, index) => ({
+      entity,
       index,
-      score: similarity(profile, league, traitIds),
-      reasons: reasonsFor(profile, league, traitIds),
+      score: similarity(profile, entity, traitIds),
+      reasons: reasonsFor(profile, entity, traitIds),
     }))
     .sort((a, b) => b.score - a.score || a.index - b.index)
-    .map(({ league, score, reasons }) => ({
-      leagueId: league.id,
+    .map(({ entity, score, reasons }) => ({
+      id: entity.id,
       matchPercent: toPercent(score),
       reasons,
     }));
 
   return { profile, ranking, best: ranking[0] };
+}
+
+/** Leagues, with the `leagueId` key the matcher's API has always returned. */
+export function recommendLeagues({ quiz, leagues, answers }) {
+  const { profile, ranking } = recommendFromTraits({ quiz, entities: leagues, answers });
+  const named = ranking.map(({ id, matchPercent, reasons }) => ({ leagueId: id, matchPercent, reasons }));
+  return { profile, ranking: named, best: named[0] };
+}
+
+/** Clubs, scored within whichever league the learner picked. */
+export function recommendClubs({ quiz, clubs, answers }) {
+  const { profile, ranking } = recommendFromTraits({ quiz, entities: clubs, answers });
+  const named = ranking.map(({ id, matchPercent, reasons }) => ({ cultureId: id, matchPercent, reasons }));
+  return { profile, ranking: named, best: named[0] };
 }

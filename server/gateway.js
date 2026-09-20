@@ -14,6 +14,7 @@ import { normalizeLocale } from '../league_feature/server/src/lib/localize.js';
 import { leagueRoutes } from '../league_feature/server/src/routes/leagues.js';
 import { cultureRoutes } from '../league_feature/server/src/routes/culture.js';
 import { leagueQuizRoutes } from '../league_feature/server/src/routes/leagueQuiz.js';
+import { clubQuizRoutes } from '../league_feature/server/src/routes/clubQuiz.js';
 import { AppError } from '../league_feature/server/src/lib/errors.js';
 
 // Person D — quiz engine, XP, progress, explain-a-play.
@@ -107,6 +108,7 @@ export function createGateway({ quizDataDir, stores } = {}) {
   app.use('/api/leagues', leagueRoutes({ content }));
   app.use('/api/culture', cultureRoutes({ content }));
   app.use('/api/league-quiz', leagueQuizRoutes({ content }));
+  app.use('/api/club-quiz', clubQuizRoutes({ content }));
 
   app.use('/api/chatbot', chatbotRoutes());
 

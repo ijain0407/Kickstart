@@ -313,3 +313,33 @@ describe('Opening a lesson from the path', () => {
     expect(screen.getByRole('heading', { name: 'Tactical Foundations' })).toBeInTheDocument()
   })
 })
+
+describe('Find Your Club', () => {
+  it('scores clubs within the chosen league and recommends one', async () => {
+    const user = userEvent.setup()
+    renderApp('/club-quiz?league=league-premier-league')
+
+    expect(await screen.findByRole('heading', { name: 'What would make you pick a club?' })).toBeInTheDocument()
+    expect(screen.getByText('¿Qué te haría elegir un club?')).toBeInTheDocument()
+
+    // Answer as an underdog-and-belonging supporter.
+    await user.click(await screen.findByRole('checkbox', { name: /nobody expects anything from/ }))
+    expect(await screen.findByText('Live Compatibility')).toBeInTheDocument()
+    await user.click(screen.getByRole('button', { name: /Next Question/ }))
+
+    const answers = [/Staying up on the final day/, /the town actually owns/, /Add it to the list/, /I want to belong/]
+    for (const answer of answers) {
+      await user.click(await screen.findByRole('radio', { name: answer }))
+      await user.click(screen.getByRole('button', { name: /Next Question|See My League/ }))
+    }
+
+    expect(await screen.findByRole('heading', { name: 'This one is yours.' })).toBeInTheDocument()
+
+    // A club from that league, not from the full list of 25.
+    const heading = await screen.findByRole('heading', { level: 2 })
+    expect(['Sunderland', 'West Ham United', 'Crystal Palace', 'Leeds United', 'Newcastle United']).toContain(
+      heading.textContent,
+    )
+    expect(screen.getByRole('button', { name: /Explore their culture/ })).toBeInTheDocument()
+  })
+})
