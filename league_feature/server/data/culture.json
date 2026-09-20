@@ -21,6 +21,15 @@
       "secondary": "#00b2a9",
       "pattern": "solid"
     },
+    "traits": {
+      "glory": 5,
+      "history": 5,
+      "underdog": 1,
+      "drama": 4,
+      "identity": 5,
+      "style": 4,
+      "atmosphere": 5
+    },
     "crestUrl": null,
     "imageUrl": null,
     "nickname": {
@@ -142,6 +151,15 @@
       "secondary": "#fbe122",
       "pattern": "solid"
     },
+    "traits": {
+      "glory": 4,
+      "history": 5,
+      "underdog": 1,
+      "drama": 4,
+      "identity": 4,
+      "style": 3,
+      "atmosphere": 4
+    },
     "crestUrl": null,
     "imageUrl": null,
     "nickname": {
@@ -262,6 +280,15 @@
       "primary": "#ef0107",
       "secondary": "#ffffff",
       "pattern": "band"
+    },
+    "traits": {
+      "glory": 4,
+      "history": 4,
+      "underdog": 2,
+      "drama": 4,
+      "identity": 4,
+      "style": 5,
+      "atmosphere": 4
     },
     "crestUrl": null,
     "imageUrl": null,
@@ -391,6 +418,15 @@
       "secondary": "#febe10",
       "pattern": "solid"
     },
+    "traits": {
+      "glory": 5,
+      "history": 5,
+      "underdog": 1,
+      "drama": 5,
+      "identity": 3,
+      "style": 4,
+      "atmosphere": 4
+    },
     "crestUrl": null,
     "imageUrl": null,
     "nickname": {
@@ -508,6 +544,15 @@
       "primary": "#a50044",
       "secondary": "#004d98",
       "pattern": "stripes"
+    },
+    "traits": {
+      "glory": 4,
+      "history": 5,
+      "underdog": 1,
+      "drama": 4,
+      "identity": 5,
+      "style": 5,
+      "atmosphere": 4
     },
     "crestUrl": null,
     "imageUrl": null,
@@ -655,6 +700,15 @@
       "secondary": "#ffffff",
       "pattern": "stripes"
     },
+    "traits": {
+      "glory": 3,
+      "history": 4,
+      "underdog": 4,
+      "drama": 4,
+      "identity": 5,
+      "style": 2,
+      "atmosphere": 5
+    },
     "crestUrl": null,
     "imageUrl": null,
     "nickname": {
@@ -757,6 +811,15 @@
       "primary": "#dc052d",
       "secondary": "#ffffff",
       "pattern": "solid"
+    },
+    "traits": {
+      "glory": 5,
+      "history": 5,
+      "underdog": 1,
+      "drama": 3,
+      "identity": 4,
+      "style": 4,
+      "atmosphere": 4
     },
     "crestUrl": null,
     "imageUrl": null,
@@ -905,6 +968,15 @@
       "secondary": "#000000",
       "pattern": "hoops"
     },
+    "traits": {
+      "glory": 3,
+      "history": 4,
+      "underdog": 3,
+      "drama": 5,
+      "identity": 5,
+      "style": 4,
+      "atmosphere": 5
+    },
     "crestUrl": null,
     "imageUrl": null,
     "nickname": {
@@ -1027,6 +1099,15 @@
       "secondary": "#ffffff",
       "pattern": "stripes"
     },
+    "traits": {
+      "glory": 5,
+      "history": 5,
+      "underdog": 1,
+      "drama": 3,
+      "identity": 3,
+      "style": 3,
+      "atmosphere": 3
+    },
     "crestUrl": null,
     "imageUrl": null,
     "nickname": {
@@ -1146,6 +1227,15 @@
       "secondary": "#000000",
       "pattern": "stripes"
     },
+    "traits": {
+      "glory": 4,
+      "history": 4,
+      "underdog": 2,
+      "drama": 5,
+      "identity": 4,
+      "style": 4,
+      "atmosphere": 5
+    },
     "crestUrl": null,
     "imageUrl": null,
     "nickname": {
@@ -1263,6 +1353,15 @@
       "secondary": "#000000",
       "pattern": "stripes"
     },
+    "traits": {
+      "glory": 4,
+      "history": 5,
+      "underdog": 2,
+      "drama": 4,
+      "identity": 4,
+      "style": 4,
+      "atmosphere": 5
+    },
     "crestUrl": null,
     "imageUrl": null,
     "nickname": {
@@ -1362,6 +1461,15 @@
       "primary": "#5d9741",
       "secondary": "#005595",
       "pattern": "solid"
+    },
+    "traits": {
+      "glory": 3,
+      "history": 2,
+      "underdog": 3,
+      "drama": 3,
+      "identity": 4,
+      "style": 3,
+      "atmosphere": 5
     },
     "crestUrl": null,
     "imageUrl": null,
@@ -1466,6 +1574,15 @@
       "secondary": "#d69a00",
       "pattern": "solid"
     },
+    "traits": {
+      "glory": 2,
+      "history": 2,
+      "underdog": 4,
+      "drama": 3,
+      "identity": 5,
+      "style": 3,
+      "atmosphere": 5
+    },
     "crestUrl": null,
     "imageUrl": null,
     "nickname": {
@@ -1568,6 +1685,15 @@
       "secondary": "#1c2c5b",
       "pattern": "solid"
     },
+    "traits": {
+      "glory": 5,
+      "history": 3,
+      "underdog": 1,
+      "drama": 3,
+      "identity": 3,
+      "style": 5,
+      "atmosphere": 3
+    },
     "crestUrl": null,
     "imageUrl": null,
     "nickname": {
@@ -1668,6 +1794,15 @@
       "primary": "#034694",
       "secondary": "#dba111",
       "pattern": "solid"
+    },
+    "traits": {
+      "glory": 4,
+      "history": 3,
+      "underdog": 2,
+      "drama": 4,
+      "identity": 3,
+      "style": 3,
+      "atmosphere": 3
     },
     "crestUrl": null,
     "imageUrl": null,
@@ -1770,6 +1905,15 @@
       "secondary": "#132257",
       "pattern": "solid"
     },
+    "traits": {
+      "glory": 2,
+      "history": 4,
+      "underdog": 3,
+      "drama": 5,
+      "identity": 4,
+      "style": 4,
+      "atmosphere": 4
+    },
     "crestUrl": null,
     "imageUrl": null,
     "nickname": {
@@ -1870,6 +2014,15 @@
       "primary": "#7a263a",
       "secondary": "#1bb1e7",
       "pattern": "solid"
+    },
+    "traits": {
+      "glory": 2,
+      "history": 3,
+      "underdog": 4,
+      "drama": 4,
+      "identity": 5,
+      "style": 3,
+      "atmosphere": 4
     },
     "crestUrl": null,
     "imageUrl": null,
@@ -1972,6 +2125,15 @@
       "secondary": "#ffffff",
       "pattern": "stripes"
     },
+    "traits": {
+      "glory": 2,
+      "history": 4,
+      "underdog": 3,
+      "drama": 4,
+      "identity": 5,
+      "style": 3,
+      "atmosphere": 5
+    },
     "crestUrl": null,
     "imageUrl": null,
     "nickname": {
@@ -2072,6 +2234,15 @@
       "primary": "#eb172b",
       "secondary": "#ffffff",
       "pattern": "stripes"
+    },
+    "traits": {
+      "glory": 1,
+      "history": 3,
+      "underdog": 5,
+      "drama": 4,
+      "identity": 5,
+      "style": 2,
+      "atmosphere": 5
     },
     "crestUrl": null,
     "imageUrl": null,
@@ -2174,6 +2345,15 @@
       "secondary": "#ffffff",
       "pattern": "stripes"
     },
+    "traits": {
+      "glory": 1,
+      "history": 2,
+      "underdog": 5,
+      "drama": 2,
+      "identity": 3,
+      "style": 4,
+      "atmosphere": 3
+    },
     "crestUrl": null,
     "imageUrl": null,
     "nickname": {
@@ -2274,6 +2454,15 @@
       "primary": "#e53233",
       "secondary": "#ffffff",
       "pattern": "solid"
+    },
+    "traits": {
+      "glory": 2,
+      "history": 5,
+      "underdog": 4,
+      "drama": 3,
+      "identity": 4,
+      "style": 3,
+      "atmosphere": 4
     },
     "crestUrl": null,
     "imageUrl": null,
@@ -2376,6 +2565,15 @@
       "secondary": "#c4122e",
       "pattern": "stripes"
     },
+    "traits": {
+      "glory": 1,
+      "history": 2,
+      "underdog": 4,
+      "drama": 3,
+      "identity": 4,
+      "style": 3,
+      "atmosphere": 5
+    },
     "crestUrl": null,
     "imageUrl": null,
     "nickname": {
@@ -2477,6 +2675,15 @@
       "secondary": "#1d428a",
       "pattern": "solid"
     },
+    "traits": {
+      "glory": 2,
+      "history": 4,
+      "underdog": 3,
+      "drama": 5,
+      "identity": 5,
+      "style": 3,
+      "atmosphere": 5
+    },
     "crestUrl": null,
     "imageUrl": null,
     "nickname": {
@@ -2577,6 +2784,15 @@
       "primary": "#004170",
       "secondary": "#da291c",
       "pattern": "band"
+    },
+    "traits": {
+      "glory": 5,
+      "history": 2,
+      "underdog": 1,
+      "drama": 4,
+      "identity": 3,
+      "style": 5,
+      "atmosphere": 4
     },
     "crestUrl": null,
     "imageUrl": null,
@@ -2680,6 +2896,15 @@
       "primary": "#ffffff",
       "secondary": "#2faee0",
       "pattern": "solid"
+    },
+    "traits": {
+      "glory": 3,
+      "history": 4,
+      "underdog": 3,
+      "drama": 5,
+      "identity": 5,
+      "style": 3,
+      "atmosphere": 5
     },
     "crestUrl": null,
     "imageUrl": null,

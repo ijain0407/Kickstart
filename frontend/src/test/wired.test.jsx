@@ -6,6 +6,7 @@ import { RouterProvider } from '../router.jsx'
 import { I18nProvider } from '../i18n/I18nContext.jsx'
 import { ThemeProvider } from '../state/ThemeContext.jsx'
 import { AppProvider } from '../state/AppState.jsx'
+import { AuthProvider } from '../state/AuthState.jsx'
 
 /**
  * End-to-end through the real gateway: React pages -> /api -> each workstream's
@@ -17,11 +18,15 @@ function renderApp(route = '/') {
   return render(
     <ThemeProvider>
       <I18nProvider>
-        <AppProvider>
-          <RouterProvider>
-            <App />
-          </RouterProvider>
-        </AppProvider>
+        {/* Same nesting as main.jsx: auth wraps app state, because signing in
+            changes which user id the progress calls are made as. */}
+        <AuthProvider>
+          <AppProvider>
+            <RouterProvider>
+              <App />
+            </RouterProvider>
+          </AppProvider>
+        </AuthProvider>
       </I18nProvider>
     </ThemeProvider>,
   )
@@ -306,5 +311,35 @@ describe('Opening a lesson from the path', () => {
     expect(await screen.findByText(/Finish the lesson before this one/)).toBeInTheDocument()
     // Still on the path, not in a lesson.
     expect(screen.getByRole('heading', { name: 'Tactical Foundations' })).toBeInTheDocument()
+  })
+})
+
+describe('Find Your Club', () => {
+  it('scores clubs within the chosen league and recommends one', async () => {
+    const user = userEvent.setup()
+    renderApp('/club-quiz?league=league-premier-league')
+
+    expect(await screen.findByRole('heading', { name: 'What would make you pick a club?' })).toBeInTheDocument()
+    expect(screen.queryByText('¿Qué te haría elegir un club?')).not.toBeInTheDocument()
+
+    // Answer as an underdog-and-belonging supporter.
+    await user.click(await screen.findByRole('checkbox', { name: /nobody expects anything from/ }))
+    expect(await screen.findByText('Live Compatibility')).toBeInTheDocument()
+    await user.click(screen.getByRole('button', { name: /Next Question/ }))
+
+    const answers = [/Staying up on the final day/, /the town actually owns/, /Add it to the list/, /I want to belong/]
+    for (const answer of answers) {
+      await user.click(await screen.findByRole('radio', { name: answer }))
+      await user.click(screen.getByRole('button', { name: /Next Question|See My League/ }))
+    }
+
+    expect(await screen.findByRole('heading', { name: 'This one is yours.' })).toBeInTheDocument()
+
+    // A club from that league, not from the full list of 25.
+    const heading = await screen.findByRole('heading', { level: 2 })
+    expect(['Sunderland', 'West Ham United', 'Crystal Palace', 'Leeds United', 'Newcastle United']).toContain(
+      heading.textContent,
+    )
+    expect(screen.getByRole('button', { name: /Explore their culture/ })).toBeInTheDocument()
   })
 })

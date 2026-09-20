@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import Icon from '../components/Icon.jsx'
 import FieldPressButton from '../components/FieldPressButton.jsx'
-import QuizOption from '../components/QuizOption.jsx'
+import QuizStepper from '../components/QuizStepper.jsx'
 import DataState from '../components/DataState.jsx'
 import { api, useResource } from '../lib/api.js'
 import { useI18n } from '../i18n/I18nContext.jsx'
@@ -103,7 +103,6 @@ export default function Quiz() {
   const { navigate } = useRouter()
   const { quizAnswers, setQuizAnswer, quizDone, finishQuiz, resetQuiz, leagueResult, setLeagueResult, recordLeagueMatch, celebrate } = useApp()
 
-  const [stepIndex, setStepIndex] = useState(0)
   const [live, setLive] = useState(null)
   const [submitError, setSubmitError] = useState(null)
   const scoring = useRef(0)
@@ -145,7 +144,6 @@ export default function Quiz() {
         onRetake={() => {
           resetQuiz()
           setLive(null)
-          setStepIndex(0)
         }}
       />
     )
@@ -154,145 +152,25 @@ export default function Quiz() {
   return (
     <DataState loading={loading} error={error} onRetry={reload}>
       {questions.length ? (
-        <Steps
+        <QuizStepper
+          kicker={t('quiz.title')}
+          subtitle={t('quiz.subtitle')}
           questions={questions}
-          stepIndex={stepIndex}
-          setStepIndex={setStepIndex}
-          quizAnswers={quizAnswers}
-          setQuizAnswer={setQuizAnswer}
-          live={live}
-          submitError={submitError}
-          score={score}
-          onExit={() => navigate('/')}
+          answers={quizAnswers}
+          onAnswer={(questionId, optionIds) => {
+            setQuizAnswer(questionId, optionIds)
+            score({ ...quizAnswers, [questionId]: optionIds })
+          }}
           onFinish={() => {
+            score(quizAnswers, { final: true, award: true })
             finishQuiz()
             celebrate({ title: t('quiz.celebrateTitle'), sub: t('quiz.celebrateSub'), xp: 120, icon: 'emoji_events' })
           }}
-          t={t}
-          tr={tr}
+          onExit={() => navigate('/')}
+          aside={<CompatStrip ranking={live?.ranking} />}
+          footnote={submitError ? <p className="placeholder-note">{t('common.loadError')}</p> : null}
         />
       ) : null}
     </DataState>
-  )
-}
-
-function Steps({
-  questions,
-  stepIndex,
-  setStepIndex,
-  quizAnswers,
-  setQuizAnswer,
-  live,
-  submitError,
-  score,
-  onExit,
-  onFinish,
-  t,
-  tr,
-}) {
-  const step = questions[stepIndex]
-  const picked = quizAnswers[step.id] ?? []
-  const total = questions.length
-  const stepNumber = stepIndex + 1
-  const percent = Math.round((stepNumber / total) * 100)
-  const isLast = stepIndex === total - 1
-
-  const toggle = (optionId) => {
-    const next = step.multi
-      ? picked.includes(optionId)
-        ? picked.filter((id) => id !== optionId)
-        : [...picked, optionId]
-      : [optionId]
-
-    setQuizAnswer(step.id, next)
-    score({ ...quizAnswers, [step.id]: next })
-  }
-
-  const advance = () => {
-    if (isLast) {
-      score(quizAnswers, { final: true, award: true })
-      onFinish()
-      return
-    }
-    setStepIndex((i) => i + 1)
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }
-
-  return (
-    <div className="page">
-      {/* ---- Header ---- */}
-      <div className="quiz-head">
-        <div className="row row-3">
-          <button
-            type="button"
-            className="icon-btn icon-btn--outline"
-            aria-label={t('quiz.exit')}
-            onClick={() => (stepIndex === 0 ? onExit() : setStepIndex((i) => i - 1))}
-          >
-            <Icon name={stepIndex === 0 ? 'close' : 'arrow_back'} />
-          </button>
-
-          <div className="grow stack stack-1">
-            <span className="t-label-meta text-secondary">{t('quiz.title')}</span>
-            <span className="t-headline-sm">{`${t('quiz.step')} ${stepNumber} ${t('quiz.stepOf')} ${total}`}</span>
-          </div>
-        </div>
-
-        <p className="t-body-sm text-secondary">
-          <Icon name="info" style={{ fontSize: 16, verticalAlign: '-3px' }} /> {t('quiz.subtitle')}
-        </p>
-
-        <div className="progress" role="progressbar" aria-valuenow={percent} aria-valuemin={0} aria-valuemax={100}>
-          <div className="progress__fill" style={{ width: `${percent}%` }} />
-        </div>
-
-        <div className="row" style={{ justifyContent: 'space-between' }}>
-          <span className="t-body-sm text-secondary">{tr(step.section)}</span>
-          <span className="t-body-sm text-secondary">{`${percent}% ${t('quiz.completed')}`}</span>
-        </div>
-      </div>
-
-      <div className="split-quiz">
-        <div className="stack stack-4">
-          {/* ---- Question ---- */}
-          <div className="stack stack-2">
-            <span className="pill pill--peach">{t('quiz.drillTag')}</span>
-
-            <h1 className="t-headline-lg">{step.prompt}</h1>
-            <p className="t-body-md text-secondary">{step.multi ? t('quiz.multiSelect') : t('quiz.singleSelect')}</p>
-          </div>
-
-          {/* ---- Options ---- */}
-          <div className="stack stack-3" role={step.multi ? 'group' : 'radiogroup'} aria-label={step.prompt}>
-            {step.options.map((option) => (
-              <QuizOption
-                key={option.id}
-                option={{ ...option, title: option.text }}
-                multi={step.multi}
-                selected={picked.includes(option.id)}
-                onToggle={toggle}
-              />
-            ))}
-          </div>
-        </div>
-
-        {/* ---- Live compatibility (moves beside the question on tablet+) ---- */}
-        <div className="split-quiz__side">
-          <CompatStrip ranking={live?.ranking} />
-          {submitError ? <p className="placeholder-note">{t('common.loadError')}</p> : null}
-        </div>
-      </div>
-
-      {/* ---- Sticky action bar ---- */}
-      <div className="quiz-actions">
-        <span className="t-num text-secondary" style={{ fontSize: 16, letterSpacing: '0.04em' }}>
-          {`${picked.length} ${t('quiz.selectedCount')}`}
-        </span>
-
-        <FieldPressButton variant="primary" block iconAfter="arrow_forward" onClick={advance} disabled={picked.length === 0}>
-          {isLast ? t('quiz.seeResults') : `${t('quiz.nextQuestion')} (${stepNumber}/${total})`}
-        </FieldPressButton>
-      </div>
-    </div>
   )
 }

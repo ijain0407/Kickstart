@@ -78,18 +78,28 @@ export const FORMATIONS = [
 ]
 
 /** Squad surnames keyed by shirt number, shown when "Names" is ON. */
+/**
+ * Names on the shirts. Players a beginner will actually recognise, chosen so
+ * the number and the role agree the way they traditionally do — the 9 is a
+ * striker, the 7 and 11 are wide, the 10 creates, the 6 screens the defence.
+ *
+ * They're keyed by shirt number rather than position because the same number
+ * plays a different role in each formation (in 3-5-2 the 7 is a second
+ * striker; in 4-3-3 it's the right winger), and these names read sensibly in
+ * all three. Illustrative examples only — no club affiliation implied.
+ */
 export const SQUAD_NAMES = {
-  1: 'Okafor',
-  2: 'Varela',
-  3: 'Lindqvist',
-  4: 'Moreau',
-  5: 'Bakker',
-  6: 'Silveira',
-  7: 'Adeyemi',
-  8: 'Ferrante',
-  9: 'Novak',
-  10: 'Díaz',
-  11: 'Haruna',
+  1: 'Alisson',
+  2: 'Trent',
+  3: 'Davies',
+  4: 'Van Dijk',
+  5: 'Dias',
+  6: 'Rodri',
+  7: 'Ronaldo',
+  8: 'Bellingham',
+  9: 'Haaland',
+  10: 'De Bruyne',
+  11: 'Messi',
 }
 
 export function getFormation(id) {

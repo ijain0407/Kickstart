@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react'
 import Icon from '../components/Icon.jsx'
 import ChantCard from '../components/ChantCard.jsx'
 import DataState from '../components/DataState.jsx'
+import FieldPressButton from '../components/FieldPressButton.jsx'
 import { api, useResource } from '../lib/api.js'
 import { toChantCard, toClubHero, toSpotlight } from '../lib/adapters.js'
 import { useI18n } from '../i18n/I18nContext.jsx'
@@ -192,6 +193,22 @@ export default function Culture() {
             </label>
 
             <h2 className="t-headline-md">{leagueId === 'all' ? t('culture.allLeagues') : t('culture.clubsIn')}</h2>
+
+            {/* Too many clubs to choose blind — offer the matcher for this league. */}
+            {leagueId !== 'all' ? (
+              <section className="card card--pad stack stack-2">
+                <h3 className="t-headline-sm">{t('clubQuiz.cta')}</h3>
+                <p className="t-body-sm text-secondary">{t('clubQuiz.ctaSub')}</p>
+                <FieldPressButton
+                  variant="secondary"
+                  block
+                  iconAfter="arrow_forward"
+                  onClick={() => navigate(`/club-quiz?league=${leagueId}`)}
+                >
+                  {t('clubQuiz.cta')}
+                </FieldPressButton>
+              </section>
+            ) : null}
             {cards.map((card) => (
               <ClubHero
                 key={card.id}

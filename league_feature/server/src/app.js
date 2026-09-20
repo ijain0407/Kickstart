@@ -7,6 +7,7 @@ import { createContentRepo } from './repos/contentRepo.js';
 import { leagueRoutes } from './routes/leagues.js';
 import { cultureRoutes } from './routes/culture.js';
 import { leagueQuizRoutes } from './routes/leagueQuiz.js';
+import { clubQuizRoutes } from './routes/clubQuiz.js';
 
 /**
  * Locale per request, in the same order Person D's server uses it:
@@ -30,6 +31,7 @@ export function createApp({ content = createContentRepo() } = {}) {
   app.use('/api/leagues', leagueRoutes(deps));
   app.use('/api/culture', cultureRoutes(deps));
   app.use('/api/league-quiz', leagueQuizRoutes(deps));
+  app.use('/api/club-quiz', clubQuizRoutes(deps));
 
   app.use('/api', (req, res, next) => next(new AppError(404, 'NOT_FOUND', 'Route not found')));
 
