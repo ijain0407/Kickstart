@@ -1,0 +1,1627 @@
+[
+  {
+    "id": "1.1",
+    "order": 1,
+    "lessonId": "lesson-rules-basics",
+    "quizSlug": "rules-basics",
+    "category": "rules",
+    "align": "center",
+    "icon": "stadium",
+    "xp": 40,
+    "minutes": 5,
+    "glossaryIds": ["term-formation"],
+    "title": { "en": "The Pitch & Basics", "es": "El campo y lo básico" },
+    "detailTitle": { "en": "Module 1.1: The Pitch & Basics", "es": "Módulo 1.1: El campo y lo básico" },
+    "summary": {
+      "en": "Walk the lines, the boxes and the eleven shirts before anything else. Where everyone stands, and why the pitch is drawn the way it is.",
+      "es": "Recorre las líneas, las áreas y las once camisetas antes que nada. Dónde se coloca cada uno y por qué el campo se dibuja así."
+    },
+    "bounty": { "en": "+40 XP Warm-up Bounty", "es": "+40 XP de recompensa de calentamiento" },
+    "unlocks": { "en": "Unlocks 'Pitch Reader'", "es": "Desbloquea 'Lector de campo'" },
+    "steps": [
+      {
+        "id": "1.1-s1",
+        "title": { "en": "The shape of the ground", "es": "La forma del campo" },
+        "body": {
+          "en": "A pitch is a rectangle between 100 and 110 metres long. The halfway line splits it, the centre circle marks the ten metres opponents must stand back at kickoff, and the two boxes at each end are where the goalkeeper may use their hands and where fouls become penalties.",
+          "es": "El campo es un rectángulo de entre 100 y 110 metros de largo. La línea de medio campo lo divide, el círculo central marca los diez metros que el rival debe respetar en el saque inicial, y las dos áreas de cada extremo son donde el portero puede usar las manos y donde una falta se convierte en penalti."
+        },
+        "scene": {
+          "kind": "hotspots",
+          "surface": "pitch",
+          "markings": "full",
+          "label": { "en": "Diagram of a pitch with its markings labelled", "es": "Diagrama de un campo con sus marcas señaladas" },
+          "prompt": { "en": "Tap a marking to find out what it is for.", "es": "Toca una marca para ver para qué sirve." },
+          "regions": [
+            {
+              "id": "goal-line",
+              "top": 2.2,
+              "left": 22,
+              "width": 56,
+              "height": 2.6,
+              "label": { "en": "Goal line", "es": "Línea de gol" },
+              "note": {
+                "en": "The ball is only a goal once the whole of it has crossed the whole of this line. A ball resting on the paint is still in play.",
+                "es": "Solo hay gol cuando el balón entero ha cruzado la línea entera. Un balón parado sobre la cal sigue en juego."
+              }
+            },
+            {
+              "id": "six-yard",
+              "top": 3,
+              "left": 36,
+              "width": 28,
+              "height": 7,
+              "label": { "en": "Six-yard box", "es": "Área pequeña" },
+              "note": {
+                "en": "Goal kicks are taken from anywhere inside it. It is also the keeper's protected ground at a corner.",
+                "es": "Los saques de puerta se ejecutan desde cualquier punto de su interior. Es también el terreno protegido del portero en un córner."
+              }
+            },
+            {
+              "id": "penalty-area",
+              "top": 3,
+              "left": 22,
+              "width": 56,
+              "height": 15.5,
+              "label": { "en": "Penalty area", "es": "Área grande" },
+              "note": {
+                "en": "Two rules live inside this box and nowhere else: the keeper may use their hands, and a foul by the defending side becomes a penalty.",
+                "es": "Dentro de esta área viven dos reglas y en ningún otro sitio: el portero puede usar las manos y una falta del equipo defensor se convierte en penalti."
+              }
+            },
+            {
+              "id": "penalty-arc",
+              "top": 18,
+              "left": 41,
+              "width": 18,
+              "height": 8,
+              "label": { "en": "The D", "es": "La media luna" },
+              "note": {
+                "en": "Not a rule of its own — it simply marks the ten metres every other player must stand back while a penalty is taken.",
+                "es": "No es una regla en sí: solo marca los diez metros que el resto de jugadores debe respetar mientras se lanza un penalti."
+              }
+            },
+            {
+              "id": "centre-circle",
+              "top": 33,
+              "left": 33,
+              "width": 34,
+              "height": 34,
+              "label": { "en": "Centre circle", "es": "Círculo central" },
+              "note": {
+                "en": "A ten-metre exclusion zone at kickoff, and nothing more. It has no meaning once the ball is rolling.",
+                "es": "Una zona de exclusión de diez metros en el saque inicial, y nada más. No significa nada una vez el balón rueda."
+              }
+            },
+            {
+              "id": "halfway",
+              "top": 49,
+              "left": 3,
+              "width": 94,
+              "height": 2.4,
+              "label": { "en": "Halfway line", "es": "Línea de medio campo" },
+              "note": {
+                "en": "Splits the pitch in two and teams swap ends at half time. You can never be offside in your own half, so this line matters more than it looks.",
+                "es": "Divide el campo en dos y los equipos cambian de lado en el descanso. Nunca hay fuera de juego en tu propio campo, así que esta línea importa más de lo que parece."
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "1.1-s2",
+        "title": { "en": "Eleven shirts, three jobs", "es": "Once camisetas, tres trabajos" },
+        "body": {
+          "en": "Every team puts eleven players out: one goalkeeper and ten outfielders split between defence, midfield and attack. The numbers are a shorthand — 1 is always the keeper, 2 to 5 are usually the back line, 6 to 8 the middle, 9 to 11 the front. Nothing forces this, but commentary assumes it.",
+          "es": "Cada equipo saca a once jugadores: un portero y diez de campo repartidos entre defensa, mediocampo y ataque. Los números son un código: el 1 siempre es el portero, del 2 al 5 suele ser la línea defensiva, del 6 al 8 el centro y del 9 al 11 la delantera. Nada lo obliga, pero los comentaristas lo dan por hecho."
+        },
+        "scene": {
+          "kind": "squad",
+          "surface": "pitch",
+          "markings": "full",
+          "label": { "en": "Eleven players arranged in a 4-3-3", "es": "Once jugadores colocados en un 4-3-3" },
+          "prompt": { "en": "Tap a unit to light up its shirts.", "es": "Toca una línea para iluminar sus camisetas." },
+          "players": [
+            { "num": 1, "code": "GK", "top": 89, "left": 50 },
+            { "num": 3, "code": "LB", "top": 75, "left": 16 },
+            { "num": 4, "code": "CB", "top": 76, "left": 38 },
+            { "num": 5, "code": "CB", "top": 76, "left": 62 },
+            { "num": 2, "code": "RB", "top": 73, "left": 84 },
+            { "num": 6, "code": "CDM", "top": 57, "left": 50 },
+            { "num": 8, "code": "CM", "top": 45, "left": 32 },
+            { "num": 10, "code": "CAM", "top": 43, "left": 68 },
+            { "num": 11, "code": "LW", "top": 24, "left": 18 },
+            { "num": 9, "code": "ST", "top": 18, "left": 50 },
+            { "num": 7, "code": "RW", "top": 24, "left": 82 }
+          ],
+          "groups": [
+            {
+              "id": "keeper",
+              "nums": [1],
+              "label": { "en": "Goalkeeper — 1", "es": "Portero — 1" },
+              "note": {
+                "en": "The only shirt number that never moves. The one player allowed to handle the ball, and only inside their own penalty area.",
+                "es": "El único número que nunca cambia. El único jugador que puede tocar el balón con las manos, y solo dentro de su propia área."
+              }
+            },
+            {
+              "id": "defence",
+              "nums": [2, 3, 4, 5],
+              "label": { "en": "Defence — 2 to 5", "es": "Defensa — del 2 al 5" },
+              "note": {
+                "en": "Two centre backs in the middle, two full backs on the touchlines. They move as one line, which is what makes offside possible at all.",
+                "es": "Dos centrales en el medio y dos laterales en las bandas. Se mueven como una sola línea, que es lo que hace posible el fuera de juego."
+              }
+            },
+            {
+              "id": "midfield",
+              "nums": [6, 8, 10],
+              "label": { "en": "Midfield — 6 to 8, and the 10", "es": "Mediocampo — del 6 al 8, y el 10" },
+              "note": {
+                "en": "The 6 screens the defence, the 8 covers ground box to box, the 10 plays between the lines. Most of a match is decided here.",
+                "es": "El 6 protege a la defensa, el 8 recorre de área a área y el 10 juega entre líneas. Casi todo el partido se decide aquí."
+              }
+            },
+            {
+              "id": "attack",
+              "nums": [7, 9, 11],
+              "label": { "en": "Attack — 9 to 11, and the 7", "es": "Ataque — del 9 al 11, y el 7" },
+              "note": {
+                "en": "The 9 leads the line through the middle; the 7 and 11 hold the width so the pitch stays stretched. Wide shirts pin the full backs back.",
+                "es": "El 9 encabeza la línea por el centro; el 7 y el 11 dan amplitud para mantener el campo estirado. Los extremos fijan a los laterales rivales."
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "1.1-s3",
+        "title": { "en": "Ninety minutes, two halves", "es": "Noventa minutos, dos tiempos" },
+        "body": {
+          "en": "Two halves of forty-five minutes, with added time at the end of each for stoppages. The clock never stops and never counts down — it runs up past 45 and past 90, which is why a goal in the 96th minute is possible at all.",
+          "es": "Dos tiempos de cuarenta y cinco minutos, con descuento al final de cada uno por las interrupciones. El reloj nunca se para ni cuenta hacia atrás: sigue más allá del 45 y del 90, y por eso es posible un gol en el minuto 96."
+        },
+        "scene": {
+          "kind": "states",
+          "surface": "pitch",
+          "control": "slider",
+          "markings": "full",
+          "label": { "en": "A match clock running from kickoff to full time", "es": "Un reloj de partido desde el saque inicial hasta el final" },
+          "prompt": { "en": "Drag through the ninety minutes.", "es": "Arrastra a lo largo de los noventa minutos." },
+          "players": [
+            { "num": 1, "code": "GK", "top": 89, "left": 50 },
+            { "num": 4, "code": "CB", "top": 72, "left": 38 },
+            { "num": 5, "code": "CB", "top": 72, "left": 62 },
+            { "num": 6, "code": "CDM", "top": 55, "left": 50 },
+            { "num": 10, "code": "CAM", "top": 44, "left": 50 },
+            { "num": 9, "code": "ST", "top": 22, "left": 50 }
+          ],
+          "states": [
+            {
+              "id": "kickoff",
+              "label": { "en": "Kickoff", "es": "Saque inicial" },
+              "readout": "0:00",
+              "tone": "neutral",
+              "note": {
+                "en": "The clock starts and does not stop again. Every opponent must be outside the centre circle until the ball is played.",
+                "es": "El reloj arranca y ya no se detiene. Todos los rivales deben estar fuera del círculo central hasta que se juegue el balón."
+              }
+            },
+            {
+              "id": "first-half-end",
+              "label": { "en": "Half time", "es": "Descanso" },
+              "readout": "45:00 +2",
+              "tone": "neutral",
+              "note": {
+                "en": "Forty-five minutes have run, plus the two the referee added for injuries and substitutions. Added time is announced, not negotiated.",
+                "es": "Han corrido cuarenta y cinco minutos, más los dos que añadió el árbitro por lesiones y cambios. El descuento se anuncia, no se negocia."
+              },
+              "players": [
+                { "num": 1, "code": "GK", "top": 89, "left": 50 },
+                { "num": 4, "code": "CB", "top": 72, "left": 38 },
+                { "num": 5, "code": "CB", "top": 72, "left": 62 },
+                { "num": 6, "code": "CDM", "top": 60, "left": 44 },
+                { "num": 10, "code": "CAM", "top": 52, "left": 58 },
+                { "num": 9, "code": "ST", "top": 34, "left": 46 }
+              ]
+            },
+            {
+              "id": "second-half",
+              "label": { "en": "Second half", "es": "Segundo tiempo" },
+              "readout": "46:00",
+              "tone": "neutral",
+              "note": {
+                "en": "Teams swap ends and the clock picks up at 45, never at zero. That is why you hear \"the 63rd minute\" and not \"18 minutes into the second half\".",
+                "es": "Los equipos cambian de lado y el reloj sigue desde el 45, nunca desde cero. Por eso se dice \"el minuto 63\" y no \"a los 18 del segundo tiempo\"."
+              },
+              "players": [
+                { "num": 1, "code": "GK", "top": 89, "left": 50 },
+                { "num": 4, "code": "CB", "top": 68, "left": 34 },
+                { "num": 5, "code": "CB", "top": 68, "left": 66 },
+                { "num": 6, "code": "CDM", "top": 52, "left": 50 },
+                { "num": 10, "code": "CAM", "top": 38, "left": 40 },
+                { "num": 9, "code": "ST", "top": 20, "left": 58 }
+              ]
+            },
+            {
+              "id": "full-time",
+              "label": { "en": "Full time", "es": "Final" },
+              "readout": "90:00 +6",
+              "tone": "good",
+              "note": {
+                "en": "Six added minutes, and the referee may play beyond them if a goal is in the making. This is exactly how a 96th-minute winner happens.",
+                "es": "Seis minutos de descuento, y el árbitro puede alargar aún más si hay un gol en marcha. Así es exactamente como llega un gol en el minuto 96."
+              },
+              "players": [
+                { "num": 1, "code": "GK", "top": 89, "left": 50 },
+                { "num": 4, "code": "CB", "top": 48, "left": 30 },
+                { "num": 5, "code": "CB", "top": 46, "left": 62 },
+                { "num": 6, "code": "CDM", "top": 34, "left": 44 },
+                { "num": 10, "code": "CAM", "top": 26, "left": 56 },
+                { "num": 9, "code": "ST", "top": 14, "left": 48 }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "check": {
+      "question": { "en": "What does the centre circle actually mark?", "es": "¿Qué marca en realidad el círculo central?" },
+      "options": [
+        { "id": "a", "label": { "en": "Where the goalkeeper may use their hands", "es": "Dónde el portero puede usar las manos" }, "correct": false },
+        { "id": "b", "label": { "en": "The distance opponents must stand back at kickoff", "es": "La distancia que el rival debe respetar en el saque inicial" }, "correct": true },
+        { "id": "c", "label": { "en": "The line that decides offside", "es": "La línea que decide el fuera de juego" }, "correct": false }
+      ],
+      "explain": {
+        "en": "It is a ten-metre exclusion zone at kickoff — nothing more. The keeper's hands are limited by the penalty area, and offside has no fixed line at all.",
+        "es": "Es una zona de exclusión de diez metros en el saque inicial, nada más. Las manos del portero las limita el área, y el fuera de juego no tiene ninguna línea fija."
+      }
+    }
+  },
+
+  {
+    "id": "1.2",
+    "order": 2,
+    "lessonId": "lesson-rules-basics",
+    "quizSlug": "rules-basics",
+    "category": "rules",
+    "align": "right",
+    "icon": "sports_soccer",
+    "xp": 50,
+    "minutes": 6,
+    "glossaryIds": ["term-offside", "term-free-kick"],
+    "title": { "en": "The Offside Rule", "es": "La regla del fuera de juego" },
+    "detailTitle": { "en": "Module 1.2: The Offside Rule Demystified", "es": "Módulo 1.2: El fuera de juego, sin misterio" },
+    "summary": {
+      "en": "Learn why the assistant referee raises the flag, how the second-to-last defender sets the trap, and why passing backward is never offside!",
+      "es": "¡Aprende por qué el juez de línea levanta el banderín, cómo el penúltimo defensa arma la trampa y por qué un pase hacia atrás nunca es fuera de juego!"
+    },
+    "bounty": { "en": "+50 XP Drill Bounty", "es": "+50 XP de recompensa" },
+    "unlocks": { "en": "Unlocks 'Tactics Apprentice'", "es": "Desbloquea 'Aprendiz táctico'" },
+    "steps": [
+      {
+        "id": "1.2-s1",
+        "title": { "en": "The second-to-last defender", "es": "El penúltimo defensa" },
+        "body": {
+          "en": "An attacker is offside if they are nearer the opponents' goal line than both the ball and the second-to-last defender at the moment a team-mate plays the ball. The goalkeeper is usually the last defender, so in practice you are watching the last outfield player.",
+          "es": "Un atacante está en fuera de juego si se encuentra más cerca de la línea de gol rival que el balón y que el penúltimo defensa en el momento en que un compañero toca el balón. El portero suele ser el último defensa, así que en la práctica miras al último jugador de campo."
+        },
+        "scene": {
+          "kind": "states",
+          "surface": "pitch",
+          "control": "slider",
+          "markings": "full",
+          "label": { "en": "A striker moving relative to the offside line", "es": "Un delantero moviéndose respecto a la línea de fuera de juego" },
+          "prompt": { "en": "Move the striker and watch the flag.", "es": "Mueve al delantero y mira el banderín." },
+          "states": [
+            {
+              "id": "behind",
+              "label": { "en": "Behind the line", "es": "Por detrás de la línea" },
+              "readout": { "en": "ONSIDE", "es": "HABILITADO" },
+              "tone": "good",
+              "offside": 36,
+              "note": {
+                "en": "Comfortably behind the last two defenders. Nobody even looks at the linesman here.",
+                "es": "Cómodamente por detrás de los dos últimos defensas. Aquí nadie mira siquiera al juez de línea."
+              },
+              "players": [
+                { "num": 1, "code": "GK", "top": 8, "left": 50 },
+                { "num": 4, "code": "CB", "top": 36, "left": 36 },
+                { "num": 5, "code": "CB", "top": 36, "left": 64 },
+                { "num": 10, "code": "CAM", "top": 62, "left": 50 },
+                { "num": 9, "code": "ST", "top": 48, "left": 46 }
+              ]
+            },
+            {
+              "id": "level",
+              "label": { "en": "Dead level", "es": "A la misma altura" },
+              "readout": { "en": "ONSIDE", "es": "HABILITADO" },
+              "tone": "good",
+              "offside": 36,
+              "note": {
+                "en": "Level is onside. The rule says nearer, not level with — a striker who times it perfectly gets the benefit.",
+                "es": "Estar a la misma altura es estar habilitado. La regla dice más cerca, no a la misma altura: quien mide bien el momento sale beneficiado."
+              },
+              "players": [
+                { "num": 1, "code": "GK", "top": 8, "left": 50 },
+                { "num": 4, "code": "CB", "top": 36, "left": 36 },
+                { "num": 5, "code": "CB", "top": 36, "left": 64 },
+                { "num": 10, "code": "CAM", "top": 62, "left": 50 },
+                { "num": 9, "code": "ST", "top": 36, "left": 48 }
+              ]
+            },
+            {
+              "id": "beyond",
+              "label": { "en": "Beyond the line", "es": "Por delante de la línea" },
+              "readout": { "en": "OFFSIDE", "es": "FUERA DE JUEGO" },
+              "tone": "bad",
+              "offside": 36,
+              "note": {
+                "en": "Nearer the goal line than the second-to-last defender when the pass is played. The flag goes up and the whistle follows.",
+                "es": "Más cerca de la línea de gol que el penúltimo defensa en el momento del pase. Sube el banderín y llega el silbato."
+              },
+              "players": [
+                { "num": 1, "code": "GK", "top": 8, "left": 50 },
+                { "num": 4, "code": "CB", "top": 36, "left": 36 },
+                { "num": 5, "code": "CB", "top": 36, "left": 64 },
+                { "num": 10, "code": "CAM", "top": 62, "left": 50 },
+                { "num": 9, "code": "ST", "top": 21, "left": 47, "flagged": true }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "1.2-s2",
+        "title": { "en": "The moment matters, not the finish", "es": "Importa el momento, no la definición" },
+        "body": {
+          "en": "Position is judged when the pass is played, not when it is received. An attacker can start level, sprint past the defence and collect the ball twenty metres clear — that is onside. This is the single thing new fans get wrong most often.",
+          "es": "La posición se juzga cuando se da el pase, no cuando se recibe. Un atacante puede salir a la misma altura, superar a la defensa a la carrera y recoger el balón veinte metros por delante: eso es legal. Es lo que más confunde a quien empieza a seguir el fútbol."
+        },
+        "scene": {
+          "kind": "states",
+          "surface": "pitch",
+          "control": "slider",
+          "markings": "full",
+          "label": { "en": "The same run frozen at three moments", "es": "La misma jugada congelada en tres momentos" },
+          "prompt": { "en": "Scrub the run. Only the first frame counts.", "es": "Recorre la jugada. Solo cuenta el primer fotograma." },
+          "states": [
+            {
+              "id": "at-the-pass",
+              "label": { "en": "The pass is played", "es": "Se da el pase" },
+              "readout": { "en": "ONSIDE", "es": "HABILITADO" },
+              "tone": "good",
+              "offside": 36,
+              "pass": { "from": { "top": 62, "left": 50 }, "to": { "top": 18, "left": 62 }, "blocked": false },
+              "note": {
+                "en": "This is the only frame the assistant referee judges. He is level, so the move is legal — whatever happens next.",
+                "es": "Este es el único fotograma que juzga el juez de línea. Está a la misma altura, así que la jugada es legal, pase lo que pase después."
+              },
+              "players": [
+                { "num": 1, "code": "GK", "top": 8, "left": 50 },
+                { "num": 4, "code": "CB", "top": 36, "left": 36 },
+                { "num": 5, "code": "CB", "top": 36, "left": 64 },
+                { "num": 10, "code": "CAM", "top": 62, "left": 50 },
+                { "num": 9, "code": "ST", "top": 36, "left": 50 }
+              ]
+            },
+            {
+              "id": "mid-run",
+              "label": { "en": "Mid-run", "es": "En plena carrera" },
+              "readout": { "en": "STILL ONSIDE", "es": "SIGUE HABILITADO" },
+              "tone": "good",
+              "offside": 36,
+              "note": {
+                "en": "He is past the line now, and it changes nothing. The ball left the passer's foot two seconds ago.",
+                "es": "Ya ha superado la línea, y eso no cambia nada. El balón salió del pie del pasador hace dos segundos."
+              },
+              "players": [
+                { "num": 1, "code": "GK", "top": 8, "left": 50 },
+                { "num": 4, "code": "CB", "top": 38, "left": 36 },
+                { "num": 5, "code": "CB", "top": 38, "left": 64 },
+                { "num": 10, "code": "CAM", "top": 64, "left": 48 },
+                { "num": 9, "code": "ST", "top": 26, "left": 56 }
+              ]
+            },
+            {
+              "id": "at-the-touch",
+              "label": { "en": "He collects it", "es": "La recibe" },
+              "readout": { "en": "PLAY ON", "es": "SIGUE EL JUEGO" },
+              "tone": "good",
+              "offside": 40,
+              "note": {
+                "en": "Twenty metres clear, one-on-one with the keeper, and completely legal. This is the picture that makes new fans shout at the television.",
+                "es": "Veinte metros por delante, mano a mano con el portero, y completamente legal. Esta es la imagen que hace gritar al recién llegado delante del televisor."
+              },
+              "players": [
+                { "num": 1, "code": "GK", "top": 10, "left": 52 },
+                { "num": 4, "code": "CB", "top": 40, "left": 34 },
+                { "num": 5, "code": "CB", "top": 40, "left": 62 },
+                { "num": 10, "code": "CAM", "top": 66, "left": 46 },
+                { "num": 9, "code": "ST", "top": 18, "left": 58 }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "1.2-s3",
+        "title": { "en": "Three ways it does not apply", "es": "Tres casos en los que no se aplica" },
+        "body": {
+          "en": "You cannot be offside in your own half, from a throw-in, corner or goal kick, or when the ball is passed backwards to you. Being in an offside position is not itself an offence either — the player must interfere with play, interfere with an opponent, or gain an advantage.",
+          "es": "No hay fuera de juego en tu propio campo, ni en un saque de banda, de esquina o de puerta, ni cuando el balón te llega en un pase hacia atrás. Estar en posición de fuera de juego tampoco es una infracción en sí: el jugador debe intervenir en el juego, interferir a un rival u obtener ventaja."
+        },
+        "scene": {
+          "kind": "states",
+          "surface": "pitch",
+          "control": "chips",
+          "markings": "full",
+          "label": { "en": "The same striker in five restarts", "es": "El mismo delantero en cinco reanudaciones" },
+          "prompt": { "en": "Pick a restart. Only one of these is offside.", "es": "Elige una reanudación. Solo una de ellas es fuera de juego." },
+          "states": [
+            {
+              "id": "throw-in",
+              "label": { "en": "Throw-in", "es": "Saque de banda" },
+              "readout": { "en": "NO OFFSIDE", "es": "SIN FUERA DE JUEGO" },
+              "tone": "good",
+              "offside": 36,
+              "note": {
+                "en": "Offside never applies directly from a throw-in. The striker can stand on the keeper's toes and still be legal.",
+                "es": "El fuera de juego nunca se aplica directamente en un saque de banda. El delantero puede plantarse encima del portero y seguir siendo legal."
+              },
+              "players": [
+                { "num": 1, "code": "GK", "top": 8, "left": 50 },
+                { "num": 4, "code": "CB", "top": 36, "left": 36 },
+                { "num": 5, "code": "CB", "top": 36, "left": 64 },
+                { "num": 3, "code": "LB", "top": 40, "left": 4 },
+                { "num": 9, "code": "ST", "top": 20, "left": 52 }
+              ]
+            },
+            {
+              "id": "corner",
+              "label": { "en": "Corner", "es": "Córner" },
+              "readout": { "en": "NO OFFSIDE", "es": "SIN FUERA DE JUEGO" },
+              "tone": "good",
+              "offside": null,
+              "note": {
+                "en": "Everyone is already inside the six-yard box at a corner. If offside applied here, the set piece would be unplayable.",
+                "es": "En un córner todo el mundo está ya dentro del área pequeña. Si aquí se aplicara el fuera de juego, la jugada sería imposible."
+              },
+              "players": [
+                { "num": 1, "code": "GK", "top": 8, "left": 50 },
+                { "num": 4, "code": "CB", "top": 12, "left": 40 },
+                { "num": 5, "code": "CB", "top": 12, "left": 60 },
+                { "num": 7, "code": "RW", "top": 4, "left": 94 },
+                { "num": 9, "code": "ST", "top": 10, "left": 46 }
+              ]
+            },
+            {
+              "id": "goal-kick",
+              "label": { "en": "Goal kick", "es": "Saque de puerta" },
+              "readout": { "en": "NO OFFSIDE", "es": "SIN FUERA DE JUEGO" },
+              "tone": "good",
+              "offside": 36,
+              "note": {
+                "en": "A goal kick restarts play the same way a throw-in does — the offside law is switched off for the first touch.",
+                "es": "Un saque de puerta reanuda el juego igual que un saque de banda: el fuera de juego queda desactivado en el primer toque."
+              },
+              "players": [
+                { "num": 1, "code": "GK", "top": 92, "left": 50 },
+                { "num": 4, "code": "CB", "top": 36, "left": 36 },
+                { "num": 5, "code": "CB", "top": 36, "left": 64 },
+                { "num": 9, "code": "ST", "top": 22, "left": 50 }
+              ]
+            },
+            {
+              "id": "own-half",
+              "label": { "en": "In your own half", "es": "En tu propio campo" },
+              "readout": { "en": "NO OFFSIDE", "es": "SIN FUERA DE JUEGO" },
+              "tone": "good",
+              "offside": null,
+              "note": {
+                "en": "The law only exists past the halfway line. A striker who drops into his own half cannot be flagged, however deep the defence sits.",
+                "es": "La regla solo existe a partir del medio campo. Un delantero que baja a su propio campo no puede ser señalado, por muy adelantada que esté la defensa."
+              },
+              "players": [
+                { "num": 1, "code": "GK", "top": 8, "left": 50 },
+                { "num": 4, "code": "CB", "top": 40, "left": 36 },
+                { "num": 5, "code": "CB", "top": 40, "left": 64 },
+                { "num": 10, "code": "CAM", "top": 72, "left": 40 },
+                { "num": 9, "code": "ST", "top": 62, "left": 56 }
+              ]
+            },
+            {
+              "id": "back-pass",
+              "label": { "en": "Ball played backwards", "es": "Balón jugado hacia atrás" },
+              "readout": { "en": "NO OFFSIDE", "es": "SIN FUERA DE JUEGO" },
+              "tone": "good",
+              "offside": 36,
+              "pass": { "from": { "top": 24, "left": 74 }, "to": { "top": 50, "left": 50 }, "blocked": false },
+              "note": {
+                "en": "If the ball comes to you from closer to the goal than you are, you cannot be offside — there is no advantage to gain.",
+                "es": "Si el balón te llega desde una posición más cercana a la portería que la tuya, no puedes estar en fuera de juego: no hay ventaja que obtener."
+              },
+              "players": [
+                { "num": 1, "code": "GK", "top": 8, "left": 50 },
+                { "num": 4, "code": "CB", "top": 36, "left": 36 },
+                { "num": 5, "code": "CB", "top": 36, "left": 64 },
+                { "num": 7, "code": "RW", "top": 24, "left": 74 },
+                { "num": 9, "code": "ST", "top": 50, "left": 50 }
+              ]
+            },
+            {
+              "id": "open-play",
+              "label": { "en": "Open play, beyond the line", "es": "Juego abierto, por delante de la línea" },
+              "readout": { "en": "OFFSIDE", "es": "FUERA DE JUEGO" },
+              "tone": "bad",
+              "offside": 36,
+              "pass": { "from": { "top": 62, "left": 50 }, "to": { "top": 20, "left": 48 }, "blocked": false },
+              "note": {
+                "en": "No restart to protect him and no back-pass to excuse him. This is the one case the flag is for.",
+                "es": "Ninguna reanudación que lo proteja ni pase hacia atrás que lo excuse. Este es el único caso para el que existe el banderín."
+              },
+              "players": [
+                { "num": 1, "code": "GK", "top": 8, "left": 50 },
+                { "num": 4, "code": "CB", "top": 36, "left": 36 },
+                { "num": 5, "code": "CB", "top": 36, "left": 64 },
+                { "num": 10, "code": "CAM", "top": 62, "left": 50 },
+                { "num": 9, "code": "ST", "top": 20, "left": 48, "flagged": true }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "check": {
+      "question": {
+        "en": "A striker starts level with the last defender, sprints clear, and receives the pass ten metres beyond them. What is the call?",
+        "es": "Un delantero sale a la altura del último defensa, se va a la carrera y recibe el pase diez metros por delante. ¿Qué decide el árbitro?"
+      },
+      "options": [
+        { "id": "a", "label": { "en": "Offside", "es": "Fuera de juego" }, "correct": false },
+        { "id": "b", "label": { "en": "Play on — perfectly onside", "es": "Sigue el juego: está habilitado" }, "correct": true },
+        { "id": "c", "label": { "en": "Offside only if they score", "es": "Fuera de juego solo si marca" }, "correct": false }
+      ],
+      "explain": {
+        "en": "Position is frozen at the instant the pass is played, and at that instant they were level. Everything after is just running.",
+        "es": "La posición se congela en el instante del pase, y en ese instante estaba a la misma altura. Lo de después es solo correr."
+      }
+    }
+  },
+
+  {
+    "id": "1.3",
+    "order": 3,
+    "lessonId": "lesson-positions-overview",
+    "quizSlug": "positions",
+    "category": "positions",
+    "align": "left",
+    "icon": "shield",
+    "xp": 45,
+    "minutes": 7,
+    "glossaryIds": ["term-clean-sheet", "term-offside"],
+    "title": { "en": "Defenders & Midfield", "es": "Defensas y mediocampo" },
+    "detailTitle": { "en": "Module 1.3: Defenders & Midfield", "es": "Módulo 1.3: Defensas y mediocampo" },
+    "summary": {
+      "en": "Who holds the line, who screens in front of it, and how the two units move as one block when possession is lost.",
+      "es": "Quién sostiene la línea, quién la protege por delante y cómo las dos unidades se mueven como un solo bloque al perder el balón."
+    },
+    "bounty": { "en": "+45 XP Drill Bounty", "es": "+45 XP de recompensa" },
+    "unlocks": { "en": "Unlocks 'Block Builder'", "es": "Desbloquea 'Constructor de bloque'" },
+    "steps": [
+      {
+        "id": "1.3-s1",
+        "title": { "en": "The back four hold a line", "es": "La línea de cuatro se sostiene" },
+        "body": {
+          "en": "Defenders move as one unit, stepping up and dropping together. Holding a straight line is what makes the offside trap work — one defender lagging behind plays the whole attack onside.",
+          "es": "Los defensas se mueven como una sola unidad, subiendo y bajando a la vez. Mantener la línea recta es lo que hace funcionar la trampa del fuera de juego: un defensa rezagado habilita a todo el ataque."
+        },
+        "scene": {
+          "kind": "states",
+          "surface": "pitch",
+          "control": "slider",
+          "markings": "full",
+          "label": { "en": "A back four holding, breaking and stepping up its line", "es": "Una línea de cuatro que se sostiene, se rompe y adelanta" },
+          "prompt": { "en": "Break the line and see who it helps.", "es": "Rompe la línea y mira a quién beneficia." },
+          "states": [
+            {
+              "id": "flat",
+              "label": { "en": "Flat line", "es": "Línea plana" },
+              "readout": { "en": "TRAP HOLDS", "es": "LA TRAMPA AGUANTA" },
+              "tone": "good",
+              "offside": 40,
+              "note": {
+                "en": "All four level. The striker in front of them is offside the instant the pass is played, and he knows it.",
+                "es": "Los cuatro a la misma altura. El delantero que está por delante queda en fuera de juego en cuanto se juega el balón, y él lo sabe."
+              },
+              "players": [
+                { "num": 3, "code": "LB", "top": 40, "left": 16 },
+                { "num": 4, "code": "CB", "top": 40, "left": 38 },
+                { "num": 5, "code": "CB", "top": 40, "left": 62 },
+                { "num": 2, "code": "RB", "top": 40, "left": 84 },
+                { "num": 6, "code": "CDM", "top": 56, "left": 50 },
+                { "num": 9, "code": "ST", "top": 28, "left": 54, "flagged": true }
+              ]
+            },
+            {
+              "id": "straggler",
+              "label": { "en": "One defender lags", "es": "Un defensa se rezaga" },
+              "readout": { "en": "TRAP BROKEN", "es": "TRAMPA ROTA" },
+              "tone": "bad",
+              "offside": 54,
+              "note": {
+                "en": "The 5 is three metres deeper than the rest, so he is now the second-to-last defender. The line has moved back to him and the striker is suddenly onside.",
+                "es": "El 5 está tres metros más retrasado que el resto, así que ahora es él el penúltimo defensa. La línea se ha desplazado hasta él y el delantero queda habilitado de golpe."
+              },
+              "players": [
+                { "num": 3, "code": "LB", "top": 40, "left": 16 },
+                { "num": 4, "code": "CB", "top": 40, "left": 38 },
+                { "num": 5, "code": "CB", "top": 54, "left": 62, "flagged": true },
+                { "num": 2, "code": "RB", "top": 40, "left": 84 },
+                { "num": 6, "code": "CDM", "top": 60, "left": 50 },
+                { "num": 9, "code": "ST", "top": 28, "left": 54 }
+              ]
+            },
+            {
+              "id": "stepped",
+              "label": { "en": "The line steps up", "es": "La línea adelanta" },
+              "readout": { "en": "TRAP SPRUNG", "es": "TRAMPA ACTIVADA" },
+              "tone": "good",
+              "offside": 30,
+              "note": {
+                "en": "All four step forward at the same instant, on a shout. The striker is left stranded behind them with the flag already up.",
+                "es": "Los cuatro dan un paso al frente en el mismo instante, a una voz. El delantero se queda atrapado por delante con el banderín ya arriba."
+              },
+              "players": [
+                { "num": 3, "code": "LB", "top": 30, "left": 16 },
+                { "num": 4, "code": "CB", "top": 30, "left": 38 },
+                { "num": 5, "code": "CB", "top": 30, "left": 62 },
+                { "num": 2, "code": "RB", "top": 30, "left": 84 },
+                { "num": 6, "code": "CDM", "top": 48, "left": 50 },
+                { "num": 9, "code": "ST", "top": 22, "left": 54, "flagged": true }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "1.3-s2",
+        "title": { "en": "The screen in front", "es": "El filtro por delante" },
+        "body": {
+          "en": "The defensive midfielder — the number 6 — sits in the gap between the back line and the rest of midfield. Their job is unglamorous: block the passing lane into the opposition striker, and cover whichever full back has run forward.",
+          "es": "El mediocentro defensivo, el 6, se coloca en el hueco entre la defensa y el resto del mediocampo. Su trabajo es poco vistoso: tapar la línea de pase al delantero rival y cubrir al lateral que se haya incorporado."
+        },
+        "scene": {
+          "kind": "states",
+          "surface": "pitch",
+          "control": "chips",
+          "markings": "full",
+          "label": { "en": "A passing lane opening and closing as the 6 moves", "es": "Una línea de pase que se abre y se cierra según se mueve el 6" },
+          "prompt": { "en": "Move the 6 and watch the lane.", "es": "Mueve al 6 y observa la línea de pase." },
+          "states": [
+            {
+              "id": "in-position",
+              "label": { "en": "The 6 holds the middle", "es": "El 6 sostiene el centro" },
+              "readout": { "en": "LANE SHUT", "es": "PASE TAPADO" },
+              "tone": "good",
+              "pass": { "from": { "top": 78, "left": 50 }, "to": { "top": 30, "left": 50 }, "blocked": true },
+              "note": {
+                "en": "Standing squarely between the ball and the striker. The pass cannot be threaded, so the attack has to go sideways — which is exactly the point.",
+                "es": "Justo en la línea entre el balón y el delantero. El pase no se puede filtrar, así que el ataque tiene que ir en horizontal, que es precisamente la idea."
+              },
+              "players": [
+                { "num": 4, "code": "CB", "top": 44, "left": 34 },
+                { "num": 5, "code": "CB", "top": 44, "left": 66 },
+                { "num": 6, "code": "CDM", "top": 56, "left": 50 },
+                { "num": 8, "code": "CM", "top": 40, "left": 22 },
+                { "num": 10, "code": "CAM", "top": 78, "left": 50 },
+                { "num": 9, "code": "ST", "top": 30, "left": 50 }
+              ]
+            },
+            {
+              "id": "pulled-wide",
+              "label": { "en": "The 6 is pulled wide", "es": "Al 6 lo arrastran a la banda" },
+              "readout": { "en": "LANE OPEN", "es": "PASE ABIERTO" },
+              "tone": "bad",
+              "pass": { "from": { "top": 78, "left": 50 }, "to": { "top": 30, "left": 50 }, "blocked": false },
+              "note": {
+                "en": "Dragged out to cover the flank, and the middle is empty. One pass now splits the defence — this is what teams are doing when they keep switching play.",
+                "es": "Arrastrado a cubrir la banda, y el centro queda vacío. Un solo pase parte ahora a la defensa: esto es lo que buscan los equipos cuando cambian de lado una y otra vez."
+              },
+              "players": [
+                { "num": 4, "code": "CB", "top": 44, "left": 34 },
+                { "num": 5, "code": "CB", "top": 44, "left": 66 },
+                { "num": 6, "code": "CDM", "top": 54, "left": 20, "flagged": true },
+                { "num": 8, "code": "CM", "top": 40, "left": 22 },
+                { "num": 10, "code": "CAM", "top": 78, "left": 50 },
+                { "num": 9, "code": "ST", "top": 30, "left": 50 }
+              ]
+            },
+            {
+              "id": "covering",
+              "label": { "en": "Covering the full back", "es": "Cubriendo al lateral" },
+              "readout": { "en": "GAP FILLED", "es": "HUECO TAPADO" },
+              "tone": "good",
+              "note": {
+                "en": "The left back has gone forward, so the 6 slides across into the back line. The shape is a back four again — with different shirts in it.",
+                "es": "El lateral izquierdo se ha incorporado, así que el 6 se desliza a la línea defensiva. El dibujo vuelve a ser de cuatro atrás, pero con otras camisetas."
+              },
+              "players": [
+                { "num": 4, "code": "CB", "top": 46, "left": 40 },
+                { "num": 5, "code": "CB", "top": 46, "left": 66 },
+                { "num": 6, "code": "CDM", "top": 46, "left": 16 },
+                { "num": 3, "code": "LB", "top": 18, "left": 14 },
+                { "num": 10, "code": "CAM", "top": 78, "left": 50 },
+                { "num": 9, "code": "ST", "top": 30, "left": 50 }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "1.3-s3",
+        "title": { "en": "High block, mid block, low block", "es": "Bloque alto, medio y bajo" },
+        "body": {
+          "en": "A block is simply where the team chooses to start defending. High means pressing near the opponents' box and risking space behind. Low means dropping to your own third, conceding the ball and daring them to break you down. Mid is the compromise most teams live in.",
+          "es": "El bloque es sencillamente dónde decide el equipo empezar a defender. Alto significa presionar cerca del área rival y arriesgar el espacio a la espalda. Bajo significa replegarse a tu propio tercio, ceder el balón y retar al rival a romperte. El medio es el término medio en el que vive casi todo el mundo."
+        },
+        "scene": {
+          "kind": "states",
+          "surface": "pitch",
+          "control": "slider",
+          "markings": "full",
+          "showZones": true,
+          "label": { "en": "A defensive block sliding between three heights", "es": "Un bloque defensivo deslizándose entre tres alturas" },
+          "prompt": { "en": "Slide the block up and down the pitch.", "es": "Desliza el bloque arriba y abajo por el campo." },
+          "states": [
+            {
+              "id": "high",
+              "label": { "en": "High block", "es": "Bloque alto" },
+              "readout": { "en": "PRESS", "es": "PRESIÓN" },
+              "tone": "neutral",
+              "offside": 24,
+              "note": {
+                "en": "Defending in the opponents' half. Win the ball here and you are already through — lose the duel and there are forty metres of grass behind your defenders.",
+                "es": "Defender en campo rival. Si recuperas aquí ya estás dentro; si pierdes el duelo, quedan cuarenta metros de hierba a la espalda de tus defensas."
+              },
+              "players": [
+                { "num": 3, "code": "LB", "top": 30, "left": 18 },
+                { "num": 4, "code": "CB", "top": 28, "left": 40 },
+                { "num": 5, "code": "CB", "top": 28, "left": 60 },
+                { "num": 2, "code": "RB", "top": 30, "left": 82 },
+                { "num": 6, "code": "CDM", "top": 42, "left": 50 },
+                { "num": 8, "code": "CM", "top": 38, "left": 30 },
+                { "num": 10, "code": "CAM", "top": 38, "left": 70 },
+                { "num": 9, "code": "ST", "top": 16, "left": 50 }
+              ]
+            },
+            {
+              "id": "mid",
+              "label": { "en": "Mid block", "es": "Bloque medio" },
+              "readout": { "en": "CONTAIN", "es": "CONTENER" },
+              "tone": "good",
+              "offside": 44,
+              "note": {
+                "en": "The block starts around the halfway line. Enough space in front to press into, enough behind to recover. Most teams live here for most of a match.",
+                "es": "El bloque arranca cerca del medio campo. Espacio suficiente por delante para saltar a presionar y suficiente por detrás para recuperar. Casi todos los equipos viven aquí casi todo el partido."
+              },
+              "players": [
+                { "num": 3, "code": "LB", "top": 52, "left": 18 },
+                { "num": 4, "code": "CB", "top": 50, "left": 40 },
+                { "num": 5, "code": "CB", "top": 50, "left": 60 },
+                { "num": 2, "code": "RB", "top": 52, "left": 82 },
+                { "num": 6, "code": "CDM", "top": 62, "left": 50 },
+                { "num": 8, "code": "CM", "top": 58, "left": 30 },
+                { "num": 10, "code": "CAM", "top": 58, "left": 70 },
+                { "num": 9, "code": "ST", "top": 34, "left": 50 }
+              ]
+            },
+            {
+              "id": "low",
+              "label": { "en": "Low block", "es": "Bloque bajo" },
+              "readout": { "en": "ABSORB", "es": "ABSORBER" },
+              "tone": "neutral",
+              "offside": 66,
+              "note": {
+                "en": "Two banks packed into your own third. There is no space to pass into and no space behind — but you have handed over the ball and the whole afternoon with it.",
+                "es": "Dos líneas apretadas en tu propio tercio. No hay espacio para filtrar ni espacio a la espalda, pero has entregado el balón y con él toda la tarde."
+              },
+              "players": [
+                { "num": 3, "code": "LB", "top": 74, "left": 20 },
+                { "num": 4, "code": "CB", "top": 74, "left": 40 },
+                { "num": 5, "code": "CB", "top": 74, "left": 60 },
+                { "num": 2, "code": "RB", "top": 74, "left": 80 },
+                { "num": 6, "code": "CDM", "top": 64, "left": 50 },
+                { "num": 8, "code": "CM", "top": 64, "left": 32 },
+                { "num": 10, "code": "CAM", "top": 64, "left": 68 },
+                { "num": 9, "code": "ST", "top": 48, "left": 50 }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "check": {
+      "question": {
+        "en": "Why does one defender dropping deeper than the rest break the offside trap?",
+        "es": "¿Por qué un defensa más retrasado que el resto rompe la trampa del fuera de juego?"
+      },
+      "options": [
+        { "id": "a", "label": { "en": "They become the second-to-last defender, playing attackers onside", "es": "Pasa a ser el penúltimo defensa y habilita a los atacantes" }, "correct": true },
+        { "id": "b", "label": { "en": "The referee cannot see the line", "es": "El árbitro no puede ver la línea" }, "correct": false },
+        { "id": "c", "label": { "en": "It is a foul", "es": "Es falta" }, "correct": false }
+      ],
+      "explain": {
+        "en": "Offside is measured against the second-to-last defender. A straggler resets that reference point deeper, and every attacker ahead of the line is suddenly legal.",
+        "es": "El fuera de juego se mide respecto al penúltimo defensa. Un rezagado desplaza esa referencia hacia atrás, y todos los atacantes por delante quedan habilitados de golpe."
+      }
+    }
+  },
+
+  {
+    "id": "1.4",
+    "order": 4,
+    "lessonId": "lesson-formations-overview",
+    "quizSlug": "formations",
+    "category": "formations",
+    "align": "right",
+    "icon": "grid_view",
+    "xp": 55,
+    "minutes": 8,
+    "glossaryIds": ["term-formation"],
+    "title": { "en": "Formations Matter", "es": "Las formaciones importan" },
+    "detailTitle": { "en": "Module 1.4: Formations Matter", "es": "Módulo 1.4: Las formaciones importan" },
+    "summary": {
+      "en": "4-3-3, 4-4-2, 3-5-2 — what each shape gives you, what it costs you, and when a coach switches mid-match.",
+      "es": "4-3-3, 4-4-2, 3-5-2: qué te da cada dibujo, qué te cuesta y cuándo un entrenador cambia a mitad de partido."
+    },
+    "bounty": { "en": "+55 XP Drill Bounty", "es": "+55 XP de recompensa" },
+    "unlocks": { "en": "Unlocks 'Shape Shifter'", "es": "Desbloquea 'Cambiaformas'" },
+    "steps": [
+      {
+        "id": "1.4-s1",
+        "title": { "en": "A formation is a starting point", "es": "La formación es un punto de partida" },
+        "body": {
+          "en": "Numbers like 4-3-3 read from defence forward: four defenders, three midfielders, three forwards. It describes where players begin, not where they stay. Within ten seconds of kickoff the shape has already changed.",
+          "es": "Los números como 4-3-3 se leen de atrás hacia adelante: cuatro defensas, tres centrocampistas, tres delanteros. Describe dónde empiezan los jugadores, no dónde se quedan. A los diez segundos del saque inicial el dibujo ya ha cambiado."
+        },
+        "scene": {
+          "kind": "states",
+          "surface": "pitch",
+          "control": "chips",
+          "markings": "full",
+          "label": { "en": "Four formations, the same eleven shirts", "es": "Cuatro formaciones, las mismas once camisetas" },
+          "prompt": { "en": "Switch shape and watch the same eleven move.", "es": "Cambia de dibujo y mira moverse a los mismos once." },
+          "states": [
+            {
+              "id": "433",
+              "label": { "en": "4-3-3", "es": "4-3-3" },
+              "readout": "4 · 3 · 3",
+              "tone": "neutral",
+              "note": {
+                "en": "Four across the back, a midfield triangle, three forwards holding the full width. The default shape of the modern game.",
+                "es": "Cuatro atrás, un triángulo en el medio y tres arriba ocupando todo el ancho. El dibujo por defecto del fútbol moderno."
+              },
+              "players": [
+                { "num": 1, "code": "GK", "top": 89, "left": 50 },
+                { "num": 3, "code": "LB", "top": 75, "left": 16 },
+                { "num": 4, "code": "CB", "top": 76, "left": 38 },
+                { "num": 5, "code": "CB", "top": 76, "left": 62 },
+                { "num": 2, "code": "RB", "top": 73, "left": 84 },
+                { "num": 6, "code": "CDM", "top": 57, "left": 50 },
+                { "num": 8, "code": "CM", "top": 45, "left": 32 },
+                { "num": 10, "code": "CAM", "top": 43, "left": 68 },
+                { "num": 11, "code": "LW", "top": 24, "left": 18 },
+                { "num": 9, "code": "ST", "top": 18, "left": 50 },
+                { "num": 7, "code": "RW", "top": 24, "left": 82 }
+              ]
+            },
+            {
+              "id": "442",
+              "label": { "en": "4-4-2", "es": "4-4-2" },
+              "readout": "4 · 4 · 2",
+              "tone": "neutral",
+              "note": {
+                "en": "Two flat banks of four with a pair up front. Nothing is clever about it, which is exactly why it is so hard to play through.",
+                "es": "Dos líneas planas de cuatro y una pareja arriba. No tiene nada de ingenioso, y justo por eso es tan difícil de atravesar."
+              },
+              "players": [
+                { "num": 1, "code": "GK", "top": 89, "left": 50 },
+                { "num": 3, "code": "LB", "top": 75, "left": 16 },
+                { "num": 4, "code": "CB", "top": 76, "left": 38 },
+                { "num": 5, "code": "CB", "top": 76, "left": 62 },
+                { "num": 2, "code": "RB", "top": 75, "left": 84 },
+                { "num": 11, "code": "LM", "top": 48, "left": 15 },
+                { "num": 6, "code": "CM", "top": 52, "left": 38 },
+                { "num": 8, "code": "CM", "top": 52, "left": 62 },
+                { "num": 7, "code": "RM", "top": 48, "left": 85 },
+                { "num": 10, "code": "SS", "top": 24, "left": 38 },
+                { "num": 9, "code": "ST", "top": 22, "left": 62 }
+              ]
+            },
+            {
+              "id": "352",
+              "label": { "en": "3-5-2", "es": "3-5-2" },
+              "readout": "3 · 5 · 2",
+              "tone": "neutral",
+              "note": {
+                "en": "Three centre backs, five across the middle, two strikers. The width comes entirely from two wing backs who must cover the whole touchline alone.",
+                "es": "Tres centrales, cinco en el medio y dos puntas. La amplitud sale únicamente de dos carrileros que deben cubrir toda la banda solos."
+              },
+              "players": [
+                { "num": 1, "code": "GK", "top": 89, "left": 50 },
+                { "num": 3, "code": "CB", "top": 77, "left": 26 },
+                { "num": 4, "code": "CB", "top": 79, "left": 50 },
+                { "num": 5, "code": "CB", "top": 77, "left": 74 },
+                { "num": 11, "code": "LWB", "top": 50, "left": 12 },
+                { "num": 6, "code": "CM", "top": 58, "left": 40 },
+                { "num": 8, "code": "CM", "top": 58, "left": 60 },
+                { "num": 2, "code": "RWB", "top": 50, "left": 88 },
+                { "num": 10, "code": "CAM", "top": 38, "left": 50 },
+                { "num": 7, "code": "ST", "top": 22, "left": 36 },
+                { "num": 9, "code": "ST", "top": 22, "left": 64 }
+              ]
+            },
+            {
+              "id": "4231",
+              "label": { "en": "4-2-3-1", "es": "4-2-3-1" },
+              "readout": "4 · 2 · 3 · 1",
+              "tone": "neutral",
+              "note": {
+                "en": "Two holding midfielders screening the back four, three attackers behind a lone striker. Two shapes in one: solid without the ball, five attackers with it.",
+                "es": "Dos mediocentros protegiendo a la línea de cuatro y tres atacantes por detrás de un punta. Dos dibujos en uno: sólido sin balón, cinco atacantes con él."
+              },
+              "players": [
+                { "num": 1, "code": "GK", "top": 89, "left": 50 },
+                { "num": 3, "code": "LB", "top": 76, "left": 16 },
+                { "num": 4, "code": "CB", "top": 77, "left": 38 },
+                { "num": 5, "code": "CB", "top": 77, "left": 62 },
+                { "num": 2, "code": "RB", "top": 76, "left": 84 },
+                { "num": 6, "code": "CDM", "top": 62, "left": 36 },
+                { "num": 8, "code": "CDM", "top": 62, "left": 64 },
+                { "num": 11, "code": "LW", "top": 38, "left": 18 },
+                { "num": 10, "code": "CAM", "top": 38, "left": 50 },
+                { "num": 7, "code": "RW", "top": 38, "left": 82 },
+                { "num": 9, "code": "ST", "top": 18, "left": 50 }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "1.4-s2",
+        "title": { "en": "Every shape trades something", "es": "Cada dibujo cambia una cosa por otra" },
+        "body": {
+          "en": "4-3-3 gives you width and pressing bodies high up, but leaves the midfield three outnumbered against a four. 4-4-2 is compact and hard to play through, but cedes the middle. 3-5-2 floods midfield and asks two wing backs to cover the entire touchline on their own.",
+          "es": "El 4-3-3 te da amplitud y gente para presionar arriba, pero deja a tres centrocampistas en inferioridad ante cuatro. El 4-4-2 es compacto y difícil de atravesar, pero cede el centro. El 3-5-2 llena el mediocampo y exige a dos carrileros cubrir toda la banda ellos solos."
+        },
+        "scene": {
+          "kind": "states",
+          "surface": "pitch",
+          "control": "chips",
+          "markings": "full",
+          "showZones": true,
+          "label": { "en": "Each shape with the trade it makes", "es": "Cada dibujo con lo que sacrifica" },
+          "prompt": { "en": "Every shape wins somewhere and loses somewhere.", "es": "Cada dibujo gana en algún sitio y pierde en otro." },
+          "states": [
+            {
+              "id": "433-trade",
+              "label": { "en": "4-3-3", "es": "4-3-3" },
+              "readout": { "en": "WIDTH, NOT NUMBERS", "es": "AMPLITUD, NO NÚMEROS" },
+              "tone": "neutral",
+              "note": {
+                "en": "Gains: two wingers pinning the full backs, and bodies high up to press. Costs: three central midfielders against four is an outnumbering you will feel all match.",
+                "es": "Gana: dos extremos que fijan a los laterales y gente arriba para presionar. Cuesta: tres centrocampistas contra cuatro es una inferioridad que se nota todo el partido."
+              },
+              "players": [
+                { "num": 1, "code": "GK", "top": 89, "left": 50 },
+                { "num": 3, "code": "LB", "top": 75, "left": 16 },
+                { "num": 4, "code": "CB", "top": 76, "left": 38 },
+                { "num": 5, "code": "CB", "top": 76, "left": 62 },
+                { "num": 2, "code": "RB", "top": 73, "left": 84 },
+                { "num": 6, "code": "CDM", "top": 57, "left": 50, "flagged": true },
+                { "num": 8, "code": "CM", "top": 45, "left": 32, "flagged": true },
+                { "num": 10, "code": "CAM", "top": 43, "left": 68, "flagged": true },
+                { "num": 11, "code": "LW", "top": 24, "left": 18 },
+                { "num": 9, "code": "ST", "top": 18, "left": 50 },
+                { "num": 7, "code": "RW", "top": 24, "left": 82 }
+              ]
+            },
+            {
+              "id": "442-trade",
+              "label": { "en": "4-4-2", "es": "4-4-2" },
+              "readout": { "en": "COMPACT, NOT CREATIVE", "es": "COMPACTO, NO CREATIVO" },
+              "tone": "neutral",
+              "note": {
+                "en": "Gains: two banks of four with no gaps between them, and a second striker to run at a back line. Costs: two central midfielders will be overrun by any side playing three.",
+                "es": "Gana: dos líneas de cuatro sin huecos entre ellas y un segundo punta para atacar a la defensa. Cuesta: dos centrocampistas serán desbordados por cualquier equipo que juegue con tres."
+              },
+              "players": [
+                { "num": 1, "code": "GK", "top": 89, "left": 50 },
+                { "num": 3, "code": "LB", "top": 75, "left": 16 },
+                { "num": 4, "code": "CB", "top": 76, "left": 38 },
+                { "num": 5, "code": "CB", "top": 76, "left": 62 },
+                { "num": 2, "code": "RB", "top": 75, "left": 84 },
+                { "num": 11, "code": "LM", "top": 48, "left": 15 },
+                { "num": 6, "code": "CM", "top": 52, "left": 38, "flagged": true },
+                { "num": 8, "code": "CM", "top": 52, "left": 62, "flagged": true },
+                { "num": 7, "code": "RM", "top": 48, "left": 85 },
+                { "num": 10, "code": "SS", "top": 24, "left": 38 },
+                { "num": 9, "code": "ST", "top": 22, "left": 62 }
+              ]
+            },
+            {
+              "id": "352-trade",
+              "label": { "en": "3-5-2", "es": "3-5-2" },
+              "readout": { "en": "NUMBERS, NOT COVER", "es": "NÚMEROS, NO COBERTURA" },
+              "tone": "neutral",
+              "note": {
+                "en": "Gains: five in midfield wins almost any central battle. Costs: two wing backs cover the whole touchline both ways, and behind them sit only three defenders.",
+                "es": "Gana: cinco en el medio gana casi cualquier batalla central. Cuesta: dos carrileros cubren toda la banda en ambos sentidos, y detrás solo hay tres defensas."
+              },
+              "players": [
+                { "num": 1, "code": "GK", "top": 89, "left": 50 },
+                { "num": 3, "code": "CB", "top": 77, "left": 26 },
+                { "num": 4, "code": "CB", "top": 79, "left": 50 },
+                { "num": 5, "code": "CB", "top": 77, "left": 74 },
+                { "num": 11, "code": "LWB", "top": 50, "left": 12, "flagged": true },
+                { "num": 6, "code": "CM", "top": 58, "left": 40 },
+                { "num": 8, "code": "CM", "top": 58, "left": 60 },
+                { "num": 2, "code": "RWB", "top": 50, "left": 88, "flagged": true },
+                { "num": 10, "code": "CAM", "top": 38, "left": 50 },
+                { "num": 7, "code": "ST", "top": 22, "left": 36 },
+                { "num": 9, "code": "ST", "top": 22, "left": 64 }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "1.4-s3",
+        "title": { "en": "Why coaches switch at half time", "es": "Por qué los entrenadores cambian en el descanso" },
+        "body": {
+          "en": "A change of shape is usually a change of where the spare player is. Moving from 4-3-3 to 4-4-2 sacrifices a midfielder to add a second striker — you are choosing to lose the middle in exchange for a direct threat. Watch which area suddenly has an extra body.",
+          "es": "Un cambio de dibujo suele ser un cambio de dónde está el jugador libre. Pasar de 4-3-3 a 4-4-2 sacrifica a un centrocampista para sumar un segundo punta: eliges perder el centro a cambio de una amenaza directa. Fíjate en qué zona aparece de pronto un jugador de más."
+        },
+        "scene": {
+          "kind": "states",
+          "surface": "pitch",
+          "control": "slider",
+          "markings": "full",
+          "label": { "en": "A half-time switch from 4-3-3 to 4-4-2", "es": "Un cambio de 4-3-3 a 4-4-2 en el descanso" },
+          "prompt": { "en": "Drag through the substitution.", "es": "Arrastra a través del cambio." },
+          "states": [
+            {
+              "id": "first-half",
+              "label": { "en": "First half — 4-3-3", "es": "Primer tiempo — 4-3-3" },
+              "readout": { "en": "0-1 DOWN", "es": "0-1 ABAJO" },
+              "tone": "bad",
+              "note": {
+                "en": "Plenty of possession, no bodies in the box. The lone striker has been outnumbered by two centre backs for forty-five minutes.",
+                "es": "Mucha posesión y nadie dentro del área. El único punta lleva cuarenta y cinco minutos en inferioridad ante dos centrales."
+              },
+              "players": [
+                { "num": 1, "code": "GK", "top": 89, "left": 50 },
+                { "num": 3, "code": "LB", "top": 75, "left": 16 },
+                { "num": 4, "code": "CB", "top": 76, "left": 38 },
+                { "num": 5, "code": "CB", "top": 76, "left": 62 },
+                { "num": 2, "code": "RB", "top": 73, "left": 84 },
+                { "num": 6, "code": "CDM", "top": 57, "left": 50 },
+                { "num": 8, "code": "CM", "top": 45, "left": 32 },
+                { "num": 10, "code": "CAM", "top": 43, "left": 68 },
+                { "num": 11, "code": "LW", "top": 24, "left": 18 },
+                { "num": 9, "code": "ST", "top": 18, "left": 50, "flagged": true },
+                { "num": 7, "code": "RW", "top": 24, "left": 82 }
+              ]
+            },
+            {
+              "id": "the-switch",
+              "label": { "en": "The switch", "es": "El cambio" },
+              "readout": { "en": "6 OFF, 10 PUSHES UP", "es": "SALE EL 6, SUBE EL 10" },
+              "tone": "neutral",
+              "note": {
+                "en": "The holding midfielder comes off. The 10 pushes up alongside the striker and the two wingers drop into a flat midfield four. The back line has not moved at all.",
+                "es": "Sale el mediocentro defensivo. El 10 sube junto al delantero y los dos extremos bajan a formar un medio campo plano de cuatro. La línea defensiva no se ha movido nada."
+              },
+              "players": [
+                { "num": 1, "code": "GK", "top": 89, "left": 50 },
+                { "num": 3, "code": "LB", "top": 75, "left": 16 },
+                { "num": 4, "code": "CB", "top": 76, "left": 38 },
+                { "num": 5, "code": "CB", "top": 76, "left": 62 },
+                { "num": 2, "code": "RB", "top": 74, "left": 84 },
+                { "num": 6, "code": "CM", "top": 52, "left": 44, "flagged": true },
+                { "num": 8, "code": "CM", "top": 52, "left": 58 },
+                { "num": 11, "code": "LM", "top": 40, "left": 15 },
+                { "num": 7, "code": "RM", "top": 40, "left": 85 },
+                { "num": 10, "code": "SS", "top": 30, "left": 38 },
+                { "num": 9, "code": "ST", "top": 22, "left": 60 }
+              ]
+            },
+            {
+              "id": "second-half",
+              "label": { "en": "Second half — 4-4-2", "es": "Segundo tiempo — 4-4-2" },
+              "readout": { "en": "TWO IN THE BOX", "es": "DOS EN EL ÁREA" },
+              "tone": "good",
+              "note": {
+                "en": "Two strikers now occupy two centre backs, so crosses have a target. The price is the middle: two midfielders against three, and the opponent will have the ball.",
+                "es": "Ahora dos puntas ocupan a dos centrales, así que los centros tienen destinatario. El precio es el centro: dos centrocampistas contra tres, y el rival tendrá el balón."
+              },
+              "players": [
+                { "num": 1, "code": "GK", "top": 89, "left": 50 },
+                { "num": 3, "code": "LB", "top": 75, "left": 16 },
+                { "num": 4, "code": "CB", "top": 76, "left": 38 },
+                { "num": 5, "code": "CB", "top": 76, "left": 62 },
+                { "num": 2, "code": "RB", "top": 75, "left": 84 },
+                { "num": 11, "code": "LM", "top": 48, "left": 15 },
+                { "num": 6, "code": "CM", "top": 52, "left": 38 },
+                { "num": 8, "code": "CM", "top": 52, "left": 62 },
+                { "num": 7, "code": "RM", "top": 48, "left": 85 },
+                { "num": 10, "code": "SS", "top": 24, "left": 38, "flagged": true },
+                { "num": 9, "code": "ST", "top": 22, "left": 62, "flagged": true }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "check": {
+      "question": { "en": "A team switches from 4-3-3 to 4-4-2. What have they given up?", "es": "Un equipo pasa de 4-3-3 a 4-4-2. ¿Qué ha cedido?" },
+      "options": [
+        { "id": "a", "label": { "en": "A defender", "es": "Un defensa" }, "correct": false },
+        { "id": "b", "label": { "en": "A central midfielder, and control of the middle", "es": "Un centrocampista, y el control del centro" }, "correct": true },
+        { "id": "c", "label": { "en": "Nothing — it is the same eleven", "es": "Nada: son los mismos once" }, "correct": false }
+      ],
+      "explain": {
+        "en": "The back four is untouched. The third central midfielder becomes a second striker, so the team is now outnumbered in the area where possession is decided.",
+        "es": "La línea de cuatro no se toca. El tercer centrocampista pasa a ser segundo delantero, así que el equipo queda en inferioridad en la zona donde se decide la posesión."
+      }
+    }
+  },
+
+  {
+    "id": "1.5",
+    "order": 5,
+    "lessonId": "lesson-how-to-watch",
+    "quizSlug": "how-to-watch",
+    "category": "how-to-watch",
+    "align": "left",
+    "icon": "campaign",
+    "xp": 45,
+    "minutes": 6,
+    "glossaryIds": ["term-nutmeg"],
+    "title": { "en": "Culture & Chants", "es": "Cultura y cánticos" },
+    "detailTitle": { "en": "Module 1.5: Culture & Chants", "es": "Módulo 1.5: Cultura y cánticos" },
+    "summary": {
+      "en": "Why a stand sings, what a tifo is for, and how a chant travels from one terrace to a whole country.",
+      "es": "Por qué canta una grada, para qué sirve un tifo y cómo un cántico viaja de un fondo a todo un país."
+    },
+    "bounty": { "en": "+45 XP Drill Bounty", "es": "+45 XP de recompensa" },
+    "unlocks": { "en": "Unlocks 'Terrace Voice'", "es": "Desbloquea 'Voz de la grada'" },
+    "steps": [
+      {
+        "id": "1.5-s1",
+        "title": { "en": "A stand is an instrument", "es": "Una grada es un instrumento" },
+        "body": {
+          "en": "Most grounds have one end where the loudest supporters gather — the Kop at Anfield, the Curva at an Italian ground, the Südtribüne in Dortmund. Songs start there and spread outward. That end is usually behind a goal, standing or densely packed, and cheaper than the rest of the stadium.",
+          "es": "Casi todos los estadios tienen un fondo donde se juntan los más ruidosos: el Kop en Anfield, la Curva en Italia, el Südtribüne en Dortmund. Los cánticos nacen ahí y se extienden. Ese fondo suele estar detrás de una portería, de pie o muy apretado, y es más barato que el resto del estadio."
+        },
+        "scene": {
+          "kind": "hotspots",
+          "surface": "stadium",
+          "label": { "en": "A stadium bowl with its four stands labelled", "es": "Un estadio con sus cuatro gradas señaladas" },
+          "prompt": { "en": "Tap a stand to hear what happens there.", "es": "Toca una grada para ver qué pasa en ella." },
+          "regions": [
+            {
+              "id": "singing-end",
+              "top": 2,
+              "left": 16,
+              "width": 68,
+              "height": 20,
+              "label": { "en": "The singing end", "es": "El fondo que canta" },
+              "note": {
+                "en": "Behind a goal, densely packed, often standing, and the cheapest seat in the ground. Every song in the stadium starts in this block of a few thousand people.",
+                "es": "Detrás de una portería, muy apretado, a menudo de pie, y la entrada más barata del estadio. Todos los cánticos del recinto nacen en este bloque de unos pocos miles de personas."
+              }
+            },
+            {
+              "id": "main-stand",
+              "top": 78,
+              "left": 16,
+              "width": 68,
+              "height": 20,
+              "label": { "en": "The main stand", "es": "La tribuna principal" },
+              "note": {
+                "en": "Seated, the most expensive tickets, the television cameras and the directors' box. It joins in late and stops early — and it is the half of the ground you hear least on a broadcast.",
+                "es": "Sentada, con las entradas más caras, las cámaras de televisión y el palco. Se suma tarde y para pronto, y es la parte del estadio que menos se oye en la retransmisión."
+              }
+            },
+            {
+              "id": "away-corner",
+              "top": 24,
+              "left": 76,
+              "width": 22,
+              "height": 30,
+              "label": { "en": "The away corner", "es": "El rincón visitante" },
+              "note": {
+                "en": "A few thousand travelling supporters, penned into one corner and outnumbered twenty to one. They sing for the whole ninety minutes anyway — that is the entire point of being there.",
+                "es": "Unos pocos miles de aficionados desplazados, encajonados en una esquina y en inferioridad de veinte a uno. Cantan los noventa minutos igualmente: para eso están ahí."
+              }
+            },
+            {
+              "id": "side-stands",
+              "top": 24,
+              "left": 2,
+              "width": 22,
+              "height": 52,
+              "label": { "en": "The side stands", "es": "Los laterales" },
+              "note": {
+                "en": "The relay. A song is only truly the stadium's once these two sides pick it up from the end — that is the difference between a chant and a roar.",
+                "es": "El relevo. Un cántico solo es de verdad del estadio cuando estos dos laterales lo recogen del fondo: esa es la diferencia entre un cántico y un rugido."
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "1.5-s2",
+        "title": { "en": "Where the tunes come from", "es": "De dónde salen las melodías" },
+        "body": {
+          "en": "Almost no chant has an original melody. Terraces borrow from hymns, folk songs, pop hits and musicals, then rewrite the words. That is why the same tune turns up in four countries with four different meanings — the melody travels, the words stay local.",
+          "es": "Casi ningún cántico tiene melodía propia. Las gradas toman prestado de himnos, canciones populares, éxitos pop y musicales, y luego reescriben la letra. Por eso la misma melodía aparece en cuatro países con cuatro significados distintos: la música viaja, la letra se queda."
+        },
+        "scene": {
+          "kind": "layers",
+          "label": { "en": "How a borrowed tune becomes a club's own song", "es": "Cómo una melodía prestada se convierte en la canción de un club" },
+          "prompt": { "en": "Open each layer in turn.", "es": "Abre cada capa por orden." },
+          "layers": [
+            {
+              "id": "source",
+              "label": { "en": "1 · Someone else's tune", "es": "1 · Una melodía ajena" },
+              "body": {
+                "en": "A hymn, a folk song, a chart hit, a number from a musical. It already has to be singable by thousands of people who have had a drink and cannot hear each other — which rules out almost everything clever.",
+                "es": "Un himno, una canción popular, un éxito de la radio, un número de un musical. Ya tiene que ser cantable por miles de personas que han bebido algo y no se oyen entre sí, lo que descarta casi todo lo ingenioso."
+              }
+            },
+            {
+              "id": "rewrite",
+              "label": { "en": "2 · New words, same melody", "es": "2 · Letra nueva, misma melodía" },
+              "body": {
+                "en": "Someone in the singing end puts local words over it — a player's name, a rival's humiliation, a line about the city. The melody is unchanged, so nobody has to learn anything new.",
+                "es": "Alguien del fondo le pone letra local: el nombre de un jugador, la humillación de un rival, un verso sobre la ciudad. La melodía no cambia, así que nadie tiene que aprender nada nuevo."
+              }
+            },
+            {
+              "id": "ownership",
+              "label": { "en": "3 · It stops being borrowed", "es": "3 · Deja de ser prestada" },
+              "body": {
+                "en": "After a decade nobody remembers the original. The same eight bars may be a love song in one country and an insult in another, and both sets of supporters will tell you the tune is theirs.",
+                "es": "Al cabo de una década nadie recuerda el original. Los mismos ocho compases pueden ser una canción de amor en un país y un insulto en otro, y las dos aficiones te dirán que la melodía es suya."
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "1.5-s3",
+        "title": { "en": "What a tifo is for", "es": "Para qué sirve un tifo" },
+        "body": {
+          "en": "A tifo is a coordinated display — cards, banners, flags — covering a whole stand at a set moment. It takes weeks of secret work and lasts about ninety seconds. The point is not the picture. It is the proof that thousands of strangers organised themselves for no reward.",
+          "es": "Un tifo es un mosaico coordinado —cartulinas, pancartas, banderas— que cubre toda una grada en un momento exacto. Cuesta semanas de trabajo en secreto y dura unos noventa segundos. Lo importante no es la imagen: es la prueba de que miles de desconocidos se organizaron sin recibir nada a cambio."
+        },
+        "scene": {
+          "kind": "layers",
+          "label": { "en": "The making of a tifo, from months out to ninety seconds", "es": "Cómo se hace un tifo, de los meses previos a los noventa segundos" },
+          "prompt": { "en": "Open each layer in turn.", "es": "Abre cada capa por orden." },
+          "layers": [
+            {
+              "id": "weeks-before",
+              "label": { "en": "1 · Weeks of work, in secret", "es": "1 · Semanas de trabajo, en secreto" },
+              "body": {
+                "en": "A design is agreed, a warehouse is found, and volunteers paint panels by hand for weeks. It is kept secret from the club, the opposition and often the rest of the stand — a leaked tifo is a wasted one.",
+                "es": "Se acuerda un diseño, se busca una nave y decenas de voluntarios pintan paneles a mano durante semanas. Se mantiene en secreto ante el club, el rival y a menudo el resto de la grada: un tifo filtrado es un tifo desperdiciado."
+              }
+            },
+            {
+              "id": "the-handover",
+              "label": { "en": "2 · Thirty thousand pieces handed out", "es": "2 · Treinta mil piezas repartidas" },
+              "body": {
+                "en": "On the day, a card is left on every seat in a precise colour order. The picture only exists if almost every single person holds up the right card at the right second — one empty row and the image has a hole in it.",
+                "es": "El día del partido se deja una cartulina en cada asiento en un orden de color exacto. La imagen solo existe si casi todas las personas levantan la cartulina correcta en el segundo correcto: una fila vacía y el dibujo tiene un agujero."
+              }
+            },
+            {
+              "id": "ninety-seconds",
+              "label": { "en": "3 · Ninety seconds, then gone", "es": "3 · Noventa segundos y se acabó" },
+              "body": {
+                "en": "It goes up as the teams walk out and comes down before kickoff. Weeks of work for a minute and a half — and the point was never the picture. It was showing that thousands of strangers can organise themselves for nothing.",
+                "es": "Se levanta cuando saltan los equipos y se retira antes del saque inicial. Semanas de trabajo para minuto y medio, y lo importante nunca fue la imagen: era demostrar que miles de desconocidos pueden organizarse a cambio de nada."
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "check": {
+      "question": {
+        "en": "Why do the same melodies appear in stadiums across different countries?",
+        "es": "¿Por qué aparecen las mismas melodías en estadios de países distintos?"
+      },
+      "options": [
+        { "id": "a", "label": { "en": "Clubs license them from each other", "es": "Los clubes se las licencian entre ellos" }, "correct": false },
+        { "id": "b", "label": { "en": "Terraces borrow existing tunes and rewrite the words locally", "es": "Las gradas toman melodías existentes y reescriben la letra en local" }, "correct": true },
+        { "id": "c", "label": { "en": "Leagues supply official songs", "es": "Las ligas reparten canciones oficiales" }, "correct": false }
+      ],
+      "explain": {
+        "en": "The melody is common property — hymns, folk songs, pop. What makes a chant belong to one club is the words its own supporters put on top.",
+        "es": "La melodía es patrimonio común: himnos, canciones populares, pop. Lo que hace que un cántico sea de un club es la letra que le pone su propia afición."
+      }
+    }
+  },
+
+  {
+    "id": "1.6",
+    "order": 6,
+    "lessonId": "lesson-rules-basics",
+    "quizSlug": "rules-basics",
+    "category": "rules",
+    "align": "center",
+    "icon": "videocam",
+    "xp": 60,
+    "minutes": 9,
+    "glossaryIds": ["term-yellow-card", "term-red-card", "term-penalty-kick"],
+    "title": { "en": "VAR & Referee", "es": "VAR y arbitraje" },
+    "detailTitle": { "en": "Module 1.6: VAR & the Referee", "es": "Módulo 1.6: El VAR y el árbitro" },
+    "summary": {
+      "en": "What the referee can review, what \"clear and obvious\" actually means, and why the offside lines take so long to draw.",
+      "es": "Qué puede revisar el árbitro, qué significa de verdad \"error claro y manifiesto\" y por qué tardan tanto en trazar las líneas del fuera de juego."
+    },
+    "bounty": { "en": "+60 XP Drill Bounty", "es": "+60 XP de recompensa" },
+    "unlocks": { "en": "Unlocks 'Laws Scholar'", "es": "Desbloquea 'Erudito del reglamento'" },
+    "steps": [
+      {
+        "id": "1.6-s1",
+        "title": { "en": "Four situations only", "es": "Solo cuatro situaciones" },
+        "body": {
+          "en": "VAR may review exactly four things: goals, penalty decisions, direct red cards, and mistaken identity. It cannot review a corner, a yellow card, or a foul in midfield. If the incident is not in those four categories, the referee's call stands however wrong it looks.",
+          "es": "El VAR puede revisar exactamente cuatro cosas: goles, penaltis, rojas directas y confusión de identidad. No puede revisar un córner, una amarilla ni una falta en el mediocampo. Si la jugada no entra en esas cuatro categorías, la decisión del árbitro se mantiene por mal que se vea."
+        },
+        "scene": {
+          "kind": "states",
+          "surface": "pitch",
+          "control": "chips",
+          "markings": "full",
+          "label": { "en": "Seven incidents, sorted into reviewable and not", "es": "Siete jugadas, separadas entre revisables y no revisables" },
+          "prompt": { "en": "Pick an incident. Which ones can VAR touch?", "es": "Elige una jugada. ¿Cuáles puede tocar el VAR?" },
+          "states": [
+            {
+              "id": "goal",
+              "label": { "en": "A goal", "es": "Un gol" },
+              "readout": { "en": "REVIEWABLE", "es": "REVISABLE" },
+              "tone": "good",
+              "note": {
+                "en": "Every goal is checked automatically, every time — for offside, a foul in the build-up, or the ball having gone out. That silent check is why celebrations pause.",
+                "es": "Todos los goles se comprueban automáticamente, siempre: fuera de juego, falta en la jugada previa o balón que se fue fuera. Esa comprobación silenciosa es la razón de que las celebraciones se congelen."
+              },
+              "players": [
+                { "num": 1, "code": "GK", "top": 10, "left": 50 },
+                { "num": 4, "code": "CB", "top": 26, "left": 38 },
+                { "num": 9, "code": "ST", "top": 18, "left": 56, "flagged": true }
+              ]
+            },
+            {
+              "id": "penalty",
+              "label": { "en": "A penalty decision", "es": "Un penalti" },
+              "readout": { "en": "REVIEWABLE", "es": "REVISABLE" },
+              "tone": "good",
+              "offside": null,
+              "note": {
+                "en": "Both ways: a penalty given that should not have been, and one missed that should have been. This is where the referee goes to the pitchside monitor.",
+                "es": "En los dos sentidos: un penalti señalado que no era y uno no señalado que sí lo era. Aquí es donde el árbitro se acerca al monitor de banda."
+              },
+              "players": [
+                { "num": 1, "code": "GK", "top": 8, "left": 50 },
+                { "num": 4, "code": "CB", "top": 14, "left": 44, "flagged": true },
+                { "num": 9, "code": "ST", "top": 15, "left": 52 }
+              ]
+            },
+            {
+              "id": "red-card",
+              "label": { "en": "A direct red card", "es": "Una roja directa" },
+              "readout": { "en": "REVIEWABLE", "es": "REVISABLE" },
+              "tone": "good",
+              "note": {
+                "en": "A missed sending-off can be corrected, and a harsh one can be downgraded. A second yellow cannot be touched — that is a different category entirely.",
+                "es": "Una expulsión no señalada puede corregirse, y una roja excesiva puede rebajarse. Una segunda amarilla no se puede tocar: es una categoría completamente distinta."
+              },
+              "players": [
+                { "num": 6, "code": "CDM", "top": 52, "left": 44, "flagged": true },
+                { "num": 8, "code": "CM", "top": 54, "left": 54 }
+              ]
+            },
+            {
+              "id": "mistaken-identity",
+              "label": { "en": "Mistaken identity", "es": "Confusión de identidad" },
+              "readout": { "en": "REVIEWABLE", "es": "REVISABLE" },
+              "tone": "good",
+              "note": {
+                "en": "The rarest of the four. The referee books or sends off the wrong player in a crowd, and VAR points out who actually committed the offence.",
+                "es": "La más rara de las cuatro. El árbitro amonesta o expulsa al jugador equivocado en un tumulto, y el VAR señala quién cometió realmente la infracción."
+              },
+              "players": [
+                { "num": 4, "code": "CB", "top": 48, "left": 42, "flagged": true },
+                { "num": 5, "code": "CB", "top": 50, "left": 50 },
+                { "num": 6, "code": "CDM", "top": 47, "left": 58 }
+              ]
+            },
+            {
+              "id": "corner",
+              "label": { "en": "A wrongly given corner", "es": "Un córner mal concedido" },
+              "readout": { "en": "NOT REVIEWABLE", "es": "NO REVISABLE" },
+              "tone": "bad",
+              "note": {
+                "en": "Plainly wrong on the replay and completely untouchable. If that corner leads directly to a goal, only the goal itself gets checked — not the corner that created it.",
+                "es": "Clarísimamente mal en la repetición y completamente intocable. Si ese córner acaba en gol, solo se revisa el gol, no el córner que lo originó."
+              },
+              "players": [
+                { "num": 7, "code": "RW", "top": 4, "left": 94, "flagged": true },
+                { "num": 3, "code": "LB", "top": 12, "left": 84 }
+              ]
+            },
+            {
+              "id": "yellow",
+              "label": { "en": "A yellow card", "es": "Una amarilla" },
+              "readout": { "en": "NOT REVIEWABLE", "es": "NO REVISABLE" },
+              "tone": "bad",
+              "note": {
+                "en": "Cautions are the referee's alone. A yellow you think should have been nothing, or a second yellow that ends the match, both stand.",
+                "es": "Las amonestaciones son solo del árbitro. Una amarilla que crees que no era, o una segunda amarilla que acaba el partido, se mantienen igual."
+              },
+              "players": [
+                { "num": 8, "code": "CM", "top": 58, "left": 36, "flagged": true },
+                { "num": 10, "code": "CAM", "top": 60, "left": 46 }
+              ]
+            },
+            {
+              "id": "midfield-foul",
+              "label": { "en": "A foul in midfield", "es": "Una falta en el mediocampo" },
+              "readout": { "en": "NOT REVIEWABLE", "es": "NO REVISABLE" },
+              "tone": "bad",
+              "note": {
+                "en": "Forty metres from goal, so it changes nothing about a goal, a penalty or a red card. VAR does not re-referee the parts of the match that do not decide it.",
+                "es": "A cuarenta metros de la portería, así que no cambia nada sobre un gol, un penalti o una roja. El VAR no vuelve a arbitrar las partes del partido que no lo deciden."
+              },
+              "players": [
+                { "num": 6, "code": "CDM", "top": 56, "left": 62, "flagged": true },
+                { "num": 8, "code": "CM", "top": 54, "left": 70 }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "1.6-s2",
+        "title": { "en": "\"Clear and obvious\"", "es": "\"Error claro y manifiesto\"" },
+        "body": {
+          "en": "VAR is not there to referee the match again. It intervenes only on a clear and obvious error — something the video official is certain about in a few seconds. A decision that is merely arguable is meant to be left alone, which is why two similar incidents can end differently.",
+          "es": "El VAR no está para volver a arbitrar el partido. Solo interviene ante un error claro y manifiesto: algo de lo que el videoarbitraje está seguro en pocos segundos. Una decisión simplemente discutible debe dejarse como está, y por eso dos jugadas parecidas pueden acabar distinto."
+        },
+        "scene": {
+          "kind": "layers",
+          "label": { "en": "The three questions behind every VAR intervention", "es": "Las tres preguntas detrás de cada intervención del VAR" },
+          "prompt": { "en": "Open each layer in turn.", "es": "Abre cada capa por orden." },
+          "layers": [
+            {
+              "id": "question-1",
+              "label": { "en": "1 · Is it one of the four?", "es": "1 · ¿Es una de las cuatro?" },
+              "body": {
+                "en": "Goal, penalty, direct red, mistaken identity. If the incident is not one of those, the video official says nothing at all, however bad the decision was.",
+                "es": "Gol, penalti, roja directa, confusión de identidad. Si la jugada no es una de esas, el videoarbitraje no dice absolutamente nada, por mala que haya sido la decisión."
+              }
+            },
+            {
+              "id": "question-2",
+              "label": { "en": "2 · Is the error clear and obvious?", "es": "2 · ¿Es el error claro y manifiesto?" },
+              "body": {
+                "en": "Not \"was the referee right\" but \"was he clearly wrong\". If two reasonable people watching the replay would disagree, the answer is no and the original call survives.",
+                "es": "No es \"¿acertó el árbitro?\" sino \"¿se equivocó claramente?\". Si dos personas razonables viendo la repetición no se pondrían de acuerdo, la respuesta es no y la decisión original se mantiene."
+              }
+            },
+            {
+              "id": "question-3",
+              "label": { "en": "3 · Who makes the final call?", "es": "3 · ¿Quién decide al final?" },
+              "body": {
+                "en": "Still the referee on the pitch. VAR recommends a review; the referee walks to the monitor and decides. That is why you sometimes see a referee look at a screen and change nothing.",
+                "es": "Sigue siendo el árbitro del campo. El VAR recomienda una revisión; el árbitro va al monitor y decide. Por eso a veces ves a un árbitro mirar la pantalla y no cambiar nada."
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "1.6-s3",
+        "title": { "en": "Why the lines take so long", "es": "Por qué tardan tanto las líneas" },
+        "body": {
+          "en": "An offside check needs two things fixed by hand: the exact frame the ball was touched, and which body part of each player to measure from. Only then is the line drawn. The delay is almost entirely those two human decisions, not the drawing.",
+          "es": "Una revisión de fuera de juego necesita fijar a mano dos cosas: el fotograma exacto en que se tocó el balón y qué parte del cuerpo de cada jugador se mide. Solo entonces se traza la línea. La demora está casi toda en esas dos decisiones humanas, no en el trazado."
+        },
+        "scene": {
+          "kind": "states",
+          "surface": "pitch",
+          "control": "slider",
+          "markings": "full",
+          "label": { "en": "An offside review, one decision at a time", "es": "Una revisión de fuera de juego, decisión a decisión" },
+          "prompt": { "en": "Step through the review the way the video official does.", "es": "Recorre la revisión como lo hace el videoarbitraje." },
+          "states": [
+            {
+              "id": "find-the-frame",
+              "label": { "en": "Find the frame", "es": "Encontrar el fotograma" },
+              "readout": { "en": "FRAME 1 OF 3", "es": "FOTOGRAMA 1 DE 3" },
+              "tone": "neutral",
+              "note": {
+                "en": "A camera at 50 frames a second gives 50 candidate moments per second. A human scrubs back and forth to pick the one where the ball actually leaves the foot. This is most of the delay.",
+                "es": "Una cámara a 50 fotogramas por segundo da 50 momentos candidatos por segundo. Una persona avanza y retrocede para elegir aquel en el que el balón sale realmente del pie. Aquí está casi toda la demora."
+              },
+              "players": [
+                { "num": 1, "code": "GK", "top": 8, "left": 50 },
+                { "num": 4, "code": "CB", "top": 40, "left": 38 },
+                { "num": 5, "code": "CB", "top": 40, "left": 62 },
+                { "num": 10, "code": "CAM", "top": 64, "left": 50, "flagged": true },
+                { "num": 9, "code": "ST", "top": 38, "left": 54 }
+              ]
+            },
+            {
+              "id": "pick-the-body-part",
+              "label": { "en": "Pick the body part", "es": "Elegir la parte del cuerpo" },
+              "readout": { "en": "SHOULDER, NOT BOOT", "es": "HOMBRO, NO BOTA" },
+              "tone": "neutral",
+              "note": {
+                "en": "You measure from the furthest part that can legally score — a shoulder or a knee, never an arm. Two officials choosing different shoulders is how a decision swings by two centimetres.",
+                "es": "Se mide desde la parte más adelantada con la que se puede marcar legalmente: un hombro o una rodilla, nunca un brazo. Que dos árbitros elijan hombros distintos es como una decisión cambia por dos centímetros."
+              },
+              "players": [
+                { "num": 1, "code": "GK", "top": 8, "left": 50 },
+                { "num": 4, "code": "CB", "top": 40, "left": 38, "flagged": true },
+                { "num": 5, "code": "CB", "top": 40, "left": 62 },
+                { "num": 10, "code": "CAM", "top": 64, "left": 50 },
+                { "num": 9, "code": "ST", "top": 38, "left": 54, "flagged": true }
+              ]
+            },
+            {
+              "id": "draw-the-line",
+              "label": { "en": "Draw the line", "es": "Trazar la línea" },
+              "readout": { "en": "OFFSIDE BY 2 cm", "es": "FUERA DE JUEGO POR 2 cm" },
+              "tone": "bad",
+              "offside": 39,
+              "note": {
+                "en": "The part everyone watches takes about four seconds, and it is the only part a computer does. Every minute before it was two people making judgement calls.",
+                "es": "La parte que todo el mundo mira dura unos cuatro segundos, y es la única que hace un ordenador. Cada minuto anterior fueron dos personas tomando decisiones de criterio."
+              },
+              "players": [
+                { "num": 1, "code": "GK", "top": 8, "left": 50 },
+                { "num": 4, "code": "CB", "top": 40, "left": 38 },
+                { "num": 5, "code": "CB", "top": 40, "left": 62 },
+                { "num": 10, "code": "CAM", "top": 64, "left": 50 },
+                { "num": 9, "code": "ST", "top": 38, "left": 54, "flagged": true }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "check": {
+      "question": {
+        "en": "A referee gives a yellow card you think should have been red. Can VAR step in?",
+        "es": "El árbitro saca una amarilla que tú crees que debía ser roja. ¿Puede intervenir el VAR?"
+      },
+      "options": [
+        { "id": "a", "label": { "en": "Yes — a direct red card is reviewable", "es": "Sí: la roja directa es revisable" }, "correct": true },
+        { "id": "b", "label": { "en": "No — cards are never reviewed", "es": "No: las tarjetas nunca se revisan" }, "correct": false },
+        { "id": "c", "label": { "en": "Only if the referee asks the captain", "es": "Solo si el árbitro consulta al capitán" }, "correct": false }
+      ],
+      "explain": {
+        "en": "Direct red cards are one of the four reviewable categories, so a missed sending-off can be corrected. A second yellow cannot — that is outside VAR's remit.",
+        "es": "La roja directa es una de las cuatro categorías revisables, así que una expulsión no señalada puede corregirse. Una segunda amarilla no: queda fuera del alcance del VAR."
+      }
+    }
+  }
+]

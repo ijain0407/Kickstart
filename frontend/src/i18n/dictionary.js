@@ -116,6 +116,7 @@ export const dictionary = {
       xpToNext: '450 / 600 XP to Level 2: Enthusiast',
       xpToNextSuffix: 'XP to Level 2: Enthusiast',
       doneSuffix: 'Done',
+      stepsSuffix: 'steps',
       bitesizeUnit: 'min bite-sized',
       unitLabel: 'UNIT 1 • FUNDAMENTALS',
       unitTitle: 'Tactical Foundations',
@@ -296,6 +297,20 @@ export const dictionary = {
     },
 
     /* ---------- lesson player ---------- */
+    /* ---------- account / Google sign-in ---------- */
+    auth: {
+      accountTitle: 'Account',
+      signIn: 'Sign in',
+      signOut: 'Sign out',
+      signingIn: 'Signing you in…',
+      signedOutNote:
+        'You are playing as a guest. Sign in with Google and the XP, streak and badges you have already earned come with you — to this account, and to any device you sign in on next.',
+      syncedNote: 'Your progress is saved to this account and follows you to any device you sign in on.',
+      failed: "That didn't work. Please try signing in again.",
+      disabled: 'Google sign-in is not set up on this server yet, so everyone plays as a guest.',
+      unavailable: "Google's sign-in couldn't load. Check your connection or any blockers, then reload.",
+    },
+
     lesson: {
       keyTerms: 'Key terms',
       module: 'MODULE',
@@ -303,6 +318,7 @@ export const dictionary = {
       correct: 'That is it.',
       notQuite: 'Not quite.',
       finish: 'Finish lesson',
+      offlineScenes: 'Offline — showing the static diagrams.',
     },
 
     /* ---------- chant practice ---------- */
@@ -508,6 +524,7 @@ export const dictionary = {
       xpToNext: '450 / 600 XP para el Nivel 2: Entusiasta',
       xpToNextSuffix: 'XP para el Nivel 2: Entusiasta',
       doneSuffix: 'hechos',
+      stepsSuffix: 'pasos',
       bitesizeUnit: 'min en formato breve',
       unitLabel: 'UNIDAD 1 • FUNDAMENTOS',
       unitTitle: 'Cimientos tácticos',
@@ -682,6 +699,19 @@ export const dictionary = {
       clearance: 'Despejado el peligro.',
     },
 
+    auth: {
+      accountTitle: 'Cuenta',
+      signIn: 'Iniciar sesión',
+      signOut: 'Cerrar sesión',
+      signingIn: 'Iniciando sesión…',
+      signedOutNote:
+        'Estás jugando como invitado. Inicia sesión con Google y el XP, la racha y las insignias que ya has ganado se vienen contigo: a esta cuenta y a cualquier dispositivo en el que inicies sesión.',
+      syncedNote: 'Tu progreso se guarda en esta cuenta y te sigue a cualquier dispositivo en el que inicies sesión.',
+      failed: 'No ha funcionado. Vuelve a intentar iniciar sesión.',
+      disabled: 'Este servidor aún no tiene configurado el inicio de sesión con Google, así que todo el mundo juega como invitado.',
+      unavailable: 'No se ha podido cargar el inicio de sesión de Google. Revisa tu conexión o los bloqueadores y recarga.',
+    },
+
     lesson: {
       keyTerms: 'Términos clave',
       module: 'MÓDULO',
@@ -689,6 +719,7 @@ export const dictionary = {
       correct: 'Eso es.',
       notQuite: 'No exactamente.',
       finish: 'Terminar lección',
+      offlineScenes: 'Sin conexión: mostrando los diagramas estáticos.',
     },
 
     chant: {

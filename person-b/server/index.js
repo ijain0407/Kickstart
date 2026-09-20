@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import { lessonsRouter } from "./routes/lessons.js";
+import { pathLessonsRouter } from "./routes/pathLessons.js";
 import { formationsRouter } from "./routes/formations.js";
 import { glossaryRouter } from "./routes/glossary.js";
 
@@ -19,6 +20,7 @@ app.get("/health", (req, res) => {
 });
 
 app.use("/lessons", lessonsRouter);
+app.use("/path-lessons", pathLessonsRouter);
 app.use("/formations", formationsRouter);
 app.use("/glossary", glossaryRouter);
 

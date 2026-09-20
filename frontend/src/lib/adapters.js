@@ -193,3 +193,30 @@ export function boldSegments(text = '') {
       : { bold: false, text: part },
   )
 }
+
+/**
+ * A node from `GET /api/path-lessons` -> the shape the winding path and its
+ * detail card already expect. The API owns the ordering, the stagger and the
+ * icon, so unlike `toLessonNode` nothing has to be invented here — this only
+ * renames `summary` to the `desc` the components read.
+ */
+export function toPathNode(node) {
+  return {
+    id: node.id,
+    align: node.align,
+    icon: node.icon,
+    xp: node.xp,
+    minutes: node.minutes,
+    stars: node.stars ?? 0,
+    stepCount: node.stepCount ?? 0,
+    category: node.category,
+    title: node.title,
+    detailTitle: node.detailTitle,
+    desc: node.summary,
+    bounty: node.bounty,
+    unlocks: node.unlocks,
+    lessonId: node.lessonId ?? null,
+    quizSlug: node.quizSlug ?? null,
+    glossaryIds: node.glossaryIds ?? [],
+  }
+}

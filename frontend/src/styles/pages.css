@@ -1510,3 +1510,324 @@
 .club-crest--img.is-broken {
   display: none;
 }
+
+/* ============================================================
+   LESSON SCENES
+   The interactive diagram under each teaching step. Every scene
+   is driven by /api/path-lessons, so the styles below are named
+   for the four scene kinds rather than for any one lesson.
+   ============================================================ */
+
+.scene { width: 100%; }
+
+.scene__prompt {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ---- The verdict badge that floats on the board ---- */
+
+.scene__readout {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 6;
+  font-family: var(--font-num);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  font-size: 13px;
+  line-height: 16px;
+  letter-spacing: 0.06em;
+  padding: 6px 11px;
+  border-radius: var(--r-pill);
+  color: #fff;
+  background: rgba(17, 24, 39, 0.72);
+  backdrop-filter: blur(4px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: background-color 240ms var(--ease-out);
+}
+
+.scene__readout--good { background: var(--pitch-green); }
+.scene__readout--bad { background: #ea580c; }
+
+/* ---- Slider control ---- */
+
+.scene__slider { display: flex; flex-direction: column; gap: 10px; }
+
+.scene__slider input[type='range'] {
+  width: 100%;
+  height: 28px;
+  margin: 0;
+  background: transparent;
+  accent-color: var(--pitch-green);
+  cursor: pointer;
+}
+
+.scene__ticks {
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+}
+
+.scene__tick {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 7px 6px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 11px;
+  line-height: 15px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 180ms var(--ease-out), color 180ms var(--ease-out),
+    border-color 180ms var(--ease-out);
+}
+
+.scene__tick:hover { background: var(--canvas); }
+
+.scene__tick.is-on {
+  background: var(--stadium-green);
+  border-color: var(--stadium-green);
+  color: #fff;
+}
+
+/* ---- The note every scene closes with ---- */
+
+.scene__note {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 14px;
+  border-radius: 12px;
+  background: var(--canvas);
+  color: var(--text-primary);
+}
+
+.scene__note .msym { font-size: 22px; flex: none; }
+
+.scene__note--neutral .msym { color: #6366f1; }
+.scene__note--good { background: var(--mint); color: var(--moss); }
+.scene__note--good .msym { color: var(--pitch-green); }
+.scene__note--bad { background: #fff7ed; color: var(--gold-badge-text); }
+.scene__note--bad .msym { color: #ea580c; }
+
+/* ---- Pass lane (kind: states) ---- */
+
+.lane path {
+  stroke: #4ade80;
+  stroke-width: 1.4;
+  animation: pass-march 1.4s linear infinite;
+}
+
+.lane--blocked path {
+  stroke: #f87171;
+  stroke-dasharray: 3 3;
+  animation: none;
+  filter: drop-shadow(0 0 3px rgba(248, 113, 113, 0.6));
+}
+
+.lane__block {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #dc2626;
+  color: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+}
+
+.lane__block .msym { font-size: 16px; }
+
+/* ---- Hotspots (kind: hotspots) ---- */
+
+.hotspot {
+  position: absolute;
+  z-index: 4;
+  border: 2px dashed rgba(255, 255, 255, 0.55);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 0;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: background-color 200ms var(--ease-out), border-color 200ms var(--ease-out);
+}
+
+.hotspot:hover { background: rgba(255, 255, 255, 0.16); }
+
+.hotspot.is-on {
+  border: 2px solid var(--gold);
+  background: rgba(245, 158, 11, 0.3);
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.25);
+}
+
+.hotspot__label {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 10px;
+  line-height: 13px;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+  text-align: center;
+  padding: 0 4px;
+  opacity: 0;
+  transition: opacity 200ms var(--ease-out);
+}
+
+.hotspot:hover .hotspot__label,
+.hotspot.is-on .hotspot__label { opacity: 1; }
+
+/* ---- Stadium bowl (kind: hotspots, surface: stadium) ---- */
+
+.stadium {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--r-card);
+  overflow: hidden;
+  background: #1e293b;
+  box-shadow: var(--e-2);
+  isolation: isolate;
+}
+
+.stadium__bowl {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 50%, rgba(15, 23, 42, 0) 40%, rgba(15, 23, 42, 0.75) 100%),
+    repeating-linear-gradient(
+      180deg,
+      rgba(148, 163, 184, 0.22) 0 3px,
+      rgba(71, 85, 105, 0.3) 3px 6px
+    );
+}
+
+.stadium__pitch {
+  position: absolute;
+  inset: 24% 26%;
+  border-radius: 4px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  background-color: var(--stadium-green);
+  background-image: repeating-linear-gradient(
+    180deg,
+    rgba(22, 163, 74, 0.6) 0 8px,
+    rgba(22, 101, 52, 0.45) 8px 16px
+  );
+}
+
+/* ---- Dimmed shirts (kind: squad) ---- */
+
+.ptoken--dimmed { opacity: 0.32; }
+.ptoken--dimmed .ptoken__disc { box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); }
+
+/* ---- Layer stack (kind: layers) ---- */
+
+.scene__layers { display: flex; flex-direction: column; gap: 10px; }
+
+.layer {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--card);
+  overflow: hidden;
+  transition: border-color 200ms var(--ease-out);
+}
+
+.layer.is-open { border-color: var(--pitch-green); }
+
+.layer__head {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 14px;
+  background: none;
+  border: 0;
+  text-align: left;
+  cursor: pointer;
+  color: var(--text-primary);
+}
+
+.layer__head:hover { background: var(--canvas); }
+
+.layer.is-open .layer__head { background: var(--mint); color: var(--moss); }
+
+.layer__body {
+  padding: 0 14px 14px;
+  color: var(--text-secondary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lane path { animation: none; }
+  .scene__readout,
+  .scene__tick,
+  .hotspot,
+  .hotspot__label { transition: none; }
+}
+
+/* ============================================================
+   ACCOUNT — Google sign-in on the profile page
+   ============================================================ */
+
+/* The monogram is a span, a Google photo is an img; both fill the same disc. */
+img.avatar__img {
+  object-fit: cover;
+  display: block;
+}
+
+.account {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 12px;
+  background: var(--canvas);
+  text-align: left;
+}
+
+.account__photo {
+  width: 44px;
+  height: 44px;
+  flex: none;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--track);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18);
+}
+
+.account__photo--text {
+  display: grid;
+  place-items: center;
+  font-family: var(--font-num);
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--stadium-green);
+}
+
+/* Google renders its own button in here; give it room and centre it. */
+.gsi {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.gsi__button {
+  min-height: 44px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}

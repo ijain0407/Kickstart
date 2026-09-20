@@ -91,6 +91,82 @@ reference lesson content via a `lessonId` field that must match a real `lesson-*
 }
 ```
 
+### 3.1b Path lesson
+
+A *lesson* (3.1) is the reference article on a topic. A **path lesson** is the interactive
+player behind one node of the learning path: ordered teaching steps, an interactive scene per
+step, and a comprehension check. Several path nodes can map onto the same `lessonId` — `1.1`,
+`1.2` and `1.6` are all `lesson-rules-basics` — which is why this is its own collection. See
+`shared/lessons.js` for the three id schemes.
+
+```ts
+{
+  id: string;                    // "1.2" — the path node id, Person A's scheme
+  order: number;                 // position on the path, starting at 1
+  lessonId: string;              // the canonical lesson this node teaches from
+  quizSlug: string;              // Person D's slug for the matching drill
+  category: "rules" | "positions" | "formations" | "how-to-watch";
+  align: "left" | "center" | "right";   // stagger of the node on the winding path
+  icon: string;                  // Material Symbols name
+  xp: number;
+  minutes: number;
+  glossaryIds: string[];         // key terms shown beside the lesson, can be []
+  title: LocalizedString;
+  detailTitle: LocalizedString;
+  summary: LocalizedString;
+  bounty: LocalizedString;
+  unlocks: LocalizedString;
+  steps: Step[];                 // omitted from the list endpoint, see below
+  check: Check;                  // omitted from the list endpoint, see below
+}
+
+Step {
+  id: string;                    // "1.2-s1"
+  title: LocalizedString;
+  body: LocalizedString;
+  scene: Scene | null;           // null renders the step as text only
+}
+
+Check {
+  question: LocalizedString;
+  options: { id: string; label: LocalizedString; correct: boolean }[];  // exactly one true
+  explain: LocalizedString;
+}
+```
+
+**Scene** is a diagram the client knows how to draw. `kind` picks the renderer; the rest of
+the fields belong to that kind. Adding a scene is a content change here, not a client change.
+
+| `kind` | Renders | Key fields |
+|---|---|---|
+| `states` | n named states on a pitch, driven by a slider or a chip row | `control: "slider" \| "chips"`, `states[]` |
+| `hotspots` | tappable labelled regions over a pitch or a stadium bowl | `surface: "pitch" \| "stadium"`, `regions[]` |
+| `squad` | tappable groups of shirt numbers | `players[]`, `groups[]` |
+| `layers` | a stack of text layers opened one at a time | `layers[]` |
+
+Common to every scene: `label` and `prompt` (both `LocalizedString`), and for pitch surfaces
+`markings: "full" | "simple"` and `showZones: boolean`.
+
+```ts
+State {                          // kind: "states"
+  id: string;
+  label: LocalizedString;        // the slider tick or chip
+  readout?: LocalizedString | string;   // badge on the board, e.g. "OFFSIDE"
+  tone?: "good" | "bad" | "neutral";    // colours the readout and the note
+  note: LocalizedString;         // the explanation under the board
+  offside?: number | null;       // offside line, as a % from the top
+  players?: Player[];            // falls back to the scene's own players[]
+  pass?: { from: Point; to: Point; blocked: boolean };
+}
+
+Player { num: number; code: string; top: number; left: number; flagged?: boolean }
+Point  { top: number; left: number }   // percentages of the pitch box
+
+Region { id, label, note, top, left, width, height }   // kind: "hotspots", all %
+Group  { id, label, note, nums: number[] }             // kind: "squad"
+Layer  { id, label, body }                             // kind: "layers"
+```
+
 ### 3.2 Formation
 
 This is Person A's top blocker for the field diagram — locked first, see §7.
@@ -176,6 +252,20 @@ Query params: `lang` (optional).
 404 if not found:
 ```json
 { "error": { "code": "NOT_FOUND", "message": "No lesson with id 'lesson-xyz'" } }
+```
+
+### `GET /path-lessons`
+Query params: `lang` (optional), `category` (optional), `full` (optional).
+
+Returns the six path nodes in order. By default `steps` and `check` are replaced by a
+`stepCount: number`, so the learning path doesn't pull 18 scenes it isn't going to draw.
+Pass `?full=1` to get every step and check in one request.
+
+### `GET /path-lessons/:id`
+Query params: `lang` (optional). `:id` is the path node id, e.g. `1.2`.
+404 if not found:
+```json
+{ "error": { "code": "NOT_FOUND", "message": "No path lesson with id '9.9'" } }
 ```
 
 ### `GET /formations`
