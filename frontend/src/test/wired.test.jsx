@@ -6,6 +6,7 @@ import { RouterProvider } from '../router.jsx'
 import { I18nProvider } from '../i18n/I18nContext.jsx'
 import { ThemeProvider } from '../state/ThemeContext.jsx'
 import { AppProvider } from '../state/AppState.jsx'
+import { AuthProvider } from '../state/AuthState.jsx'
 
 /**
  * End-to-end through the real gateway: React pages -> /api -> each workstream's
@@ -17,11 +18,15 @@ function renderApp(route = '/') {
   return render(
     <ThemeProvider>
       <I18nProvider>
-        <AppProvider>
-          <RouterProvider>
-            <App />
-          </RouterProvider>
-        </AppProvider>
+        {/* Same nesting as main.jsx: auth wraps app state, because signing in
+            changes which user id the progress calls are made as. */}
+        <AuthProvider>
+          <AppProvider>
+            <RouterProvider>
+              <App />
+            </RouterProvider>
+          </AppProvider>
+        </AuthProvider>
       </I18nProvider>
     </ThemeProvider>,
   )

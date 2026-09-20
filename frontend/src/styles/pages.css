@@ -1806,3 +1806,35 @@ select.field {
   background-repeat: no-repeat;
   padding-right: 40px;
 }
+
+/* Header sign-in entry, sized to match the streak pill beside it. */
+.signin-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 40px;
+  padding: 0 12px;
+  border-radius: 999px;
+  border: 2px solid var(--pitch-green, #15803d);
+  color: var(--pitch-green, #15803d);
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.signin-pill:hover {
+  background: color-mix(in srgb, var(--pitch-green, #15803d) 10%, transparent);
+}
+
+/* On a phone the label would crowd the bar; the icon carries it. */
+@media (max-width: 520px) {
+  .signin-pill__text {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}
