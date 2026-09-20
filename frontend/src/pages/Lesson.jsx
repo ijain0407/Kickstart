@@ -6,6 +6,7 @@ import PlayerToken from '../components/PlayerToken.jsx'
 import { LESSONS, lessonState } from '../data/lessons.js'
 import { getLessonContent } from '../data/lessonContent.js'
 import { getFormation } from '../data/formations.js'
+import { api, useResource } from '../lib/api.js'
 import { useI18n } from '../i18n/I18nContext.jsx'
 import { useApp } from '../state/AppState.jsx'
 import { useRouter } from '../router.jsx'
@@ -71,14 +72,29 @@ function LessonVisual({ name, label }) {
   )
 }
 
+/** Which glossary terms belong beside each lesson on the path. */
+const LESSON_TERMS = {
+  '1.1': ['term-formation'],
+  '1.2': ['term-offside', 'term-free-kick'],
+  '1.3': ['term-clean-sheet'],
+  '1.4': ['term-formation'],
+  '1.5': ['term-nutmeg'],
+  '1.6': ['term-yellow-card', 'term-red-card', 'term-penalty-kick'],
+}
+
 export default function Lesson() {
-  const { t, tr } = useI18n()
+  const { t, tr, lang } = useI18n()
   const { query, navigate } = useRouter()
   const { completedLessons, activeLesson, completeLesson, bumpStreak, celebrate } = useApp()
 
   const id = query.id ?? activeLesson
   const lesson = useMemo(() => LESSONS.find((l) => l.id === id) ?? LESSONS[0], [id])
   const content = getLessonContent(lesson.id)
+
+  // Key terms come from Person B's glossary API — bilingual definitions the
+  // lesson copy doesn't repeat.
+  const { data: glossary } = useResource((signal) => api('/glossary', { lang, signal }), [lang])
+  const terms = (glossary?.data ?? []).filter((term) => (LESSON_TERMS[lesson.id] ?? []).includes(term.id))
 
   // step 0..n-1 are the teaching steps, step n is the comprehension check
   const [step, setStep] = useState(0)
@@ -215,6 +231,21 @@ export default function Lesson() {
           <p className="t-body-lg text-secondary">{tr(current.body)}</p>
         </section>
       )}
+
+      {/* ---- Key terms (glossary API) ---- */}
+      {terms.length > 0 ? (
+        <section className="card card--pad stack stack-3">
+          <h2 className="t-headline-sm">{t('lesson.keyTerms')}</h2>
+          <dl className="stack stack-2">
+            {terms.map((term) => (
+              <div key={term.id} className="stack stack-1">
+                <dt className="t-headline-sm">{term.term}</dt>
+                <dd className="t-body-md text-secondary">{term.definition}</dd>
+              </div>
+            ))}
+          </dl>
+        </section>
+      ) : null}
 
       {/* ---- Action bar ---- */}
       <div className="quiz-actions">

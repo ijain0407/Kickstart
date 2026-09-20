@@ -6,6 +6,7 @@ import PlayerToken from '../components/PlayerToken.jsx'
 import LangSwitch from '../components/LangSwitch.jsx'
 import { FORMATIONS, getFormation, offsideLineTop, SQUAD_NAMES } from '../data/formations.js'
 import { getPosition } from '../data/positions.js'
+import { api, useResource } from '../lib/api.js'
 import { useI18n } from '../i18n/I18nContext.jsx'
 import { useRouter } from '../router.jsx'
 
@@ -59,6 +60,11 @@ export default function Field() {
     window.speechSynthesis.speak(utter)
   }
 
+  // Person B's formations API carries a bilingual description per shape; the
+  // coordinates here stay local because they're tuned to this pitch component.
+  const { data: formationData } = useResource((signal) => api('/formations', { lang, signal }), [lang])
+  const apiFormation = formationData?.data?.find((f) => f.name === formation.label)
+
   return (
     <div className="page">
       {/* ---- Header ---- */}
@@ -82,6 +88,11 @@ export default function Field() {
           </button>
         ))}
       </div>
+
+      {/* ---- What this shape gives you (lessons API) ---- */}
+      {apiFormation ? (
+        <p className="t-body-md text-secondary">{apiFormation.description}</p>
+      ) : null}
 
       {/* ---- Toggles ---- */}
       <div className="chip-row">

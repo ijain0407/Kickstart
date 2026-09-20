@@ -29,6 +29,21 @@ describe('buildProfile', () => {
     expect(buildProfile(quiz, { 'league-quiz-q1-draw': 'speed' }).pace).toBe(3);
   });
 
+  it('adds up a multi-select answer', () => {
+    const profile = buildProfile(quiz, { 'league-quiz-q1-draw': ['speed', 'tactics'] });
+    expect(profile.pace).toBe(3);
+    expect(profile.tactics).toBe(3);
+    // A single id and a one-element list mean the same thing.
+    expect(buildProfile(quiz, { 'league-quiz-q1-draw': ['speed'] })).toEqual(
+      buildProfile(quiz, { 'league-quiz-q1-draw': 'speed' }),
+    );
+  });
+
+  it('rejects an empty list and a bad id inside a list', () => {
+    expect(() => buildProfile(quiz, { 'league-quiz-q1-draw': [] })).toThrow(/No option chosen/);
+    expect(() => buildProfile(quiz, { 'league-quiz-q1-draw': ['speed', 'nope'] })).toThrow(/Unknown option/);
+  });
+
   it('rejects empty, unknown and mismatched answers', () => {
     expect(() => buildProfile(quiz, {})).toThrow(/at least one/i);
     expect(() => buildProfile(quiz, { nope: 'speed' })).toThrow(/Unknown question/);

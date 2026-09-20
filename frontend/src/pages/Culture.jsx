@@ -1,32 +1,35 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import Icon from '../components/Icon.jsx'
 import ChantCard from '../components/ChantCard.jsx'
-import { LEAGUES, getLeague } from '../data/leagues.js'
+import DataState from '../components/DataState.jsx'
+import { api, useResource } from '../lib/api.js'
+import { toChantCard, toClubHero, toSpotlight } from '../lib/adapters.js'
 import { useI18n } from '../i18n/I18nContext.jsx'
 import { useApp } from '../state/AppState.jsx'
 import { useRouter } from '../router.jsx'
 
-/** Club identity card — also used as the picker tile in "All Leagues". */
-function ClubHero({ league, onClick }) {
+/** Club identity card — also the picker tile when several clubs are listed. */
+function ClubHero({ club, leagueName, onClick }) {
   const { t, tr } = useI18n()
-  const { club } = league
   const style = { '--club-a': club.colors.a, '--club-b': club.colors.b }
 
   const inner = (
     <div className="club-hero__inner">
       <div className="row row-2 wrap">
         <span className="t-label-meta" style={{ color: 'rgba(255,255,255,0.8)' }}>
-          {tr(club.region)}
+          {club.region}
         </span>
-        <span className="t-body-sm" style={{ color: 'rgba(255,255,255,0.72)' }}>
-          • {club.stadium} {club.capacity} {t('culture.capacity')}
-        </span>
+        {club.stadium ? (
+          <span className="t-body-sm" style={{ color: 'rgba(255,255,255,0.72)' }}>
+            • {club.stadium}
+          </span>
+        ) : null}
       </div>
 
       <div className="row row-2">
         <Icon name="star" fill style={{ color: 'var(--gold)', fontSize: 18 }} />
         <span className="t-body-sm" style={{ color: '#fff', fontWeight: 600 }}>
-          {t('culture.tier1')}
+          {leagueName} · {t('culture.founded')} {club.founded}
         </span>
       </div>
 
@@ -39,10 +42,7 @@ function ClubHero({ league, onClick }) {
 
       <div className="row row-2 wrap">
         {club.tags.map((tag) => (
-          <span
-            key={tag.label.en}
-            className={`pill ${tag.tone === 'gold' ? 'pill--gold' : 'pill--white'}`}
-          >
+          <span key={tag.label} className={`pill ${tag.tone === 'gold' ? 'pill--gold' : 'pill--white'}`}>
             {tr(tag.label)}
           </span>
         ))}
@@ -57,7 +57,6 @@ function ClubHero({ league, onClick }) {
       </button>
     )
   }
-
   return (
     <section className="club-hero" style={style}>
       {inner}
@@ -66,23 +65,48 @@ function ClubHero({ league, onClick }) {
 }
 
 export default function Culture() {
-  const { t, tr } = useI18n()
+  const { t, tr, lang } = useI18n()
   const { query, navigate } = useRouter()
   const { chantsMastered } = useApp()
 
-  const [leagueId, setLeagueId] = useState(query.league ?? 'premier')
+  const [leagueId, setLeagueId] = useState(query.league ?? 'all')
+  const [cultureId, setCultureId] = useState(query.club ?? null)
   const [openChantId, setOpenChantId] = useState(null)
 
-  // Deep links from the matcher results land here with ?league=…
+  // Deep links from the matcher results land here with ?league=… (&club=…)
   useEffect(() => {
     if (query.league) setLeagueId(query.league)
-  }, [query.league])
+    setCultureId(query.club ?? null)
+  }, [query.league, query.club])
 
-  const showingAll = leagueId === 'all'
-  const league = getLeague(leagueId)
-  const openId = openChantId ?? league.chants[0].id
+  const leaguesReq = useResource((signal) => api('/leagues', { lang, signal }), [lang])
+  const cardsReq = useResource(
+    (signal) => api(leagueId === 'all' ? '/culture' : `/culture?league=${leagueId}`, { lang, signal }),
+    [lang, leagueId],
+  )
+  const detailReq = useResource(
+    (signal) => (cultureId ? api(`/culture/${cultureId}`, { lang, signal }) : Promise.resolve(null)),
+    [lang, cultureId],
+  )
 
-  const learnChorus = (chant) => navigate(`/chant?league=${league.id}&id=${chant.id}`)
+  const labels = {
+    draft: t('culture.draftNote'),
+    audio: t('culture.audio'),
+    chant: t('culture.chantKicker'),
+    kicker: t('culture.spotlightKicker'),
+    miniTitle: t('culture.miniTitle'),
+  }
+
+  const openClub = useCallback((card) => {
+    setCultureId(card.id)
+    setOpenChantId(null)
+    window.scrollTo({ top: 0, behavior: 'auto' })
+  }, [])
+
+  const leagues = leaguesReq.data?.leagues ?? []
+  const cards = cardsReq.data?.cards ?? []
+  const detail = detailReq.data
+  const leagueNameOf = (id) => leagues.find((l) => l.id === id)?.name ?? ''
 
   return (
     <div className="page">
@@ -92,13 +116,16 @@ export default function Culture() {
       <div className="chip-row" role="group" aria-label={t('nav.culture')}>
         <button
           type="button"
-          className={`chip ${showingAll ? 'is-active' : ''}`.trim()}
-          aria-pressed={showingAll}
-          onClick={() => setLeagueId('all')}
+          className={`chip ${leagueId === 'all' ? 'is-active' : ''}`.trim()}
+          aria-pressed={leagueId === 'all'}
+          onClick={() => {
+            setLeagueId('all')
+            setCultureId(null)
+          }}
         >
           {t('culture.allLeagues')}
         </button>
-        {LEAGUES.map((l) => (
+        {leagues.map((l) => (
           <button
             key={l.id}
             type="button"
@@ -106,6 +133,7 @@ export default function Culture() {
             aria-pressed={l.id === leagueId}
             onClick={() => {
               setLeagueId(l.id)
+              setCultureId(null)
               setOpenChantId(null)
             }}
           >
@@ -114,117 +142,186 @@ export default function Culture() {
         ))}
       </div>
 
-      {showingAll ? (
-        <div className="stack stack-4">
-          {LEAGUES.map((l) => (
-            <ClubHero
-              key={l.id}
-              league={l}
-              onClick={() => {
-                setLeagueId(l.id)
-                setOpenChantId(null)
-              }}
-            />
-          ))}
-        </div>
-      ) : (
-        <>
-          <ClubHero league={league} />
-
-          <div className="culture-grid stack stack-4">
-            <div className="stack stack-4">
-              {/* ---- Anthems ---- */}
-              <div className="section-head">
-                <h2 className="t-headline-md">{t('culture.anthemsTitle')}</h2>
-                <span className="pill pill--gold">
-                  {`${chantsMastered} ${t('common.of')} 4`}
-                </span>
-              </div>
-
-              {league.chants.map((chant) =>
-                chant.id === openId ? (
-                  <ChantCard key={chant.id} chant={chant} onLearn={() => learnChorus(chant)} />
-                ) : (
-                  <button
-                    key={chant.id}
-                    type="button"
-                    className="card chant-row"
-                    onClick={() => setOpenChantId(chant.id)}
-                  >
-                    <span className="tile tile--lavender tile--circle">
-                      <Icon name="music_note" fill />
-                    </span>
-                    <span className="grow stack stack-1">
-                      <span className="t-headline-sm">{chant.title}</span>
-                      <span className="t-body-sm text-secondary">{tr(chant.kicker)}</span>
-                    </span>
-                    <span className="icon-btn icon-btn--chevron">
-                      <Icon name="expand_more" />
-                    </span>
-                  </button>
-                ),
-              )}
-            </div>
-
-            {/* ---- Tradition spotlight ---- */}
-            <div className="stack stack-3">
-              <h2 className="t-headline-md">{t('culture.spotlightTitle')}</h2>
-
-              <article className="spotlight">
-                <img
-                  className="spotlight__img"
-                  src={league.spotlight.image}
-                  alt=""
-                  loading="lazy"
-                  onError={(e) => {
-                    // Placeholder photos may be unreachable offline; the
-                    // gradient underneath keeps the card readable.
-                    e.currentTarget.style.display = 'none'
-                  }}
-                />
-                <div className="spotlight__scrim" />
-                <div className="spotlight__body">
-                  <div className="row row-2 wrap">
-                    <span className="pill pill--gold">{tr(league.spotlight.pill)}</span>
-                    <span className="t-body-sm" style={{ color: 'rgba(255,255,255,0.75)' }}>
-                      {league.spotlight.place}
-                    </span>
-                  </div>
-                  <span className="t-label-meta" style={{ color: 'rgba(255,255,255,0.75)' }}>
-                    {tr(league.spotlight.kicker)}
-                  </span>
-                  <h3 className="t-headline-sm" style={{ color: '#fff' }}>
-                    {tr(league.spotlight.title)}
-                  </h3>
-                  <p className="t-body-md" style={{ color: 'rgba(255,255,255,0.86)' }}>
-                    {tr(league.spotlight.body)}
-                  </p>
-
-                  <div className="spotlight__mini">
-                    <Icon name="auto_awesome" fill style={{ color: 'var(--gold)' }} />
-                    <span className="stack stack-1">
-                      <span className="t-headline-sm" style={{ color: '#fff', fontSize: 15 }}>
-                        {tr(league.spotlight.mini.title)}
-                      </span>
-                      <span className="t-body-sm" style={{ color: 'rgba(255,255,255,0.8)' }}>
-                        {tr(league.spotlight.mini.body)}
-                      </span>
-                    </span>
-                  </div>
-                </div>
-              </article>
-
-              <button
-                type="button"
-                className="fp fp--tertiary"
-                onClick={() => navigate('/quiz')}
-              >
-                {t('home.findLeague')}
-              </button>
-            </div>
+      {/* ---- Club picker ---- */}
+      {!cultureId ? (
+        <DataState loading={cardsReq.loading || leaguesReq.loading} error={cardsReq.error ?? leaguesReq.error} onRetry={cardsReq.reload}>
+          <div className="stack stack-4">
+            <h2 className="t-headline-md">{leagueId === 'all' ? t('culture.allLeagues') : t('culture.clubsIn')}</h2>
+            {cards.map((card) => (
+              <ClubHero
+                key={card.id}
+                club={toClubHero(card, { leagueId: card.leagueId, labels })}
+                leagueName={tr(leagueNameOf(card.leagueId))}
+                onClick={() => openClub(card)}
+              />
+            ))}
           </div>
-        </>
+        </DataState>
+      ) : (
+        <DataState loading={detailReq.loading} error={detailReq.error} onRetry={detailReq.reload}>
+          {detail ? (
+            <ClubDetail
+              detail={detail}
+              labels={labels}
+              openChantId={openChantId}
+              setOpenChantId={setOpenChantId}
+              chantsMastered={chantsMastered}
+              onPickClub={openClub}
+              onBack={() => setCultureId(null)}
+              onLearnChorus={(chant) => navigate(`/chant?club=${detail.card.id}&id=${chant.id}`)}
+              onFindLeague={() => navigate('/quiz')}
+            />
+          ) : null}
+        </DataState>
       )}
     </div>
+  )
+}
+
+function ClubDetail({
+  detail,
+  labels,
+  openChantId,
+  setOpenChantId,
+  chantsMastered,
+  onPickClub,
+  onBack,
+  onLearnChorus,
+  onFindLeague,
+}) {
+  const { t, tr } = useI18n()
+  const { card, league, related } = detail
+  const chants = card.chants.map((chant) => toChantCard(chant, { labels }))
+  const openId = openChantId ?? chants[0]?.id
+  const spotlight = toSpotlight(card, { leagueName: league?.name ?? '', labels })
+
+  return (
+    <>
+      <button type="button" className="chip" onClick={onBack}>
+        <Icon name="arrow_back" /> {league?.name ?? t('common.back')}
+      </button>
+
+      <ClubHero club={toClubHero(card, { leagueId: card.leagueId, labels })} leagueName={league?.name ?? ''} />
+
+      {/* ---- Nickname: the same three layers as a chant ---- */}
+      <section className="card stack stack-2">
+        <span className="t-label-meta text-secondary">{t('culture.nickname')}</span>
+        <h3 className="t-headline-md">{card.nickname.original.text}</h3>
+        <p className="t-body-md text-secondary">{card.nickname.literal}</p>
+        <p className="t-body-md">{card.nickname.meaning}</p>
+      </section>
+
+      <div className="culture-grid stack stack-4">
+        <div className="stack stack-4">
+          {/* ---- Anthems ---- */}
+          <div className="section-head">
+            <h2 className="t-headline-md">{t('culture.anthemsTitle')}</h2>
+            <span className="pill pill--gold">{`${chantsMastered} ${t('common.of')} 4`}</span>
+          </div>
+
+          {chants.map((chant) =>
+            chant.id === openId ? (
+              <ChantCard key={chant.id} chant={chant} onLearn={() => onLearnChorus(chant)} />
+            ) : (
+              <button key={chant.id} type="button" className="card chant-row" onClick={() => setOpenChantId(chant.id)}>
+                <span className="tile tile--lavender tile--circle">
+                  <Icon name="music_note" fill />
+                </span>
+                <span className="grow stack stack-1">
+                  <span className="t-headline-sm">{chant.title}</span>
+                  <span className="t-body-sm text-secondary">{tr(chant.kicker)}</span>
+                </span>
+                <span className="icon-btn icon-btn--chevron">
+                  <Icon name="expand_more" />
+                </span>
+              </button>
+            ),
+          )}
+
+          {/* ---- Rivalries ---- */}
+          {card.rivalries.length > 0 ? (
+            <div className="stack stack-3">
+              <h2 className="t-headline-md">{t('culture.rivalries')}</h2>
+              {card.rivalries.map((rivalry) => (
+                <article key={rivalry.name} className="card stack stack-2">
+                  <div className="row row-2 wrap">
+                    <span className="t-headline-sm">{rivalry.name}</span>
+                    <span className="pill pill--ghost">{rivalry.opponent}</span>
+                  </div>
+                  <p className="t-body-md text-secondary">{rivalry.description}</p>
+                  {rivalry.opponentCultureId ? (
+                    <button
+                      type="button"
+                      className="fp fp--tertiary"
+                      onClick={() => onPickClub({ id: rivalry.opponentCultureId })}
+                    >
+                      {rivalry.opponent} <Icon name="arrow_forward" />
+                    </button>
+                  ) : null}
+                </article>
+              ))}
+            </div>
+          ) : null}
+        </div>
+
+        {/* ---- Tradition spotlight ---- */}
+        <div className="stack stack-3">
+          <h2 className="t-headline-md">{t('culture.spotlightTitle')}</h2>
+
+          <article className="spotlight spotlight--flat">
+            <div className="spotlight__scrim" />
+            <div className="spotlight__body">
+              <div className="row row-2 wrap">
+                <span className="pill pill--gold">{spotlight.pill}</span>
+                <span className="t-body-sm" style={{ color: 'rgba(255,255,255,0.75)' }}>
+                  {spotlight.place}
+                </span>
+              </div>
+              <span className="t-label-meta" style={{ color: 'rgba(255,255,255,0.75)' }}>
+                {spotlight.kicker}
+              </span>
+              <h3 className="t-headline-sm" style={{ color: '#fff' }}>
+                {spotlight.title}
+              </h3>
+              <p className="t-body-md" style={{ color: 'rgba(255,255,255,0.86)' }}>
+                {spotlight.body}
+              </p>
+
+              {spotlight.mini ? (
+                <div className="spotlight__mini">
+                  <Icon name="auto_awesome" fill style={{ color: 'var(--gold)' }} />
+                  <span className="stack stack-1">
+                    <span className="t-headline-sm" style={{ color: '#fff', fontSize: 15 }}>
+                      {spotlight.mini.title}
+                    </span>
+                    <span className="t-body-sm" style={{ color: 'rgba(255,255,255,0.8)' }}>
+                      {spotlight.mini.body}
+                    </span>
+                  </span>
+                </div>
+              ) : null}
+            </div>
+          </article>
+
+          {/* ---- Other clubs in the same league ---- */}
+          {related?.length ? (
+            <div className="stack stack-2">
+              <h3 className="t-headline-sm">{t('culture.otherClubs')}</h3>
+              <div className="chip-row">
+                {related.map((other) => (
+                  <button key={other.id} type="button" className="chip" onClick={() => onPickClub(other)}>
+                    {other.club}
+                  </button>
+                ))}
+              </div>
+            </div>
+          ) : null}
+
+          <button type="button" className="fp fp--tertiary" onClick={onFindLeague}>
+            {t('home.findLeague')}
+          </button>
+        </div>
+      </div>
+    </>
   )
 }

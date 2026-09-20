@@ -1,45 +1,49 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Icon from '../components/Icon.jsx'
 import FieldPressButton from '../components/FieldPressButton.jsx'
 import QuizOption from '../components/QuizOption.jsx'
-import { QUIZ_STEPS, TOTAL_STEPS, scoreLeagues } from '../data/quiz.js'
-import { RANKED_LEAGUES } from '../data/leagues.js'
+import DataState from '../components/DataState.jsx'
+import { api, useResource } from '../lib/api.js'
 import { useI18n } from '../i18n/I18nContext.jsx'
 import { useApp } from '../state/AppState.jsx'
 import { useRouter } from '../router.jsx'
 
-const leagueName = (id) => RANKED_LEAGUES.find((l) => l.id === id)?.name ?? { en: id, es: id }
+/**
+ * The Tactical Matcher, scored by the league API.
+ *
+ * Every tap posts the answers so far to /api/league-quiz/recommend — the
+ * endpoint accepts a partial set — which is what keeps the live compatibility
+ * strip honest instead of guessing at client-side weights.
+ */
 
 /** The live compatibility strip: top match now, and who is next. */
-function CompatStrip({ ranked }) {
-  const { t, tr } = useI18n()
-  const [first, second] = ranked
+function CompatStrip({ ranking }) {
+  const { t } = useI18n()
+  if (!ranking?.length) return null
+  const [first, second] = ranking
 
   return (
     <div className="compat">
-      <span className="tile tile--green tile--circle" style={{ width: 36, height: 36 }}>
-        <Icon name="monitoring" fill />
-      </span>
-
       <div className="grow stack stack-1">
         <span className="t-label-meta text-secondary">{t('quiz.liveCompat')}</span>
-        <span className="t-headline-sm">{tr(leagueName(first.id))}</span>
-        <span className="t-body-sm text-secondary">
-          {`${t('quiz.nextUp')}: ${tr(leagueName(second.id))} (${second.score}%)`}
-        </span>
+        <span className="t-headline-sm">{first.name}</span>
+        {second ? (
+          <span className="t-body-sm text-secondary">
+            {t('quiz.nextUp')}: {second.name} · {second.matchPercent}%
+          </span>
+        ) : null}
       </div>
-
-      <span className="compat__score t-num">{first.score}%</span>
+      <span className="compat__score t-num">{first.matchPercent}%</span>
     </div>
   )
 }
 
-/** Ranked results with animated bars, shown once all five steps are done. */
-function Results({ ranked, onRetake }) {
-  const { t, tr } = useI18n()
+/** Ranked results, shown once the last question is answered. */
+function Results({ result, onRetake }) {
+  const { t } = useI18n()
   const { navigate } = useRouter()
-  const top = ranked[0]
-  const topLeague = RANKED_LEAGUES.find((l) => l.id === top.id)
+  const { recommendation, ranking } = result
+  const top = recommendation.league
 
   return (
     <div className="page">
@@ -49,17 +53,29 @@ function Results({ ranked, onRetake }) {
         <p className="t-body-md text-secondary">{t('quiz.resultsSub')}</p>
       </div>
 
+      {/* Why this league — straight from the scoring engine. */}
+      {recommendation.reasons.length > 0 ? (
+        <div className="row row-2 wrap">
+          {recommendation.reasons.map((reason) => (
+            <span key={reason.id} className="pill pill--gold">
+              <Icon name="check" fill />
+              {reason.label}
+            </span>
+          ))}
+        </div>
+      ) : null}
+
       <div className="card stack">
-        {ranked.map((row, i) => (
-          <div className={`result-row ${i === 0 ? 'is-top' : ''}`.trim()} key={row.id}>
+        {ranking.map((row, i) => (
+          <div className={`result-row ${i === 0 ? 'is-top' : ''}`.trim()} key={row.leagueId}>
             <span className="result-row__rank t-num">{i + 1}</span>
             <span className="grow stack stack-2">
-              <span className="t-headline-sm">{tr(leagueName(row.id))}</span>
+              <span className="t-headline-sm">{row.name}</span>
               <span className="result-row__bar">
-                <i style={{ width: `${row.score}%` }} />
+                <i style={{ width: `${row.matchPercent}%` }} />
               </span>
             </span>
-            <span className="result-row__pct t-num">{row.score}%</span>
+            <span className="result-row__pct t-num">{row.matchPercent}%</span>
           </div>
         ))}
       </div>
@@ -71,16 +87,9 @@ function Results({ ranked, onRetake }) {
         </span>
       </div>
 
-      {topLeague?.hasCulture ? (
-        <FieldPressButton
-          variant="primary"
-          block
-          icon="campaign"
-          onClick={() => navigate(`/culture?league=${top.id}`)}
-        >
-          {t('quiz.exploreCulture')}
-        </FieldPressButton>
-      ) : null}
+      <FieldPressButton variant="primary" block icon="campaign" onClick={() => navigate(`/culture?league=${top.id}`)}>
+        {t('quiz.exploreCulture')}
+      </FieldPressButton>
 
       <FieldPressButton variant="soft" block icon="restart_alt" onClick={onRetake}>
         {t('quiz.retake')}
@@ -92,60 +101,119 @@ function Results({ ranked, onRetake }) {
 export default function Quiz() {
   const { t, tr, lang } = useI18n()
   const { navigate } = useRouter()
-  const { quizAnswers, setQuizAnswer, quizDone, finishQuiz, resetQuiz, addXp, celebrate } = useApp()
+  const { quizAnswers, setQuizAnswer, quizDone, finishQuiz, resetQuiz, leagueResult, setLeagueResult, addXp, celebrate } = useApp()
 
   const [stepIndex, setStepIndex] = useState(0)
+  const [live, setLive] = useState(null)
+  const [submitError, setSubmitError] = useState(null)
+  const scoring = useRef(0)
 
-  const ranked = useMemo(() => scoreLeagues(quizAnswers), [quizAnswers])
+  const { data, loading, error, reload } = useResource((signal) => api('/league-quiz', { lang, signal }), [lang])
+  const questions = data?.quiz.questions ?? []
 
-  if (quizDone) {
+  /** Score the answers so far. The last call to return wins, so a fast tapper
+      never sees an older ranking overwrite a newer one. */
+  const score = async (answers, { final = false } = {}) => {
+    const hasAny = Object.values(answers).some((picks) => picks?.length)
+    if (!hasAny) return setLive(null)
+
+    const ticket = ++scoring.current
+    try {
+      const result = await api('/league-quiz/recommend', { method: 'POST', lang, body: { answers } })
+      if (ticket !== scoring.current) return
+      setSubmitError(null)
+      setLive(result)
+      if (final) setLeagueResult(result)
+    } catch (err) {
+      if (ticket === scoring.current) setSubmitError(err)
+    }
+  }
+
+  // Re-score when the language changes so the stored result is in the right language.
+  useEffect(() => {
+    if (quizDone && Object.keys(quizAnswers).length) score(quizAnswers, { final: true })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [lang])
+
+  if (quizDone && (leagueResult || live)) {
     return (
       <Results
-        ranked={ranked}
+        result={leagueResult ?? live}
         onRetake={() => {
           resetQuiz()
+          setLive(null)
           setStepIndex(0)
         }}
       />
     )
   }
 
-  const step = QUIZ_STEPS[stepIndex]
+  return (
+    <DataState loading={loading} error={error} onRetry={reload}>
+      {questions.length ? (
+        <Steps
+          questions={questions}
+          stepIndex={stepIndex}
+          setStepIndex={setStepIndex}
+          quizAnswers={quizAnswers}
+          setQuizAnswer={setQuizAnswer}
+          live={live}
+          submitError={submitError}
+          score={score}
+          onExit={() => navigate('/')}
+          onFinish={() => {
+            finishQuiz()
+            addXp(120)
+            celebrate({ title: t('quiz.celebrateTitle'), sub: t('quiz.celebrateSub'), xp: 120, icon: 'emoji_events' })
+          }}
+          t={t}
+          tr={tr}
+        />
+      ) : null}
+    </DataState>
+  )
+}
+
+function Steps({
+  questions,
+  stepIndex,
+  setStepIndex,
+  quizAnswers,
+  setQuizAnswer,
+  live,
+  submitError,
+  score,
+  onExit,
+  onFinish,
+  t,
+  tr,
+}) {
+  const step = questions[stepIndex]
   const picked = quizAnswers[step.id] ?? []
+  const total = questions.length
   const stepNumber = stepIndex + 1
-  const percent = Math.round((stepNumber / TOTAL_STEPS) * 100)
-  const otherLang = lang === 'en' ? 'es' : 'en'
-  const isLast = stepIndex === TOTAL_STEPS - 1
+  const percent = Math.round((stepNumber / total) * 100)
+  const isLast = stepIndex === total - 1
 
   const toggle = (optionId) => {
-    if (step.multi) {
-      const next = picked.includes(optionId)
+    const next = step.multi
+      ? picked.includes(optionId)
         ? picked.filter((id) => id !== optionId)
         : [...picked, optionId]
-      setQuizAnswer(step.id, next)
-    } else {
-      setQuizAnswer(step.id, [optionId])
-    }
+      : [optionId]
+
+    setQuizAnswer(step.id, next)
+    score({ ...quizAnswers, [step.id]: next })
   }
 
   const advance = () => {
     if (isLast) {
-      finishQuiz()
-      addXp(120)
-      celebrate({
-        title: t('quiz.celebrateTitle'),
-        sub: t('quiz.celebrateSub'),
-        xp: 120,
-        icon: 'emoji_events',
-      })
+      score(quizAnswers, { final: true })
+      onFinish()
       return
     }
     setStepIndex((i) => i + 1)
     window.scrollTo({ top: 0, behavior: 'smooth' })
-  }
-
-  const skipAll = () => {
-    finishQuiz()
   }
 
   return (
@@ -157,30 +225,18 @@ export default function Quiz() {
             type="button"
             className="icon-btn icon-btn--outline"
             aria-label={t('quiz.exit')}
-            onClick={() => (stepIndex === 0 ? navigate('/') : setStepIndex((i) => i - 1))}
+            onClick={() => (stepIndex === 0 ? onExit() : setStepIndex((i) => i - 1))}
           >
             <Icon name={stepIndex === 0 ? 'close' : 'arrow_back'} />
           </button>
 
           <div className="grow stack stack-1">
             <span className="t-label-meta text-secondary">{t('quiz.title')}</span>
-            <span className="t-headline-sm">
-              {`${t('quiz.step')} ${stepNumber} ${t('quiz.stepOf')} ${TOTAL_STEPS}`}
-            </span>
+            <span className="t-headline-sm">{`${t('quiz.step')} ${stepNumber} ${t('quiz.stepOf')} ${total}`}</span>
           </div>
-
-          <button type="button" className="pill pill--grey" onClick={skipAll}>
-            {t('quiz.skipAll')}
-          </button>
         </div>
 
-        <div
-          className="progress"
-          role="progressbar"
-          aria-valuenow={percent}
-          aria-valuemin={0}
-          aria-valuemax={100}
-        >
+        <div className="progress" role="progressbar" aria-valuenow={percent} aria-valuemin={0} aria-valuemax={100}>
           <div className="progress__fill" style={{ width: `${percent}%` }} />
         </div>
 
@@ -202,25 +258,20 @@ export default function Quiz() {
               </span>
             </div>
 
-            <h1 className="t-headline-lg">{tr(step.title)}</h1>
+            <h1 className="t-headline-lg">{step.prompt}</h1>
+            {/* Bilingual coach mode: the same question in the other language. */}
             <p className="t-headline-sm" style={{ color: 'var(--pitch-green)' }}>
-              {step.title[otherLang]}
+              {step.promptAlt}
             </p>
-            <p className="t-body-md text-secondary">
-              {step.multi ? t('quiz.multiSelect') : t('quiz.singleSelect')}
-            </p>
+            <p className="t-body-md text-secondary">{step.multi ? t('quiz.multiSelect') : t('quiz.singleSelect')}</p>
           </div>
 
           {/* ---- Options ---- */}
-          <div
-            className="stack stack-3"
-            role={step.multi ? 'group' : 'radiogroup'}
-            aria-label={tr(step.title)}
-          >
+          <div className="stack stack-3" role={step.multi ? 'group' : 'radiogroup'} aria-label={step.prompt}>
             {step.options.map((option) => (
               <QuizOption
                 key={option.id}
-                option={option}
+                option={{ ...option, title: option.text }}
                 multi={step.multi}
                 selected={picked.includes(option.id)}
                 onToggle={toggle}
@@ -231,7 +282,8 @@ export default function Quiz() {
 
         {/* ---- Live compatibility (moves beside the question on tablet+) ---- */}
         <div className="split-quiz__side">
-          <CompatStrip ranked={ranked} />
+          <CompatStrip ranking={live?.ranking} />
+          {submitError ? <p className="placeholder-note">{t('common.loadError')}</p> : null}
         </div>
       </div>
 
@@ -241,16 +293,8 @@ export default function Quiz() {
           {`${picked.length} ${t('quiz.selectedCount')}`}
         </span>
 
-        <FieldPressButton
-          variant="primary"
-          block
-          iconAfter="arrow_forward"
-          onClick={advance}
-          disabled={picked.length === 0}
-        >
-          {isLast
-            ? t('quiz.seeResults')
-            : `${t('quiz.nextQuestion')} (${stepNumber}/${TOTAL_STEPS})`}
+        <FieldPressButton variant="primary" block iconAfter="arrow_forward" onClick={advance} disabled={picked.length === 0}>
+          {isLast ? t('quiz.seeResults') : `${t('quiz.nextQuestion')} (${stepNumber}/${total})`}
         </FieldPressButton>
       </div>
     </div>

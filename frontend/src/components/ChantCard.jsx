@@ -73,8 +73,12 @@ export default function ChantCard({ chant, onLearn }) {
 
         <section className="layer layer--1">
           <span className="t-label-meta text-secondary">{t('culture.layer1')}</span>
-          <blockquote className="layer__quote">{tr(chant.layer1)}</blockquote>
-          <p className="placeholder-note">{t('culture.lyricsPlaceholder')}</p>
+          {/* The original is never translated — it renders in the language the
+              stand actually sings, tagged with `lang` so screen readers switch voice. */}
+          <blockquote className="layer__quote" lang={chant.layer1Lang}>
+            {tr(chant.layer1)}
+          </blockquote>
+          {chant.layer1Note ? <p className="placeholder-note">{tr(chant.layer1Note)}</p> : null}
         </section>
 
         <section className="layer layer--2">

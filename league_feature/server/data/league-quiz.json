@@ -67,34 +67,91 @@
     {
       "id": "league-quiz-q1-draw",
       "order": 1,
+      "multi": true,
+      "section": { "en": "Pace & Tone", "es": "Ritmo y tono" },
       "prompt": {
-        "en": "What draws you in most?",
-        "es": "¿Qué es lo que más te atrae?"
+        "en": "What draws you into a match?",
+        "es": "¿Qué te atrapa de un partido?"
       },
       "options": [
         {
           "id": "speed",
-          "text": { "en": "Speed — I want the ball racing from one end to the other", "es": "Velocidad: quiero el balón yendo de un área a la otra" },
+          "text": { "en": "Speed & drama", "es": "Velocidad y drama" },
+          "tag": { "en": "Electric", "es": "Eléctrico" },
+          "tagIcon": "bolt",
+          "tagTone": "gold",
+          "desc": {
+            "en": "The ball racing from one end to the other, and a winner in the 96th minute.",
+            "es": "El balón yendo de un área a la otra y un gol en el minuto 96."
+          },
+          "metas": [
+            { "icon": "speed", "label": { "en": "High tempo", "es": "Ritmo alto" } },
+            { "icon": "directions_run", "label": { "en": "Counter-attacks", "es": "Contraataques" } }
+          ],
           "weights": { "pace": 3 }
         },
         {
           "id": "battles",
-          "text": { "en": "Battles — hard tackles and players who refuse to back down", "es": "Duelos: entradas fuertes y jugadores que no se achican" },
+          "text": { "en": "Physical battles", "es": "Duelos físicos" },
+          "tag": { "en": "Heavy Metal", "es": "Heavy metal" },
+          "tagIcon": "shield",
+          "tagTone": "red",
+          "desc": {
+            "en": "Hard tackles in the rain, aerial duels, and players who refuse to back down.",
+            "es": "Entradas duras bajo la lluvia, duelos aéreos y jugadores que no se achican."
+          },
+          "metas": [
+            { "icon": "sports_kabaddi", "label": { "en": "Duels everywhere", "es": "Duelos por todas partes" } },
+            { "icon": "fitness_center", "label": { "en": "Set-piece power", "es": "Poder a balón parado" } }
+          ],
           "weights": { "physicality": 3 }
         },
         {
           "id": "underdogs",
-          "text": { "en": "Underdog stories — I want to believe anyone can win", "es": "Historias de los humildes: quiero creer que cualquiera puede ganar" },
+          "text": { "en": "Underdog stories", "es": "Historias de los humildes" },
+          "tag": { "en": "Wide Open", "es": "Liga abierta" },
+          "tagIcon": "trending_up",
+          "tagTone": "peach",
+          "desc": {
+            "en": "A table where the favourite can lose on any given weekend, and often does.",
+            "es": "Una tabla donde el favorito puede perder cualquier fin de semana, y suele pasar."
+          },
+          "metas": [
+            { "icon": "emoji_events", "label": { "en": "Anyone can win", "es": "Cualquiera puede ganar" } },
+            { "icon": "groups", "label": { "en": "Small-club heroes", "es": "Héroes de clubes pequeños" } }
+          ],
           "weights": { "underdogs": 3 }
         },
         {
           "id": "rivalries",
-          "text": { "en": "Rivalries — matches that mean everything to a city", "es": "Rivalidades: partidos que lo significan todo para una ciudad" },
+          "text": { "en": "Fierce rivalries", "es": "Rivalidades feroces" },
+          "tag": { "en": "Derby Day", "es": "Día de derbi" },
+          "tagIcon": "local_fire_department",
+          "tagTone": "red",
+          "desc": {
+            "en": "Matches that decide the mood of an entire city until the next one.",
+            "es": "Partidos que deciden el ánimo de una ciudad entera hasta el siguiente."
+          },
+          "metas": [
+            { "icon": "public", "label": { "en": "City split in two", "es": "Ciudad partida en dos" } },
+            { "icon": "history", "label": { "en": "A century of history", "es": "Un siglo de historia" } }
+          ],
           "weights": { "rivalries": 3 }
         },
         {
           "id": "tactics",
-          "text": { "en": "Tactics — the chess match between two coaches", "es": "Táctica: la partida de ajedrez entre dos entrenadores" },
+          "text": { "en": "Chess-match tactics", "es": "Táctica de ajedrez" },
+          "tag": { "en": "Spatial", "es": "Espacial" },
+          "tagIcon": "psychology",
+          "tagTone": "lavender",
+          "desc": {
+            "en": "Passing triangles, suffocating blocks, and two coaches trying to out-think each other.",
+            "es": "Triángulos de pase, bloques asfixiantes y dos entrenadores intentando superarse mentalmente."
+          },
+          "metas": [
+            { "icon": "hub", "label": { "en": "Positional IQ", "es": "Inteligencia posicional" } },
+            { "icon": "grid_view", "label": { "en": "Shape changes", "es": "Cambios de dibujo" } }
+          ],
           "weights": { "tactics": 3 }
         }
       ]
@@ -102,6 +159,8 @@
     {
       "id": "league-quiz-q2-goal",
       "order": 2,
+      "multi": false,
+      "section": { "en": "The Perfect Goal", "es": "El gol perfecto" },
       "prompt": {
         "en": "Your perfect goal looks like…",
         "es": "Tu gol perfecto es…"
@@ -109,22 +168,57 @@
       "options": [
         {
           "id": "counter",
-          "text": { "en": "A counter-attack finished in six seconds", "es": "Un contraataque resuelto en seis segundos" },
+          "text": { "en": "A counter finished in six seconds", "es": "Una contra resuelta en seis segundos" },
+          "tag": { "en": "Lightning", "es": "Relámpago" },
+          "tagIcon": "bolt",
+          "tagTone": "gold",
+          "desc": {
+            "en": "Win it in your own box, score in theirs, before anyone has run back.",
+            "es": "Robar en tu área y marcar en la suya antes de que nadie haya vuelto."
+          },
+          "metas": [{ "icon": "speed", "label": { "en": "Pure speed", "es": "Velocidad pura" } }],
           "weights": { "pace": 3 }
         },
         {
           "id": "passing-move",
-          "text": { "en": "A 25-pass move that walks the ball into the net", "es": "Una jugada de 25 pases que mete el balón caminando" },
+          "text": { "en": "A 25-pass move walked into the net", "es": "Una jugada de 25 pases metida caminando" },
+          "tag": { "en": "Patient", "es": "Paciente" },
+          "tagIcon": "auto_awesome",
+          "tagTone": "lavender",
+          "desc": {
+            "en": "The whole team touches the ball, and the defence is pulled apart one pass at a time.",
+            "es": "Todo el equipo toca el balón y la defensa se desarma pase a pase."
+          },
+          "metas": [
+            { "icon": "hub", "label": { "en": "Possession", "es": "Posesión" } },
+            { "icon": "auto_awesome", "label": { "en": "Technical", "es": "Técnico" } }
+          ],
           "weights": { "technique": 3, "tactics": 1 }
         },
         {
           "id": "header",
           "text": { "en": "A towering header from a corner", "es": "Un cabezazo imponente tras un córner" },
+          "tag": { "en": "Old School", "es": "Clásico" },
+          "tagIcon": "fitness_center",
+          "tagTone": "red",
+          "desc": {
+            "en": "A set piece, a run to the near post, and a defender beaten in the air.",
+            "es": "Un balón parado, una desmarcada al primer palo y un defensa superado por alto."
+          },
+          "metas": [{ "icon": "sports_kabaddi", "label": { "en": "Aerial duels", "es": "Juego aéreo" } }],
           "weights": { "physicality": 3 }
         },
         {
           "id": "last-minute",
-          "text": { "en": "A last-minute winner for the smaller team", "es": "Un gol en el último minuto del equipo pequeño" },
+          "text": { "en": "A last-minute winner for the small team", "es": "Un gol en el último minuto del equipo pequeño" },
+          "tag": { "en": "Giant-killer", "es": "Mata-gigantes" },
+          "tagIcon": "emoji_events",
+          "tagTone": "peach",
+          "desc": {
+            "en": "The stadium loses its mind because nobody outside the city expected it.",
+            "es": "El estadio enloquece porque nadie fuera de la ciudad lo esperaba."
+          },
+          "metas": [{ "icon": "groups", "label": { "en": "Against the odds", "es": "Contra pronóstico" } }],
           "weights": { "underdogs": 3, "atmosphere": 1 }
         }
       ]
@@ -132,6 +226,8 @@
     {
       "id": "league-quiz-q3-matchday",
       "order": 3,
+      "multi": false,
+      "section": { "en": "Matchday", "es": "Día de partido" },
       "prompt": {
         "en": "Pick your ideal matchday.",
         "es": "Elige tu día de partido ideal."
@@ -139,22 +235,54 @@
       "options": [
         {
           "id": "terrace",
-          "text": { "en": "Standing on a packed terrace, singing for 90 minutes", "es": "De pie en una grada abarrotada, cantando durante 90 minutos" },
+          "text": { "en": "A packed terrace, singing for 90 minutes", "es": "Una grada llena, cantando 90 minutos" },
+          "tag": { "en": "Wall of Sound", "es": "Muro de sonido" },
+          "tagIcon": "campaign",
+          "tagTone": "gold",
+          "desc": {
+            "en": "Standing room, flags over your head, and a song that never stops.",
+            "es": "Grada de pie, banderas sobre tu cabeza y un cántico que no para."
+          },
+          "metas": [{ "icon": "stadium", "label": { "en": "Standing terraces", "es": "Gradas de pie" } }],
           "weights": { "atmosphere": 3 }
         },
         {
           "id": "derby",
-          "text": { "en": "A derby so big the whole city stops for it", "es": "Un derbi tan grande que toda la ciudad se detiene" },
+          "text": { "en": "A derby the whole city stops for", "es": "Un derbi por el que la ciudad se detiene" },
+          "tag": { "en": "Derby Day", "es": "Día de derbi" },
+          "tagIcon": "local_fire_department",
+          "tagTone": "red",
+          "desc": {
+            "en": "Tifos covering entire stands, and bragging rights that last a year.",
+            "es": "Tifos que cubren gradas enteras y un orgullo que dura un año."
+          },
+          "metas": [{ "icon": "public", "label": { "en": "City rivalry", "es": "Rivalidad de ciudad" } }],
           "weights": { "rivalries": 3, "atmosphere": 1 }
         },
         {
           "id": "analysis",
-          "text": { "en": "A good seat and a clear view of both teams' shapes", "es": "Un buen asiento y una vista clara del orden de ambos equipos" },
+          "text": { "en": "A clear view of both teams' shapes", "es": "Una vista clara del dibujo de ambos equipos" },
+          "tag": { "en": "Analyst", "es": "Analista" },
+          "tagIcon": "psychology",
+          "tagTone": "lavender",
+          "desc": {
+            "en": "High in the stand, watching the spaces open and close instead of the ball.",
+            "es": "Arriba en la grada, viendo cómo se abren y cierran los espacios en vez de mirar el balón."
+          },
+          "metas": [{ "icon": "grid_view", "label": { "en": "Tactical detail", "es": "Detalle táctico" } }],
           "weights": { "tactics": 3, "technique": 1 }
         },
         {
           "id": "new-club",
-          "text": { "en": "A young club inventing its traditions right now", "es": "Un club joven inventando sus tradiciones ahora mismo" },
+          "text": { "en": "A young club inventing its traditions", "es": "Un club joven inventando sus tradiciones" },
+          "tag": { "en": "New Roots", "es": "Raíces nuevas" },
+          "tagIcon": "diversity_3",
+          "tagTone": "peach",
+          "desc": {
+            "en": "Supporters' groups writing the songs this season, not a century ago.",
+            "es": "Grupos de aficionados escribiendo los cánticos esta temporada, no hace un siglo."
+          },
+          "metas": [{ "icon": "groups", "label": { "en": "Fan-made culture", "es": "Cultura de la afición" } }],
           "weights": { "underdogs": 2, "atmosphere": 1 }
         }
       ]
@@ -162,6 +290,8 @@
     {
       "id": "league-quiz-q4-player",
       "order": 4,
+      "multi": false,
+      "section": { "en": "Your Player", "es": "Tu jugador" },
       "prompt": {
         "en": "Which player would you buy a shirt for?",
         "es": "¿De qué jugador te comprarías la camiseta?"
@@ -169,22 +299,57 @@
       "options": [
         {
           "id": "winger",
-          "text": { "en": "The winger who runs past defenders like they're standing still", "es": "El extremo que deja atrás a los defensas como si estuvieran parados" },
+          "text": { "en": "The winger nobody can catch", "es": "El extremo al que nadie alcanza" },
+          "tag": { "en": "Burner", "es": "Pura velocidad" },
+          "tagIcon": "directions_run",
+          "tagTone": "gold",
+          "desc": {
+            "en": "Gets the ball wide, and the full back's evening is over.",
+            "es": "Recibe en la banda y la noche del lateral se acabó."
+          },
+          "metas": [{ "icon": "speed", "label": { "en": "One-v-one", "es": "Uno contra uno" } }],
           "weights": { "pace": 3 }
         },
         {
           "id": "playmaker",
-          "text": { "en": "The playmaker who sees a pass nobody else does", "es": "El creador que ve un pase que nadie más ve" },
+          "text": { "en": "The playmaker who sees the pass first", "es": "El creador que ve el pase antes que nadie" },
+          "tag": { "en": "Maestro", "es": "Maestro" },
+          "tagIcon": "auto_awesome",
+          "tagTone": "lavender",
+          "desc": {
+            "en": "Half a second ahead of everyone else on the pitch, every time.",
+            "es": "Medio segundo por delante de todos los demás, siempre."
+          },
+          "metas": [{ "icon": "hub", "label": { "en": "Vision", "es": "Visión" } }],
           "weights": { "technique": 3 }
         },
         {
           "id": "defender",
-          "text": { "en": "The defender who organises everyone and wins every header", "es": "El defensa que organiza a todos y gana todos los balones aéreos" },
+          "text": { "en": "The defender who organises everyone", "es": "El defensa que organiza a todos" },
+          "tag": { "en": "The Boss", "es": "El jefe" },
+          "tagIcon": "shield",
+          "tagTone": "red",
+          "desc": {
+            "en": "Wins every header, and moves the line ten yards up with one shout.",
+            "es": "Gana todos los balones aéreos y adelanta la línea diez metros con un grito."
+          },
+          "metas": [
+            { "icon": "sports_kabaddi", "label": { "en": "Wins duels", "es": "Gana duelos" } },
+            { "icon": "grid_view", "label": { "en": "Reads the game", "es": "Lee el juego" } }
+          ],
           "weights": { "physicality": 2, "tactics": 2 }
         },
         {
           "id": "local",
-          "text": { "en": "The local player who'd never sign for the rivals", "es": "El jugador de la casa que jamás ficharía por el rival" },
+          "text": { "en": "The local who'd never sign for the rivals", "es": "El de la casa que jamás ficharía por el rival" },
+          "tag": { "en": "One of Us", "es": "Uno de los nuestros" },
+          "tagIcon": "favorite",
+          "tagTone": "peach",
+          "desc": {
+            "en": "Grew up in the stand they now play in front of.",
+            "es": "Creció en la grada ante la que ahora juega."
+          },
+          "metas": [{ "icon": "public", "label": { "en": "Derby hero", "es": "Héroe de derbi" } }],
           "weights": { "rivalries": 2, "atmosphere": 2 }
         }
       ]
@@ -192,6 +357,8 @@
     {
       "id": "league-quiz-q5-scoreline",
       "order": 5,
+      "multi": false,
+      "section": { "en": "Final Whistle", "es": "Pitido final" },
       "prompt": {
         "en": "Best final score?",
         "es": "¿Mejor resultado final?"
@@ -200,21 +367,53 @@
         {
           "id": "thriller",
           "text": { "en": "4-3, chaos from the first whistle", "es": "4-3, caos desde el primer pitido" },
+          "tag": { "en": "Thriller", "es": "Frenesí" },
+          "tagIcon": "bolt",
+          "tagTone": "gold",
+          "desc": {
+            "en": "Nobody defends, everybody scores, and the table makes no sense afterwards.",
+            "es": "Nadie defiende, todos marcan y después la tabla no tiene sentido."
+          },
+          "metas": [{ "icon": "speed", "label": { "en": "End to end", "es": "De área a área" } }],
           "weights": { "pace": 2, "atmosphere": 1 }
         },
         {
           "id": "masterclass",
           "text": { "en": "1-0, a defensive masterclass", "es": "1-0, una obra maestra defensiva" },
+          "tag": { "en": "Lockdown", "es": "Cerrojo" },
+          "tagIcon": "psychology",
+          "tagTone": "lavender",
+          "desc": {
+            "en": "One goal, then eighty minutes of a plan executed perfectly.",
+            "es": "Un gol y luego ochenta minutos de un plan ejecutado a la perfección."
+          },
+          "metas": [{ "icon": "grid_view", "label": { "en": "Game management", "es": "Gestión del partido" } }],
           "weights": { "tactics": 3 }
         },
         {
           "id": "upset",
           "text": { "en": "2-1 to the team nobody expected", "es": "2-1 para el equipo que nadie esperaba" },
+          "tag": { "en": "Upset", "es": "Sorpresa" },
+          "tagIcon": "trending_up",
+          "tagTone": "peach",
+          "desc": {
+            "en": "The result that ruins every prediction published that morning.",
+            "es": "El resultado que arruina todos los pronósticos publicados esa mañana."
+          },
+          "metas": [{ "icon": "emoji_events", "label": { "en": "Giant-killing", "es": "Mata-gigantes" } }],
           "weights": { "underdogs": 3 }
         },
         {
           "id": "derby-win",
-          "text": { "en": "Any score, as long as we beat them", "es": "Cualquier marcador, mientras les ganemos a ellos" },
+          "text": { "en": "Any score, as long as we beat them", "es": "Cualquier marcador, mientras les ganemos" },
+          "tag": { "en": "Bragging Rights", "es": "Orgullo en juego" },
+          "tagIcon": "local_fire_department",
+          "tagTone": "red",
+          "desc": {
+            "en": "Ugly, late, deflected — it doesn't matter. It counts all year.",
+            "es": "Feo, tardío, con desvío: da igual. Cuenta todo el año."
+          },
+          "metas": [{ "icon": "public", "label": { "en": "Derby win", "es": "Victoria en el derbi" } }],
           "weights": { "rivalries": 3 }
         }
       ]

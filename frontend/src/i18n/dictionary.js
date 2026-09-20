@@ -41,6 +41,10 @@ export const dictionary = {
       minutes: 'min',
       listen: 'Listen',
       of: 'of',
+      loading: 'Loading…',
+      loadError: "We couldn't load this. Check the API is running.",
+      retry: 'Try again',
+      offline: 'Offline — showing what we have.',
     },
 
     /* ---------- page 1: Learn / Home ---------- */
@@ -162,6 +166,18 @@ export const dictionary = {
       spotlightTitle: 'Stadium Tradition Spotlight',
       lyricsPlaceholder:
         'Placeholder text — the published lyric is under copyright. Drop your licensed line here.',
+    
+      founded: 'Founded',
+      clubsIn: 'Clubs in this league',
+      otherClubs: 'Other clubs here',
+      draftNote: 'Research in progress',
+      audio: 'Hear how the stand sings it',
+      chantKicker: 'TERRACE CHANT',
+      spotlightKicker: 'STADIUM & TRADITIONS',
+      miniTitle: 'One more thing',
+      nickname: 'The nickname',
+      rivalries: 'Rivalries',
+      originalIn: 'Original · in {lang}',
     },
 
     /* ---------- page 5: Quiz / Tactical Matcher ---------- */
@@ -272,6 +288,7 @@ export const dictionary = {
 
     /* ---------- lesson player ---------- */
     lesson: {
+      keyTerms: 'Key terms',
       module: 'MODULE',
       checkTag: 'QUICK CHECK',
       correct: 'That is it.',
@@ -396,6 +413,10 @@ export const dictionary = {
       minutes: 'min',
       listen: 'Escuchar',
       of: 'de',
+      loading: 'Cargando…',
+      loadError: 'No pudimos cargar esto. Comprueba que la API esté en marcha.',
+      retry: 'Reintentar',
+      offline: 'Sin conexión: mostramos lo que tenemos.',
     },
 
     home: {
@@ -514,6 +535,18 @@ export const dictionary = {
       spotlightTitle: 'Tradición del estadio',
       lyricsPlaceholder:
         'Texto de muestra: la letra publicada tiene derechos de autor. Coloca aquí tu línea con licencia.',
+    
+      founded: 'Fundado en',
+      clubsIn: 'Clubes de esta liga',
+      otherClubs: 'Otros clubes de aquí',
+      draftNote: 'Investigación en curso',
+      audio: 'Escucha cómo lo canta la grada',
+      chantKicker: 'CÁNTICO DE GRADA',
+      spotlightKicker: 'ESTADIO Y TRADICIONES',
+      miniTitle: 'Una cosa más',
+      nickname: 'El apodo',
+      rivalries: 'Rivalidades',
+      originalIn: 'Original · en {lang}',
     },
 
     quiz: {
@@ -620,6 +653,7 @@ export const dictionary = {
     },
 
     lesson: {
+      keyTerms: 'Términos clave',
       module: 'MÓDULO',
       checkTag: 'COMPROBACIÓN RÁPIDA',
       correct: 'Eso es.',

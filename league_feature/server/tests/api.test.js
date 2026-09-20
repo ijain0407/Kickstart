@@ -102,6 +102,26 @@ describe('GET /api/league-quiz', () => {
     expect(typeof res.body.quiz.questions[0].options[0].text).toBe('string');
     expect(JSON.stringify(res.body)).not.toMatch(/weights/);
   });
+
+  it('carries the presentation metadata the option cards render', async () => {
+    const res = await get('/api/league-quiz');
+    const first = res.body.quiz.questions[0];
+
+    expect(first.multi).toBe(true);
+    expect(first.section).toBe('Pace & Tone');
+    expect(first.options[0]).toMatchObject({ tag: 'Electric', tagIcon: 'bolt', tagTone: 'gold' });
+    expect(first.options[0].metas[0].label).toBe('High tempo');
+  });
+
+  it('includes each question in the other language for bilingual coach mode', async () => {
+    const en = await get('/api/league-quiz');
+    expect(en.body.quiz.questions[0].prompt).toBe('What draws you into a match?');
+    expect(en.body.quiz.questions[0].promptAlt).toBe('¿Qué te atrapa de un partido?');
+
+    const es = await get('/api/league-quiz?locale=es');
+    expect(es.body.quiz.questions[0].prompt).toBe('¿Qué te atrapa de un partido?');
+    expect(es.body.quiz.questions[0].promptAlt).toBe('What draws you into a match?');
+  });
 });
 
 describe('POST /api/league-quiz/recommend', () => {
@@ -137,6 +157,13 @@ describe('POST /api/league-quiz/recommend', () => {
     const res = await post({ answers: { 'league-quiz-q1-draw': 'underdogs' } });
     expect(res.status).toBe(200);
     expect(res.body.recommendation.league.id).toBe('league-mls');
+  });
+
+  it('accepts multi-select answers as a list', async () => {
+    const res = await post({ answers: { 'league-quiz-q1-draw': ['tactics', 'rivalries'] } });
+    expect(res.status).toBe(200);
+    expect(res.body.recommendation.league.id).toBe('league-serie-a');
+    expect((await post({ answers: { 'league-quiz-q1-draw': [] } })).body.error.code).toBe('VALIDATION_ERROR');
   });
 
   it('rejects empty, malformed and unknown answers', async () => {

@@ -1,39 +1,75 @@
 # Kickstart
 
-Localized soccer-teaching platform. This branch (`feature/quiz-progress`) holds **Person D's workstream**: quiz engine, XP / levels / badges / streaks, the progress API, and the quiz + progress UI.
+A bilingual (EN/ES) soccer-learning platform: lessons and a tactics board, club culture with
+chants explained in three layers, a league matcher, and XP / streaks / badges.
 
 ```
-quiz_feature/
-  server/   Express API (quiz, progress) + JSON-file storage + question bank
-  client/   React + Tailwind + i18next (quiz hub, play, results, review, progress)
-  docs/api-quiz-progress.md   endpoint reference, hook contracts, gamification config
+frontend/        React app — the shell, design system and every screen (Person A)
+server/          API gateway: mounts all three backends on one port
+person-b/        Lessons, formations, glossary API (Person B)
+league_feature/  Leagues, culture cards, league matcher API (Person C)
+quiz_feature/    Quiz engine, XP, progress, explain-a-play API (Person D)
 ```
 
 ## Run it
 
-All commands run from `quiz_feature/`.
-
 ```bash
-cd quiz_feature
-npm install
-npm run dev:server   # http://localhost:4000
-npm run dev:client   # http://localhost:5173 (proxies /api to :4000)
+npm run install:all   # first time only
+npm run dev           # API on :4000, app on http://localhost:5173
 ```
+
+`npm run dev` starts both. The frontend proxies `/api` to the gateway, so there's one origin
+and no CORS juggling during the demo.
 
 | Command | What it does |
 |---|---|
-| `npm test` | server (Vitest + Supertest) and client (Vitest + Testing Library) tests |
-| `npm run lint` | ESLint for both workspaces |
-| `npm run validate:questions` | checks the bilingual question bank |
-| `npm run smoke:quiz` | plays a full quiz against an in-memory API and asserts progress updated |
+| `npm run dev` | API + frontend together |
+| `npm run smoke` | Hits one endpoint per workstream and checks the shape |
+| `npm run build` | Production build of the frontend |
+| `npm test --prefix frontend` | Frontend tests — they run against the real API |
+| `npm test --prefix league_feature` | Leagues/culture API + scoring engine |
+| `npm test --prefix quiz_feature` | Quiz engine, XP and progress |
 
-Routes: `/quiz`, `/quiz/battle`, `/quiz/play`, `/quiz/results/:id`, `/quiz/review/:id`, `/progress`, `/explain-play`.
+## How it fits together
 
-## Stand-ins for other people's work
+`server/gateway.js` imports each workstream's routers as they are — nobody's feature code was
+copied or forked — and mounts them on one Express app:
 
-- **Lesson ids**: placeholders in `server/src/config/lessonIds.js` and `client/src/features/quiz/config.js`.
-- **App shell, nav, language switcher, theme, design tokens**: minimal versions in `client/src/App.jsx`, `components/LanguageToggle.jsx`, `tailwind.config.js`, marked `TODO(A)`.
-- **Storage**: JSON files under `server/data/` behind `progressRepo` / `attemptRepo` (swap for a DB later).
-- **Identity**: anonymous `X-User-Id` UUID stored in `localStorage`.
-- **Field diagram** on formation questions: a labelled placeholder until A's component exists.
-- **`/learn` links**: Back to Learn and Review link to `/learn` and `/learn/:lessonId`.
+| Path | Owner | Notes |
+|---|---|---|
+| `/api/lessons`, `/api/formations`, `/api/glossary` | Person B | `?lang=` handled via the shared locale middleware |
+| `/api/leagues`, `/api/culture`, `/api/league-quiz` | Person C | |
+| `/api/quiz`, `/api/progress`, `/api/explain` | Person D | Requires the `X-User-Id` header, which the client sends automatically |
+
+**Locale**: one convention everywhere — `?locale=`, then the `X-Locale` header, then
+`Accept-Language`, falling back to English. Responses come back already localized, and the
+frontend refetches when the language switches.
+
+**Chants and nicknames** are the exception: their `original` field is `{ text, lang }` and is
+never translated, in any locale. That's the point of the three-layer format — what the stand
+sings, what it literally means, and what it really means.
+
+### Frontend data flow
+
+- `src/lib/api.js` — one fetch helper (locale + anonymous user id) and a small `useResource`
+  hook. No data-fetching dependency was added.
+- `src/lib/adapters.js` — maps API payloads onto the shapes the existing components expect,
+  so the pages stayed presentational and the design system was not rewritten.
+- `src/state/AppState.jsx` — XP, level, streak, badges and chants come from the progress API;
+  lesson-path state and matcher answers stay local. Everything degrades to localStorage when
+  the API is unreachable.
+
+## Known gaps
+
+- **Lesson ids don't line up across workstreams.** Person B publishes `lesson-rules-basics`,
+  Person D's `config/lessonIds.js` expects `rules-basics`, and the path in the frontend uses
+  `1.1`–`1.6`. The frontend maps between them (`LESSON_SLUG` in `AppState.jsx`); the team
+  should agree on one list.
+- **The league matcher's +120 XP is local only.** The progress API awards XP for lessons,
+  chants and quiz attempts, with no endpoint for other activity, so that bonus isn't
+  server-backed yet.
+- **Person D's quiz engine has no screen in the shell.** Battles, hints, review and badges are
+  all built and tested in `quiz_feature/`, but the app currently surfaces only progress.
+- **Content is draft.** League and culture records carry a `contentStatus` (`draft`,
+  `placeholder`, `verified`); the Seattle chant is a flagged placeholder. No club crests,
+  logos or licensed lyrics anywhere — text and generic visuals only.

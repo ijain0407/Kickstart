@@ -15,16 +15,23 @@ export function buildProfile(quiz, answers) {
 
   const profile = Object.fromEntries(quiz.traits.map((t) => [t.id, 0]));
 
-  for (const [questionId, optionId] of entries) {
+  for (const [questionId, picked] of entries) {
     const question = quiz.questions.find((q) => q.id === questionId);
     if (!question) throw badRequest(`Unknown question '${questionId}'`, 'UNKNOWN_QUESTION');
 
-    const option = question.options.find((o) => o.id === optionId);
-    if (!option) throw badRequest(`Unknown option '${optionId}' for question '${questionId}'`, 'UNKNOWN_OPTION');
+    // A question can be single- or multi-select; one id and a list of ids are
+    // both accepted, and a multi-select answer simply adds up its options.
+    const optionIds = Array.isArray(picked) ? picked : [picked];
+    if (optionIds.length === 0) throw badRequest(`No option chosen for question '${questionId}'`, 'NO_ANSWERS');
 
-    for (const [trait, weight] of Object.entries(option.weights)) {
-      if (!(trait in profile)) throw new Error(`Content error: option '${optionId}' scores unknown trait '${trait}'`);
-      profile[trait] += weight;
+    for (const optionId of optionIds) {
+      const option = question.options.find((o) => o.id === optionId);
+      if (!option) throw badRequest(`Unknown option '${optionId}' for question '${questionId}'`, 'UNKNOWN_OPTION');
+
+      for (const [trait, weight] of Object.entries(option.weights)) {
+        if (!(trait in profile)) throw new Error(`Content error: option '${optionId}' scores unknown trait '${trait}'`);
+        profile[trait] += weight;
+      }
     }
   }
 

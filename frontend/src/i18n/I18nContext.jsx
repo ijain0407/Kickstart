@@ -57,8 +57,19 @@ export function I18nProvider({ children }) {
     [lang],
   )
 
-  /** Resolve an inline { en, es } content pair from the data files. */
-  const tr = useCallback((pair) => (pair == null ? '' : pair[lang] ?? pair.en ?? ''), [lang])
+  /**
+   * Resolve an inline { en, es } content pair from the data files.
+   * API responses arrive already localized by the server, so a plain string
+   * passes straight through — pages can mix live and local content freely.
+   */
+  const tr = useCallback(
+    (pair) => {
+      if (pair == null) return ''
+      if (typeof pair === 'string') return pair
+      return pair[lang] ?? pair.en ?? ''
+    },
+    [lang],
+  )
 
   const value = useMemo(() => ({ lang, setLang, toggleLang, t, tr }), [lang, setLang, toggleLang, t, tr])
 

@@ -1,13 +1,19 @@
 import { Router } from 'express';
 import { z } from 'zod';
-import { localizeDeep } from '../lib/localize.js';
+import { loc, localizeDeep } from '../lib/localize.js';
 import { recommendLeagues } from '../lib/recommend.js';
 
+const answerValue = z.union([z.string().min(1), z.array(z.string().min(1)).min(1)]);
+
 const recommendBody = z.object({
-  answers: z.record(z.string().min(1), z.string().min(1)),
+  answers: z.record(z.string().min(1), answerValue),
 });
 
-/** Option weights are scoring internals — the client never needs them. */
+/**
+ * Option weights are scoring internals — the client never needs them.
+ * Everything else, including the presentation metadata the UI renders
+ * (tag, icon, description, meta chips), passes through.
+ */
 function toPublicQuiz(quiz) {
   return {
     id: quiz.id,
@@ -19,8 +25,10 @@ function toPublicQuiz(quiz) {
       .map((q) => ({
         id: q.id,
         order: q.order,
+        section: q.section,
+        multi: Boolean(q.multi),
         prompt: q.prompt,
-        options: q.options.map((o) => ({ id: o.id, text: o.text })),
+        options: q.options.map(({ weights, ...option }) => option),
       })),
   };
 }
@@ -40,7 +48,19 @@ export function leagueQuizRoutes({ content }) {
   const r = Router();
 
   r.get('/', (req, res) => {
-    res.json({ quiz: localizeDeep(toPublicQuiz(content.quiz()), req.ctx.locale) });
+    const { locale } = req.ctx;
+    const quiz = content.quiz();
+    const localized = localizeDeep(toPublicQuiz(quiz), locale);
+
+    // "Bilingual coach mode": the UI shows each question in the other language
+    // underneath, so a learner sees both phrasings of the same question.
+    const other = locale === 'es' ? 'en' : 'es';
+    localized.questions = localized.questions.map((question) => {
+      const source = quiz.questions.find((q) => q.id === question.id);
+      return { ...question, promptAlt: loc(source.prompt, other) };
+    });
+
+    res.json({ quiz: localized });
   });
 
   r.post('/recommend', (req, res) => {
