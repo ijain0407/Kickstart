@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Icon from '../components/Icon.jsx'
 import FieldPressButton from '../components/FieldPressButton.jsx'
 import DataState from '../components/DataState.jsx'
+import LeagueLogo from '../components/LeagueLogo.jsx'
 import { api, useResource } from '../lib/api.js'
 import { useAuth } from '../state/AuthState.jsx'
 import { useApp } from '../state/AppState.jsx'
@@ -181,9 +182,23 @@ function Profile() {
         </DataState>
 
         {favourite ? (
-          <button type="button" className="fp fp--tertiary" onClick={() => navigate(`/culture?league=${favourite.leagueId}&club=${favourite.id}`)}>
-            {t('account.visitClub')} <Icon name="arrow_forward" />
-          </button>
+          <>
+            {/* The pick, shown rather than just selected in a dropdown. */}
+            <div className="row row-3">
+              {favourite.crestUrl ? (
+                <img className="club-crest club-crest--img" src={favourite.crestUrl} alt="" loading="lazy" />
+              ) : null}
+              <span className="grow stack stack-1">
+                <span className="t-headline-sm">{tr(favourite.club)}</span>
+                <span className="t-body-sm text-secondary">{tr(favourite.nickname.original.text)}</span>
+              </span>
+              <LeagueLogo leagueId={favourite.leagueId} size={28} />
+            </div>
+
+            <button type="button" className="fp fp--tertiary" onClick={() => navigate(`/culture?league=${favourite.leagueId}&club=${favourite.id}`)}>
+              {t('account.visitClub')} <Icon name="arrow_forward" />
+            </button>
+          </>
         ) : null}
 
         {error ? (

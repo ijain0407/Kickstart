@@ -30,7 +30,7 @@
       "style": 4,
       "atmosphere": 5
     },
-    "crestUrl": null,
+    "crestUrl": "/crests/culture-liverpool.png",
     "imageUrl": null,
     "nickname": {
       "original": {
@@ -160,7 +160,7 @@
       "style": 3,
       "atmosphere": 4
     },
-    "crestUrl": null,
+    "crestUrl": "/crests/culture-manchester-united.png",
     "imageUrl": null,
     "nickname": {
       "original": {
@@ -290,7 +290,7 @@
       "style": 5,
       "atmosphere": 4
     },
-    "crestUrl": null,
+    "crestUrl": "/crests/culture-arsenal.png",
     "imageUrl": null,
     "nickname": {
       "original": {
@@ -427,7 +427,7 @@
       "style": 4,
       "atmosphere": 4
     },
-    "crestUrl": null,
+    "crestUrl": "/crests/culture-real-madrid.png",
     "imageUrl": null,
     "nickname": {
       "original": {
@@ -554,7 +554,7 @@
       "style": 5,
       "atmosphere": 4
     },
-    "crestUrl": null,
+    "crestUrl": "/crests/culture-fc-barcelona.png",
     "imageUrl": null,
     "nickname": {
       "original": {
@@ -709,7 +709,7 @@
       "style": 2,
       "atmosphere": 5
     },
-    "crestUrl": null,
+    "crestUrl": "/crests/culture-atletico-madrid.png",
     "imageUrl": null,
     "nickname": {
       "original": {
@@ -821,7 +821,7 @@
       "style": 4,
       "atmosphere": 4
     },
-    "crestUrl": null,
+    "crestUrl": "/crests/culture-bayern-munich.png",
     "imageUrl": null,
     "nickname": {
       "original": {
@@ -977,7 +977,7 @@
       "style": 4,
       "atmosphere": 5
     },
-    "crestUrl": null,
+    "crestUrl": "/crests/culture-borussia-dortmund.png",
     "imageUrl": null,
     "nickname": {
       "original": {
@@ -1108,7 +1108,7 @@
       "style": 3,
       "atmosphere": 3
     },
-    "crestUrl": null,
+    "crestUrl": "/crests/culture-juventus.png",
     "imageUrl": null,
     "nickname": {
       "original": {
@@ -1236,7 +1236,7 @@
       "style": 4,
       "atmosphere": 5
     },
-    "crestUrl": null,
+    "crestUrl": "/crests/culture-inter-milan.png",
     "imageUrl": null,
     "nickname": {
       "original": {
@@ -1362,7 +1362,7 @@
       "style": 4,
       "atmosphere": 5
     },
-    "crestUrl": null,
+    "crestUrl": "/crests/culture-ac-milan.png",
     "imageUrl": null,
     "nickname": {
       "original": {
@@ -1471,7 +1471,7 @@
       "style": 3,
       "atmosphere": 5
     },
-    "crestUrl": null,
+    "crestUrl": "/crests/culture-seattle-sounders.png",
     "imageUrl": null,
     "nickname": {
       "original": {
@@ -1583,7 +1583,7 @@
       "style": 3,
       "atmosphere": 5
     },
-    "crestUrl": null,
+    "crestUrl": "/crests/culture-portland-timbers.png",
     "imageUrl": null,
     "nickname": {
       "original": {
@@ -1694,7 +1694,7 @@
       "style": 5,
       "atmosphere": 3
     },
-    "crestUrl": null,
+    "crestUrl": "/crests/culture-manchester-city.png",
     "imageUrl": null,
     "nickname": {
       "original": {
@@ -1804,7 +1804,7 @@
       "style": 3,
       "atmosphere": 3
     },
-    "crestUrl": null,
+    "crestUrl": "/crests/culture-chelsea.png",
     "imageUrl": null,
     "nickname": {
       "original": {
@@ -1914,7 +1914,7 @@
       "style": 4,
       "atmosphere": 4
     },
-    "crestUrl": null,
+    "crestUrl": "/crests/culture-tottenham.png",
     "imageUrl": null,
     "nickname": {
       "original": {
@@ -2024,7 +2024,7 @@
       "style": 3,
       "atmosphere": 4
     },
-    "crestUrl": null,
+    "crestUrl": "/crests/culture-west-ham.png",
     "imageUrl": null,
     "nickname": {
       "original": {
@@ -2134,7 +2134,7 @@
       "style": 3,
       "atmosphere": 5
     },
-    "crestUrl": null,
+    "crestUrl": "/crests/culture-newcastle.png",
     "imageUrl": null,
     "nickname": {
       "original": {
@@ -2244,7 +2244,7 @@
       "style": 2,
       "atmosphere": 5
     },
-    "crestUrl": null,
+    "crestUrl": "/crests/culture-sunderland.png",
     "imageUrl": null,
     "nickname": {
       "original": {
@@ -2354,7 +2354,7 @@
       "style": 4,
       "atmosphere": 3
     },
-    "crestUrl": null,
+    "crestUrl": "/crests/culture-brighton.png",
     "imageUrl": null,
     "nickname": {
       "original": {
@@ -2464,7 +2464,7 @@
       "style": 3,
       "atmosphere": 4
     },
-    "crestUrl": null,
+    "crestUrl": "/crests/culture-nottingham-forest.png",
     "imageUrl": null,
     "nickname": {
       "original": {
@@ -2574,7 +2574,7 @@
       "style": 3,
       "atmosphere": 5
     },
-    "crestUrl": null,
+    "crestUrl": "/crests/culture-crystal-palace.png",
     "imageUrl": null,
     "nickname": {
       "original": {
@@ -2684,7 +2684,7 @@
       "style": 3,
       "atmosphere": 5
     },
-    "crestUrl": null,
+    "crestUrl": "/crests/culture-leeds.png",
     "imageUrl": null,
     "nickname": {
       "original": {
@@ -2794,7 +2794,7 @@
       "style": 5,
       "atmosphere": 4
     },
-    "crestUrl": null,
+    "crestUrl": "/crests/culture-psg.png",
     "imageUrl": null,
     "nickname": {
       "original": {
@@ -2906,7 +2906,7 @@
       "style": 3,
       "atmosphere": 5
     },
-    "crestUrl": null,
+    "crestUrl": "/crests/culture-marseille.png",
     "imageUrl": null,
     "nickname": {
       "original": {

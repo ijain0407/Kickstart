@@ -2,6 +2,8 @@ import { useCallback, useEffect, useState } from 'react'
 import Icon from '../components/Icon.jsx'
 import ChantCard from '../components/ChantCard.jsx'
 import DataState from '../components/DataState.jsx'
+import LeagueLogo from '../components/LeagueLogo.jsx'
+import CountryFlag from '../components/CountryFlag.jsx'
 import FieldPressButton from '../components/FieldPressButton.jsx'
 import { api, useResource } from '../lib/api.js'
 import { toChantCard, toClubHero, toSpotlight } from '../lib/adapters.js'
@@ -167,7 +169,9 @@ export default function Culture() {
               setOpenChantId(null)
             }}
           >
+            <LeagueLogo leagueId={l.id} size={18} />
             {tr(l.name)}
+            <CountryFlag leagueId={l.id} size={14} />
           </button>
         ))}
       </div>

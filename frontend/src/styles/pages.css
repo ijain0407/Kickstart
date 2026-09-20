@@ -2016,3 +2016,17 @@ select.field {
     white-space: nowrap;
   }
 }
+
+/* Country flag beside a league name. */
+.country-flag {
+  border-radius: 3px;
+  object-fit: cover;
+  flex: none;
+}
+
+/* League chips carry a badge and a flag, so they need to lay out as a row. */
+.chip-row .chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}

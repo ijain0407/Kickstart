@@ -3,6 +3,8 @@ import Icon from '../components/Icon.jsx'
 import FieldPressButton from '../components/FieldPressButton.jsx'
 import DataState from '../components/DataState.jsx'
 import QuizStepper from '../components/QuizStepper.jsx'
+import LeagueLogo from '../components/LeagueLogo.jsx'
+import CountryFlag from '../components/CountryFlag.jsx'
 import { api, useResource } from '../lib/api.js'
 import { useI18n } from '../i18n/I18nContext.jsx'
 import { useApp } from '../state/AppState.jsx'
@@ -59,7 +61,13 @@ function Result({ result, leagueName, onRetake, savedTo }) {
       <div className="stack stack-2">
         <span className="t-label-meta text-secondary">{t('clubQuiz.resultsKicker')}</span>
         <h1 className="t-headline-xl">{t('clubQuiz.resultsTitle')}</h1>
-        {leagueName ? <p className="t-body-md text-secondary">{leagueName}</p> : null}
+        {leagueName ? (
+          <p className="row row-2 t-body-md text-secondary">
+            <LeagueLogo leagueId={club.leagueId} size={22} />
+            {leagueName}
+            <CountryFlag leagueId={club.leagueId} size={16} />
+          </p>
+        ) : null}
       </div>
 
       <section className="card card--pad-lg stack stack-3" style={{ textAlign: 'center' }}>
