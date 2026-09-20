@@ -33,7 +33,7 @@ export default function ChantCard({ chant, onLearn }) {
 
       <div className="chant__body">
         {/* The recording leads the card: hear it, then read why it matters. */}
-        {chant.spotifyUrl ? <SpotifyEmbed url={chant.spotifyUrl} compact autoLoad /> : null}
+        {chant.spotifyUrl ? <SpotifyEmbed url={chant.spotifyUrl} compact /> : null}
 
         {chant.sourceUrl && !chant.spotifyUrl ? (
           <a className="chant__source" href={chant.sourceUrl} target="_blank" rel="noopener noreferrer">

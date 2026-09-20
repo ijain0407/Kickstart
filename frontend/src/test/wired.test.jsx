@@ -213,22 +213,6 @@ describe('Chant audio', () => {
   })
 })
 
-describe('Spotify player', () => {
-  it('loads the playlist player on demand rather than on page load', async () => {
-    const user = userEvent.setup()
-    const { container } = renderApp('/culture')
-
-    // Nothing third-party is fetched until the learner asks for it.
-    expect(container.querySelector('iframe')).toBeNull()
-
-    await user.click(await screen.findByRole('button', { name: /Play the real chant/ }))
-
-    const frame = container.querySelector('iframe')
-    expect(frame).toHaveAttribute('src', 'https://open.spotify.com/embed/playlist/2AOAB7OttD3SpnQtDFj9LY')
-    expect(frame).toHaveAttribute('loading', 'lazy')
-  })
-})
-
 describe('Club visuals', () => {
   it("draws each club's kit from its own colours", async () => {
     const user = userEvent.setup()

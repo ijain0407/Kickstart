@@ -2,8 +2,6 @@ import { useCallback, useEffect, useState } from 'react'
 import Icon from '../components/Icon.jsx'
 import ChantCard from '../components/ChantCard.jsx'
 import DataState from '../components/DataState.jsx'
-import SpotifyEmbed from '../components/SpotifyEmbed.jsx'
-import { CULTURE_PLAYLIST_URL } from '../config/spotify.js'
 import { api, useResource } from '../lib/api.js'
 import { toChantCard, toClubHero, toSpotlight } from '../lib/adapters.js'
 import { useI18n } from '../i18n/I18nContext.jsx'
@@ -168,13 +166,6 @@ export default function Culture() {
       {!cultureId ? (
         <DataState loading={cardsReq.loading || leaguesReq.loading} error={cardsReq.error ?? leaguesReq.error} onRetry={cardsReq.reload}>
           <div className="stack stack-4">
-            {CULTURE_PLAYLIST_URL ? (
-              <section className="card stack stack-2">
-                <h2 className="t-headline-sm">{t('culture.playlistTitle')}</h2>
-                <SpotifyEmbed url={CULTURE_PLAYLIST_URL} />
-              </section>
-            ) : null}
-
             <h2 className="t-headline-md">{leagueId === 'all' ? t('culture.allLeagues') : t('culture.clubsIn')}</h2>
             {cards.map((card) => (
               <ClubHero

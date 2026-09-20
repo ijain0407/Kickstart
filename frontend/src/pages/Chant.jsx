@@ -73,7 +73,7 @@ export default function Chant() {
 
 
             {/* ---- The recording ---- */}
-            {chant.spotifyUrl ? <SpotifyEmbed url={chant.spotifyUrl} compact autoLoad /> : null}
+            {chant.spotifyUrl ? <SpotifyEmbed url={chant.spotifyUrl} compact /> : null}
 
             {chant.sourceUrl && !chant.spotifyUrl ? (
               <a className="chant__source" href={chant.sourceUrl} target="_blank" rel="noopener noreferrer">
