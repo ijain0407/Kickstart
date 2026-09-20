@@ -238,6 +238,10 @@ function Steps({
           </div>
         </div>
 
+        <p className="t-body-sm text-secondary">
+          <Icon name="info" style={{ fontSize: 16, verticalAlign: '-3px' }} /> {t('quiz.subtitle')}
+        </p>
+
         <div className="progress" role="progressbar" aria-valuenow={percent} aria-valuemin={0} aria-valuemax={100}>
           <div className="progress__fill" style={{ width: `${percent}%` }} />
         </div>
@@ -252,19 +256,9 @@ function Steps({
         <div className="stack stack-4">
           {/* ---- Question ---- */}
           <div className="stack stack-2">
-            <div className="row row-2 wrap">
-              <span className="pill pill--peach">{t('quiz.drillTag')}</span>
-              <span className="pill pill--lavender">
-                <Icon name="translate" />
-                {t('quiz.coachMode')}
-              </span>
-            </div>
+            <span className="pill pill--peach">{t('quiz.drillTag')}</span>
 
             <h1 className="t-headline-lg">{step.prompt}</h1>
-            {/* Bilingual coach mode: the same question in the other language. */}
-            <p className="t-headline-sm" style={{ color: 'var(--pitch-green)' }}>
-              {step.promptAlt}
-            </p>
             <p className="t-body-md text-secondary">{step.multi ? t('quiz.multiSelect') : t('quiz.singleSelect')}</p>
           </div>
 

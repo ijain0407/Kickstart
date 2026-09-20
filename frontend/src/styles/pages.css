@@ -538,6 +538,39 @@
    CULTURE / CHANTS
    ------------------------------------------------------------ */
 
+.search-field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-pill);
+  padding: 10px 14px;
+}
+
+.search-field .msym { color: var(--text-secondary); font-size: 20px; }
+
+.search-field input {
+  flex: 1;
+  border: none;
+  background: none;
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--text-primary);
+  min-width: 0;
+}
+
+.search-field input:focus { outline: none; }
+
+.search-field__clear {
+  border: none;
+  background: none;
+  color: var(--text-secondary);
+  display: flex;
+  cursor: pointer;
+  padding: 2px;
+}
+
 .club-hero {
   position: relative;
   border-radius: var(--r-card);
@@ -546,6 +579,15 @@
   overflow: hidden;
   box-shadow: var(--e-2);
   background: linear-gradient(140deg, var(--club-a, #dc2626), var(--club-b, #7f1d1d));
+}
+
+/* A club's kit colours can be very light (Real Madrid's white, for one) —
+   this scrim guarantees the white text stays readable no matter the kit. */
+.club-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(140deg, rgba(0, 0, 0, 0.32), rgba(0, 0, 0, 0.52));
 }
 
 .club-hero::after {
@@ -1434,6 +1476,23 @@
   display: block;
   width: 100%;
 }
+
+.spotify-embed__toggle {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: none;
+  background: var(--pitch-green);
+  color: #fff;
+  border-radius: var(--r-pill);
+  padding: 8px 16px;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.spotify-embed__toggle:hover { opacity: 0.9; }
 
 .spotify-cue {
   align-self: flex-start;

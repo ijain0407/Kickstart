@@ -66,6 +66,23 @@ const LOGOS = new Set([
  */
 export function toClubHero(card, { leagueId, labels }) {
   const kit = card.kit ?? null
+
+  // `literal` arrives already localized to the current language; `original`
+  // never translates (the three-layer format's whole point). For a club
+  // whose nickname originated in the UI's own language — an English-origin
+  // club viewed in English, a Spanish-origin one viewed in Spanish — the two
+  // are the same string, so only one tag is shown instead of a duplicate.
+  // The (localized, so most legible) literal name leads; the original only
+  // gets its own tag when it actually adds something.
+  const { original, literal } = card.nickname
+  const nicknameTags =
+    literal === original.text
+      ? [{ label: literal, tone: 'gold' }]
+      : [
+          { label: literal, tone: 'gold' },
+          { label: original.text, tone: 'white' },
+        ]
+
   return {
     name: card.club,
     region: card.city.toUpperCase(),
@@ -78,11 +95,7 @@ export function toClubHero(card, { leagueId, labels }) {
     kit,
     crestUrl: card.crestUrl ?? (card.id && LOGOS.has(card.id) ? `/crests/${card.id}.png` : null),
     imageUrl: card.imageUrl ?? null,
-    tags: [
-      { label: card.nickname.original.text, tone: 'white' },
-      { label: card.nickname.literal, tone: 'gold' },
-      ...(card.contentStatus === 'placeholder' ? [{ label: labels.draft, tone: 'white' }] : []),
-    ],
+    tags: [...nicknameTags, ...(card.contentStatus === 'placeholder' ? [{ label: labels.draft, tone: 'white' }] : [])],
   }
 }
 

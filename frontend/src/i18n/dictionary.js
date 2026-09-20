@@ -20,9 +20,8 @@ export const dictionary = {
     nav: {
       learn: 'Learn',
       field: 'Field',
-      leagues: 'Leagues',
-      culture: 'Culture',
-      quiz: 'Quiz',
+      leagues: 'Find Your League',
+      culture: 'Clubs & Chants',
     },
     theme: { label: 'Dark mode', dark: 'Switch to dark mode', light: 'Switch to light mode' },
     lang: {
@@ -46,6 +45,7 @@ export const dictionary = {
       loadError: "We couldn't load this. Check the API is running.",
       retry: 'Try again',
       offline: 'Offline — showing what we have.',
+      clear: 'Clear',
     },
 
     /* ---------- page 1: Learn / Home ---------- */
@@ -153,6 +153,8 @@ export const dictionary = {
       playOverlap: 'Play Overlap Animation',
       trySwitch: 'Try 4-4-2 Switch',
       speakLabel: 'Read this position aloud',
+      pauseLabel: 'Pause the narration',
+      resumeLabel: 'Resume the narration',
       numberShort: 'No.',
       formationLabel: 'Formation',
       playMatch: 'Play a live match',
@@ -160,7 +162,9 @@ export const dictionary = {
 
     /* ---------- page 4: Culture ---------- */
     culture: {
-      pageTitle: 'Culture & Chants',
+      pageTitle: 'Clubs & Chants',
+      searchPlaceholder: 'Search clubs or nicknames…',
+      searchEmpty: 'No clubs match that search.',
       allLeagues: 'All Leagues',
       tier1: 'Tier 1 Club',
       capacity: 'cap',
@@ -169,7 +173,7 @@ export const dictionary = {
       bookmark: 'Save this chant',
       playChant: 'Play',
       layer1: 'LAYER 1 · ORIGINAL STADIUM LYRICS',
-      layer2: 'LAYER 2 · TRADUCCIÓN LITERAL',
+      layer2: 'LAYER 2 · LITERAL TRANSLATION',
       layer3: 'LAYER 3 · WHAT IT REALLY MEANS',
       fanSoul: 'Fan Soul',
       learnChorus: 'Learn the Chorus',
@@ -185,6 +189,8 @@ export const dictionary = {
       listenElsewhere: 'Listen to the real crowd',
       openInSpotify: 'Open in Spotify',
       spotifyPlayer: 'Spotify player',
+      spotifyPlay: 'Play',
+      spotifyPause: 'Pause',
       chantKicker: 'TERRACE CHANT',
       spotlightKicker: 'STADIUM & TRADITIONS',
       miniTitle: 'One more thing',
@@ -196,6 +202,7 @@ export const dictionary = {
     /* ---------- page 5: Quiz / Tactical Matcher ---------- */
     quiz: {
       title: 'TACTICAL MATCHER',
+      subtitle: "No right or wrong answers — we're matching you to a league that fits your style.",
       step: 'Step',
       stepOf: 'of',
       skipAll: 'Skip All',
@@ -205,7 +212,6 @@ export const dictionary = {
       topMatch: 'Top match',
       nextUp: 'Next',
       drillTag: 'PREFERENCE DRILL',
-      coachMode: 'Bilingual Coach Mode',
       multiSelect: 'Select all football styles that excite your pulse (multi-select):',
       singleSelect: 'Pick the one that fits you best:',
       selectedCount: 'STYLES SELECTED',
@@ -306,6 +312,7 @@ export const dictionary = {
       checkTag: 'QUICK CHECK',
       correct: 'That is it.',
       notQuite: 'Not quite.',
+      tryAgain: 'Give it another try.',
       finish: 'Finish lesson',
       nextModule: 'Next module',
       backToPath: 'Back to the path',
@@ -396,7 +403,7 @@ export const dictionary = {
       backToLearn: 'Back to Learn',
     },
     leagues: {
-      title: 'Your Leagues',
+      title: 'Find Your League',
       sub: 'Competitions ranked to your taste in football.',
       empty: "You haven't taken the Tactical Matcher yet.",
       emptySub: 'Answer five quick questions and we will rank every major league for you.',
@@ -420,9 +427,8 @@ export const dictionary = {
     nav: {
       learn: 'Aprende',
       field: 'Campo',
-      leagues: 'Ligas',
-      culture: 'Cultura',
-      quiz: 'Test',
+      leagues: 'Encuentra tu liga',
+      culture: 'Clubes y cánticos',
     },
     theme: { label: 'Modo oscuro', dark: 'Cambiar a modo oscuro', light: 'Cambiar a modo claro' },
     lang: {
@@ -446,6 +452,7 @@ export const dictionary = {
       loadError: 'No pudimos cargar esto. Comprueba que la API esté en marcha.',
       retry: 'Reintentar',
       offline: 'Sin conexión: mostramos lo que tenemos.',
+      clear: 'Borrar',
     },
 
     home: {
@@ -551,13 +558,17 @@ export const dictionary = {
       playOverlap: 'Ver animación de desdoble',
       trySwitch: 'Probar cambio a 4-4-2',
       speakLabel: 'Leer esta posición en voz alta',
+      pauseLabel: 'Pausar la narración',
+      resumeLabel: 'Reanudar la narración',
       numberShort: 'N.º',
       formationLabel: 'Formación',
       playMatch: 'Jugar un partido en vivo',
     },
 
     culture: {
-      pageTitle: 'Cultura y cánticos',
+      pageTitle: 'Clubes y cánticos',
+      searchPlaceholder: 'Busca clubes o apodos…',
+      searchEmpty: 'Ningún club coincide con esa búsqueda.',
       allLeagues: 'Todas las ligas',
       tier1: 'Club de primer nivel',
       capacity: 'aforo',
@@ -582,6 +593,8 @@ export const dictionary = {
       listenElsewhere: 'Escucha a la afición real',
       openInSpotify: 'Abrir en Spotify',
       spotifyPlayer: 'Reproductor de Spotify',
+      spotifyPlay: 'Reproducir',
+      spotifyPause: 'Pausar',
       chantKicker: 'CÁNTICO DE GRADA',
       spotlightKicker: 'ESTADIO Y TRADICIONES',
       miniTitle: 'Una cosa más',
@@ -592,6 +605,7 @@ export const dictionary = {
 
     quiz: {
       title: 'EMPAREJADOR TÁCTICO',
+      subtitle: 'No hay respuestas correctas o incorrectas: te emparejamos con la liga que va con tu estilo.',
       step: 'Paso',
       stepOf: 'de',
       skipAll: 'Saltar todo',
@@ -601,7 +615,6 @@ export const dictionary = {
       topMatch: 'Mejor coincidencia',
       nextUp: 'Siguiente',
       drillTag: 'EJERCICIO DE PREFERENCIAS',
-      coachMode: 'Modo entrenador bilingüe',
       multiSelect: 'Elige todos los estilos de fútbol que te aceleran el pulso (varias opciones):',
       singleSelect: 'Elige la que mejor te define:',
       selectedCount: 'ESTILOS ELEGIDOS',
@@ -699,6 +712,7 @@ export const dictionary = {
       checkTag: 'COMPROBACIÓN RÁPIDA',
       correct: 'Eso es.',
       notQuite: 'No exactamente.',
+      tryAgain: 'Inténtalo otra vez.',
       finish: 'Terminar lección',
       nextModule: 'Siguiente módulo',
       backToPath: 'Volver a la ruta',
@@ -785,7 +799,7 @@ export const dictionary = {
       backToLearn: 'Volver a Aprende',
     },
     leagues: {
-      title: 'Tus ligas',
+      title: 'Encuentra tu liga',
       sub: 'Competiciones ordenadas según tu gusto futbolístico.',
       empty: 'Todavía no has hecho el Emparejador Táctico.',
       emptySub: 'Responde cinco preguntas rápidas y ordenaremos todas las grandes ligas para ti.',

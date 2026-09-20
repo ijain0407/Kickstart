@@ -67,9 +67,9 @@ describe('Find Your League', () => {
     const user = userEvent.setup()
     renderApp('/quiz')
 
-    // Question 1 comes from the API, in both languages (coach mode).
+    // Question 1 comes from the API, shown only in the active language.
     expect(await screen.findByRole('heading', { name: 'What draws you into a match?' })).toBeInTheDocument()
-    expect(screen.getByText('¿Qué te atrapa de un partido?')).toBeInTheDocument()
+    expect(screen.queryByText('¿Qué te atrapa de un partido?')).not.toBeInTheDocument()
 
     await user.click(await screen.findByRole('checkbox', { name: /Chess-match tactics/ }))
 

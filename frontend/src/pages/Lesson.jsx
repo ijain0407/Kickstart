@@ -137,6 +137,9 @@ export default function Lesson() {
   const state = lessonState(lesson, completedLessons, activeLesson)
   const alreadyDone = state === 'completed'
   const chosen = picked ? check.options.find((o) => o.id === picked) : null
+  // A wrong pick shows the explanation but doesn't lock in — only the right
+  // answer does, so finishing the module actually requires understanding it.
+  const solved = chosen?.correct === true
 
   const upcoming = LESSONS[LESSONS.findIndex((l) => l.id === lesson.id) + 1]
 
@@ -234,14 +237,11 @@ export default function Lesson() {
           <div className="stack stack-3" role="radiogroup" aria-label={tr(check.question)}>
             {check.options.map((option) => {
               const isPicked = picked === option.id
-              // Only reveal right/wrong once an answer is locked in.
-              const tone = !picked
-                ? ''
-                : option.correct
-                  ? 'is-correct'
-                  : isPicked
-                    ? 'is-wrong'
-                    : ''
+              // Reveal this option's own rightness once it's been tried, but
+              // only the correct one locks the question — a wrong pick can
+              // be retried instead of just being shown the answer.
+              const tried = isPicked && Boolean(picked)
+              const tone = !tried ? '' : option.correct ? 'is-correct' : 'is-wrong'
               return (
                 <button
                   key={option.id}
@@ -249,11 +249,11 @@ export default function Lesson() {
                   className={`qopt lesson-opt ${isPicked ? 'is-selected' : ''} ${tone}`.trim()}
                   role="radio"
                   aria-checked={isPicked}
-                  disabled={Boolean(picked)}
+                  disabled={solved}
                   onClick={() => setPicked(option.id)}
                 >
                   <span className="qopt__check">
-                    <Icon name={picked && option.correct ? 'check' : 'radio_button_unchecked'} />
+                    <Icon name={tried && option.correct ? 'check' : 'radio_button_unchecked'} />
                   </span>
                   <span className="qopt__body">
                     <span className="t-body-lg">{tr(option.label)}</span>
@@ -264,13 +264,11 @@ export default function Lesson() {
           </div>
 
           {picked ? (
-            <div className={`explain ${chosen?.correct ? 'explain--good' : 'explain--bad'}`}>
-              <Icon name={chosen?.correct ? 'check_circle' : 'info'} fill />
+            <div className={`explain ${solved ? 'explain--good' : 'explain--bad'}`}>
+              <Icon name={solved ? 'check_circle' : 'info'} fill />
               <div className="stack stack-1">
-                <span className="t-headline-sm">
-                  {chosen?.correct ? t('lesson.correct') : t('lesson.notQuite')}
-                </span>
-                <span className="t-body-md">{tr(check.explain)}</span>
+                <span className="t-headline-sm">{solved ? t('lesson.correct') : t('lesson.notQuite')}</span>
+                <span className="t-body-md">{solved ? tr(check.explain) : t('lesson.tryAgain')}</span>
               </div>
             </div>
           ) : null}
@@ -314,7 +312,7 @@ export default function Lesson() {
           block
           iconAfter={onCheck ? 'check' : 'arrow_forward'}
           onClick={advance}
-          disabled={onCheck && !picked}
+          disabled={onCheck && !solved}
         >
           {onCheck ? t('lesson.finish') : t('common.next')}
         </FieldPressButton>

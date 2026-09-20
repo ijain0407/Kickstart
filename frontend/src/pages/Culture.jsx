@@ -93,6 +93,7 @@ export default function Culture() {
   const [leagueId, setLeagueId] = useState(query.league ?? 'all')
   const [cultureId, setCultureId] = useState(query.club ?? null)
   const [openChantId, setOpenChantId] = useState(null)
+  const [search, setSearch] = useState('')
 
   // Deep links from the matcher results land here with ?league=… (&club=…)
   useEffect(() => {
@@ -124,9 +125,17 @@ export default function Culture() {
   }, [])
 
   const leagues = leaguesReq.data?.leagues ?? []
-  const cards = cardsReq.data?.cards ?? []
+  const allCards = cardsReq.data?.cards ?? []
   const detail = detailReq.data
   const leagueNameOf = (id) => leagues.find((l) => l.id === id)?.name ?? ''
+
+  const searchTerm = search.trim().toLowerCase()
+  const cards = searchTerm
+    ? allCards.filter(
+        (card) =>
+          card.club.toLowerCase().includes(searchTerm) || card.nickname?.original?.text?.toLowerCase().includes(searchTerm),
+      )
+    : allCards
 
   return (
     <div className="page">
@@ -166,6 +175,22 @@ export default function Culture() {
       {!cultureId ? (
         <DataState loading={cardsReq.loading || leaguesReq.loading} error={cardsReq.error ?? leaguesReq.error} onRetry={cardsReq.reload}>
           <div className="stack stack-4">
+            <label className="search-field">
+              <Icon name="search" />
+              <input
+                type="search"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                placeholder={t('culture.searchPlaceholder')}
+                aria-label={t('culture.searchPlaceholder')}
+              />
+              {search ? (
+                <button type="button" className="search-field__clear" aria-label={t('common.clear')} onClick={() => setSearch('')}>
+                  <Icon name="close" />
+                </button>
+              ) : null}
+            </label>
+
             <h2 className="t-headline-md">{leagueId === 'all' ? t('culture.allLeagues') : t('culture.clubsIn')}</h2>
             {cards.map((card) => (
               <ClubHero
@@ -175,6 +200,7 @@ export default function Culture() {
                 onClick={() => openClub(card)}
               />
             ))}
+            {cards.length === 0 ? <p className="placeholder-note">{t('culture.searchEmpty')}</p> : null}
           </div>
         </DataState>
       ) : (
@@ -224,7 +250,7 @@ function ClubDetail({
       <ClubHero club={toClubHero(card, { leagueId: card.leagueId, labels })} leagueName={league?.name ?? ''} />
 
       {/* ---- Nickname: the same three layers as a chant ---- */}
-      <section className="card stack stack-2">
+      <section className="card card--pad stack stack-2">
         <span className="t-label-meta text-secondary">{t('culture.nickname')}</span>
         <h3 className="t-headline-md">{card.nickname.original.text}</h3>
         <p className="t-body-md text-secondary">{card.nickname.literal}</p>
@@ -263,7 +289,7 @@ function ClubDetail({
             <div className="stack stack-3">
               <h2 className="t-headline-md">{t('culture.rivalries')}</h2>
               {card.rivalries.map((rivalry) => (
-                <article key={rivalry.name} className="card stack stack-2">
+                <article key={rivalry.name} className="card card--pad stack stack-2">
                   <div className="row row-2 wrap">
                     <span className="t-headline-sm">{rivalry.name}</span>
                     <span className="pill pill--ghost">{rivalry.opponent}</span>

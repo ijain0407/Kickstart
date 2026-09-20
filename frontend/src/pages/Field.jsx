@@ -21,8 +21,17 @@ export default function Field() {
   const [selectedNum, setSelectedNum] = useState(2)
   const [overlapping, setOverlapping] = useState(false)
   const overlapTimer = useRef(null)
+  const [speechState, setSpeechState] = useState('idle') // 'idle' | 'speaking' | 'paused'
 
   useEffect(() => () => clearTimeout(overlapTimer.current), [])
+
+  // Switching players (or leaving the page) shouldn't leave old narration
+  // running or a stale pause button behind.
+  useEffect(() => {
+    return () => {
+      if ('speechSynthesis' in window) window.speechSynthesis.cancel()
+    }
+  }, [selectedNum])
 
   const formation = getFormation(formationId)
 
@@ -51,14 +60,35 @@ export default function Field() {
   const position = getPosition(selected.code)
   const offsideTop = offsideLineTop(players)
 
-  const speak = () => {
-    if (!('speechSynthesis' in window)) return
+  // One button, three states: idle -> speaking (tap pauses), paused (tap resumes).
+  const toggleSpeech = () => {
+    const synth = window.speechSynthesis
+    if (!synth) return
+
+    if (speechState === 'speaking') {
+      synth.pause()
+      setSpeechState('paused')
+      return
+    }
+    if (speechState === 'paused') {
+      synth.resume()
+      setSpeechState('speaking')
+      return
+    }
+
     const text = `${tr(position.name)}. ${position.duties.map((d) => tr(d)).join('. ')}`
     const utter = new SpeechSynthesisUtterance(text)
     utter.lang = lang === 'es' ? 'es-ES' : 'en-GB'
-    window.speechSynthesis.cancel()
-    window.speechSynthesis.speak(utter)
+    utter.onend = () => setSpeechState('idle')
+    utter.onerror = () => setSpeechState('idle')
+    synth.cancel()
+    synth.speak(utter)
+    setSpeechState('speaking')
   }
+
+  const speechIcon = speechState === 'speaking' ? 'pause' : speechState === 'paused' ? 'play_arrow' : 'volume_up'
+  const speechLabel =
+    speechState === 'speaking' ? t('field.pauseLabel') : speechState === 'paused' ? t('field.resumeLabel') : t('field.speakLabel')
 
   // Person B's formations API carries a bilingual description per shape; the
   // coordinates here stay local because they're tuned to this pitch component.
@@ -165,8 +195,8 @@ export default function Field() {
                 {`${t('field.numberShort')} ${selected.num}`}
               </span>
             </div>
-            <button type="button" className="icon-btn icon-btn--outline" onClick={speak} aria-label={t('field.speakLabel')}>
-              <Icon name="volume_up" />
+            <button type="button" className="icon-btn icon-btn--outline" onClick={toggleSpeech} aria-label={speechLabel}>
+              <Icon name={speechIcon} fill={speechState !== 'idle'} />
             </button>
           </div>
 
