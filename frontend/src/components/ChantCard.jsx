@@ -1,6 +1,7 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Icon from './Icon.jsx'
 import FieldPressButton from './FieldPressButton.jsx'
+import { canPlayChant, playChant, stopChant } from '../lib/chantAudio.js'
 import { useI18n } from '../i18n/I18nContext.jsx'
 
 /** Seven looping equaliser bars beside the play button. */
@@ -16,26 +17,29 @@ function Equalizer({ playing }) {
 
 /**
  * The expanded chant card: lavender header, audio bar, and the three
- * translation layers. Layer 1 never carries a published lyric — see
- * the copyright note in src/data/leagues.js.
+ * translation layers. Layer 1 is the line the stand actually sings, in its own
+ * language; play reads it aloud with the browser voice, since no licensed
+ * crowd recording ships with the app.
  */
 export default function ChantCard({ chant, onLearn }) {
   const { t, tr } = useI18n()
   const [playing, setPlaying] = useState(false)
   const [saved, setSaved] = useState(false)
-  const timer = useRef(null)
 
-  useEffect(() => () => clearTimeout(timer.current), [])
+  // Stop the voice if the card unmounts mid-chant.
+  useEffect(() => () => stopChant(), [])
 
   const togglePlay = () => {
-    setPlaying((p) => {
-      const next = !p
-      clearTimeout(timer.current)
-      // No audio asset ships with the demo, so the bars run for a beat
-      // and settle again. Point this at a real file when you have one.
-      if (next) timer.current = setTimeout(() => setPlaying(false), 6000)
-      return next
-    })
+    if (playing) {
+      stopChant()
+      setPlaying(false)
+      return
+    }
+    setPlaying(true)
+    playChant(
+      { audioUrl: chant.audioUrl, text: tr(chant.layer1), lang: chant.layer1Lang },
+      { onEnd: () => setPlaying(false) },
+    )
   }
 
   return (
@@ -64,6 +68,7 @@ export default function ChantCard({ chant, onLearn }) {
             onClick={togglePlay}
             aria-label={tr(chant.audioLabel)}
             aria-pressed={playing}
+            disabled={!canPlayChant(chant.audioUrl)}
           >
             <Icon name={playing ? 'pause' : 'play_arrow'} fill />
           </button>

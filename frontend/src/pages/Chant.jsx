@@ -1,8 +1,10 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Icon from '../components/Icon.jsx'
 import FieldPressButton from '../components/FieldPressButton.jsx'
 import DataState from '../components/DataState.jsx'
 import { api, useResource } from '../lib/api.js'
+import { canPlayChant, playChant, stopChant } from '../lib/chantAudio.js'
+import { speak, speechSupported } from '../lib/speech.js'
 import { useI18n } from '../i18n/I18nContext.jsx'
 import { useApp } from '../state/AppState.jsx'
 import { useRouter } from '../router.jsx'
@@ -28,29 +30,30 @@ export default function Chant() {
 
   const [playing, setPlaying] = useState(false)
   const [revealed, setRevealed] = useState(1)
-  const timer = useRef(null)
 
-  useEffect(() => () => clearTimeout(timer.current), [])
-  useEffect(() => setRevealed(1), [chant?.id])
+  useEffect(() => () => stopChant(), [])
+  useEffect(() => {
+    setRevealed(1)
+    stopChant()
+    setPlaying(false)
+  }, [chant?.id])
 
+  /** Play = read the original line aloud, in the language it's sung in. */
   const togglePlay = () => {
-    setPlaying((p) => {
-      const next = !p
-      clearTimeout(timer.current)
-      // No audio asset ships with the demo; the bars run for a beat and settle.
-      if (next) timer.current = setTimeout(() => setPlaying(false), 6000)
-      return next
-    })
+    if (playing) {
+      stopChant()
+      setPlaying(false)
+      return
+    }
+    setPlaying(true)
+    playChant(
+      { audioUrl: chant.audioUrl, text: chant.original.text, lang: chant.original.lang },
+      { onEnd: () => setPlaying(false) },
+    )
   }
 
-  /** Read the original line aloud, in the language it's sung in. */
-  const speak = () => {
-    if (!chant || !('speechSynthesis' in window)) return
-    const utter = new SpeechSynthesisUtterance(chant.original.text)
-    utter.lang = { es: 'es-ES', ca: 'ca-ES', it: 'it-IT', de: 'de-DE', bar: 'de-DE' }[chant.original.lang] ?? 'en-GB'
-    window.speechSynthesis.cancel()
-    window.speechSynthesis.speak(utter)
-  }
+  /** The translation, read in the language the learner is reading in. */
+  const speakMeaning = () => speak(chant.literal, lang)
 
   const master = () => {
     // Chant ids are free-form on the progress API; scope it by club so two
@@ -102,6 +105,7 @@ export default function Chant() {
                 onClick={togglePlay}
                 aria-label={audioLabel}
                 aria-pressed={playing}
+                disabled={!canPlayChant(chant.audioUrl)}
               >
                 <Icon name={playing ? 'pause' : 'play_arrow'} fill />
               </button>
@@ -155,7 +159,7 @@ export default function Chant() {
                 </div>
               </div>
 
-              <FieldPressButton variant="secondary" block icon="volume_up" onClick={speak}>
+              <FieldPressButton variant="secondary" block icon="volume_up" onClick={speakMeaning} disabled={!speechSupported()}>
                 {t('chant.hearMeaning')}
               </FieldPressButton>
             </section>

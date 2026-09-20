@@ -83,7 +83,8 @@ for clubs that don't have a culture card yet.
         "when": "The club's motto — on banners, shirts, and in songs",
         "original": { "text": "Mia san mia", "lang": "bar" },
         "literal": "We are we",
-        "meaning": "Bavarian dialect for 'we are who we are'…"
+        "meaning": "Bavarian dialect for 'we are who we are'…",
+        "audioUrl": "/chants/mia-san-mia.mp3"
       }
     ],
     "contentStatus": "draft"
@@ -97,6 +98,10 @@ for clubs that don't have a culture card yet.
 chant use the identical shape, so one UI component renders both (`LayeredText.jsx`).
 `original.lang` is a language code (`en`, `es`, `ca`, `de`, `bar`, `it`) the UI turns into a
 name with `Intl.DisplayNames`.
+
+`audioUrl` is optional. Set it to a file served by the frontend
+(`frontend/public/chants/…`) and the player uses the recording; leave it out and the player
+reads the original line aloud with the browser voice instead.
 
 Card **summaries** (used by list endpoints) carry `id`, `leagueId`, `club`, `city`, `founded`,
 `nickname`, `summary`, `chantCount`, `contentStatus` — no chants or stadium detail.
