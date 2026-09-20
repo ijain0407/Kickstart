@@ -18,23 +18,23 @@ export const LESSONS = [
     lessonId: 'lesson-rules-basics',
     quizSlug: 'rules-basics',
     // 1.1 the pitch and basics, 1.2 offside, 1.6 VAR and the referee.
-    pathIds: ['1.1', '1.2', '1.6'],
+    pathIds: ['1.1', '1.2', '1.6', '2.3'],
   },
   {
     lessonId: 'lesson-positions-overview',
     quizSlug: 'positions',
-    pathIds: ['1.3'],
+    pathIds: ['1.3', '2.2', '2.4'],
   },
   {
     lessonId: 'lesson-formations-overview',
     quizSlug: 'formations',
-    pathIds: ['1.4'],
+    pathIds: ['1.4', '2.1'],
   },
   {
     lessonId: 'lesson-how-to-watch',
     quizSlug: 'how-to-watch',
     // 1.5 culture and chants — the closest fit until it has its own lesson.
-    pathIds: ['1.5'],
+    pathIds: ['1.5', '3.1', '3.2', '3.3', '3.4'],
   },
   {
     // Person D has questions for this; Person B hasn't written the lesson yet,
