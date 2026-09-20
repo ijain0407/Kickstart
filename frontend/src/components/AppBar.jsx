@@ -1,4 +1,3 @@
-import Logo from './Logo.jsx'
 import Icon from './Icon.jsx'
 import LangSwitch from './LangSwitch.jsx'
 import ThemeToggle from './ThemeToggle.jsx'
@@ -16,8 +15,7 @@ export default function AppBar() {
     <header className="appbar">
       <div className="appbar__inner">
         <Link to="/" className="appbar__brand" aria-label={t('brand')}>
-          <Logo size={32} className="appbar__logo" id="bar" />
-          <span className="appbar__wordmark">{t('brand')}</span>
+          <img className="appbar__logo" src="/logo.png" alt={t('brand')} />
         </Link>
 
         <LangSwitch />

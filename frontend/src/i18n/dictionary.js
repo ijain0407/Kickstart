@@ -11,7 +11,7 @@
 export const dictionary = {
   en: {
     /* ---------- chrome ---------- */
-    brand: 'SoccerTeaching',
+    brand: 'KickStart',
     appbar: {
       streakLabel: 'day streak',
       avatarLabel: 'Your profile',
@@ -501,7 +501,7 @@ export const dictionary = {
      ESPAÑOL
      ========================================================== */
   es: {
-    brand: 'SoccerTeaching',
+    brand: 'KickStart',
     appbar: {
       streakLabel: 'días seguidos',
       avatarLabel: 'Tu perfil',
