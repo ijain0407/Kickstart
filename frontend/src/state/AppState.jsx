@@ -1,5 +1,6 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react'
 import { api } from '../lib/api.js'
+import { quizSlugForPathId } from '../../../shared/lessons.js'
 
 /* ============================================================
    APP STATE
@@ -25,9 +26,7 @@ const INITIAL = {
   quizAnswers: {},
   quizDone: false,
   leagueResult: null,
-  // XP for actions the progress API doesn't model yet (finishing the league
-  // matcher). Added on top of the server's XP for display.
-  bonusXp: 0,
+  gameXp: 0,
 }
 
 /** Server progress before the first response arrives. */
@@ -44,21 +43,6 @@ const EMPTY_PROGRESS = {
 }
 
 const LEVEL_NUMBER = { fan: 1, enthusiast: 2, tactics_nerd: 3 }
-
-/**
- * Person A's path has six lessons; the progress API knows five category slugs
- * (and its own list still differs from Person B's lesson ids — see the TODO in
- * quiz_feature/server/src/config/lessonIds.js). Mapping here keeps XP and
- * streaks flowing; the team should agree on one id list before launch.
- */
-const LESSON_SLUG = {
-  '1.1': 'rules-basics',
-  '1.2': 'rules-basics',
-  '1.3': 'positions',
-  '1.4': 'formations',
-  '1.5': 'terms-slang',
-  '1.6': 'how-to-watch',
-}
 
 function readStored() {
   try {
@@ -110,9 +94,13 @@ export function AppProvider({ children }) {
     refresh()
   }, [refresh])
 
-  /** XP the API can't record yet, so the number still moves for the learner. */
+  /**
+   * Local-only XP for the pitch-pass mini-game, which the progress API doesn't
+   * model (it scores learning activity, not arcade play). Lessons, chants and
+   * the league matcher are all awarded server-side.
+   */
   const addXp = useCallback((amount) => {
-    setState((s) => ({ ...s, bonusXp: s.bonusXp + amount }))
+    setState((s) => ({ ...s, gameXp: (s.gameXp ?? 0) + amount }))
   }, [])
 
   const markToday = useCallback(() => {
@@ -124,7 +112,7 @@ export function AppProvider({ children }) {
       setState((s) => (s.completedLessons.includes(id) ? s : { ...s, completedLessons: [...s.completedLessons, id] }))
       markToday()
       try {
-        await api('/progress/lesson-complete', { method: 'POST', body: { lessonId: LESSON_SLUG[id] ?? 'rules-basics' } })
+        await api('/progress/lesson-complete', { method: 'POST', body: { lessonId: quizSlugForPathId(id) ?? 'rules-basics' } })
         await refresh()
       } catch {
         if (live.current) setOnline(false)
@@ -139,6 +127,20 @@ export function AppProvider({ children }) {
       markToday()
       try {
         await api('/progress/chant-viewed', { method: 'POST', body: { chantId } })
+        await refresh()
+      } catch {
+        if (live.current) setOnline(false)
+      }
+    },
+    [markToday, refresh],
+  )
+
+  /** The matcher's reward, awarded once by the progress API. */
+  const recordLeagueMatch = useCallback(
+    async (leagueId) => {
+      markToday()
+      try {
+        await api('/progress/league-matched', { method: 'POST', body: { leagueId } })
         await refresh()
       } catch {
         if (live.current) setOnline(false)
@@ -165,7 +167,7 @@ export function AppProvider({ children }) {
   const celebrate = useCallback((payload) => setCelebration(payload), [])
   const dismissCelebration = useCallback(() => setCelebration(null), [])
 
-  const xp = progress.xpIntoLevel + state.bonusXp
+  const xp = progress.xpIntoLevel + (state.gameXp ?? 0)
   const xpPerLevel = progress.xpForNextLevel || 600
 
   const value = useMemo(
@@ -186,6 +188,7 @@ export function AppProvider({ children }) {
       refresh,
       addXp,
       completeLesson,
+      recordLeagueMatch,
       bumpStreak,
       setQuizAnswer,
       finishQuiz,
@@ -205,6 +208,7 @@ export function AppProvider({ children }) {
       refresh,
       addXp,
       completeLesson,
+      recordLeagueMatch,
       bumpStreak,
       setQuizAnswer,
       finishQuiz,

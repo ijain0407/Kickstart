@@ -43,6 +43,7 @@ export function createProgressService({ progressRepo, now = () => new Date() }) 
       },
       badges: progress.badges,
       completedLessonIds: progress.completedLessonIds,
+      matchedLeagueId: progress.matchedLeagueId ?? null,
       bestScores: progress.bestScores,
       history: [
         ...progress.quizHistory.map((h) => ({ kind: 'quiz', ...h })),
@@ -92,16 +93,57 @@ export function createProgressService({ progressRepo, now = () => new Date() }) 
       return { alreadyCompleted, xpEarned, levelBefore, levelAfter: progress.level, newBadges, streak: progress.streak };
     },
 
-    chantViewed(userId, { chantId }) {
+    chantViewed(userId, { chantId, clientDate }) {
       const progress = progressRepo.get(userId);
+      const levelBefore = levelIdForXp(progress.xp);
       const alreadyViewed = progress.viewedChantIds.includes(chantId);
       if (!alreadyViewed) {
         progress.viewedChantIds.push(chantId);
         progress.stats.chantsLearned = progress.viewedChantIds.length;
       }
+      // Learning a chant is study too: it earns XP once and counts for the streak.
+      const { streak, firstActivityToday } = updateStreak(progress.streak, clientDate);
+      progress.streak = streak;
+      const streakBonus = firstActivityToday ? streakBonusXp(streak.current) : 0;
+      const xpEarned = (alreadyViewed ? 0 : cfg.xp.chantLearned) + streakBonus;
+      progress.xp += xpEarned;
+      progress.level = levelIdForXp(progress.xp);
       const newBadges = awardBadges(progress, null, now());
       progressRepo.save(progress);
-      return { alreadyViewed, chantsLearned: progress.stats.chantsLearned, newBadges };
+      return {
+        alreadyViewed,
+        chantsLearned: progress.stats.chantsLearned,
+        xpEarned,
+        levelBefore,
+        levelAfter: progress.level,
+        newBadges,
+        streak: progress.streak,
+      };
+    },
+
+    /** The league matcher: XP once, whichever league it lands on. */
+    leagueMatched(userId, { leagueId, clientDate }) {
+      const progress = progressRepo.get(userId);
+      const levelBefore = levelIdForXp(progress.xp);
+      const alreadyMatched = Boolean(progress.matchedLeagueId);
+      const { streak, firstActivityToday } = updateStreak(progress.streak, clientDate);
+      progress.streak = streak;
+      const streakBonus = firstActivityToday ? streakBonusXp(streak.current) : 0;
+      const xpEarned = (alreadyMatched ? 0 : cfg.xp.leagueMatched) + streakBonus;
+      progress.matchedLeagueId = leagueId;
+      progress.xp += xpEarned;
+      progress.level = levelIdForXp(progress.xp);
+      const newBadges = awardBadges(progress, null, now());
+      progressRepo.save(progress);
+      return {
+        alreadyMatched,
+        matchedLeagueId: leagueId,
+        xpEarned,
+        levelBefore,
+        levelAfter: progress.level,
+        newBadges,
+        streak: progress.streak,
+      };
     },
 
     reset: (userId) => view(progressRepo.reset(userId)),

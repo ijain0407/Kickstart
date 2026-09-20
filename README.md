@@ -59,17 +59,27 @@ sings, what it literally means, and what it really means.
   lesson-path state and matcher answers stay local. Everything degrades to localStorage when
   the API is unreachable.
 
+## Cross-team conventions
+
+- **Lesson ids** live in `shared/lessons.js`, the one place the three schemes line up:
+  Person B's canonical `lesson-rules-basics`, Person D's `rules-basics`, and the path nodes
+  `1.1`–`1.6`. Person D's config derives its slugs from that file and the frontend maps
+  through it, so the lists can't drift apart quietly. `npm run smoke` checks both ends still
+  resolve against the live APIs.
+- **XP is server-side.** Lessons, chants, the league matcher and drills are all awarded by the
+  progress API, once each, with the streak bonus applied. The client never invents XP.
+
 ## Known gaps
 
-- **Lesson ids don't line up across workstreams.** Person B publishes `lesson-rules-basics`,
-  Person D's `config/lessonIds.js` expects `rules-basics`, and the path in the frontend uses
-  `1.1`–`1.6`. The frontend maps between them (`LESSON_SLUG` in `AppState.jsx`); the team
-  should agree on one list.
-- **The league matcher's +120 XP is local only.** The progress API awards XP for lessons,
-  chants and quiz attempts, with no endpoint for other activity, so that bonus isn't
-  server-backed yet.
-- **Person D's quiz engine has no screen in the shell.** Battles, hints, review and badges are
-  all built and tested in `quiz_feature/`, but the app currently surfaces only progress.
+- **The pitch-pass mini-game's XP is local only.** It's arcade play rather than a learning
+  activity, so the progress API doesn't model it; it's added on top of the server's XP for
+  display and doesn't persist across devices.
+- **Battles and review are still unreached.** Person D's engine supports bot battles, attempt
+  review and a hint economy; the drills screen uses questions, hints, answers and completion,
+  but there's no battle or review screen in the shell yet.
+- **`terms-slang` has no lesson.** Person D has questions for it and the glossary covers the
+  vocabulary, but Person B hasn't written that lesson, so it maps to `null` in
+  `shared/lessons.js`.
 - **Content is draft.** League and culture records carry a `contentStatus` (`draft`,
-  `placeholder`, `verified`); the Seattle chant is a flagged placeholder. No club crests,
-  logos or licensed lyrics anywhere — text and generic visuals only.
+  `placeholder`, `verified`); the Seattle chant is a flagged placeholder awaiting real
+  research. No club crests, logos or licensed lyrics anywhere — text and generic visuals only.

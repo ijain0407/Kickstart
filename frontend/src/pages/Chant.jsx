@@ -15,7 +15,7 @@ import { useRouter } from '../router.jsx'
 export default function Chant() {
   const { t, lang } = useI18n()
   const { query, navigate } = useRouter()
-  const { masterChant, addXp, celebrate } = useApp()
+  const { masterChant, celebrate } = useApp()
 
   const cultureId = query.club ?? 'culture-liverpool'
   const { data, loading, error, reload } = useResource(
@@ -56,7 +56,6 @@ export default function Chant() {
     // Chant ids are free-form on the progress API; scope it by club so two
     // clubs can't collide on a shared chant id.
     masterChant(`${card.id}/${chant.id}`)
-    addXp(25)
     celebrate({
       title: chant.title,
       sub: t('chant.mastered'),

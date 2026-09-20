@@ -9,6 +9,8 @@ export function defaultProgress(userId) {
     badges: [],
     completedLessonIds: [],
     viewedChantIds: [],
+    // The league the matcher settled on, so its XP is only awarded once.
+    matchedLeagueId: null,
     localesSeen: [],
     stats: { questionsAnswered: 0, correctAnswers: 0, chantsLearned: 0, correctByTopic: {} },
     bestScores: {},

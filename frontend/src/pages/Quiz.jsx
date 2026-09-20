@@ -101,7 +101,7 @@ function Results({ result, onRetake }) {
 export default function Quiz() {
   const { t, tr, lang } = useI18n()
   const { navigate } = useRouter()
-  const { quizAnswers, setQuizAnswer, quizDone, finishQuiz, resetQuiz, leagueResult, setLeagueResult, addXp, celebrate } = useApp()
+  const { quizAnswers, setQuizAnswer, quizDone, finishQuiz, resetQuiz, leagueResult, setLeagueResult, recordLeagueMatch, celebrate } = useApp()
 
   const [stepIndex, setStepIndex] = useState(0)
   const [live, setLive] = useState(null)
@@ -113,7 +113,7 @@ export default function Quiz() {
 
   /** Score the answers so far. The last call to return wins, so a fast tapper
       never sees an older ranking overwrite a newer one. */
-  const score = async (answers, { final = false } = {}) => {
+  const score = async (answers, { final = false, award = false } = {}) => {
     const hasAny = Object.values(answers).some((picks) => picks?.length)
     if (!hasAny) return setLive(null)
 
@@ -124,6 +124,9 @@ export default function Quiz() {
       setSubmitError(null)
       setLive(result)
       if (final) setLeagueResult(result)
+      // XP for finishing the matcher is awarded by the progress API, once.
+      // Re-scoring after a language switch must not fire this again.
+      if (award) recordLeagueMatch(result.recommendation.league.id)
     } catch (err) {
       if (ticket === scoring.current) setSubmitError(err)
     }
@@ -163,7 +166,6 @@ export default function Quiz() {
           onExit={() => navigate('/')}
           onFinish={() => {
             finishQuiz()
-            addXp(120)
             celebrate({ title: t('quiz.celebrateTitle'), sub: t('quiz.celebrateSub'), xp: 120, icon: 'emoji_events' })
           }}
           t={t}
@@ -208,7 +210,7 @@ function Steps({
 
   const advance = () => {
     if (isLast) {
-      score(quizAnswers, { final: true })
+      score(quizAnswers, { final: true, award: true })
       onFinish()
       return
     }

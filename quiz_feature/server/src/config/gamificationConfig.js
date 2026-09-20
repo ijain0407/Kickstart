@@ -5,6 +5,8 @@ export const gamificationConfig = {
     perfectQuizBonus: 25,
     perfectMinQuestions: 5,
     lessonComplete: 50,
+    chantLearned: 25,
+    leagueMatched: 120,
     streakBonusPerDay: 5,
     streakBonusMaxDays: 7,
     battleWin: 30,

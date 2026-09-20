@@ -218,6 +218,32 @@ describe('lesson-complete and chant-viewed hooks', () => {
     expect(res.chantsLearned).toBe(5);
     expect(res.newBadges).toContain('chant_collector');
   });
+
+  it('awards chant XP once per chant', async () => {
+    const first = (await api('post', '/api/progress/chant-viewed', { chantId: 'ynwa' })).body;
+    expect(first).toMatchObject({ alreadyViewed: false, xpEarned: 30 }); // 25 chant + 5 streak
+    const again = (await api('post', '/api/progress/chant-viewed', { chantId: 'ynwa' })).body;
+    expect(again).toMatchObject({ alreadyViewed: true, xpEarned: 0 });
+    expect((await api('get', '/api/progress')).body.xp).toBe(30);
+  });
+
+  it('awards the league matcher once, and remembers the league', async () => {
+    const first = (await api('post', '/api/progress/league-matched', { leagueId: 'league-serie-a' })).body;
+    expect(first).toMatchObject({ alreadyMatched: false, xpEarned: 125 }); // 120 matcher + 5 streak
+    expect(first.levelAfter).toBe('fan');
+
+    // Retaking the matcher updates the league but doesn't pay out twice.
+    const again = (await api('post', '/api/progress/league-matched', { leagueId: 'league-mls' })).body;
+    expect(again).toMatchObject({ alreadyMatched: true, xpEarned: 0, matchedLeagueId: 'league-mls' });
+
+    const progress = (await api('get', '/api/progress')).body;
+    expect(progress.xp).toBe(125);
+    expect(progress.matchedLeagueId).toBe('league-mls');
+  });
+
+  it('validates the league matcher body', async () => {
+    expect((await api('post', '/api/progress/league-matched', {})).status).toBe(400);
+  });
 });
 
 describe('badge catalog and streaks', () => {

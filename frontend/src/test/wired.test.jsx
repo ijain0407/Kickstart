@@ -135,3 +135,41 @@ describe('Progress (Person D)', () => {
     await expect.poll(async () => (await api('/progress')).stats.chantsLearned).toBe(1)
   })
 })
+
+describe('Knowledge drills (Person D engine)', () => {
+  it('plays a drill end to end and banks the XP on the server', async () => {
+    const user = userEvent.setup()
+    const { api } = await import('../lib/api.js')
+    renderApp('/drills')
+
+    // Lesson names come from Person B, matched through shared/lessons.js.
+    expect(await screen.findByText('The Basic Rules')).toBeInTheDocument()
+
+    await user.click(screen.getByRole('button', { name: /Quick drill/ }))
+
+    // Answer all five questions; the server marks each one.
+    for (let i = 0; i < 5; i += 1) {
+      const options = await screen.findAllByRole('radio')
+      await user.click(options[0])
+      await user.click(await screen.findByRole('button', { name: /Next|Finish drill/ }))
+    }
+
+    expect(await screen.findByRole('heading', { name: 'Drill complete' })).toBeInTheDocument()
+
+    // XP was awarded by the progress API, not the client.
+    const progress = await api('/progress')
+    expect(progress.stats.questionsAnswered).toBe(5)
+  })
+
+  it('awards the league matcher XP through the progress API', async () => {
+    const { api } = await import('../lib/api.js')
+    const before = await api('/progress')
+    expect(before.xp).toBe(0)
+
+    await api('/progress/league-matched', { method: 'POST', body: { leagueId: 'league-serie-a' } })
+
+    const after = await api('/progress')
+    expect(after.xp).toBeGreaterThanOrEqual(120)
+    expect(after.matchedLeagueId).toBe('league-serie-a')
+  })
+})

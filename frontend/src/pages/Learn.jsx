@@ -20,6 +20,7 @@ const MODULES = [
   { key: 'tactics', icon: 'sports_soccer', tone: 'blue', to: '/field', labelColor: '#0284c7' },
   { key: 'league', icon: 'emoji_events', tone: 'orange', to: '/quiz', labelColor: '#ea580c' },
   { key: 'culture', icon: 'campaign', tone: 'red', to: '/culture', labelColor: '#dc2626' },
+  { key: 'drills', icon: 'military_tech', tone: 'lavender', to: '/drills', labelColor: '#7c3aed' },
 ]
 
 export default function Learn() {
