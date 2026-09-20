@@ -173,3 +173,26 @@ describe('Knowledge drills (Person D engine)', () => {
     expect(after.matchedLeagueId).toBe('league-serie-a')
   })
 })
+
+describe('Chant audio', () => {
+  it('links out to a crowd recording only when the chant has one', async () => {
+    const user = userEvent.setup()
+    renderApp('/culture')
+
+    await user.click(await screen.findByRole('button', { name: 'Bundesliga' }))
+    await user.click(await screen.findByRole('button', { name: /Bayern Munich/ }))
+
+    // Bayern's chant carries a sourceUrl; the link opens it safely in a new tab.
+    const link = await screen.findByRole('link', { name: /Listen to the real crowd/ })
+    expect(link).toHaveAttribute('href', expect.stringContaining('http'))
+    expect(link).toHaveAttribute('target', '_blank')
+    expect(link).toHaveAttribute('rel', expect.stringContaining('noopener'))
+
+    // Dortmund's has no link yet, so no dead button is shown. It's reachable
+    // both as a rivalry and in the related-clubs row; either gets us there.
+    await user.click(screen.getAllByRole('button', { name: /Borussia Dortmund/ })[0])
+    // Title and original line both read "Heja BVB!" — either means we arrived.
+    expect((await screen.findAllByText('Heja BVB!')).length).toBeGreaterThan(0)
+    expect(screen.queryByRole('link', { name: /Listen to the real crowd/ })).not.toBeInTheDocument()
+  })
+})

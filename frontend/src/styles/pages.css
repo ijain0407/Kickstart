@@ -1402,3 +1402,19 @@
 .spotlight--flat .spotlight__scrim {
   background: none;
 }
+
+/* Link out to a crowd recording hosted elsewhere. */
+.chant__source {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--pitch-green, #15803d);
+  text-decoration: underline;
+}
+
+.chant__source:hover {
+  opacity: 0.85;
+}

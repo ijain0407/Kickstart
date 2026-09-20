@@ -117,6 +117,13 @@ export default function Chant() {
               </span>
             </div>
 
+            {chant.sourceUrl ? (
+              <a className="chant__source" href={chant.sourceUrl} target="_blank" rel="noopener noreferrer">
+                <Icon name="open_in_new" />
+                {t('culture.listenElsewhere')}
+              </a>
+            ) : null}
+
             {/* ---- The three layers, revealed one at a time ---- */}
             <section className="stack stack-3">
               <div className="section-head">

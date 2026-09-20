@@ -64,6 +64,7 @@ export function toChantCard(chant, { labels }) {
     layer1: chant.original.text,
     layer1Lang: chant.original.lang,
     audioUrl: chant.audioUrl ?? null,
+    sourceUrl: chant.sourceUrl ?? null,
     layer2: chant.literal,
     layer3: chant.meaning,
     footnote: chant.when ?? '',

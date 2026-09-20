@@ -76,6 +76,15 @@ export default function ChantCard({ chant, onLearn }) {
           <Equalizer playing={playing} />
         </div>
 
+        {/* Real crowd audio lives on the source site — we link to it rather than
+            stream someone else's file. */}
+        {chant.sourceUrl ? (
+          <a className="chant__source" href={chant.sourceUrl} target="_blank" rel="noopener noreferrer">
+            <Icon name="open_in_new" />
+            {t('culture.listenElsewhere')}
+          </a>
+        ) : null}
+
         <section className="layer layer--1">
           <span className="t-label-meta text-secondary">{t('culture.layer1')}</span>
           {/* The original is never translated — it renders in the language the
