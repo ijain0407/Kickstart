@@ -4,9 +4,12 @@ import Icon from './Icon.jsx'
 /**
  * One 64px node on the winding path.
  * completed → green disc with a check and up to three gold stars
- * active    → larger green disc, pulsing ring, START DRILL tag
+ * active    → larger green disc with a pulsing ring
  * unlocked  → white disc with the lesson icon and its XP bounty
  * locked    → pale lavender disc with a padlock; tapping shakes it
+ *
+ * The first tap on a node previews it in the card below; the tag appears on
+ * whichever node is previewed, because a second tap on that one opens it.
  */
 export default function LessonNode({ lesson, state, title, tagText, onSelect, isFocused }) {
   const [shaking, setShaking] = useState(false)
@@ -36,7 +39,7 @@ export default function LessonNode({ lesson, state, title, tagText, onSelect, is
         </span>
       ) : null}
 
-      {state === 'active' && tagText ? <span className="node__tag">{tagText}</span> : null}
+      {isFocused && !locked && tagText ? <span className="node__tag">{tagText}</span> : null}
 
       <button
         type="button"

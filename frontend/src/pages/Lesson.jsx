@@ -1,8 +1,10 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import Icon from '../components/Icon.jsx'
 import FieldPressButton from '../components/FieldPressButton.jsx'
 import PitchBoard from '../components/PitchBoard.jsx'
 import PlayerToken from '../components/PlayerToken.jsx'
+import LessonScene from '../components/LessonScene.jsx'
+import { Loading } from '../components/DataState.jsx'
 import { LESSONS, lessonState } from '../data/lessons.js'
 import { getLessonContent } from '../data/lessonContent.js'
 import { getFormation } from '../data/formations.js'
@@ -11,7 +13,15 @@ import { useI18n } from '../i18n/I18nContext.jsx'
 import { useApp } from '../state/AppState.jsx'
 import { useRouter } from '../router.jsx'
 
-/* Small preset arrangements the lesson steps can illustrate. */
+/* ============================================================
+   THE LESSON PLAYER
+   Teaching steps, their interactive scenes and the comprehension
+   check all come from Person B's /api/path-lessons. The bundled
+   copy in src/data/lessonContent.js is the offline fallback: same
+   words, but static diagrams instead of the live scenes.
+   ============================================================ */
+
+/* Static stand-ins used only when the content API is unreachable. */
 const VISUALS = {
   basics: {
     offside: null,
@@ -72,7 +82,7 @@ function LessonVisual({ name, label }) {
   )
 }
 
-/** Which glossary terms belong beside each lesson on the path. */
+/** Glossary terms per lesson — the fallback for when the API can't say. */
 const LESSON_TERMS = {
   '1.1': ['term-formation'],
   '1.2': ['term-offside', 'term-free-kick'],
@@ -89,35 +99,54 @@ export default function Lesson() {
 
   const id = query.id ?? activeLesson
   const lesson = useMemo(() => LESSONS.find((l) => l.id === id) ?? LESSONS[0], [id])
-  const content = getLessonContent(lesson.id)
+
+  // The teaching content: steps, their scenes and the check.
+  const { data, error, loading } = useResource(
+    (signal) => api(`/path-lessons/${lesson.id}`, { lang, signal }),
+    [lang, lesson.id],
+  )
+  const remote = data?.data ?? null
+  const offline = Boolean(error)
+  const fallback = getLessonContent(lesson.id)
+
+  const steps = remote?.steps ?? fallback.steps
+  const check = remote?.check ?? fallback.check
+  const xp = remote?.xp ?? lesson.xp
+  const glossaryIds = remote?.glossaryIds ?? LESSON_TERMS[lesson.id] ?? []
 
   // Key terms come from Person B's glossary API — bilingual definitions the
   // lesson copy doesn't repeat.
   const { data: glossary } = useResource((signal) => api('/glossary', { lang, signal }), [lang])
-  const terms = (glossary?.data ?? []).filter((term) => (LESSON_TERMS[lesson.id] ?? []).includes(term.id))
+  const terms = (glossary?.data ?? []).filter((term) => glossaryIds.includes(term.id))
 
   // step 0..n-1 are the teaching steps, step n is the comprehension check
   const [step, setStep] = useState(0)
   const [picked, setPicked] = useState(null)
 
-  const totalSteps = content.steps.length + 1
-  const onCheck = step === content.steps.length
-  const current = onCheck ? null : content.steps[step]
+  // Moving between lessons without leaving the route must start over.
+  useEffect(() => {
+    setStep(0)
+    setPicked(null)
+  }, [lesson.id])
+
+  const totalSteps = steps.length + 1
+  const onCheck = step >= steps.length
+  const current = onCheck ? null : steps[step]
   const percent = Math.round(((step + 1) / totalSteps) * 100)
 
   const state = lessonState(lesson, completedLessons, activeLesson)
   const alreadyDone = state === 'completed'
-  const chosen = picked ? content.check.options.find((o) => o.id === picked) : null
+  const chosen = picked ? check.options.find((o) => o.id === picked) : null
 
   const finish = () => {
     if (!alreadyDone) {
-      completeLesson(lesson.id, lesson.xp)
+      completeLesson(lesson.id, xp)
       bumpStreak()
     }
     celebrate({
-      title: tr(lesson.title),
-      sub: tr(lesson.unlocks),
-      xp: alreadyDone ? 0 : lesson.xp,
+      title: tr(remote?.title ?? lesson.title),
+      sub: tr(remote?.unlocks ?? lesson.unlocks),
+      xp: alreadyDone ? 0 : xp,
       icon: 'military_tech',
       next: '/path',
     })
@@ -130,6 +159,14 @@ export default function Lesson() {
     }
     setStep((s) => s + 1)
     window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
+  if (loading) {
+    return (
+      <div className="page">
+        <Loading rows={4} />
+      </div>
+    )
   }
 
   return (
@@ -156,7 +193,7 @@ export default function Lesson() {
           </div>
 
           <span className="pill pill--gold">
-            <Icon name="bolt" fill />+{lesson.xp} XP
+            <Icon name="bolt" fill />+{xp} XP
           </span>
         </div>
 
@@ -171,16 +208,25 @@ export default function Lesson() {
         </div>
       </div>
 
-      <h1 className="t-headline-lg">{tr(lesson.detailTitle ?? lesson.title)}</h1>
+      <h1 className="t-headline-lg">
+        {tr(remote?.detailTitle ?? lesson.detailTitle ?? lesson.title)}
+      </h1>
+
+      {offline ? (
+        <p className="t-body-sm text-secondary" role="status">
+          <Icon name="cloud_off" style={{ fontSize: 16, verticalAlign: '-3px' }} />{' '}
+          {t('lesson.offlineScenes')}
+        </p>
+      ) : null}
 
       {onCheck ? (
         /* ---- Comprehension check ---- */
         <section className="stack stack-4">
           <span className="pill pill--green-solid">{t('lesson.checkTag')}</span>
-          <h2 className="t-headline-md">{tr(content.check.question)}</h2>
+          <h2 className="t-headline-md">{tr(check.question)}</h2>
 
-          <div className="stack stack-3" role="radiogroup" aria-label={tr(content.check.question)}>
-            {content.check.options.map((option) => {
+          <div className="stack stack-3" role="radiogroup" aria-label={tr(check.question)}>
+            {check.options.map((option) => {
               const isPicked = picked === option.id
               // Only reveal right/wrong once an answer is locked in.
               const tone = !picked
@@ -218,7 +264,7 @@ export default function Lesson() {
                 <span className="t-headline-sm">
                   {chosen?.correct ? t('lesson.correct') : t('lesson.notQuite')}
                 </span>
-                <span className="t-body-md">{tr(content.check.explain)}</span>
+                <span className="t-body-md">{tr(check.explain)}</span>
               </div>
             </div>
           ) : null}
@@ -226,7 +272,11 @@ export default function Lesson() {
       ) : (
         /* ---- Teaching step ---- */
         <section className="stack stack-4">
-          <LessonVisual name={current.visual} label={tr(current.title)} />
+          {current.scene ? (
+            <LessonScene key={current.id ?? step} scene={current.scene} label={tr(current.title)} />
+          ) : (
+            <LessonVisual name={current.visual} label={tr(current.title)} />
+          )}
           <h2 className="t-headline-md">{tr(current.title)}</h2>
           <p className="t-body-lg text-secondary">{tr(current.body)}</p>
         </section>

@@ -28,6 +28,24 @@ export function getUserId() {
   }
 }
 
+/**
+ * Adopt the id the auth API handed back — the account's on sign-in, a fresh
+ * anonymous one on sign-out.
+ *
+ * The server is authoritative either way: while a session cookie is live the
+ * gateway overwrites X-User-Id with the account's id, so this only keeps the
+ * client honest about who it thinks it is.
+ */
+export function setUserId(id) {
+  if (!id) return
+  memoryUserId = id
+  try {
+    localStorage.setItem(USER_KEY, id)
+  } catch {
+    /* memory copy above still carries this session */
+  }
+}
+
 /** Today in the browser's own timezone — Person D's streak logic needs it. */
 export function localDate(now = new Date()) {
   const pad = (n) => String(n).padStart(2, '0')
@@ -57,7 +75,16 @@ export async function api(path, { method = 'GET', body, lang = 'en', signal } = 
 
   let res
   try {
-    res = await fetch(`/api${path}`, { method, headers, signal, body: body === undefined ? undefined : JSON.stringify(body) })
+    res = await fetch(`/api${path}`, {
+      method,
+      headers,
+      signal,
+      // The session cookie is httpOnly and same-origin (the Vite proxy and the
+      // deployed gateway both serve /api from this origin), so it rides along
+      // without ever being readable from script.
+      credentials: 'same-origin',
+      body: body === undefined ? undefined : JSON.stringify(body),
+    })
   } catch (err) {
     if (err.name === 'AbortError') throw err
     throw new ApiError(0, 'NETWORK', 'Network error')

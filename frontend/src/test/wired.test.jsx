@@ -5,6 +5,7 @@ import App from '../App.jsx'
 import { RouterProvider } from '../router.jsx'
 import { I18nProvider } from '../i18n/I18nContext.jsx'
 import { ThemeProvider } from '../state/ThemeContext.jsx'
+import { AuthProvider } from '../state/AuthState.jsx'
 import { AppProvider } from '../state/AppState.jsx'
 
 /**
@@ -17,11 +18,13 @@ function renderApp(route = '/') {
   return render(
     <ThemeProvider>
       <I18nProvider>
-        <AppProvider>
-          <RouterProvider>
-            <App />
-          </RouterProvider>
-        </AppProvider>
+        <AuthProvider>
+          <AppProvider>
+            <RouterProvider>
+              <App />
+            </RouterProvider>
+          </AppProvider>
+        </AuthProvider>
       </I18nProvider>
     </ThemeProvider>,
   )
@@ -177,6 +180,163 @@ describe('Knowledge drills (Person D engine)', () => {
   })
 })
 
+describe('The learning path (Person B path-lessons API)', () => {
+  it('draws the unit from the API, in both languages', async () => {
+    const user = userEvent.setup()
+    renderApp('/path')
+
+    // Six nodes, their titles and step counts served by GET /api/path-lessons.
+    expect(await screen.findByRole('button', { name: '1.2 The Offside Rule' })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: '1.6 VAR & Referee' })).toBeInTheDocument()
+    expect(screen.getByText('0 / 6 Done')).toBeInTheDocument()
+    expect(screen.getByText('3 steps')).toBeInTheDocument()
+
+    // A language switch refetches the path, it does not translate it locally.
+    await user.click(screen.getByRole('button', { name: /ES/ }))
+    expect(
+      await screen.findByRole('button', { name: '1.2 La regla del fuera de juego' }),
+    ).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: '1.6 VAR y arbitraje' })).toBeInTheDocument()
+  })
+})
+
+describe('Lesson scenes (Person B path-lessons API)', () => {
+  it('plays the offside scene and flips the verdict', async () => {
+    const user = userEvent.setup()
+    renderApp('/lesson?id=1.2')
+
+    // Step one is a slider scene: three positions, a live verdict.
+    expect(await screen.findByRole('heading', { name: 'The second-to-last defender' })).toBeInTheDocument()
+    expect(screen.getByText('ONSIDE')).toBeInTheDocument()
+
+    await user.click(screen.getByRole('button', { name: 'Beyond the line' }))
+
+    expect(await screen.findByText('OFFSIDE')).toBeInTheDocument()
+    expect(screen.getByText(/Nearer the goal line than the second-to-last defender/)).toBeInTheDocument()
+
+    // Back to level and the flag comes down again.
+    await user.click(screen.getByRole('button', { name: 'Dead level' }))
+    expect(await screen.findByText(/Level is onside/)).toBeInTheDocument()
+  })
+
+  it('switches formation in the chip scene', async () => {
+    const user = userEvent.setup()
+    renderApp('/lesson?id=1.4')
+
+    expect(await screen.findByRole('heading', { name: 'A formation is a starting point' })).toBeInTheDocument()
+    expect(screen.getByText(/Four across the back, a midfield triangle/)).toBeInTheDocument()
+
+    await user.click(screen.getByRole('button', { name: '3-5-2' }))
+    expect(await screen.findByText(/Three centre backs, five across the middle/)).toBeInTheDocument()
+  })
+
+  it('opens a labelled region on the pitch diagram', async () => {
+    const user = userEvent.setup()
+    renderApp('/lesson?id=1.1')
+
+    expect(await screen.findByRole('heading', { name: 'The shape of the ground' })).toBeInTheDocument()
+
+    await user.click(screen.getByRole('button', { name: 'Halfway line' }))
+    expect(await screen.findByText(/You can never be offside in your own half/)).toBeInTheDocument()
+  })
+
+  it('reveals a layer in the culture scene', async () => {
+    const user = userEvent.setup()
+    renderApp('/lesson?id=1.5')
+
+    // Step two of 1.5 is a layer stack rather than a pitch.
+    await user.click(await screen.findByRole('button', { name: /Next/ }))
+
+    const layer = await screen.findByRole('button', { name: /New words, same melody/ })
+    expect(layer).toHaveAttribute('aria-expanded', 'false')
+
+    await user.click(layer)
+    expect(await screen.findByText(/puts local words over it/)).toBeInTheDocument()
+  })
+
+  it('carries a scene through to the comprehension check and banks the XP', async () => {
+    const user = userEvent.setup()
+    renderApp('/lesson?id=1.2')
+
+    // Three teaching steps, then the check.
+    for (let i = 0; i < 3; i += 1) {
+      await user.click(await screen.findByRole('button', { name: /Next/ }))
+    }
+
+    expect(await screen.findByRole('heading', { name: /What is the call\?/ })).toBeInTheDocument()
+
+    await user.click(screen.getByRole('radio', { name: /perfectly onside/ }))
+    expect(await screen.findByText('That is it.')).toBeInTheDocument()
+  })
+})
+
+describe('Opening a lesson from the path', () => {
+  it('previews a node on the first tap and opens it on the second', async () => {
+    const user = userEvent.setup()
+    renderApp('/path')
+
+    const node = await screen.findByRole('button', { name: '1.2 The Offside Rule' })
+
+    // First tap only fills the detail card below the path.
+    await user.click(node)
+    expect(
+      await screen.findByRole('heading', { name: 'Module 1.2: The Offside Rule Demystified' }),
+    ).toBeInTheDocument()
+    expect(screen.getByText('6 min bite-sized')).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /Start Lesson/ })).toBeInTheDocument()
+
+    // The START DRILL tag moves to the previewed node, marking what a second tap opens.
+    expect(screen.getAllByText('START DRILL')).toHaveLength(1)
+
+    // Second tap on the same node opens the lesson itself.
+    await user.click(screen.getByRole('button', { name: '1.2 The Offside Rule' }))
+    expect(
+      await screen.findByRole('heading', { name: 'The second-to-last defender' }),
+    ).toBeInTheDocument()
+  })
+
+  it('refuses to open a locked node', async () => {
+    const user = userEvent.setup()
+    renderApp('/path')
+
+    // 1.3 is two steps ahead of the active lesson, so it is locked.
+    const locked = await screen.findByRole('button', { name: '1.3 Defenders & Midfield' })
+    await user.click(locked)
+    await user.click(locked)
+
+    expect(await screen.findByText(/Finish the lesson before this one/)).toBeInTheDocument()
+    // Still on the path, not in a lesson.
+    expect(screen.getByRole('heading', { name: 'Tactical Foundations' })).toBeInTheDocument()
+  })
+})
+
+describe('Account (Google sign-in)', () => {
+  it('plays as a guest and says so, with sign-in switched off on this server', async () => {
+    renderApp('/profile')
+
+    // The account card reports the real state of GET /api/auth/config, which
+    // is disabled here because the test gateway has no GOOGLE_CLIENT_ID.
+    expect(await screen.findByRole('heading', { name: 'Account' })).toBeInTheDocument()
+    // The card shows a loading line until /api/auth/config and /api/auth/me land.
+    expect(await screen.findByText(/You are playing as a guest/)).toBeInTheDocument()
+    expect(screen.getByText(/Google sign-in is not set up on this server/)).toBeInTheDocument()
+
+    // Nothing is gated: signed out, the profile still shows real progress.
+    expect(screen.getByRole('heading', { name: /Achievements/ })).toBeInTheDocument()
+    expect(screen.queryByRole('button', { name: /Sign out/ })).not.toBeInTheDocument()
+  })
+
+  it('leaves a guest able to earn XP on the server', async () => {
+    const { api, getUserId } = await import('../lib/api.js')
+
+    // No session, no cookie — just the browser's anonymous id.
+    expect(getUserId()).toMatch(/^[A-Za-z0-9-]{8,64}$/)
+    expect((await api('/auth/me')).user).toBeNull()
+
+    await api('/progress/league-matched', { method: 'POST', body: { leagueId: 'league-serie-a' } })
+    expect((await api('/progress')).xp).toBeGreaterThanOrEqual(120)
+  })
+})
 describe('Chant audio', () => {
   it('leads the chant card with the Spotify player', async () => {
     const user = userEvent.setup()

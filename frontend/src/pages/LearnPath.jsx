@@ -4,7 +4,10 @@ import XPBar from '../components/XPBar.jsx'
 import WeekStrip from '../components/WeekStrip.jsx'
 import LessonNode from '../components/LessonNode.jsx'
 import FieldPressButton from '../components/FieldPressButton.jsx'
-import { LESSONS, lessonState } from '../data/lessons.js'
+import { Loading } from '../components/DataState.jsx'
+import { LESSONS as LOCAL_LESSONS, lessonState } from '../data/lessons.js'
+import { toPathNode } from '../lib/adapters.js'
+import { api, useResource } from '../lib/api.js'
 import { useI18n } from '../i18n/I18nContext.jsx'
 import { useApp } from '../state/AppState.jsx'
 import { useRouter } from '../router.jsx'
@@ -33,7 +36,7 @@ function PathLink({ from, to, solid }) {
 }
 
 export default function LearnPath() {
-  const { t, tr } = useI18n()
+  const { t, tr, lang } = useI18n()
   const { navigate } = useRouter()
   const {
     xp,
@@ -43,26 +46,43 @@ export default function LearnPath() {
     activeLesson,
   } = useApp()
 
+  // The unit is served by Person B's path-lessons API; the bundled nodes are
+  // the fallback so the path still draws with the API down.
+  const { data, error, loading } = useResource(
+    (signal) => api('/path-lessons', { lang, signal }),
+    [lang],
+  )
+  const lessons = error || !data?.data?.length ? LOCAL_LESSONS : data.data.map(toPathNode)
+
   const [selectedId, setSelectedId] = useState(activeLesson)
   const [lockedNotice, setLockedNotice] = useState(false)
 
-  const selected = LESSONS.find((l) => l.id === selectedId) ?? LESSONS[1]
-  const selectedState = lessonState(selected, completedLessons, activeLesson)
+  const selected = lessons.find((l) => l.id === selectedId) ?? lessons[0]
+  const selectedState = lessonState(selected, completedLessons, activeLesson, lessons)
 
   const doneCount = completedLessons.filter((id) =>
-    LESSONS.some((l) => l.id === id),
+    lessons.some((l) => l.id === id),
   ).length
 
+  const startLesson = (id = selected.id) => navigate(`/lesson?id=${id}`)
+
+  /**
+   * Tapping a node previews it in the detail card; tapping the node already
+   * being previewed opens it. Two taps rather than one so the bounty and the
+   * step count still get a chance to be read.
+   */
   const handleSelect = (lesson, state) => {
     if (state === 'locked') {
       setLockedNotice(true)
       return
     }
     setLockedNotice(false)
+    if (lesson.id === selectedId) {
+      startLesson(lesson.id)
+      return
+    }
     setSelectedId(lesson.id)
   }
-
-  const startLesson = () => navigate(`/lesson?id=${selected.id}`)
 
   return (
     <div className="page">
@@ -102,92 +122,110 @@ export default function LearnPath() {
           <h2 className="t-headline-lg">{t('path.unitTitle')}</h2>
         </div>
         <span className="pill pill--green">
-          {`${doneCount} / ${LESSONS.length} ${t('path.doneSuffix')}`}
+          {`${doneCount} / ${lessons.length} ${t('path.doneSuffix')}`}
         </span>
       </div>
 
-      {/* ---- The winding path ---- */}
-      <section className="path">
-        {LESSONS.map((lesson, i) => {
-          const state = lessonState(lesson, completedLessons, activeLesson)
-          const prev = LESSONS[i - 1]
-          return (
-            <div key={lesson.id}>
-              {prev ? (
-                <PathLink
-                  from={prev.align}
-                  to={lesson.align}
-                  solid={completedLessons.includes(prev.id)}
-                />
+      {loading ? (
+        <Loading rows={3} />
+      ) : (
+        <>
+          {/* ---- The winding path ---- */}
+          <section className="path">
+            {lessons.map((lesson, i) => {
+              const state = lessonState(lesson, completedLessons, activeLesson, lessons)
+              const prev = lessons[i - 1]
+              return (
+                <div key={lesson.id}>
+                  {prev ? (
+                    <PathLink
+                      from={prev.align}
+                      to={lesson.align}
+                      solid={completedLessons.includes(prev.id)}
+                    />
+                  ) : null}
+                  <div className="path__row" data-align={lesson.align}>
+                    <LessonNode
+                      lesson={lesson}
+                      state={state}
+                      title={tr(lesson.title)}
+                      tagText={t('path.startDrill')}
+                      onSelect={handleSelect}
+                      isFocused={lesson.id === selectedId}
+                    />
+                  </div>
+                </div>
+              )
+            })}
+          </section>
+
+          {lockedNotice ? (
+            <p className="t-body-md text-secondary" role="status" style={{ textAlign: 'center' }}>
+              <Icon name="lock" style={{ fontSize: 16, verticalAlign: '-3px' }} />{' '}
+              {t('path.lockedMsg')}
+            </p>
+          ) : null}
+
+          {/* ---- Lesson detail ---- */}
+          <section className="card card--pad lesson-detail">
+            <div className="row row-2 wrap">
+              <span className="pill pill--green-solid">{t('path.readyToPlay')}</span>
+              <span className="pill pill--grey">
+                <Icon name="schedule" />
+                {`${selected.minutes} ${t('path.bitesizeUnit')}`}
+              </span>
+              {selected.stepCount ? (
+                <span className="pill pill--grey">
+                  <Icon name="menu_book" />
+                  {`${selected.stepCount} ${t('path.stepsSuffix')}`}
+                </span>
               ) : null}
-              <div className="path__row" data-align={lesson.align}>
-                <LessonNode
-                  lesson={lesson}
-                  state={state}
-                  title={tr(lesson.title)}
-                  tagText={t('path.startDrill')}
-                  onSelect={handleSelect}
-                  isFocused={lesson.id === selectedId}
-                />
+            </div>
+
+            <h2 className="t-headline-md">{tr(selected.detailTitle ?? selected.title)}</h2>
+
+            <div className="inset-lavender">
+              <span className="tile tile--greensolid">
+                <Icon name="flag" fill />
+              </span>
+              <p className="t-body-md">{tr(selected.desc)}</p>
+            </div>
+
+            <div className="bounty">
+              <Icon name="bolt" fill style={{ color: 'var(--gold-rim)', fontSize: 24 }} />
+              <div className="stack stack-1 grow">
+                <span className="t-headline-sm" style={{ color: 'var(--gold-badge-text)' }}>
+                  {tr(selected.bounty)}
+                </span>
+                <span className="t-body-sm" style={{ color: 'var(--gold-badge-text)' }}>
+                  {tr(selected.unlocks)}
+                </span>
               </div>
             </div>
-          )
-        })}
-      </section>
 
-      {lockedNotice ? (
-        <p className="t-body-md text-secondary" role="status" style={{ textAlign: 'center' }}>
-          <Icon name="lock" style={{ fontSize: 16, verticalAlign: '-3px' }} /> {t('path.lockedMsg')}
-        </p>
-      ) : null}
+            <FieldPressButton
+              variant="primary"
+              block
+              iconAfter="play_arrow"
+              onClick={() => startLesson()}
+              disabled={selectedState === 'locked'}
+            >
+              {t('path.startLesson')}
+            </FieldPressButton>
 
-      {/* ---- Lesson detail ---- */}
-      <section className="card card--pad lesson-detail">
-        <div className="row row-2 wrap">
-          <span className="pill pill--green-solid">{t('path.readyToPlay')}</span>
-          <span className="pill pill--grey">
-            <Icon name="schedule" />
-            {`${selected.minutes} ${t('path.bitesizeUnit')}`}
-          </span>
-        </div>
+            <FieldPressButton
+              variant="soft"
+              block
+              icon="science"
+              onClick={() => navigate('/field')}
+            >
+              {t('path.practice')}
+            </FieldPressButton>
 
-        <h2 className="t-headline-md">{tr(selected.detailTitle ?? selected.title)}</h2>
-
-        <div className="inset-lavender">
-          <span className="tile tile--greensolid">
-            <Icon name="flag" fill />
-          </span>
-          <p className="t-body-md">{tr(selected.desc)}</p>
-        </div>
-
-        <div className="bounty">
-          <Icon name="bolt" fill style={{ color: 'var(--gold-rim)', fontSize: 24 }} />
-          <div className="stack stack-1 grow">
-            <span className="t-headline-sm" style={{ color: 'var(--gold-badge-text)' }}>
-              {tr(selected.bounty)}
-            </span>
-            <span className="t-body-sm" style={{ color: 'var(--gold-badge-text)' }}>
-              {tr(selected.unlocks)}
-            </span>
-          </div>
-        </div>
-
-        <FieldPressButton
-          variant="primary"
-          block
-          iconAfter="play_arrow"
-          onClick={startLesson}
-          disabled={selectedState === 'locked'}
-        >
-          {t('path.startLesson')}
-        </FieldPressButton>
-
-        <FieldPressButton variant="soft" block icon="science" onClick={() => navigate('/field')}>
-          {t('path.practice')}
-        </FieldPressButton>
-
-        <p className="quote-foot">{t('path.footQuote')}</p>
-      </section>
+            <p className="quote-foot">{t('path.footQuote')}</p>
+          </section>
+        </>
+      )}
     </div>
   )
 }

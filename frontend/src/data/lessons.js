@@ -108,11 +108,15 @@ export const LESSONS = [
  * Node state for the path: everything before the active lesson is
  * done, the active one is highlighted, the very next one is open,
  * and the rest stay locked.
+ *
+ * `list` is the ordered path the state is judged against. It defaults to the
+ * bundled nodes above, but the path is served by /api/path-lessons at runtime,
+ * so pages pass the list they actually rendered.
  */
-export function lessonState(lesson, completedIds, activeId) {
+export function lessonState(lesson, completedIds, activeId, list = LESSONS) {
   if (completedIds.includes(lesson.id)) return 'completed'
   if (lesson.id === activeId) return 'active'
-  const activeIdx = LESSONS.findIndex((l) => l.id === activeId)
-  const idx = LESSONS.findIndex((l) => l.id === lesson.id)
+  const activeIdx = list.findIndex((l) => l.id === activeId)
+  const idx = list.findIndex((l) => l.id === lesson.id)
   return idx === activeIdx + 1 ? 'unlocked' : 'locked'
 }

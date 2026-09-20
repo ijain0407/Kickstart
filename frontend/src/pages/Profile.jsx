@@ -3,11 +3,13 @@ import Icon from '../components/Icon.jsx'
 import XPBar from '../components/XPBar.jsx'
 import LangSwitch from '../components/LangSwitch.jsx'
 import FieldPressButton from '../components/FieldPressButton.jsx'
+import GoogleSignInButton from '../components/GoogleSignInButton.jsx'
 import { LESSONS } from '../data/lessons.js'
 import { scoreLeagues } from '../data/quiz.js'
 import { RANKED_LEAGUES } from '../data/leagues.js'
 import { useI18n } from '../i18n/I18nContext.jsx'
 import { useApp } from '../state/AppState.jsx'
+import { useAuth } from '../state/AuthState.jsx'
 import { useRouter } from '../router.jsx'
 
 /** Achievements are derived from progress — nothing extra is stored. */
@@ -31,10 +33,19 @@ function useAchievements() {
   )
 }
 
+/** Two letters from a display name, for when Google sends no photo. */
+function initials(name = '') {
+  const words = name.trim().split(/\s+/).filter(Boolean)
+  if (!words.length) return ''
+  const letters = words.length === 1 ? words[0].slice(0, 2) : words[0][0] + words[words.length - 1][0]
+  return letters.toUpperCase()
+}
+
 export default function Profile() {
   const { t, tr } = useI18n()
   const { navigate } = useRouter()
   const app = useApp()
+  const { user, signedIn, signOut, loading: authLoading, error: authError } = useAuth()
   const { xp, xpPerLevel, level, streak, completedLessons, chantsMastered, quizAnswers, quizDone } = app
 
   const achievements = useAchievements()
@@ -62,23 +73,78 @@ export default function Profile() {
     window.location.reload()
   }
 
+  const displayName = user?.name || t('profile.name')
+
   return (
     <div className="page">
       {/* ---- Identity ---- */}
       <section className="card card--pad-lg stack stack-4" style={{ textAlign: 'center' }}>
         <div className="avatar avatar--xl" style={{ margin: '0 auto' }}>
-          <div className="avatar__img" aria-hidden="true">
-            IJ
-          </div>
+          {user?.picture ? (
+            <img className="avatar__img" src={user.picture} alt="" referrerPolicy="no-referrer" />
+          ) : (
+            <div className="avatar__img" aria-hidden="true">
+              {initials(displayName) || 'IJ'}
+            </div>
+          )}
           <span className="avatar__level">L{level}</span>
         </div>
 
         <div className="stack stack-1">
-          <h1 className="t-headline-lg">{t('profile.name')}</h1>
+          <h1 className="t-headline-lg">{displayName}</h1>
           <p className="t-body-md text-secondary">{t('path.levelName')}</p>
         </div>
 
         <XPBar value={xp} max={xpPerLevel} label={`${xp} / ${xpPerLevel} XP`} />
+      </section>
+
+      {/* ---- Account ---- */}
+      <section className="card card--pad stack stack-3">
+        <div className="section-head">
+          <h2 className="t-headline-sm">{t('auth.accountTitle')}</h2>
+          <Icon
+            name={signedIn ? 'verified_user' : 'account_circle'}
+            fill
+            style={{ color: signedIn ? 'var(--pitch-green)' : 'var(--text-secondary)' }}
+          />
+        </div>
+
+        {authLoading ? (
+          <p className="t-body-md text-secondary">{t('common.loading')}</p>
+        ) : signedIn ? (
+          <>
+            <div className="account">
+              {user.picture ? (
+                <img className="account__photo" src={user.picture} alt="" referrerPolicy="no-referrer" />
+              ) : (
+                <span className="account__photo account__photo--text" aria-hidden="true">
+                  {initials(displayName)}
+                </span>
+              )}
+              <span className="stack stack-1 grow">
+                <span className="t-headline-sm">{displayName}</span>
+                {user.email ? <span className="t-body-sm text-secondary">{user.email}</span> : null}
+              </span>
+            </div>
+
+            <p className="t-body-sm text-secondary">{t('auth.syncedNote')}</p>
+
+            <FieldPressButton variant="soft" block icon="logout" onClick={signOut}>
+              {t('auth.signOut')}
+            </FieldPressButton>
+          </>
+        ) : (
+          <>
+            <p className="t-body-md text-secondary">{t('auth.signedOutNote')}</p>
+            <GoogleSignInButton />
+          </>
+        )}
+
+        {authError ? (
+          <p className="t-body-sm" role="alert" style={{ color: 'var(--coral)' }}>
+            {t('auth.failed')}
+          </p>
+        ) : null}
       </section>
 
       {/* ---- Stats ---- */}

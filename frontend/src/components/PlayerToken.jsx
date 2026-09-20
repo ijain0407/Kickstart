@@ -15,6 +15,7 @@ export default function PlayerToken({
   onSelect,
   label,
   gold = false,
+  dimmed = false,
 }) {
   const isKeeper = gold || player.code === 'GK'
   const interactive = typeof onSelect === 'function'
@@ -24,6 +25,7 @@ export default function PlayerToken({
     isKeeper ? 'ptoken--gk' : '',
     selected ? 'ptoken--selected' : '',
     highlight ? 'ptoken--highlight' : '',
+    dimmed ? 'ptoken--dimmed' : '',
   ]
     .filter(Boolean)
     .join(' ')
