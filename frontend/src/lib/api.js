@@ -13,6 +13,23 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 const USER_KEY = 'soccerteaching.userId'
 let memoryUserId = null
 
+/**
+ * Adopt the id the auth API handed back: the account's id after signing in, a
+ * fresh anonymous one after signing out. The server is authoritative either
+ * way — while a session cookie is live the gateway overwrites X-User-Id with
+ * the account id — so this only keeps the client honest about who it thinks
+ * it is.
+ */
+export function setUserId(id) {
+  memoryUserId = id ?? null
+  try {
+    if (id) localStorage.setItem(USER_KEY, id)
+    else localStorage.removeItem(USER_KEY)
+  } catch {
+    /* the memory copy above still carries this session */
+  }
+}
+
 export function getUserId() {
   try {
     let id = localStorage.getItem(USER_KEY)
@@ -58,7 +75,16 @@ export async function api(path, { method = 'GET', body, lang = 'en', signal } = 
 
   let res
   try {
-    res = await fetch(`/api${path}`, { method, headers, signal, body: body === undefined ? undefined : JSON.stringify(body) })
+    res = await fetch(`/api${path}`, {
+      method,
+      headers,
+      signal,
+      // The session cookie is httpOnly and same-origin (both the Vite proxy
+      // and the deployed gateway serve /api from this origin), so it rides
+      // along without ever being readable from script.
+      credentials: 'same-origin',
+      body: body === undefined ? undefined : JSON.stringify(body),
+    })
   } catch (err) {
     if (err.name === 'AbortError') throw err
     throw new ApiError(0, 'NETWORK', 'Network error')

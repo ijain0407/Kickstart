@@ -62,6 +62,16 @@ export default function Leagues() {
               ))}
             </section>
 
+            {/* Picked a league — the obvious next question is which club. */}
+            <FieldPressButton
+              variant="primary"
+              block
+              iconAfter="arrow_forward"
+              onClick={() => navigate(`/club-quiz?league=${ranking[0].leagueId}`)}
+            >
+              {t('clubQuiz.cta')}
+            </FieldPressButton>
+
             <FieldPressButton
               variant="soft"
               block

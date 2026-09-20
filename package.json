@@ -11,11 +11,13 @@
     "build": "npm run build --prefix frontend",
     "smoke": "node server/smoke.js",
     "install:all": "npm install && npm install --prefix frontend && npm install --prefix league_feature && npm install --prefix quiz_feature && npm install --prefix person-b && npm install --prefix chatbot_feature",
-    "crests": "node league_feature/scripts/link-crests.mjs"
+    "crests": "node league_feature/scripts/link-crests.mjs",
+    "db:migrate": "node --env-file-if-exists=.env server/db/migrate.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.21.0",
+    "pg": "^8.23.0",
     "zod": "^3.23.8"
   },
   "devDependencies": {

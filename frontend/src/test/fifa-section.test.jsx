@@ -7,6 +7,7 @@ import { RouterProvider } from '../router.jsx'
 import { I18nProvider } from '../i18n/I18nContext.jsx'
 import { ThemeProvider } from '../state/ThemeContext.jsx'
 import { AppProvider } from '../state/AppState.jsx'
+import { AuthProvider } from '../state/AuthState.jsx'
 import { CONFEDERATIONS, COUNTRIES, WC2026_STAGES, flagSrc } from '../data/fifa.js'
 import { dictionary } from '../i18n/dictionary.js'
 
@@ -15,11 +16,13 @@ function renderApp(route) {
   return render(
     <ThemeProvider>
       <I18nProvider>
-        <AppProvider>
-          <RouterProvider>
-            <App />
-          </RouterProvider>
-        </AppProvider>
+        <AuthProvider>
+          <AppProvider>
+            <RouterProvider>
+              <App />
+            </RouterProvider>
+          </AppProvider>
+        </AuthProvider>
       </I18nProvider>
     </ThemeProvider>,
   )

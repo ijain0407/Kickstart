@@ -185,3 +185,65 @@ describe('plumbing', () => {
     expect(res.body.error.code).toBe('NOT_FOUND');
   });
 });
+
+describe('GET /api/club-quiz', () => {
+  it('returns the club questions and the league in play', async () => {
+    const res = await get('/api/club-quiz?league=league-serie-a');
+    expect(res.status).toBe(200);
+    expect(res.body.quiz.questions).toHaveLength(5);
+    expect(res.body.league).toEqual({ id: 'league-serie-a', name: 'Serie A' });
+    expect(res.body.clubCount).toBe(3);
+    // Same guarantees as the league matcher: metadata out, weights in.
+    expect(res.body.quiz.questions[0].options[0].tagIcon).toBeTruthy();
+    expect(JSON.stringify(res.body)).not.toMatch(/weights/);
+  });
+
+  it('404s on an unknown league', async () => {
+    expect((await get('/api/club-quiz?league=league-nope')).status).toBe(404);
+  });
+});
+
+describe('POST /api/club-quiz/recommend', () => {
+  const post = (body) => request(app).post('/api/club-quiz/recommend').send(body);
+
+  it('ranks only the clubs in the chosen league', async () => {
+    const res = await post({
+      leagueId: 'league-serie-a',
+      answers: { 'club-quiz-q1-draw': 'trophies', 'club-quiz-q5-sentence': 'win' },
+    });
+
+    expect(res.status).toBe(200);
+    expect(res.body.ranking).toHaveLength(3);
+    expect(res.body.ranking.every((r) => r.leagueId === 'league-serie-a')).toBe(true);
+    // Glory-first answers land on the most decorated club in the league.
+    expect(res.body.recommendation.club.id).toBe('culture-juventus');
+    expect(res.body.recommendation.reasons[0].id).toBe('glory');
+  });
+
+  it('matches what a supporter actually asked for', async () => {
+    const underdog = await post({
+      leagueId: 'league-premier-league',
+      answers: { 'club-quiz-q1-draw': 'smallclub', 'club-quiz-q2-season': 'survival' },
+    });
+    // Not one of the giants.
+    expect(['culture-brighton', 'culture-sunderland', 'culture-crystal-palace', 'culture-nottingham-forest'])
+      .toContain(underdog.body.recommendation.club.id);
+
+    const glory = await post({
+      leagueId: 'league-premier-league',
+      answers: { 'club-quiz-q1-draw': 'trophies', 'club-quiz-q3-matchday': 'big' },
+    });
+    expect(['culture-manchester-city', 'culture-liverpool', 'culture-manchester-united'])
+      .toContain(glory.body.recommendation.club.id);
+  });
+
+  it('scores across every club when no league is given', async () => {
+    const res = await post({ answers: { 'club-quiz-q1-draw': 'crowd' } });
+    expect(res.body.ranking.length).toBeGreaterThanOrEqual(25);
+  });
+
+  it('rejects an unknown league and empty answers', async () => {
+    expect((await post({ leagueId: 'league-nope', answers: { 'club-quiz-q1-draw': 'trophies' } })).status).toBe(404);
+    expect((await post({ answers: {} })).body.error.code).toBe('NO_ANSWERS');
+  });
+});

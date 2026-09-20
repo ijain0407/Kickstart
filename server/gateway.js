@@ -14,6 +14,7 @@ import { normalizeLocale } from '../league_feature/server/src/lib/localize.js';
 import { leagueRoutes } from '../league_feature/server/src/routes/leagues.js';
 import { cultureRoutes } from '../league_feature/server/src/routes/culture.js';
 import { leagueQuizRoutes } from '../league_feature/server/src/routes/leagueQuiz.js';
+import { clubQuizRoutes } from '../league_feature/server/src/routes/clubQuiz.js';
 import { AppError } from '../league_feature/server/src/lib/errors.js';
 
 // Person D — quiz engine, XP, progress, explain-a-play.
@@ -21,6 +22,12 @@ import { createApp as createQuizApp } from '../quiz_feature/server/src/app.js';
 
 // Chatbot — quick-question chat ball, Gemini-backed with a built-in FAQ fallback.
 import { chatbotRoutes } from '../chatbot_feature/server/routes/chatbot.js';
+
+// Shared — accounts, sessions and Postgres storage.
+import { isDbConfigured, ping } from './db/pool.js';
+import { authRoutes } from './auth/routes.js';
+import { readCookie } from './auth/sessions.js';
+import { userForToken } from './auth/sessions.js';
 
 
 /**
@@ -39,14 +46,21 @@ import { chatbotRoutes } from '../chatbot_feature/server/routes/chatbot.js';
  * mounting them under /api gives the frontend one base path, and the
  * middleware below lets them answer to `?locale=` like everyone else.
  */
-export function createGateway({ quizDataDir } = {}) {
+export function createGateway({ quizDataDir, stores } = {}) {
   const app = express();
   const content = createContentRepo();
 
   app.use(cors());
   app.use(express.json({ limit: '100kb' }));
 
-  app.get('/api/health', (req, res) => res.json({ ok: true, services: ['lessons', 'leagues', 'quiz', 'chatbot'] }));
+  app.get('/api/health', async (req, res) =>
+    res.json({
+      ok: true,
+      services: ['lessons', 'leagues', 'quiz', 'chatbot'],
+      accounts: isDbConfigured(),
+      database: await ping(),
+    }),
+  );
 
   // One locale convention across all three APIs: ?locale= wins, then X-Locale,
   // then Accept-Language, falling back to English.
@@ -61,6 +75,31 @@ export function createGateway({ quizDataDir } = {}) {
     next();
   });
 
+  /**
+   * Who is asking. A valid session cookie wins over the anonymous id the
+   * client keeps in localStorage, and is copied into X-User-Id so every
+   * existing route — progress, XP, streaks — becomes account-scoped without
+   * any of those routes changing.
+   */
+  app.use('/api', async (req, res, next) => {
+    req.auth = { user: null, anonymousId: req.get('X-User-Id') ?? null };
+    if (!isDbConfigured()) return next();
+    try {
+      const user = await userForToken(readCookie(req));
+      if (user) {
+        req.auth.user = user;
+        req.headers['x-user-id'] = user.id;
+      }
+    } catch (err) {
+      // A database blip shouldn't sign everyone out mid-demo; carry on
+      // anonymously and let the health check surface the real problem.
+      console.error('[auth] session lookup failed:', err.message);
+    }
+    next();
+  });
+
+  app.use('/api/auth', authRoutes());
+
   app.use('/api/lessons', lessonsRouter);
   app.use('/api/path-lessons', pathLessonsRouter);
   app.use('/api/formations', formationsRouter);
@@ -69,13 +108,14 @@ export function createGateway({ quizDataDir } = {}) {
   app.use('/api/leagues', leagueRoutes({ content }));
   app.use('/api/culture', cultureRoutes({ content }));
   app.use('/api/league-quiz', leagueQuizRoutes({ content }));
+  app.use('/api/club-quiz', clubQuizRoutes({ content }));
 
   app.use('/api/chatbot', chatbotRoutes());
 
   // Person D's app mounts its own /api/quiz, /api/progress and /api/explain,
   // plus its own validation and error handling. It goes last because it ends
   // with a catch-all /api 404 — anything unmatched above lands there.
-  app.use(createQuizApp({ dataDir: quizDataDir }));
+  app.use(createQuizApp({ dataDir: quizDataDir, stores }));
 
   // eslint-disable-next-line no-unused-vars
   app.use((err, req, res, next) => {

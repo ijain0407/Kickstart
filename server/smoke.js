@@ -69,6 +69,14 @@ const CHECKS = [
     },
   },
   { name: 'D · league matcher XP', path: '/api/progress/league-matched', method: 'POST', body: { leagueId: 'league-serie-a' }, check: (b) => b.xpEarned >= 120 },
+  { name: 'C · club quiz', path: '/api/club-quiz?league=league-serie-a', check: (b) => b.quiz.questions.length === 5 && b.clubCount === 3 },
+  {
+    name: 'C · club recommend',
+    path: '/api/club-quiz/recommend',
+    method: 'POST',
+    body: { leagueId: 'league-serie-a', answers: { 'club-quiz-q1-draw': 'trophies' } },
+    check: (b) => b.ranking.length === 3 && b.recommendation.club.leagueId === 'league-serie-a',
+  },
   { name: '404 shape', path: '/api/nope', check: (b, res) => res.status === 404 && b.error.code === 'NOT_FOUND' },
 ];
 

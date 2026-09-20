@@ -1,0 +1,359 @@
+{
+  "id": "club-quiz",
+  "title": { "en": "Find Your Club", "es": "Encuentra Tu Club" },
+  "intro": {
+    "en": "Five questions about what would make a club yours. We'll match you to one in the league you picked.",
+    "es": "Cinco preguntas sobre qué haría tuyo a un club. Te emparejaremos con uno de la liga que elegiste."
+  },
+  "traits": [
+    {
+      "id": "glory",
+      "label": { "en": "Winning now", "es": "Ganar ahora" },
+      "description": {
+        "en": "Trophies, title races, the best players.",
+        "es": "Títulos, luchas por la liga, los mejores jugadores."
+      }
+    },
+    {
+      "id": "history",
+      "label": { "en": "History", "es": "Historia" },
+      "description": {
+        "en": "Old giants and things that happened long before you arrived.",
+        "es": "Viejos gigantes y cosas que pasaron mucho antes de que llegaras."
+      }
+    },
+    {
+      "id": "underdog",
+      "label": { "en": "Underdog", "es": "El humilde" },
+      "description": {
+        "en": "Small budget, no birthright, everything earned.",
+        "es": "Presupuesto pequeño, nada heredado, todo ganado."
+      }
+    },
+    {
+      "id": "drama",
+      "label": { "en": "Drama", "es": "Drama" },
+      "description": {
+        "en": "Chaos, comebacks, never a quiet season.",
+        "es": "Caos, remontadas, ninguna temporada tranquila."
+      }
+    },
+    {
+      "id": "identity",
+      "label": { "en": "Belonging", "es": "Pertenencia" },
+      "description": {
+        "en": "Local roots, loyalty, a club that belongs to its city.",
+        "es": "Raíces locales, lealtad, un club que pertenece a su ciudad."
+      }
+    },
+    {
+      "id": "style",
+      "label": { "en": "Style", "es": "Estilo" },
+      "description": {
+        "en": "How the football looks — flair over function.",
+        "es": "Cómo se ve el fútbol: brillo por encima de la función."
+      }
+    },
+    {
+      "id": "atmosphere",
+      "label": { "en": "Atmosphere", "es": "Ambiente" },
+      "description": {
+        "en": "Noise, terraces, the matchday itself.",
+        "es": "Ruido, gradas y el propio día de partido."
+      }
+    }
+  ],
+  "questions": [
+    {
+      "id": "club-quiz-q1-draw",
+      "order": 1,
+      "multi": true,
+      "section": { "en": "What pulls you in", "es": "Qué te atrae" },
+      "prompt": {
+        "en": "What would make you pick a club?",
+        "es": "¿Qué te haría elegir un club?"
+      },
+      "options": [
+        {
+          "id": "trophies",
+          "text": { "en": "Winning things, soon", "es": "Ganar cosas, pronto" },
+          "tag": { "en": "Silverware", "es": "Títulos" },
+          "tagIcon": "emoji_events",
+          "tagTone": "gold",
+          "desc": {
+            "en": "You want to be in title races and knockout nights, not rebuilding projects.",
+            "es": "Quieres pelear ligas y noches de eliminatoria, no proyectos en reconstrucción."
+          },
+          "metas": [{ "icon": "military_tech", "label": { "en": "Trophy cabinet", "es": "Vitrina de títulos" } }],
+          "weights": { "glory": 3 }
+        },
+        {
+          "id": "heritage",
+          "text": { "en": "A club with real history", "es": "Un club con historia de verdad" },
+          "tag": { "en": "Heritage", "es": "Legado" },
+          "tagIcon": "history",
+          "tagTone": "lavender",
+          "desc": {
+            "en": "Old badges, famous nights your grandparents remember, a museum's worth of stories.",
+            "es": "Escudos antiguos, noches famosas que recuerdan tus abuelos, historias para un museo."
+          },
+          "metas": [{ "icon": "auto_stories", "label": { "en": "Decades of it", "es": "Décadas de ello" } }],
+          "weights": { "history": 3 }
+        },
+        {
+          "id": "smallclub",
+          "text": { "en": "A team nobody expects anything from", "es": "Un equipo del que nadie espera nada" },
+          "tag": { "en": "Underdog", "es": "Humilde" },
+          "tagIcon": "trending_up",
+          "tagTone": "peach",
+          "desc": {
+            "en": "Every good result feels stolen, and nothing is owed to anyone.",
+            "es": "Cada buen resultado sabe a robo y nadie tiene nada garantizado."
+          },
+          "metas": [{ "icon": "groups", "label": { "en": "Punching up", "es": "Peleando hacia arriba" } }],
+          "weights": { "underdog": 3 }
+        },
+        {
+          "id": "crowd",
+          "text": { "en": "A crowd that never sits down", "es": "Una grada que nunca se sienta" },
+          "tag": { "en": "Noise", "es": "Ruido" },
+          "tagIcon": "campaign",
+          "tagTone": "red",
+          "desc": {
+            "en": "You'd pick the club by the sound of the stand as much as the team on it.",
+            "es": "Elegirías el club por el sonido de la grada tanto como por el equipo."
+          },
+          "metas": [{ "icon": "stadium", "label": { "en": "Matchday first", "es": "El día de partido primero" } }],
+          "weights": { "atmosphere": 3 }
+        },
+        {
+          "id": "football",
+          "text": { "en": "The way they play", "es": "Su forma de jugar" },
+          "tag": { "en": "Flair", "es": "Brillo" },
+          "tagIcon": "auto_awesome",
+          "tagTone": "lavender",
+          "desc": {
+            "en": "You'd rather watch a good team lose than a dull one grind out a win.",
+            "es": "Prefieres ver perder a un equipo bueno que ver ganar a uno aburrido."
+          },
+          "metas": [{ "icon": "hub", "label": { "en": "Watchable", "es": "Disfrutable" } }],
+          "weights": { "style": 3 }
+        }
+      ]
+    },
+    {
+      "id": "club-quiz-q2-season",
+      "order": 2,
+      "multi": false,
+      "section": { "en": "Your season", "es": "Tu temporada" },
+      "prompt": {
+        "en": "Your perfect season ends with…",
+        "es": "Tu temporada perfecta termina con…"
+      },
+      "options": [
+        {
+          "id": "title",
+          "text": { "en": "A trophy on the balcony", "es": "Un trofeo en el balcón" },
+          "tag": { "en": "Champions", "es": "Campeones" },
+          "tagIcon": "emoji_events",
+          "tagTone": "gold",
+          "desc": { "en": "Nothing else really counts.", "es": "Nada más cuenta de verdad." },
+          "metas": [{ "icon": "military_tech", "label": { "en": "Win it all", "es": "Ganarlo todo" } }],
+          "weights": { "glory": 3 }
+        },
+        {
+          "id": "rollercoaster",
+          "text": { "en": "Seventh place and a season nobody could explain", "es": "Un séptimo puesto y una temporada inexplicable" },
+          "tag": { "en": "Chaos", "es": "Caos" },
+          "tagIcon": "bolt",
+          "tagTone": "red",
+          "desc": {
+            "en": "Thrashings, comebacks, a cup run out of nowhere. You'd take it over safety.",
+            "es": "Palizas, remontadas, una racha de copa surgida de la nada. Lo prefieres a la tranquilidad."
+          },
+          "metas": [{ "icon": "trending_up", "label": { "en": "Never boring", "es": "Nunca aburrido" } }],
+          "weights": { "drama": 3 }
+        },
+        {
+          "id": "survival",
+          "text": { "en": "Staying up on the final day", "es": "Salvarse en la última jornada" },
+          "tag": { "en": "Survival", "es": "Supervivencia" },
+          "tagIcon": "shield",
+          "tagTone": "peach",
+          "desc": {
+            "en": "A relegation escape celebrated like a title, because for this club it is one.",
+            "es": "Una salvación celebrada como un título, porque para este club lo es."
+          },
+          "metas": [{ "icon": "groups", "label": { "en": "Against the odds", "es": "Contra pronóstico" } }],
+          "weights": { "underdog": 3, "identity": 1 }
+        },
+        {
+          "id": "best-football",
+          "text": { "en": "The best football anyone played all year", "es": "El mejor fútbol que se vio en todo el año" },
+          "tag": { "en": "Purists", "es": "Puristas" },
+          "tagIcon": "auto_awesome",
+          "tagTone": "lavender",
+          "desc": { "en": "Trophy optional. Neutral fans should envy you.", "es": "El título es opcional. Los neutrales deberían envidiarte." },
+          "metas": [{ "icon": "hub", "label": { "en": "Style points", "es": "Puntos de estilo" } }],
+          "weights": { "style": 3 }
+        }
+      ]
+    },
+    {
+      "id": "club-quiz-q3-matchday",
+      "order": 3,
+      "multi": false,
+      "section": { "en": "The ground", "es": "El estadio" },
+      "prompt": {
+        "en": "Which ground do you want to walk into?",
+        "es": "¿A qué estadio quieres entrar?"
+      },
+      "options": [
+        {
+          "id": "loud",
+          "text": { "en": "One that never stops singing", "es": "Uno que no deja de cantar" },
+          "tag": { "en": "Wall of Sound", "es": "Muro de sonido" },
+          "tagIcon": "campaign",
+          "tagTone": "gold",
+          "desc": { "en": "Flags, drums, and ninety minutes of noise whatever the score.", "es": "Banderas, tambores y noventa minutos de ruido vaya como vaya el marcador." },
+          "metas": [{ "icon": "stadium", "label": { "en": "Standing room", "es": "Grada de pie" } }],
+          "weights": { "atmosphere": 3 }
+        },
+        {
+          "id": "old",
+          "text": { "en": "One with a hundred years of ghosts", "es": "Uno con cien años de fantasmas" },
+          "tag": { "en": "Cathedral", "es": "Catedral" },
+          "tagIcon": "history",
+          "tagTone": "lavender",
+          "desc": { "en": "Cramped, old, and every stand has a story attached to it.", "es": "Estrecho, antiguo, y cada grada tiene una historia detrás." },
+          "metas": [{ "icon": "auto_stories", "label": { "en": "Living history", "es": "Historia viva" } }],
+          "weights": { "history": 3 }
+        },
+        {
+          "id": "local",
+          "text": { "en": "One the town actually owns", "es": "Uno que la ciudad posee de verdad" },
+          "tag": { "en": "Ours", "es": "Nuestro" },
+          "tagIcon": "favorite",
+          "tagTone": "red",
+          "desc": { "en": "Walk from the pub, everyone's family has a seat, nobody moved here for the football.", "es": "Se llega andando desde el bar, cada familia tiene su asiento y nadie se mudó aquí por el fútbol." },
+          "metas": [{ "icon": "diversity_3", "label": { "en": "Local roots", "es": "Raíces locales" } }],
+          "weights": { "identity": 3 }
+        },
+        {
+          "id": "big",
+          "text": { "en": "The biggest stage, the biggest names", "es": "El escenario más grande, los nombres más grandes" },
+          "tag": { "en": "Showpiece", "es": "Escaparate" },
+          "tagIcon": "emoji_events",
+          "tagTone": "gold",
+          "desc": { "en": "Eighty thousand seats and a team full of players you already know.", "es": "Ochenta mil asientos y un equipo lleno de jugadores que ya conoces." },
+          "metas": [{ "icon": "public", "label": { "en": "Global club", "es": "Club global" } }],
+          "weights": { "glory": 2, "style": 1 }
+        }
+      ]
+    },
+    {
+      "id": "club-quiz-q4-bad-day",
+      "order": 4,
+      "multi": false,
+      "section": { "en": "A bad day", "es": "Un mal día" },
+      "prompt": {
+        "en": "Your team loses 4-0. What's your reaction?",
+        "es": "Tu equipo pierde 4-0. ¿Cómo reaccionas?"
+      },
+      "options": [
+        {
+          "id": "spend",
+          "text": { "en": "We'll sign someone in January", "es": "Ficharemos a alguien en enero" },
+          "tag": { "en": "Fix It", "es": "Arreglarlo" },
+          "tagIcon": "trending_up",
+          "tagTone": "gold",
+          "desc": { "en": "A club this size shouldn't lose like that, and won't for long.", "es": "Un club de este tamaño no debería perder así, y no lo hará mucho tiempo." },
+          "metas": [{ "icon": "military_tech", "label": { "en": "High standards", "es": "Nivel de exigencia" } }],
+          "weights": { "glory": 2 }
+        },
+        {
+          "id": "chapter",
+          "text": { "en": "Add it to the list. We've seen worse", "es": "Uno más para la lista. Hemos visto cosas peores" },
+          "tag": { "en": "Lifers", "es": "De por vida" },
+          "tagIcon": "favorite",
+          "tagTone": "red",
+          "desc": { "en": "Supporting them isn't conditional on them being good.", "es": "Apoyarles no depende de que sean buenos." },
+          "metas": [{ "icon": "diversity_3", "label": { "en": "Through anything", "es": "Pase lo que pase" } }],
+          "weights": { "identity": 2, "history": 1 }
+        },
+        {
+          "id": "laugh",
+          "text": { "en": "Laugh. This club is chaos and that's the point", "es": "Reírte. Este club es un caos y de eso se trata" },
+          "tag": { "en": "Rollercoaster", "es": "Montaña rusa" },
+          "tagIcon": "bolt",
+          "tagTone": "red",
+          "desc": { "en": "You'll win 5-4 next week and nobody will be surprised.", "es": "La semana que viene ganarás 5-4 y nadie se sorprenderá." },
+          "metas": [{ "icon": "speed", "label": { "en": "Unpredictable", "es": "Impredecible" } }],
+          "weights": { "drama": 3 }
+        },
+        {
+          "id": "tried",
+          "text": { "en": "At least we tried to play properly", "es": "Al menos intentamos jugar bien" },
+          "tag": { "en": "Principles", "es": "Principios" },
+          "tagIcon": "auto_awesome",
+          "tagTone": "lavender",
+          "desc": { "en": "You'd rather be beaten playing your way than grind out a goalless draw.", "es": "Prefieres perder jugando a tu manera que sacar un 0-0 sufriendo." },
+          "metas": [{ "icon": "hub", "label": { "en": "Idea of football", "es": "Idea de fútbol" } }],
+          "weights": { "style": 2 }
+        }
+      ]
+    },
+    {
+      "id": "club-quiz-q5-sentence",
+      "order": 5,
+      "multi": false,
+      "section": { "en": "In a sentence", "es": "En una frase" },
+      "prompt": {
+        "en": "Which one sounds most like you?",
+        "es": "¿Cuál se parece más a ti?"
+      },
+      "options": [
+        {
+          "id": "win",
+          "text": { "en": "I want to win", "es": "Quiero ganar" },
+          "tag": { "en": "Winner", "es": "Ganador" },
+          "tagIcon": "emoji_events",
+          "tagTone": "gold",
+          "desc": { "en": "No apologies. Following a team is more fun when it wins.", "es": "Sin disculpas. Seguir a un equipo es más divertido cuando gana." },
+          "metas": [{ "icon": "military_tech", "label": { "en": "Trophies", "es": "Títulos" } }],
+          "weights": { "glory": 3 }
+        },
+        {
+          "id": "belong",
+          "text": { "en": "I want to belong somewhere", "es": "Quiero pertenecer a algún sitio" },
+          "tag": { "en": "One of Us", "es": "Uno de los nuestros" },
+          "tagIcon": "diversity_3",
+          "tagTone": "peach",
+          "desc": { "en": "The club as a place and a people, not just a team.", "es": "El club como un lugar y una gente, no solo un equipo." },
+          "metas": [{ "icon": "favorite", "label": { "en": "Community", "es": "Comunidad" } }],
+          "weights": { "identity": 3 }
+        },
+        {
+          "id": "feel",
+          "text": { "en": "I want to feel something every week", "es": "Quiero sentir algo cada semana" },
+          "tag": { "en": "All In", "es": "A tope" },
+          "tagIcon": "local_fire_department",
+          "tagTone": "red",
+          "desc": { "en": "Highs, lows, arguments with the television. Just never indifference.", "es": "Alegrías, disgustos, discusiones con la tele. Nunca indiferencia." },
+          "metas": [{ "icon": "campaign", "label": { "en": "Emotion", "es": "Emoción" } }],
+          "weights": { "drama": 2, "atmosphere": 1 }
+        },
+        {
+          "id": "watch",
+          "text": { "en": "I just want to watch great football", "es": "Solo quiero ver buen fútbol" },
+          "tag": { "en": "Neutral's Pick", "es": "Favorito del neutral" },
+          "tagIcon": "auto_awesome",
+          "tagTone": "lavender",
+          "desc": { "en": "You picked up the sport for the game itself, not the tribalism.", "es": "Te acercaste a este deporte por el juego en sí, no por el tribalismo." },
+          "metas": [{ "icon": "hub", "label": { "en": "The football", "es": "El fútbol" } }],
+          "weights": { "style": 3 }
+        }
+      ]
+    }
+  ]
+}
