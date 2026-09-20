@@ -1,0 +1,20 @@
+{
+  "name": "kickstart-chatbot",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Quick-question chat widget backend for Kickstart — answers via the Gemini API, falling back to a built-in FAQ when no key is set.",
+  "main": "server/routes/chatbot.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "kickstart": "file:.."
+  }
+}
