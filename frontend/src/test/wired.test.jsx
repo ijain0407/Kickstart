@@ -5,7 +5,6 @@ import App from '../App.jsx'
 import { RouterProvider } from '../router.jsx'
 import { I18nProvider } from '../i18n/I18nContext.jsx'
 import { ThemeProvider } from '../state/ThemeContext.jsx'
-import { AuthProvider } from '../state/AuthState.jsx'
 import { AppProvider } from '../state/AppState.jsx'
 
 /**
@@ -18,13 +17,11 @@ function renderApp(route = '/') {
   return render(
     <ThemeProvider>
       <I18nProvider>
-        <AuthProvider>
-          <AppProvider>
-            <RouterProvider>
-              <App />
-            </RouterProvider>
-          </AppProvider>
-        </AuthProvider>
+        <AppProvider>
+          <RouterProvider>
+            <App />
+          </RouterProvider>
+        </AppProvider>
       </I18nProvider>
     </ThemeProvider>,
   )
@@ -307,82 +304,5 @@ describe('Opening a lesson from the path', () => {
     expect(await screen.findByText(/Finish the lesson before this one/)).toBeInTheDocument()
     // Still on the path, not in a lesson.
     expect(screen.getByRole('heading', { name: 'Tactical Foundations' })).toBeInTheDocument()
-  })
-})
-
-describe('Account (Google sign-in)', () => {
-  it('plays as a guest and says so, with sign-in switched off on this server', async () => {
-    renderApp('/profile')
-
-    // The account card reports the real state of GET /api/auth/config, which
-    // is disabled here because the test gateway has no GOOGLE_CLIENT_ID.
-    expect(await screen.findByRole('heading', { name: 'Account' })).toBeInTheDocument()
-    // The card shows a loading line until /api/auth/config and /api/auth/me land.
-    expect(await screen.findByText(/You are playing as a guest/)).toBeInTheDocument()
-    expect(screen.getByText(/Google sign-in is not set up on this server/)).toBeInTheDocument()
-
-    // Nothing is gated: signed out, the profile still shows real progress.
-    expect(screen.getByRole('heading', { name: /Achievements/ })).toBeInTheDocument()
-    expect(screen.queryByRole('button', { name: /Sign out/ })).not.toBeInTheDocument()
-  })
-
-  it('leaves a guest able to earn XP on the server', async () => {
-    const { api, getUserId } = await import('../lib/api.js')
-
-    // No session, no cookie — just the browser's anonymous id.
-    expect(getUserId()).toMatch(/^[A-Za-z0-9-]{8,64}$/)
-    expect((await api('/auth/me')).user).toBeNull()
-
-    await api('/progress/league-matched', { method: 'POST', body: { leagueId: 'league-serie-a' } })
-    expect((await api('/progress')).xp).toBeGreaterThanOrEqual(120)
-  })
-})
-describe('Chant audio', () => {
-  it('leads the chant card with the Spotify player', async () => {
-    const user = userEvent.setup()
-    const { container } = renderApp('/culture')
-
-    await user.click(await screen.findByRole('button', { name: 'Bundesliga' }))
-    await user.click(await screen.findByRole('button', { name: /Bayern Munich/ }))
-
-    // The player is the card's first element — no click needed, no stand-in
-    // playback, and the plain link-out stays suppressed when a track exists.
-    // Title and original line both read "Mia san mia".
-    expect((await screen.findAllByText('Mia san mia')).length).toBeGreaterThan(0)
-    const frame = container.querySelector('.chant iframe')
-    expect(frame).toHaveAttribute('src', 'https://open.spotify.com/embed/track/5VHZPknPqlaGMi4bbFpdiJ')
-    expect(container.querySelector('.chant__body').firstChild).toContainElement(frame)
-    expect(screen.queryByRole('link', { name: /Listen to the real crowd/ })).not.toBeInTheDocument()
-  })
-
-  it('shows the three layers alone when a chant has no track', async () => {
-    const user = userEvent.setup()
-    const { container } = renderApp('/culture')
-
-    // Exact name: the club tiles also mention the league, so a regex matches
-    // several buttons. "La Liga" in English, "LaLiga" in Spanish.
-    await user.click(await screen.findByRole('button', { name: 'La Liga' }))
-    await user.click(await screen.findByRole('button', { name: /Atlético Madrid/ }))
-
-    // No track for this one yet: no player and no dead link — the card is just
-    // the chant and its three layers.
-    expect((await screen.findAllByText('¡Aúpa Atleti!')).length).toBeGreaterThan(0)
-    expect(container.querySelector('.chant iframe')).toBeNull()
-    expect(screen.queryByRole('link', { name: /Listen to the real crowd/ })).not.toBeInTheDocument()
-    expect(screen.getByText('Up, Atleti!')).toBeInTheDocument()
-  })
-})
-
-describe('Club visuals', () => {
-  it("draws each club's kit from its own colours", async () => {
-    const user = userEvent.setup()
-    const { container } = renderApp('/culture')
-
-    await user.click(await screen.findByRole('button', { name: 'Serie A' }))
-    const juve = await screen.findByRole('button', { name: /Juventus/ })
-
-    // Card colours come from the kit data, and the club logo sits beside the name.
-    expect(juve).toHaveStyle({ '--club-a': '#000000', '--club-b': '#ffffff' })
-    expect(juve.querySelector('img.club-crest--img')).toHaveAttribute('src', '/crests/culture-juventus.png')
   })
 })

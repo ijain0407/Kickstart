@@ -4,19 +4,12 @@ import LangSwitch from './LangSwitch.jsx'
 import ThemeToggle from './ThemeToggle.jsx'
 import { useI18n } from '../i18n/I18nContext.jsx'
 import { useApp } from '../state/AppState.jsx'
-import { useAuth } from '../state/AuthState.jsx'
 import { Link } from '../router.jsx'
 
 /** Sticky white bar: brand, language pill, streak, avatar with level badge. */
 export default function AppBar() {
   const { t } = useI18n()
   const { streak, level } = useApp()
-  const { user } = useAuth()
-
-  // Signed out this stays the placeholder monogram it has always been.
-  const monogram = user?.name
-    ? user.name.trim().split(/\s+/).filter(Boolean).map((w) => w[0]).slice(0, 2).join('').toUpperCase()
-    : 'IJ'
 
   return (
     <header className="appbar">
@@ -39,18 +32,10 @@ export default function AppBar() {
           <span className="t-num streak-pill__n">{streak}</span>
         </Link>
 
-        <Link
-          to="/profile"
-          className="avatar"
-          aria-label={user?.name ? `${t('appbar.avatarLabel')} — ${user.name}` : t('appbar.avatarLabel')}
-        >
-          {user?.picture ? (
-            <img className="avatar__img" src={user.picture} alt="" referrerPolicy="no-referrer" />
-          ) : (
-            <span className="avatar__img" aria-hidden="true">
-              {monogram}
-            </span>
-          )}
+        <Link to="/profile" className="avatar" aria-label={t('appbar.avatarLabel')}>
+          <span className="avatar__img" aria-hidden="true">
+            IJ
+          </span>
           <span className="avatar__level" aria-hidden="true">
             L{level}
           </span>

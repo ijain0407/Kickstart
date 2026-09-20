@@ -2,6 +2,3 @@ node_modules
 dist
 .env
 *.log
-
-# Accounts and live sessions — never commit these.
-server/data

@@ -22,11 +22,6 @@ import { createApp as createQuizApp } from '../quiz_feature/server/src/app.js';
 // Chatbot — quick-question chat ball, Gemini-backed with a built-in FAQ fallback.
 import { chatbotRoutes } from '../chatbot_feature/server/routes/chatbot.js';
 
-// Shared — Google sign-in. Optional: with no GOOGLE_CLIENT_ID set, /api/auth
-// still answers, reports itself disabled, and every visitor stays anonymous.
-import { authRoutes } from './auth/routes.js';
-import { createAuthStore } from './auth/store.js';
-import { sessionResolver } from './auth/session.js';
 
 /**
  * One API for the whole app, so the demo is a single backend process.
@@ -39,29 +34,19 @@ import { sessionResolver } from './auth/session.js';
  *   /api/leagues, /api/culture, /api/league-quiz   Person C
  *   /api/quiz, /api/progress, /api/explain         Person D
  *   /api/chatbot                                   Chatbot (chat ball widget)
- *   /api/auth                                      shared, see auth/
  *
  * Person B's routes were written without the /api prefix and read `?lang=`;
  * mounting them under /api gives the frontend one base path, and the
  * middleware below lets them answer to `?locale=` like everyone else.
  */
-export function createGateway({ quizDataDir, authDataDir = null, verifyGoogleToken } = {}) {
+export function createGateway({ quizDataDir } = {}) {
   const app = express();
   const content = createContentRepo();
-  const authStore = createAuthStore({ dataDir: authDataDir });
 
   app.use(cors());
   app.use(express.json({ limit: '100kb' }));
 
   app.get('/api/health', (req, res) => res.json({ ok: true, services: ['lessons', 'leagues', 'quiz', 'chatbot'] }));
-
-  // Identity, before anything that reads it. A live session overwrites
-  // X-User-Id, so while signed in the server decides whose progress a request
-  // touches; without one the browser's anonymous id is left alone.
-  app.use('/api', sessionResolver(authStore));
-  // `verifyGoogleToken` is a test seam. Left out — which is every real run —
-  // the routes use the real verifier in auth/google.js.
-  app.use('/api/auth', authRoutes({ store: authStore, verify: verifyGoogleToken }));
 
   // One locale convention across all three APIs: ?locale= wins, then X-Locale,
   // then Accept-Language, falling back to English.

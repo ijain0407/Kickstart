@@ -297,20 +297,6 @@ export const dictionary = {
     },
 
     /* ---------- lesson player ---------- */
-    /* ---------- account / Google sign-in ---------- */
-    auth: {
-      accountTitle: 'Account',
-      signIn: 'Sign in',
-      signOut: 'Sign out',
-      signingIn: 'Signing you in…',
-      signedOutNote:
-        'You are playing as a guest. Sign in with Google and the XP, streak and badges you have already earned come with you — to this account, and to any device you sign in on next.',
-      syncedNote: 'Your progress is saved to this account and follows you to any device you sign in on.',
-      failed: "That didn't work. Please try signing in again.",
-      disabled: 'Google sign-in is not set up on this server yet, so everyone plays as a guest.',
-      unavailable: "Google's sign-in couldn't load. Check your connection or any blockers, then reload.",
-    },
-
     lesson: {
       keyTerms: 'Key terms',
       module: 'MODULE',
@@ -697,19 +683,6 @@ export const dictionary = {
       shot: '¡Disparo!',
       wide: 'Fuera. El ángulo era cerrado.',
       clearance: 'Despejado el peligro.',
-    },
-
-    auth: {
-      accountTitle: 'Cuenta',
-      signIn: 'Iniciar sesión',
-      signOut: 'Cerrar sesión',
-      signingIn: 'Iniciando sesión…',
-      signedOutNote:
-        'Estás jugando como invitado. Inicia sesión con Google y el XP, la racha y las insignias que ya has ganado se vienen contigo: a esta cuenta y a cualquier dispositivo en el que inicies sesión.',
-      syncedNote: 'Tu progreso se guarda en esta cuenta y te sigue a cualquier dispositivo en el que inicies sesión.',
-      failed: 'No ha funcionado. Vuelve a intentar iniciar sesión.',
-      disabled: 'Este servidor aún no tiene configurado el inicio de sesión con Google, así que todo el mundo juega como invitado.',
-      unavailable: 'No se ha podido cargar el inicio de sesión de Google. Revisa tu conexión o los bloqueadores y recarga.',
     },
 
     lesson: {

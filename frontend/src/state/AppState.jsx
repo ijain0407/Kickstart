@@ -1,6 +1,5 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react'
 import { api } from '../lib/api.js'
-import { useAuth } from './AuthState.jsx'
 import { quizSlugForPathId } from '../../../shared/lessons.js'
 
 /* ============================================================
@@ -58,8 +57,6 @@ function readStored() {
 const AppContext = createContext(null)
 
 export function AppProvider({ children }) {
-  const { userId, signedIn } = useAuth()
-  const lastUserId = useRef(userId)
   const [state, setState] = useState(readStored)
   const [progress, setProgress] = useState(EMPTY_PROGRESS)
   const [online, setOnline] = useState(true)
@@ -93,23 +90,9 @@ export function AppProvider({ children }) {
     }
   }, [])
 
-  // Whoever the request is being made as, refetch their progress. `userId`
-  // changes on sign-in (to the account's id) and on sign-out (to a fresh one).
   useEffect(() => {
     refresh()
-  }, [refresh, userId])
-
-  /**
-   * The local slice — which path nodes are done, matcher answers, the week
-   * strip — belongs to whoever was using the browser. Signing out hands the
-   * machine to a new anonymous id, so that slice has to go with the old one;
-   * signing *in* keeps it, because the account has just adopted that id.
-   */
-  useEffect(() => {
-    const previous = lastUserId.current
-    lastUserId.current = userId
-    if (previous && previous !== userId && !signedIn) setState(INITIAL)
-  }, [userId, signedIn])
+  }, [refresh])
 
   /**
    * Local-only XP for the pitch-pass mini-game, which the progress API doesn't
