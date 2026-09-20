@@ -1,46 +1,17 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import Icon from './Icon.jsx'
 import FieldPressButton from './FieldPressButton.jsx'
-import { canPlayChant, playChant, stopChant } from '../lib/chantAudio.js'
+import SpotifyEmbed from './SpotifyEmbed.jsx'
 import { useI18n } from '../i18n/I18nContext.jsx'
 
-/** Seven looping equaliser bars beside the play button. */
-function Equalizer({ playing }) {
-  return (
-    <span className={`eq ${playing ? 'is-playing' : ''}`.trim()} aria-hidden="true">
-      {Array.from({ length: 7 }, (_, i) => (
-        <span key={i} />
-      ))}
-    </span>
-  )
-}
-
 /**
- * The expanded chant card: lavender header, audio bar, and the three
- * translation layers. Layer 1 is the line the stand actually sings, in its own
- * language; play reads it aloud with the browser voice, since no licensed
- * crowd recording ships with the app.
+ * The expanded chant card: the recording first, then the three translation
+ * layers. Layer 1 is the line the stand actually sings, kept in the language
+ * it's sung in.
  */
 export default function ChantCard({ chant, onLearn }) {
   const { t, tr } = useI18n()
-  const [playing, setPlaying] = useState(false)
   const [saved, setSaved] = useState(false)
-
-  // Stop the voice if the card unmounts mid-chant.
-  useEffect(() => () => stopChant(), [])
-
-  const togglePlay = () => {
-    if (playing) {
-      stopChant()
-      setPlaying(false)
-      return
-    }
-    setPlaying(true)
-    playChant(
-      { audioUrl: chant.audioUrl, text: tr(chant.layer1), lang: chant.layer1Lang },
-      { onEnd: () => setPlaying(false) },
-    )
-  }
 
   return (
     <article className="card chant">
@@ -61,24 +32,10 @@ export default function ChantCard({ chant, onLearn }) {
       </header>
 
       <div className="chant__body">
-        <div className="audio-bar">
-          <button
-            type="button"
-            className="audio-bar__play"
-            onClick={togglePlay}
-            aria-label={tr(chant.audioLabel)}
-            aria-pressed={playing}
-            disabled={!canPlayChant(chant.audioUrl)}
-          >
-            <Icon name={playing ? 'pause' : 'play_arrow'} fill />
-          </button>
-          <span className="grow t-body-md text-secondary">{tr(chant.audioLabel)}</span>
-          <Equalizer playing={playing} />
-        </div>
+        {/* The recording leads the card: hear it, then read why it matters. */}
+        {chant.spotifyUrl ? <SpotifyEmbed url={chant.spotifyUrl} compact autoLoad /> : null}
 
-        {/* Real crowd audio lives on the source site — we link to it rather than
-            stream someone else's file. */}
-        {chant.sourceUrl ? (
+        {chant.sourceUrl && !chant.spotifyUrl ? (
           <a className="chant__source" href={chant.sourceUrl} target="_blank" rel="noopener noreferrer">
             <Icon name="open_in_new" />
             {t('culture.listenElsewhere')}

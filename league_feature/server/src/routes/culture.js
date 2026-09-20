@@ -10,6 +10,10 @@ export function toCardSummary(card) {
     club: card.club,
     city: card.city,
     founded: card.founded,
+    // The tiles draw the club's kit, so the colours travel with the summary.
+    kit: card.kit ?? null,
+    crestUrl: card.crestUrl ?? null,
+    imageUrl: card.imageUrl ?? null,
     nickname: card.nickname,
     summary: card.summary,
     chantCount: card.chants.length,

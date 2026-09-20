@@ -68,6 +68,8 @@ for clubs that don't have a culture card yet.
     "city": "Munich, Germany",
     "founded": 1900,
     "colors": "Red and white",
+    "kit": { "primary": "#dc052d", "secondary": "#ffffff", "pattern": "solid" },
+    "imageUrl": null,
     "summary": "…",
     "nickname": {
       "original": { "text": "Die Roten", "lang": "de" },
@@ -84,7 +86,7 @@ for clubs that don't have a culture card yet.
         "original": { "text": "Mia san mia", "lang": "bar" },
         "literal": "We are we",
         "meaning": "Bavarian dialect for 'we are who we are'…",
-        "audioUrl": "/chants/mia-san-mia.mp3"
+        "spotifyUrl": "https://open.spotify.com/track/5VHZPknPqlaGMi4bbFpdiJ"
       }
     ],
     "contentStatus": "draft"
@@ -94,14 +96,20 @@ for clubs that don't have a culture card yet.
 }
 ```
 
+`kit` describes the club's playing colours so the UI can draw an original motif —
+`pattern` is one of `solid`, `stripes`, `hoops` or `band`. The project ships no crests or
+logos. `imageUrl` is an optional photo for the club header; it is `null` everywhere until
+someone adds a picture they have the rights to.
+
 **The three layers** — `original`, `literal`, `meaning` — are the feature. `nickname` and each
 chant use the identical shape, so one UI component renders both (`LayeredText.jsx`).
 `original.lang` is a language code (`en`, `es`, `ca`, `de`, `bar`, `it`) the UI turns into a
 name with `Intl.DisplayNames`.
 
-`audioUrl` is optional. Set it to a file served by the frontend
-(`frontend/public/chants/…`) and the player uses the recording; leave it out and the player
-reads the original line aloud with the browser voice instead.
+`spotifyUrl` is optional: any Spotify share link (track, album or playlist) and the card
+renders Spotify's own player above the three layers. `sourceUrl` is a plain link out to a
+recording hosted elsewhere, shown only when there's no Spotify track. A chant with neither
+simply shows its three layers.
 
 Card **summaries** (used by list endpoints) carry `id`, `leagueId`, `club`, `city`, `founded`,
 `nickname`, `summary`, `chantCount`, `contentStatus` — no chants or stadium detail.
