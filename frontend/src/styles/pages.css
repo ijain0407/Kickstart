@@ -825,7 +825,9 @@
   position: sticky;
   bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom, 0px));
   z-index: 30;
-  background: rgba(250, 250, 247, 0.92);
+  /* --card-glass follows the theme; the literal it replaced stayed white and
+     turned this bar into a light slab in dark mode. */
+  background: var(--card-glass);
   backdrop-filter: blur(8px);
   border-top: 1px solid var(--border);
   margin: 0 -16px -16px;

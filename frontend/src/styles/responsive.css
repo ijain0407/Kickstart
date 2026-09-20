@@ -6,16 +6,122 @@
    ============================================================ */
 
 /* ------------------------------------------------------------
-   SMALL PHONES — keep the app bar on one line
+   PHONES — the app bar carries five controls on one line
    ------------------------------------------------------------ */
 
-@media (max-width: 420px) {
+@media (max-width: 480px) {
   .appbar__inner { gap: 6px; padding: 8px 12px; }
   .appbar__wordmark { font-size: 15px; }
   .lang__seg { min-width: 32px; padding: 5px 8px; }
   .appbar .avatar,
   .appbar .avatar__img { width: 32px; height: 32px; }
   .streak-pill { padding: 0 8px; }
+
+  /* The avatar shrinks to 32px up here, and the level badge is sized for a
+     36px one — at this size it covers half the monogram. Scale it down so
+     both stay readable. */
+  .appbar .avatar__level {
+    min-width: 15px;
+    height: 15px;
+    padding: 0 2px;
+    font-size: 9px;
+    border-width: 1.5px;
+    right: -2px;
+    bottom: -2px;
+  }
+}
+
+/* Below ~380px the wordmark is what finally pushes the row over. The mark
+   alone still identifies the app, and it stays a link home either way. */
+@media (max-width: 379px) {
+  .appbar__wordmark { display: none; }
+  .appbar__inner { gap: 8px; }
+}
+
+/* ------------------------------------------------------------
+   TOUCH — anything a finger has to hit needs real estate.
+   Keyed off a coarse pointer rather than width, so a touch
+   laptop gets it too and a mouse never pays for it.
+   ------------------------------------------------------------ */
+
+@media (pointer: coarse) {
+  .chip { min-height: 40px; }
+
+  .lang__seg { min-height: 36px; }
+
+  .appbar .lang__seg { min-height: 32px; }
+
+  .theme-toggle,
+  .icon-btn { min-width: 40px; min-height: 40px; }
+
+  .streak-pill { min-height: 36px; }
+
+  /* Lesson-scene hotspots trace real pitch markings, so some of them are
+     only a few pixels tall — a goal line is a line. Keep the drawn box
+     honest and grow the *hit* area around it instead. */
+  .hotspot::after {
+    content: '';
+    position: absolute;
+    inset: -12px;
+  }
+
+  /* Slider ticks sit four-up under a scene on a 358px column. */
+  .scene__tick { min-height: 44px; font-size: 10px; }
+
+  .scene__slider input[type='range'] { height: 40px; }
+}
+
+/* ------------------------------------------------------------
+   PHONES — floating chat ball vs. the page underneath it
+   ------------------------------------------------------------ */
+
+@media (max-width: 840px) {
+  /* Scoped through .app-shell to outrank chatbot.css, which the widget
+     imports itself and which therefore lands after this file in the bundle. */
+  .app-shell .chatbot-ball {
+    width: 48px;
+    height: 48px;
+  }
+
+  .app-shell .chatbot-ball .msym { font-size: 22px; }
+
+  /* The lesson, quiz and drill screens end in a sticky action bar whose
+     primary button runs the full width — which is exactly where the ball
+     floats. Lift it clear so it never sits on top of "Next". */
+  .app-shell:has(.quiz-actions) .chatbot-ball {
+    bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom, 0px) + 82px);
+  }
+
+  .app-shell:has(.quiz-actions) .chatbot-panel {
+    bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom, 0px) + 142px);
+  }
+}
+
+/* ------------------------------------------------------------
+   PHONES — horizontal chip rows
+   ------------------------------------------------------------ */
+
+@media (max-width: 840px) {
+  /* Formation and league chips scroll sideways. Without an edge treatment
+     the last chip looks truncated rather than scrollable, so fade it out
+     and let a swipe snap to the next one. */
+  .chip-row {
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent 100%);
+  }
+
+  .chip-row > * { scroll-snap-align: start; }
+
+  /* Bleed to the screen edges so a scrolling row reads as scrollable
+     rather than as a row that happens to be cut off. */
+  .page > .chip-row,
+  .page > * > .chip-row {
+    padding-left: 16px;
+    padding-right: 16px;
+    margin-left: -16px;
+    margin-right: -16px;
+  }
 }
 
 /* The live-compatibility strip sits above the question on a phone,
